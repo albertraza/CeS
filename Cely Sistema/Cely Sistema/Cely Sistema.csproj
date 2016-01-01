@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{230C4514-B1CB-46A8-8551-827F086347C9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cely_Sistema</RootNamespace>
+    <AssemblyName>Cely Sistema</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>E:\Cely Installer\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <TargetCulture>es-DO</TargetCulture>
+    <ApplicationRevision>29</ApplicationRevision>
+    <ApplicationVersion>3.2.52.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CELI.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E8F039805232F45B5842121FC34EA9E4F8FA4DE4</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Cely Sistema_ClaveTemporal.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Asistencia.cs" />
+    <Compile Include="AsistenciaDB.cs" />
+    <Compile Include="Calificaciones.cs" />
+    <Compile Include="CalificacionesB.cs" />
+    <Compile Include="CalificacionesDB.cs" />
+    <Compile Include="CancelacionPago.cs" />
+    <Compile Include="CelyDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CelyDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Control.cs" />
+    <Compile Include="DBcomun.cs" />
+    <Compile Include="Estudiante.cs" />
+    <Compile Include="EstudianteDB.cs" />
+    <Compile Include="Facturacion.cs" />
+    <Compile Include="FacturacionDB.cs" />
+    <Compile Include="frmBuscarCalificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarCalificacion.Designer.cs">
+      <DependentUpon>frmBuscarCalificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarEmpleados.Designer.cs">
+      <DependentUpon>frmBuscarEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarFacturas.Designer.cs">
+      <DependentUpon>frmBuscarFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarGrupos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarGrupos.Designer.cs">
+      <DependentUpon>frmBuscarGrupos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBusquedaDeAlumnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBusquedaDeAlumnos.Designer.cs">
+      <DependentUpon>frmBusquedaDeAlumnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCalificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCalificaciones.Designer.cs">
+      <DependentUpon>frmCalificaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCancelacionPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCancelacionPago.Designer.cs">
+      <DependentUpon>frmCancelacionPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargaEstudiante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargaEstudiante.Designer.cs">
+      <DependentUpon>frmCargaEstudiante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfContraseña.Designer.cs">
+      <DependentUpon>frmConfContraseña.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaGanancias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaGanancias.Designer.cs">
+      <DependentUpon>frmConsultaGanancias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaUsuarios.Designer.cs">
+      <DependentUpon>frmConsultaUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDescuentoFacturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDescuentoFacturacion.Designer.cs">
+      <DependentUpon>frmDescuentoFacturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEstudiantePorNivel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEstudiantePorNivel.Designer.cs">
+      <DependentUpon>frmEstudiantePorNivel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFacturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFacturacion.Designer.cs">
+      <DependentUpon>frmFacturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFacturasA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFacturasA.Designer.cs">
+      <DependentUpon>frmFacturasA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHorarioA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHorarioA.Designer.cs">
+      <DependentUpon>frmHorarioA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImpresionFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImpresionFactura.Designer.cs">
+      <DependentUpon>frmImpresionFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenimientodeUsuariosLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenimientodeUsuariosLogin.Designer.cs">
+      <DependentUpon>frmMantenimientodeUsuariosLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenimientoGanancias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenimientoGanancias.Designer.cs">
+      <DependentUpon>frmMantenimientoGanancias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenimientoProfesores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenimientoProfesores.Designer.cs">
+      <DependentUpon>frmMantenimientoProfesores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenimientoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMantenimientoUsuarios.Designer.cs">
+      <DependentUpon>frmMantenimientoUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMontoPagosyMora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMontoPagosyMora.Designer.cs">
+      <DependentUpon>frmMontoPagosyMora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProfesoresA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProfesoresA.Designer.cs">
+      <DependentUpon>frmProfesoresA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistro.Designer.cs">
+      <DependentUpon>frmRegistro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistrodeGruposyNiveles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistrodeGruposyNiveles.Designer.cs">
+      <DependentUpon>frmRegistrodeGruposyNiveles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistrodeHorarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistrodeHorarios.Designer.cs">
+      <DependentUpon>frmRegistrodeHorarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteCalificacionesTo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteCalificacionesTo.Designer.cs">
+      <DependentUpon>frmReporteCalificacionesTo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportedeNotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportedeNotas.Designer.cs">
+      <DependentUpon>frmReportedeNotas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteNotasEstudiantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteNotasEstudiantes.Designer.cs">
+      <DependentUpon>frmReporteNotasEstudiantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplash.Designer.cs">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ganancias.cs" />
+    <Compile Include="GananciasDB.cs" />
+    <Compile Include="Grupos.cs" />
+    <Compile Include="GruposDB.cs" />
+    <Compile Include="Horarios.cs" />
+    <Compile Include="HorariosDB.cs" />
+    <Compile Include="Mora.cs" />
+    <Compile Include="MoraDB.cs" />
+    <Compile Include="NotaAsistencia.cs" />
+    <Compile Include="NotaAsistenciaDB.cs" />
+    <Compile Include="Notas.cs" />
+    <Compile Include="NotasDB.cs" />
+    <Compile Include="PagosDB.cs" />
+    <Compile Include="Profesores.cs" />
+    <Compile Include="ProfesoresDB.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuarios.cs" />
+    <Compile Include="UsuariosB.cs" />
+    <Compile Include="UsuariosDB.cs" />
+    <Compile Include="UsuariosS.cs" />
+    <EmbeddedResource Include="frmBuscarCalificacion.resx">
+      <DependentUpon>frmBuscarCalificacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarEmpleados.resx">
+      <DependentUpon>frmBuscarEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarFacturas.resx">
+      <DependentUpon>frmBuscarFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarGrupos.resx">
+      <DependentUpon>frmBuscarGrupos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBusquedaDeAlumnos.resx">
+      <DependentUpon>frmBusquedaDeAlumnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCalificaciones.resx">
+      <DependentUpon>frmCalificaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCancelacionPago.resx">
+      <DependentUpon>frmCancelacionPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargaEstudiante.resx">
+      <DependentUpon>frmCargaEstudiante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfContraseña.resx">
+      <DependentUpon>frmConfContraseña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaGanancias.resx">
+      <DependentUpon>frmConsultaGanancias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaUsuarios.resx">
+      <DependentUpon>frmConsultaUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDescuentoFacturacion.resx">
+      <DependentUpon>frmDescuentoFacturacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEstudiantePorNivel.resx">
+      <DependentUpon>frmEstudiantePorNivel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFacturacion.resx">
+      <DependentUpon>frmFacturacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFacturasA.resx">
+      <DependentUpon>frmFacturasA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHorarioA.resx">
+      <DependentUpon>frmHorarioA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImpresionFactura.resx">
+      <DependentUpon>frmImpresionFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenimientodeUsuariosLogin.resx">
+      <DependentUpon>frmMantenimientodeUsuariosLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenimientoGanancias.resx">
+      <DependentUpon>frmMantenimientoGanancias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenimientoProfesores.resx">
+      <DependentUpon>frmMantenimientoProfesores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenimientoUsuarios.resx">
+      <DependentUpon>frmMantenimientoUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMontoPagosyMora.resx">
+      <DependentUpon>frmMontoPagosyMora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProfesoresA.resx">
+      <DependentUpon>frmProfesoresA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistro.resx">
+      <DependentUpon>frmRegistro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistrodeGruposyNiveles.resx">
+      <DependentUpon>frmRegistrodeGruposyNiveles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistrodeHorarios.resx">
+      <DependentUpon>frmRegistrodeHorarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteCalificacionesTo.resx">
+      <DependentUpon>frmReporteCalificacionesTo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportedeNotas.resx">
+      <DependentUpon>frmReportedeNotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteNotasEstudiantes.resx">
+      <DependentUpon>frmReporteNotasEstudiantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplash.resx">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="rpCalificaciones.rdlc" />
+    <EmbeddedResource Include="rpCalificacionesEstudiantiles.rdlc" />
+    <EmbeddedResource Include="rpFactura.rdlc" />
+    <EmbeddedResource Include="rpTodasCalificaciones.rdlc" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Cely Sistema_ClaveTemporal.pfx" />
+    <None Include="CelyDBDataSet.xsc">
+      <DependentUpon>CelyDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CelyDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CelyDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CelyDBDataSet.xss">
+      <DependentUpon>CelyDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CELI.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Microsoft.ReportViewer.Common">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.DataVisualization">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.WinForms">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.Types">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

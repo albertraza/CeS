@@ -1,0 +1,89 @@
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.csprojResolveAssemblyReference.cache
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmMenu.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmRegistro.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.Properties.Resources.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.csproj.GenerateResource.Cache
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\Cely Sistema.exe.config
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\Cely Sistema.exe
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\Cely Sistema.pdb
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.exe
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.pdb
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmBusquedaDeAlumnos.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmCargaEstudiante.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmFacturacion.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmFacturasA.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmCalificaciones.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmRegistrodeGruposyNiveles.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmRegistrodeHorarios.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmHorarioA.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmProfesoresA.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmMantenimientoProfesores.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmBuscarGrupos.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmBuscarEmpleados.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmBuscarFacturas.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmEstudiantePorNivel.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmCancelacionPago.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmConfContraseña.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmMantenimientoUsuarios.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmLogin.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmMantenimientodeUsuariosLogin.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmMantenimientoGanancias.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmImpresionFactura.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\RdlCompile.cache
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\RdlCompile.compiled
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmMontoPagosyMora.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\Cely Sistema.exe.manifest
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\Cely Sistema.application
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.TrustInfo.xml
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.exe.manifest
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.application
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmReporteNotasEstudiantes.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmReporteCalificacionesTo.resources
+C:\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmReportedeNotas.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\Cely Sistema.exe.config
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.exe
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.pdb
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\Cely Sistema.exe.manifest
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\Cely Sistema.application
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\Cely Sistema.exe
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\Cely Sistema.pdb
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.csprojResolveAssemblyReference.cache
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmBuscarEmpleados.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmBuscarFacturas.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmBuscarGrupos.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmBusquedaDeAlumnos.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmCalificaciones.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmCancelacionPago.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmCargaEstudiante.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmConfContraseña.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmEstudiantePorNivel.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmFacturacion.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmFacturasA.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmHorarioA.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmImpresionFactura.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmLogin.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmMantenimientodeUsuariosLogin.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmMantenimientoGanancias.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmMantenimientoProfesores.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmMantenimientoUsuarios.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmMenu.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmMontoPagosyMora.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmProfesoresA.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmRegistro.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmRegistrodeGruposyNiveles.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmRegistrodeHorarios.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmReporteCalificacionesTo.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmReportedeNotas.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmReporteNotasEstudiantes.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.Properties.Resources.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.csproj.GenerateResource.Cache
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\RdlCompile.cache
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\RdlCompile.compiled
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.TrustInfo.xml
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.exe.manifest
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely Sistema.application
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmBuscarCalificacion.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmConsultaUsuarios.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmConsultaGanancias.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmSplash.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmDescuentoFacturacion.resources
