@@ -47,7 +47,6 @@ namespace Cely_Sistema
                     {
                         if (txtMatricula.Text == string.Empty)
                         {
-                            MessageBox.Show("Matricula Vacia, Digite una Valida", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txtMatricula.Focus();
                         }
                         else
