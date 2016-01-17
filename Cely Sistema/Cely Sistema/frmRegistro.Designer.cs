@@ -76,12 +76,15 @@
             this.celyDBDataSet = new Cely_Sistema.CelyDBDataSet();
             this.verGruposwHorarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.verGruposwHorarioTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter();
+            this.gbVIP = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.gbEstudiante.SuspendLayout();
             this.pModoPago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.celyDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.verGruposwHorarioBindingSource)).BeginInit();
+            this.gbVIP.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNombre
@@ -149,7 +152,7 @@
             // lblEdad
             // 
             this.lblEdad.AutoSize = true;
-            this.lblEdad.Location = new System.Drawing.Point(255, 243);
+            this.lblEdad.Location = new System.Drawing.Point(255, 239);
             this.lblEdad.Name = "lblEdad";
             this.lblEdad.Size = new System.Drawing.Size(32, 13);
             this.lblEdad.TabIndex = 8;
@@ -157,7 +160,7 @@
             // 
             // txtEdad
             // 
-            this.txtEdad.Location = new System.Drawing.Point(293, 240);
+            this.txtEdad.Location = new System.Drawing.Point(293, 236);
             this.txtEdad.Name = "txtEdad";
             this.txtEdad.Size = new System.Drawing.Size(43, 20);
             this.txtEdad.TabIndex = 11;
@@ -351,6 +354,7 @@
             // 
             // gbEstudiante
             // 
+            this.gbEstudiante.Controls.Add(this.gbVIP);
             this.gbEstudiante.Controls.Add(this.cbN_Academico);
             this.gbEstudiante.Controls.Add(this.cbD_Idioma);
             this.gbEstudiante.Controls.Add(this.pModoPago);
@@ -378,7 +382,7 @@
             this.gbEstudiante.Controls.Add(this.lblSector);
             this.gbEstudiante.Location = new System.Drawing.Point(13, 28);
             this.gbEstudiante.Name = "gbEstudiante";
-            this.gbEstudiante.Size = new System.Drawing.Size(377, 308);
+            this.gbEstudiante.Size = new System.Drawing.Size(384, 308);
             this.gbEstudiante.TabIndex = 0;
             this.gbEstudiante.TabStop = false;
             this.gbEstudiante.Text = "Estudiante";
@@ -527,6 +531,25 @@
             // 
             this.verGruposwHorarioTableAdapter.ClearBeforeFill = true;
             // 
+            // gbVIP
+            // 
+            this.gbVIP.Controls.Add(this.checkBox1);
+            this.gbVIP.Location = new System.Drawing.Point(280, 262);
+            this.gbVIP.Name = "gbVIP";
+            this.gbVIP.Size = new System.Drawing.Size(56, 33);
+            this.gbVIP.TabIndex = 46;
+            this.gbVIP.TabStop = false;
+            this.gbVIP.Text = "VIP";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(18, 13);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // frmRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -555,6 +578,8 @@
             this.gbNiveles.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.celyDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.verGruposwHorarioBindingSource)).EndInit();
+            this.gbVIP.ResumeLayout(false);
+            this.gbVIP.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -608,5 +633,7 @@
         private CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter verGruposwHorarioTableAdapter;
         private System.Windows.Forms.ComboBox cbN_Academico;
         private System.Windows.Forms.ComboBox cbD_Idioma;
+        private System.Windows.Forms.GroupBox gbVIP;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
