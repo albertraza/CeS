@@ -210,6 +210,16 @@ namespace Cely_Sistema
                         {
 
                             MessageBox.Show("La Matricula del nuevo estudiante es: " + matricula, "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (cbVIP.Checked == true)
+                            {
+                                string res = "Si";
+                                EstudianteDB.UpdateVIPstatus(res, matricula.ToString());
+                            }
+                            else
+                            {
+                                string res = "No";
+                                EstudianteDB.UpdateVIPstatus(res, matricula.ToString());
+                            }
                             string FechaProximoP = FechaPP.ToString("yyyy-MM-dd");
                             EstudianteDB.ActualizarProximoPago(int.Parse(matricula), FechaProximoP);
                             /* Datos para registrar Asistencia */

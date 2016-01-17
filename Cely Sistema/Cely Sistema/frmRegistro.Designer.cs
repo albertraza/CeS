@@ -77,7 +77,7 @@
             this.verGruposwHorarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.verGruposwHorarioTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter();
             this.gbVIP = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbVIP = new System.Windows.Forms.CheckBox();
             this.gbEstudiante.SuspendLayout();
             this.pModoPago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
@@ -533,7 +533,7 @@
             // 
             // gbVIP
             // 
-            this.gbVIP.Controls.Add(this.checkBox1);
+            this.gbVIP.Controls.Add(this.cbVIP);
             this.gbVIP.Location = new System.Drawing.Point(280, 262);
             this.gbVIP.Name = "gbVIP";
             this.gbVIP.Size = new System.Drawing.Size(56, 33);
@@ -541,14 +541,14 @@
             this.gbVIP.TabStop = false;
             this.gbVIP.Text = "VIP";
             // 
-            // checkBox1
+            // cbVIP
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(18, 13);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbVIP.AutoSize = true;
+            this.cbVIP.Location = new System.Drawing.Point(18, 13);
+            this.cbVIP.Name = "cbVIP";
+            this.cbVIP.Size = new System.Drawing.Size(15, 14);
+            this.cbVIP.TabIndex = 0;
+            this.cbVIP.UseVisualStyleBackColor = true;
             // 
             // frmRegistro
             // 
@@ -634,6 +634,6 @@
         private System.Windows.Forms.ComboBox cbN_Academico;
         private System.Windows.Forms.ComboBox cbD_Idioma;
         private System.Windows.Forms.GroupBox gbVIP;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbVIP;
     }
 }

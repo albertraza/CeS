@@ -325,7 +325,7 @@ namespace Cely_Sistema
             int r = -1;
             using (SqlConnection con = DBcomun.ObetenerConexion())
             {
-                SqlCommand comand = new SqlCommand(string.Format("update Estudiantes set VIP = {'0'} where ID = {1}", vipS, ID), con);
+                SqlCommand comand = new SqlCommand(string.Format("update Estudiantes set VIP= '{0}' where ID = {1}", vipS, ID), con);
                 r = comand.ExecuteNonQuery();
                 con.Close();
             }
