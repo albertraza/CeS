@@ -26,6 +26,9 @@ namespace Cely_Sistema
             txtOcupacion.Clear();
             txtSector.Clear();
             txtTelefono.Clear();
+            cbVIP.Checked = false;
+            rbMensual.Checked = false;
+            rbSemanal.Checked = false;
         }
         public frmRegistro()
         {
