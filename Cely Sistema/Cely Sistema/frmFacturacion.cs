@@ -274,6 +274,7 @@ namespace Cely_Sistema
             txtTotalaPagar.Clear();
             txtTotalaPagar.Visible = false;
             lblAnularPago.Visible = false;
+            gbFactura.BackColor = Color.White;
         }
         private void LimpiarM()
         {
@@ -304,6 +305,7 @@ namespace Cely_Sistema
             dgvtabla.DataSource = FacturacionDB.TodasLasFacturas(DateTime.Today.Date.ToString("yyyy-MM-dd"));
             txtApellido.Clear();
             txtNombre.Clear();
+            gbFactura.BackColor = Color.White;
         }
         private string MP0;
         private DateTime fechaactualpp, fechaactualup, pPago0, pProximoPago;

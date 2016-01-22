@@ -328,6 +328,7 @@
             // 
             // gbFactura
             // 
+            this.gbFactura.BackColor = System.Drawing.Color.White;
             this.gbFactura.Controls.Add(this.lblAnularPago);
             this.gbFactura.Controls.Add(this.lblFechaPago);
             this.gbFactura.Controls.Add(this.txtTotalaPagar);
