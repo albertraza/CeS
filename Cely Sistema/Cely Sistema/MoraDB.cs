@@ -97,7 +97,7 @@ namespace Cely_Sistema
             int r = -1;
             using (SqlConnection con = DBcomun.ObetenerConexion())
             {
-                SqlCommand comand = new SqlCommand(string.Format("insert into CantidadPagoVIP (Pago_VIP, Pago_Semanal, Mora_Semanal, Mora_Mensual) values ({0}, {1}, {2}, {3})", pM.Pago_Mensual, pM.Pago_Semanal, pM.Mora_Semanal, pM.Mora_Mensual), con);
+                SqlCommand comand = new SqlCommand(string.Format("update CantidadPagoVIP set Pago_VIP = {0}, Pago_Semanal = {1}, Mora_Semanal = {2}, Mora_Mensual = {3} where ID = 1", pM.Pago_Mensual, pM.Pago_Semanal, pM.Mora_Semanal, pM.Mora_Mensual), con);
                 r = comand.ExecuteNonQuery();
                 con.Close();
             }
