@@ -103,5 +103,23 @@ namespace Cely_Sistema
             }
             return r;
         }
+        public static Mora GetVIPpayments()
+        {
+            Mora pM = new Mora();
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select * from CantidadPagoVIP"), con);
+                SqlDataReader reader = comand.ExecuteReader();
+                while (reader.Read())
+                {
+                    pM.Mora_Mensual = reader["Mora_Mensual"].ToString();
+                    pM.Mora_Semanal = reader["Mora_Semanal"].ToString();
+                    pM.Pago_Mensual = reader["Pago_VIP"].ToString();
+                    pM.Pago_Semanal = reader["Pago_Semanal"].ToString();
+                }
+                con.Close();
+            }
+            return pM;
+        }
     }
 }
