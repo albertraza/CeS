@@ -141,6 +141,7 @@
             this.Name = "frmPagosVIP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pagos VIP";
+            this.Load += new System.EventHandler(this.frmPagosVIP_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagosVIP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

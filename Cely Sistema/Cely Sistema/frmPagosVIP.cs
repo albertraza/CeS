@@ -15,5 +15,17 @@ namespace Cely_Sistema
         {
             InitializeComponent();
         }
+
+        private void frmPagosVIP_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvPagosVIP.DataSource = MoraDB.VerMorayPagosVIP();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
