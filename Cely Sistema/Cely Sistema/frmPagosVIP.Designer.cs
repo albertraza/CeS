@@ -55,6 +55,7 @@
             this.txtPagoSemanal.Name = "txtPagoSemanal";
             this.txtPagoSemanal.Size = new System.Drawing.Size(100, 20);
             this.txtPagoSemanal.TabIndex = 1;
+            this.txtPagoSemanal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPagoSemanal_KeyPress);
             // 
             // btnModificar
             // 
@@ -90,6 +91,7 @@
             this.txtMoraSemanal.Name = "txtMoraSemanal";
             this.txtMoraSemanal.Size = new System.Drawing.Size(100, 20);
             this.txtMoraSemanal.TabIndex = 4;
+            this.txtMoraSemanal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMoraSemanal_KeyPress);
             // 
             // lblPagoMensual
             // 
@@ -106,6 +108,7 @@
             this.txtPagoMensual.Name = "txtPagoMensual";
             this.txtPagoMensual.Size = new System.Drawing.Size(100, 20);
             this.txtPagoMensual.TabIndex = 6;
+            this.txtPagoMensual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPagoMensual_KeyPress);
             // 
             // lblMoraMensual
             // 
@@ -122,6 +125,7 @@
             this.txtMoraMensual.Name = "txtMoraMensual";
             this.txtMoraMensual.Size = new System.Drawing.Size(100, 20);
             this.txtMoraMensual.TabIndex = 8;
+            this.txtMoraMensual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMoraMensual_KeyPress);
             // 
             // frmPagosVIP
             // 
