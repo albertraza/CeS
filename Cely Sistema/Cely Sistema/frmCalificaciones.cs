@@ -55,13 +55,13 @@ namespace Cely_Sistema
                     {
                         txtNombre.Text = nombre;
                         txtApellido.Text = apellido;
-                        dgvUltimasCalificaciones.DataSource = CalificacionesDB.BuscarCalificacionesE(Convert.ToInt32(txtMatricula.Text));
                         dgvAsistencia.DataSource = AsistenciaDB.BuscarAsistencia(int.Parse(txtMatricula.Text));
                         dgvNotaAsistencia.DataSource = NotaAsistenciaDB.BuscarCalificaciones(int.Parse(txtMatricula.Text));
                         btnCargarCalificacion.Enabled = true;
                         btnGuardar.Enabled = true;
                         btnModificar.Enabled = false;
                         btnEliminar.Enabled = false;
+                        rbExamenEscrito.Checked = true;
                     }
                     else
                     {

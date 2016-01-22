@@ -646,7 +646,12 @@ namespace Cely_Sistema
                 {
                     if (rbPago.Checked == true)
                     {
-                        if (txtTotalaPagar.Text == string.Empty)
+                        if (txtMatricula.Text == string.Empty)
+                        {
+                            MessageBox.Show("Digite una matricula antes de tomar el pago", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtMatricula.Focus();
+                        }
+                        else if (txtTotalaPagar.Text == string.Empty)
                         {
                             MessageBox.Show("No se ha Digitado una cantidad a Pagar, Digite una valida", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             txtTotalaPagar.Focus();
@@ -661,7 +666,7 @@ namespace Cely_Sistema
                             MessageBox.Show("No se ha Cargado un Estudiante, Digite una Matricula valida", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             txtMatricula.Focus();
                         }
-                        else
+                        else if(EstudianteDB.ObtenerApellido(int.Parse(txtMatricula.Text)) != null)
                         {
 
                             Facturacion pFactura = new Facturacion();
@@ -775,6 +780,10 @@ namespace Cely_Sistema
                             {
                                 MessageBox.Show("No se Pudo Generar la Factura, Intentelo Nuevamente", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
+                        }
+                        else
+                        {
+                            MessageBox.Show("El Estudiante no Existe, Digite una matricula valida", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
@@ -1485,7 +1494,7 @@ namespace Cely_Sistema
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtMatricula.Focus();
             }
         }
 
@@ -1654,7 +1663,6 @@ namespace Cely_Sistema
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtMatricula.Focus();
             }
         }
