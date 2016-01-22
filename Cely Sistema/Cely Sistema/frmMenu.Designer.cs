@@ -76,6 +76,7 @@
             this.celyDBDataSet = new Cely_Sistema.CelyDBDataSet();
             this.verGruposwHorarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.verGruposwHorarioTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter();
+            this.ingresosVIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
@@ -109,7 +110,8 @@
             this.hacerFacturaToolStripMenuItem,
             this.cancelacionDeCobrosToolStripMenuItem,
             this.ingresosToolStripMenuItem,
-            this.registroDeMoraYCToolStripMenuItem});
+            this.registroDeMoraYCToolStripMenuItem,
+            this.ingresosVIPToolStripMenuItem});
             this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
             this.facturasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.facturasToolStripMenuItem.Text = "Cobros";
@@ -221,49 +223,49 @@
             // manualDelUsuarioToolStripMenuItem
             // 
             this.manualDelUsuarioToolStripMenuItem.Name = "manualDelUsuarioToolStripMenuItem";
-            this.manualDelUsuarioToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.manualDelUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.manualDelUsuarioToolStripMenuItem.Text = "Usuarios";
             this.manualDelUsuarioToolStripMenuItem.Click += new System.EventHandler(this.manualDelUsuarioToolStripMenuItem_Click);
             // 
             // estudiantesToolStripMenuItem1
             // 
             this.estudiantesToolStripMenuItem1.Name = "estudiantesToolStripMenuItem1";
-            this.estudiantesToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.estudiantesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.estudiantesToolStripMenuItem1.Text = "Estudiantes";
             this.estudiantesToolStripMenuItem1.Click += new System.EventHandler(this.estudiantesToolStripMenuItem1_Click);
             // 
             // empleadosToolStripMenuItem1
             // 
             this.empleadosToolStripMenuItem1.Name = "empleadosToolStripMenuItem1";
-            this.empleadosToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.empleadosToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.empleadosToolStripMenuItem1.Text = "Empleados";
             this.empleadosToolStripMenuItem1.Click += new System.EventHandler(this.empleadosToolStripMenuItem1_Click);
             // 
             // calificacionesToolStripMenuItem
             // 
             this.calificacionesToolStripMenuItem.Name = "calificacionesToolStripMenuItem";
-            this.calificacionesToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.calificacionesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.calificacionesToolStripMenuItem.Text = "Calificaciones";
             this.calificacionesToolStripMenuItem.Click += new System.EventHandler(this.calificacionesToolStripMenuItem_Click);
             // 
             // gananciasToolStripMenuItem
             // 
             this.gananciasToolStripMenuItem.Name = "gananciasToolStripMenuItem";
-            this.gananciasToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.gananciasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.gananciasToolStripMenuItem.Text = "Ganancias";
             this.gananciasToolStripMenuItem.Click += new System.EventHandler(this.gananciasToolStripMenuItem_Click);
             // 
             // facturasToolStripMenuItem1
             // 
             this.facturasToolStripMenuItem1.Name = "facturasToolStripMenuItem1";
-            this.facturasToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.facturasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.facturasToolStripMenuItem1.Text = "Facturas";
             this.facturasToolStripMenuItem1.Click += new System.EventHandler(this.facturasToolStripMenuItem1_Click);
             // 
             // nivelesToolStripMenuItem
             // 
             this.nivelesToolStripMenuItem.Name = "nivelesToolStripMenuItem";
-            this.nivelesToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.nivelesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.nivelesToolStripMenuItem.Text = "Niveles";
             this.nivelesToolStripMenuItem.Click += new System.EventHandler(this.nivelesToolStripMenuItem_Click);
             // 
@@ -282,32 +284,32 @@
             // gananciasToolStripMenuItem1
             // 
             this.gananciasToolStripMenuItem1.Name = "gananciasToolStripMenuItem1";
-            this.gananciasToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.gananciasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.gananciasToolStripMenuItem1.Text = "Ganancias";
             // 
             // estudiantesToolStripMenuItem2
             // 
             this.estudiantesToolStripMenuItem2.Name = "estudiantesToolStripMenuItem2";
-            this.estudiantesToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
+            this.estudiantesToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.estudiantesToolStripMenuItem2.Text = "Estudiantes";
             // 
             // calificacionesToolStripMenuItem1
             // 
             this.calificacionesToolStripMenuItem1.Name = "calificacionesToolStripMenuItem1";
-            this.calificacionesToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.calificacionesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.calificacionesToolStripMenuItem1.Text = "Calificaciones";
             this.calificacionesToolStripMenuItem1.Click += new System.EventHandler(this.calificacionesToolStripMenuItem1_Click);
             // 
             // empleadosToolStripMenuItem2
             // 
             this.empleadosToolStripMenuItem2.Name = "empleadosToolStripMenuItem2";
-            this.empleadosToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
+            this.empleadosToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.empleadosToolStripMenuItem2.Text = "Empleados";
             // 
             // facturasToolStripMenuItem2
             // 
             this.facturasToolStripMenuItem2.Name = "facturasToolStripMenuItem2";
-            this.facturasToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
+            this.facturasToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.facturasToolStripMenuItem2.Text = "Facturas";
             // 
             // salirToolStripMenuItem
@@ -481,6 +483,13 @@
             // 
             this.verGruposwHorarioTableAdapter.ClearBeforeFill = true;
             // 
+            // ingresosVIPToolStripMenuItem
+            // 
+            this.ingresosVIPToolStripMenuItem.Name = "ingresosVIPToolStripMenuItem";
+            this.ingresosVIPToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.ingresosVIPToolStripMenuItem.Text = "Ingresos VIP";
+            this.ingresosVIPToolStripMenuItem.Click += new System.EventHandler(this.ingresosVIPToolStripMenuItem_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -562,5 +571,6 @@
         private CelyDBDataSet celyDBDataSet;
         private System.Windows.Forms.BindingSource verGruposwHorarioBindingSource;
         private CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter verGruposwHorarioTableAdapter;
+        private System.Windows.Forms.ToolStripMenuItem ingresosVIPToolStripMenuItem;
     }
 }

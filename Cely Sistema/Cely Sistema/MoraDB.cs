@@ -72,5 +72,36 @@ namespace Cely_Sistema
             }
             return List;
         }
+        public static List<Mora> VerMorayPagosVIP()
+        {
+            List<Mora> list = new List<Mora>();
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select * from CantidadPagoVIP"), con);
+                SqlDataReader reader = comand.ExecuteReader();
+                while (reader.Read())
+                {
+                    Mora pM = new Mora();
+                    pM.Mora_Mensual = reader["Mora_Mensual"].ToString();
+                    pM.Mora_Semanal = reader["Mora_Semanal"].ToString();
+                    pM.Pago_Mensual = reader["Pago_VIP"].ToString();
+                    pM.Pago_Semanal = reader["Pago_Semanal"].ToString();
+                    list.Add(pM);
+                }
+                con.Close();
+            }
+            return list;
+        }
+        public static int ModificarVIP(Mora pM)
+        {
+            int r = -1;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("insert into CantidadPagoVIP (Pago_VIP, Pago_Semanal, Mora_Semanal, Mora_Mensual) values ({0}, {1}, {2}, {3})", pM.Pago_Mensual, pM.Pago_Semanal, pM.Mora_Semanal, pM.Mora_Mensual), con);
+                r = comand.ExecuteNonQuery();
+                con.Close();
+            }
+            return r;
+        }
     }
 }

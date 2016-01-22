@@ -402,5 +402,18 @@ namespace Cely_Sistema
                 }
             }
         }
+
+        private void ingresosVIPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Nivel > 3)
+            {
+                frmPagosVIP pP = new frmPagosVIP();
+                pP.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tienes Acceso, Contacta al Administrador del Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+        }
     }
 }
