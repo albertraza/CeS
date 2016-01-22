@@ -20,6 +20,7 @@ namespace Cely_Sistema
         {
             try
             {
+                txtPagoSemanal.Focus();
                 dgvPagosVIP.DataSource = MoraDB.VerMorayPagosVIP();
             }
             catch (Exception ex)
