@@ -1134,29 +1134,63 @@ namespace Cely_Sistema
                         string Modopago = EstudianteDB.ObtenerModoPago(int.Parse(txtMatricula.Text));
                         if (Modopago != null)
                         {
-                            if (Modopago == "M" || Modopago == "Mensual")
+                            // Getting Mora chargue waived for VIP students
+
+                            if (EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == "NO" ||
+                                EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == "No" ||
+                                EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)) == null)
                             {
-                                string Mora = MoraDB.ObtenerMoraMensual();
-                                double DMora = double.Parse(Mora);
-                                double TP = double.Parse(txtTotalaPagar.Text);
-                                TP = TP - DMora;
-                                txtTotalaPagar.Text = TP.ToString("f2");
-                                lblMora.ForeColor = Color.Black;
-                                lblMora.Text = "Mora:" + " " + "0";
-                                pMora = false;
-                                lblTotalaPagar.Text = "Total a Pagar:" + " " + TP.ToString("f2");
+                                if (Modopago == "M" || Modopago == "Mensual")
+                                {
+                                    string Mora = MoraDB.ObtenerMoraMensual();
+                                    double DMora = double.Parse(Mora);
+                                    double TP = double.Parse(txtTotalaPagar.Text);
+                                    TP = TP - DMora;
+                                    txtTotalaPagar.Text = TP.ToString("f2");
+                                    lblMora.ForeColor = Color.Black;
+                                    lblMora.Text = "Mora:" + " " + "0";
+                                    pMora = false;
+                                    lblTotalaPagar.Text = "Total a Pagar:" + " " + TP.ToString("f2");
+                                }
+                                else
+                                {
+                                    string Mora = MoraDB.ObtenerMoraSemanal();
+                                    double DMora = double.Parse(Mora);
+                                    double TP = double.Parse(txtTotalaPagar.Text);
+                                    TP = TP - DMora;
+                                    txtTotalaPagar.Text = TP.ToString("f2");
+                                    lblMora.ForeColor = Color.Black;
+                                    lblMora.Text = "Mora:" + " " + "0";
+                                    pMora = false;
+                                    lblTotalaPagar.Text = "Total a Pagar:" + " " + TP.ToString("f2");
+                                }
                             }
                             else
                             {
-                                string Mora = MoraDB.ObtenerMoraSemanal();
-                                double DMora = double.Parse(Mora);
-                                double TP = double.Parse(txtTotalaPagar.Text);
-                                TP = TP - DMora;
-                                txtTotalaPagar.Text = TP.ToString("f2");
-                                lblMora.ForeColor = Color.Black;
-                                lblMora.Text = "Mora:" + " " + "0";
-                                pMora = false;
-                                lblTotalaPagar.Text = "Total a Pagar:" + " " + TP.ToString("f2");
+                                if (Modopago == "M" || Modopago == "Mensual")
+                                {
+                                    string Mora = MoraDB.GetVIPpayments().Mora_Mensual;
+                                    double DMora = double.Parse(Mora);
+                                    double TP = double.Parse(txtTotalaPagar.Text);
+                                    TP = TP - DMora;
+                                    txtTotalaPagar.Text = TP.ToString("f2");
+                                    lblMora.ForeColor = Color.Black;
+                                    lblMora.Text = "Mora:" + " " + "0";
+                                    pMora = false;
+                                    lblTotalaPagar.Text = "Total a Pagar:" + " " + TP.ToString("f2");
+                                }
+                                else
+                                {
+                                    string Mora = MoraDB.GetVIPpayments().Mora_Semanal;
+                                    double DMora = double.Parse(Mora);
+                                    double TP = double.Parse(txtTotalaPagar.Text);
+                                    TP = TP - DMora;
+                                    txtTotalaPagar.Text = TP.ToString("f2");
+                                    lblMora.ForeColor = Color.Black;
+                                    lblMora.Text = "Mora:" + " " + "0";
+                                    pMora = false;
+                                    lblTotalaPagar.Text = "Total a Pagar:" + " " + TP.ToString("f2");
+                                }
                             }
                         }
                         else
