@@ -970,81 +970,166 @@ namespace Cely_Sistema
                                         btnAceptar.Focus();
                                         int CompF = DateTime.Compare(pPago0, fechaActual);
 
-                                        if (MP == "M" || MP == "Mensual")
+                                        // Getting VIP method working together with the old way of payment
+
+                                        if (EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == "NO" ||
+                                            EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == "No" ||
+                                            EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == null)
                                         {
-                                            if (CompF < 0)
+                                            if (MP == "M" || MP == "Mensual")
                                             {
-                                                string Mora = MoraDB.ObtenerMoraMensual();
-                                                txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
-                                                pPago0 = pPago0.AddMonths(1);
-                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
-                                                double pM = Convert.ToDouble(PagosDB.ObtenerPagoMensual());
-                                                pM = pM - des;
-                                                lblPagoMensual.Text = lblPagoMensual.Text + " " + pM.ToString("f2");
-                                                double DMora = double.Parse(Mora);
-                                                pM = pM + DMora;
-                                                lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pM.ToString("f2");
-                                                txtTotalaPagar.Text = pM.ToString("f2");
-                                                lblMora.ForeColor = Color.Red;
-                                                lblMora.Text = lblMora.Text + " " + Mora;
-                                                rbPago.Text = "Pago Mensual";
-                                                txtMotivodePago.Text = "Pago Mes";
-                                                pMora = true;
+                                                if (CompF < 0)
+                                                {
+                                                    string Mora = MoraDB.ObtenerMoraMensual();
+                                                    txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
+                                                    pPago0 = pPago0.AddMonths(1);
+                                                    lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
+                                                    double pM = Convert.ToDouble(PagosDB.ObtenerPagoMensual());
+                                                    pM = pM - des;
+                                                    lblPagoMensual.Text = lblPagoMensual.Text + " " + pM.ToString("f2");
+                                                    double DMora = double.Parse(Mora);
+                                                    pM = pM + DMora;
+                                                    lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pM.ToString("f2");
+                                                    txtTotalaPagar.Text = pM.ToString("f2");
+                                                    lblMora.ForeColor = Color.Red;
+                                                    lblMora.Text = lblMora.Text + " " + Mora;
+                                                    rbPago.Text = "Pago Mensual";
+                                                    txtMotivodePago.Text = "Pago Mes";
+                                                    pMora = true;
+                                                }
+                                                else
+                                                {
+                                                    txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
+                                                    pPago0 = pPago0.AddMonths(1);
+                                                    lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
+                                                    double pM = PagosDB.ObtenerPagoMensual();
+                                                    pM = pM - des;
+                                                    lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pM.ToString("f2");
+                                                    lblPagoMensual.Text = lblPagoMensual.Text + " " + pM.ToString("f2");
+                                                    txtTotalaPagar.Text = pM.ToString("f2");
+                                                    lblMora.Text = lblMora.Text + " " + "0";
+                                                    rbPago.Text = "Pago Mensual";
+                                                    txtMotivodePago.Text = "Pago Mes";
+                                                    pMora = false;
+                                                }
                                             }
                                             else
                                             {
-                                                txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
-                                                pPago0 = pPago0.AddMonths(1);
-                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
-                                                double pM = PagosDB.ObtenerPagoMensual();
-                                                pM = pM - des;
-                                                lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pM.ToString("f2");
-                                                lblPagoMensual.Text = lblPagoMensual.Text + " " + pM.ToString("f2");
-                                                txtTotalaPagar.Text = pM.ToString("f2");
-                                                lblMora.Text = lblMora.Text + " " + "0";
-                                                rbPago.Text = "Pago Mensual";
-                                                txtMotivodePago.Text = "Pago Mes";
-                                                pMora = false;
+                                                if (CompF < 0)
+                                                {
+                                                    string Mora = MoraDB.ObtenerMoraSemanal();
+                                                    txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
+                                                    pPago0 = pPago0.AddDays(7);
+                                                    lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
+                                                    double pS = Convert.ToDouble(PagosDB.ObtenerPagoSemanal());
+                                                    pS = pS - des;
+                                                    double DMora = double.Parse(Mora);
+                                                    lblPagoMensual.Text = "Pago Semanal:" + " " + pS.ToString("f2");
+                                                    pS = pS + DMora;
+                                                    lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pS.ToString("f2");
+                                                    txtTotalaPagar.Text = pS.ToString("f2");
+                                                    lblMora.ForeColor = Color.Red;
+                                                    lblMora.Text = lblMora.Text + " " + Mora;
+                                                    rbPago.Text = "Pago Semanal";
+                                                    txtMotivodePago.Text = "Pago Semanal";
+                                                    pMora = true;
+                                                }
+                                                else
+                                                {
+                                                    txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
+                                                    pPago0 = pPago0.AddDays(7);
+                                                    double pS = PagosDB.ObtenerPagoSemanal();
+                                                    pS = pS - des;
+                                                    lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
+                                                    lblPagoMensual.Text = "Pago Semanal:" + " " + pS.ToString("f2");
+                                                    lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pS.ToString("f2");
+                                                    txtTotalaPagar.Text = pS.ToString("f2");
+                                                    lblMora.Text = lblMora.Text + " " + "0";
+                                                    rbPago.Text = "Pago Semanal";
+                                                    txtMotivodePago.Text = "Pago Semanal";
+                                                    pMora = false;
+                                                }
                                             }
                                         }
                                         else
                                         {
-                                            if (CompF < 0)
+                                            // If false means that the student is a VIP
+                                            gbFactura.BackColor = Color.Yellow;
+                                            if (MP == "M" || MP == "Mensual")
                                             {
-                                                string Mora = MoraDB.ObtenerMoraSemanal();
-                                                txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
-                                                pPago0 = pPago0.AddDays(7);
-                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
-                                                double pS = Convert.ToDouble(PagosDB.ObtenerPagoSemanal());
-                                                pS = pS - des;
-                                                double DMora = double.Parse(Mora);
-                                                lblPagoMensual.Text = "Pago Semanal:" + " " + pS.ToString("f2");
-                                                pS = pS + DMora;
-                                                lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pS.ToString("f2");
-                                                txtTotalaPagar.Text = pS.ToString("f2");
-                                                lblMora.ForeColor = Color.Red;
-                                                lblMora.Text = lblMora.Text + " " + Mora;
-                                                rbPago.Text = "Pago Semanal";
-                                                txtMotivodePago.Text = "Pago Semanal";
-                                                pMora = true;
+                                                if (CompF < 0)
+                                                {
+                                                    string Mora = MoraDB.GetVIPpayments().Mora_Mensual;
+                                                    txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
+                                                    pPago0 = pPago0.AddMonths(1);
+                                                    lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
+                                                    double pM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);
+                                                    pM = pM - des;
+                                                    lblPagoMensual.Text = lblPagoMensual.Text + " " + pM.ToString("f2");
+                                                    double DMora = double.Parse(Mora);
+                                                    pM = pM + DMora;
+                                                    lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pM.ToString("f2");
+                                                    txtTotalaPagar.Text = pM.ToString("f2");
+                                                    lblMora.ForeColor = Color.Red;
+                                                    lblMora.Text = lblMora.Text + " " + Mora;
+                                                    rbPago.Text = "Pago Mensual";
+                                                    txtMotivodePago.Text = "Pago Mes";
+                                                    pMora = true;
+                                                }
+                                                else
+                                                {
+                                                    txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
+                                                    pPago0 = pPago0.AddMonths(1);
+                                                    lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
+                                                    double pM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);
+                                                    pM = pM - des;
+                                                    lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pM.ToString("f2");
+                                                    lblPagoMensual.Text = lblPagoMensual.Text + " " + pM.ToString("f2");
+                                                    txtTotalaPagar.Text = pM.ToString("f2");
+                                                    lblMora.Text = lblMora.Text + " " + "0";
+                                                    rbPago.Text = "Pago Mensual";
+                                                    txtMotivodePago.Text = "Pago Mes";
+                                                    pMora = false;
+                                                }
                                             }
                                             else
                                             {
-                                                txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
-                                                pPago0 = pPago0.AddDays(7);
-                                                double pS = PagosDB.ObtenerPagoSemanal();
-                                                pS = pS - des;
-                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
-                                                lblPagoMensual.Text = "Pago Semanal:" + " " + pS.ToString("f2");
-                                                lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pS.ToString("f2");
-                                                txtTotalaPagar.Text = pS.ToString("f2");
-                                                lblMora.Text = lblMora.Text + " " + "0";
-                                                rbPago.Text = "Pago Semanal";
-                                                txtMotivodePago.Text = "Pago Semanal";
-                                                pMora = false;
+                                                if (CompF < 0)
+                                                {
+                                                    string Mora = MoraDB.GetVIPpayments().Mora_Semanal;
+                                                    txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
+                                                    pPago0 = pPago0.AddDays(7);
+                                                    lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
+                                                    double pS = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal);
+                                                    pS = pS - des;
+                                                    double DMora = double.Parse(Mora);
+                                                    lblPagoMensual.Text = "Pago Semanal:" + " " + pS.ToString("f2");
+                                                    pS = pS + DMora;
+                                                    lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pS.ToString("f2");
+                                                    txtTotalaPagar.Text = pS.ToString("f2");
+                                                    lblMora.ForeColor = Color.Red;
+                                                    lblMora.Text = lblMora.Text + " " + Mora;
+                                                    rbPago.Text = "Pago Semanal";
+                                                    txtMotivodePago.Text = "Pago Semanal";
+                                                    pMora = true;
+                                                }
+                                                else
+                                                {
+                                                    txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
+                                                    pPago0 = pPago0.AddDays(7);
+                                                    double pS = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal);
+                                                    pS = pS - des;
+                                                    lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
+                                                    lblPagoMensual.Text = "Pago Semanal:" + " " + pS.ToString("f2");
+                                                    lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pS.ToString("f2");
+                                                    txtTotalaPagar.Text = pS.ToString("f2");
+                                                    lblMora.Text = lblMora.Text + " " + "0";
+                                                    rbPago.Text = "Pago Semanal";
+                                                    txtMotivodePago.Text = "Pago Semanal";
+                                                    pMora = false;
+                                                }
                                             }
                                         }
-
                                     }
                                     else
                                     {
