@@ -18,14 +18,21 @@ namespace Cely_Sistema
 
         public DateTime fechaD { get; set; }
         public DateTime fechaH { get; set; }
+        public string matricula { get; set; }
         private void frmReportedeNotas_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'CelyDBDataSet.ReporteCalificacionesTo1' Puede moverla o quitarla según sea necesario.
-            this.ReporteCalificacionesTo1TableAdapter.Fill(this.CelyDBDataSet.ReporteCalificacionesTo1, fechaD, fechaH);
-            // TODO: esta línea de código carga datos en la tabla 'CelyDBDataSet.ReporteCalificacionesTo' Puede moverla o quitarla según sea necesario.
-            
+            try
+            {
+                // TODO: esta línea de código carga datos en la tabla 'CelyDBDataSet.ReporteCalificacionesTo1' Puede moverla o quitarla según sea necesario.
+                // TODO: esta línea de código carga datos en la tabla 'CelyDBDataSet.ReporteCalificacionesTo' Puede moverla o quitarla según sea necesario.
 
-            this.reportViewer1.RefreshReport();
+
+                this.reportViewer1.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
