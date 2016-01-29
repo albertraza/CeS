@@ -36,9 +36,12 @@
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.ReporteCalificacionesToTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.ReporteCalificacionesToTableAdapter();
             this.ReporteCalificacionesTo1TableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.ReporteCalificacionesTo1TableAdapter();
+            this.ReporteNotasDeHastaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ReporteNotasDeHastaTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.ReporteNotasDeHastaTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.ReporteCalificacionesTo1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CelyDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReporteCalificacionesToBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReporteNotasDeHastaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ReporteCalificacionesTo1BindingSource
@@ -59,8 +62,8 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.ReporteCalificacionesTo1BindingSource;
+            reportDataSource1.Name = "DataSourceCely";
+            reportDataSource1.Value = this.ReporteNotasDeHastaBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Cely_Sistema.rpCalificaciones.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
@@ -76,6 +79,15 @@
             // 
             this.ReporteCalificacionesTo1TableAdapter.ClearBeforeFill = true;
             // 
+            // ReporteNotasDeHastaBindingSource
+            // 
+            this.ReporteNotasDeHastaBindingSource.DataMember = "ReporteNotasDeHasta";
+            this.ReporteNotasDeHastaBindingSource.DataSource = this.CelyDBDataSet;
+            // 
+            // ReporteNotasDeHastaTableAdapter
+            // 
+            this.ReporteNotasDeHastaTableAdapter.ClearBeforeFill = true;
+            // 
             // frmReportedeNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,6 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReporteCalificacionesTo1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CelyDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReporteCalificacionesToBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReporteNotasDeHastaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -102,5 +115,7 @@
         private CelyDBDataSetTableAdapters.ReporteCalificacionesToTableAdapter ReporteCalificacionesToTableAdapter;
         private System.Windows.Forms.BindingSource ReporteCalificacionesTo1BindingSource;
         private CelyDBDataSetTableAdapters.ReporteCalificacionesTo1TableAdapter ReporteCalificacionesTo1TableAdapter;
+        private System.Windows.Forms.BindingSource ReporteNotasDeHastaBindingSource;
+        private CelyDBDataSetTableAdapters.ReporteNotasDeHastaTableAdapter ReporteNotasDeHastaTableAdapter;
     }
 }
