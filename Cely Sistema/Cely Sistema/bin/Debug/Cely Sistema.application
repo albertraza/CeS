@@ -7,14 +7,14 @@
     <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Cely Sistema.exe.manifest" size="9657">
+    <dependentAssembly dependencyType="install" codebase="Cely Sistema.exe.manifest" size="8954">
       <assemblyIdentity name="Cely Sistema.exe" version="3.2.52.29" publicKeyToken="0000000000000000" language="es-DO" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>cGrHvFMVhHoIntsyoVsQt0EdMf4=</dsig:DigestValue>
+        <dsig:DigestValue>1vnX4ZM62R4kT0OdA77Sm5Lf1us=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
