@@ -96,6 +96,7 @@ namespace Cely_Sistema
                             MessageBox.Show("Complete la nota de todos los parciales", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         else {
+                            // validate if textboxes value is less than 100.
                             if (int.Parse(txtPrimerPalcial.Text) > 100 || int.Parse(txtSegundoParcial.Text) > 100 || int.Parse(txtTercerParcial.Text) > 100)
                             {
                                 MessageBox.Show("La notas de los parciales debe ser menos o igual que 100, digite las notas nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
