@@ -161,6 +161,7 @@ namespace Cely_Sistema
                     pEstuidante.NivelA = reader.GetString(13);
                     pEstuidante.Codigo_Grupo = reader.GetInt32(15);
                     pEstuidante.Modo_Pago = reader.GetString(16);
+                    pEstuidante.VIP = reader["VIP"].ToString();
 
                     lista.Add(pEstuidante);
 

@@ -40,6 +40,7 @@ namespace Cely_Sistema
                 MinimizeBox = false;
                 MaximizeBox = false;
                 btnBuscarEstudiante.Visible = false;
+                tContador.Start();
             }
             catch(Exception ex)
             {
@@ -413,6 +414,17 @@ namespace Cely_Sistema
             else
             {
                 MessageBox.Show("No tienes Acceso, Contacta al Administrador del Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+        }
+        private void tContador_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

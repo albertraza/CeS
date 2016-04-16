@@ -233,7 +233,9 @@ namespace Cely_Sistema
                             pA.Ultima_Asistencia = DateTime.Today.Date.ToString("yyyy-MM-dd");
                             AsistenciaDB.RegistrarAsistencia(pA);
                             Limpiar();
-                            pGS.ID = 0;
+                            int NTotalInscritos = GruposDB.ObtenerTotalInscritos(pID);
+                            int NuevaCant = NTotalInscritos + 1;
+                            GruposDB.ActualizarCantidadEstudiantes(pID, NuevaCant);
                         }
                     }
                     else
@@ -488,7 +490,6 @@ namespace Cely_Sistema
                         {
                             MessageBox.Show("Estudiante Eliminado Esxitosamente", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Limpiar();
-                            pGS.ID = 0;
                         }
                     }
                     else
