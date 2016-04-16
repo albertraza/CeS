@@ -1611,7 +1611,7 @@ namespace Cely_Sistema
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 txtMatricula.Focus();
             }
@@ -1780,7 +1780,7 @@ namespace Cely_Sistema
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 txtMatricula.Focus();
             }

@@ -203,7 +203,7 @@
             this.dgvtabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvtabla.Location = new System.Drawing.Point(6, 19);
             this.dgvtabla.Name = "dgvtabla";
-            this.dgvtabla.Size = new System.Drawing.Size(741, 347);
+            this.dgvtabla.Size = new System.Drawing.Size(666, 347);
             this.dgvtabla.TabIndex = 16;
             // 
             // gbUltimosPagos
@@ -211,7 +211,7 @@
             this.gbUltimosPagos.Controls.Add(this.dgvtabla);
             this.gbUltimosPagos.Location = new System.Drawing.Point(372, 7);
             this.gbUltimosPagos.Name = "gbUltimosPagos";
-            this.gbUltimosPagos.Size = new System.Drawing.Size(755, 372);
+            this.gbUltimosPagos.Size = new System.Drawing.Size(683, 372);
             this.gbUltimosPagos.TabIndex = 17;
             this.gbUltimosPagos.TabStop = false;
             this.gbUltimosPagos.Text = "Ultimos Pagos";
@@ -422,7 +422,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1138, 420);
+            this.ClientSize = new System.Drawing.Size(1068, 420);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.gbMotivoPago);

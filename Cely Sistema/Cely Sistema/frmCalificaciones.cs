@@ -117,7 +117,7 @@ namespace Cely_Sistema
                                 pNotas.Fecha_Examen = dtpFechaParcial.Value.Date.ToString("yyyy-MM-dd");
                                 if (MessageBox.Show("Seguro que desea registrar la calificacion?", "Calificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                 {
-                                    int calificacion = NotasDB.RegistrarNotaExamenE(pNotas);
+                                    int calificacion = NotasDB.RegistrarNotaExamenE(pNotas, EstudianteDB.ObtenerCodigoNivel(int.Parse(txtMatricula.Text)));
 
                                     if (calificacion > 0)
                                     {
@@ -170,7 +170,7 @@ namespace Cely_Sistema
                                 pNotas.Fecha_Examen = dtpFechaParcial.Value.Date.ToString("yyyy-MM-dd");
                                 if (MessageBox.Show("Seguro que desea registrar la calificacion?", "Calificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                 {
-                                    int calificacion = NotasDB.RegistrarNotaExamenL(pNotas);
+                                    int calificacion = NotasDB.RegistrarNotaExamenL(pNotas, EstudianteDB.ObtenerCodigoNivel(int.Parse(txtMatricula.Text)));
 
                                     if (calificacion > 0)
                                     {
@@ -224,7 +224,7 @@ namespace Cely_Sistema
                                 pNotas.Fecha_Examen = dtpFechaParcial.Value.Date.ToString("yyyy-MM-dd");
                                 if (MessageBox.Show("Seguro que desea registrar la calificacion?", "Calificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                 {
-                                    int calificacion = NotasDB.RegistrarNotaExamenO(pNotas);
+                                    int calificacion = NotasDB.RegistrarNotaExamenO(pNotas, EstudianteDB.ObtenerCodigoNivel(int.Parse(txtMatricula.Text)));
 
                                     if (calificacion > 0)
                                     {
@@ -278,7 +278,7 @@ namespace Cely_Sistema
                                 pNotas.Fecha_Examen = dtpFechaParcial.Value.Date.ToString("yyyy-MM-dd");
                                 if (MessageBox.Show("Seguro que desea registrar la calificacion?", "Calificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                 {
-                                    int calificacion = NotasDB.RegistrarNotaExposicion(pNotas);
+                                    int calificacion = NotasDB.RegistrarNotaExposicion(pNotas, EstudianteDB.ObtenerCodigoNivel(int.Parse(txtMatricula.Text)));
 
                                     if (calificacion > 0)
                                     {

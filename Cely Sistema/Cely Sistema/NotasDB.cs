@@ -9,45 +9,45 @@ namespace Cely_Sistema
 {
     public class NotasDB
     {
-        public static int RegistrarNotaExamenE(Notas pNotas)
+        public static int RegistrarNotaExamenE(Notas pNotas, string nivelID)
         {
             int retorno = -1;
             using(SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("Insert into NotasExamenEscrito (Matricula, Nombre, N1, N2, N3, NF, Fecha_Examen) values ({0}, '{1}', {2}, {3}, {4}, {5}, '{6}')", pNotas.Matricula, pNotas.Nombre, pNotas.N1, pNotas.N2, pNotas.N3, pNotas.NF, pNotas.Fecha_Examen), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("Insert into NotasExamenEscrito (Matricula, Nombre, N1, N2, N3, NF, Fecha_Examen, NivelID) values ({0}, '{1}', {2}, {3}, {4}, {5}, '{6}', '{7}')", pNotas.Matricula, pNotas.Nombre, pNotas.N1, pNotas.N2, pNotas.N3, pNotas.NF, pNotas.Fecha_Examen, nivelID), conexion);
                 retorno = comando.ExecuteNonQuery();
                 conexion.Close();
             }
             return retorno;
         }
-        public static int RegistrarNotaExamenL(Notas pNotas)
+        public static int RegistrarNotaExamenL(Notas pNotas, string nivelID)
         {
             int retorno = -1;
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("Insert into NotasExamenLectura (Matricula, Nombre, N1, N2, N3, NF, Fecha_Examen) values ({0}, '{1}', {2}, {3}, {4}, {5}, '{6}')", pNotas.Matricula, pNotas.Nombre, pNotas.N1, pNotas.N2, pNotas.N3, pNotas.NF, pNotas.Fecha_Examen), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("Insert into NotasExamenLectura (Matricula, Nombre, N1, N2, N3, NF, Fecha_Examen, NivelID) values ({0}, '{1}', {2}, {3}, {4}, {5}, '{6}', '{7}')", pNotas.Matricula, pNotas.Nombre, pNotas.N1, pNotas.N2, pNotas.N3, pNotas.NF, pNotas.Fecha_Examen, nivelID), conexion);
                 retorno = comando.ExecuteNonQuery();
                 conexion.Close();
             }
             return retorno;
         }
-        public static int RegistrarNotaExamenO(Notas pNotas)
+        public static int RegistrarNotaExamenO(Notas pNotas, string nivelID)
         {
             int retorno = -1;
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("Insert into NotasExamenOral (Matricula, Nombre, N1, N2, N3, NF, Fecha_Examen) values ({0}, '{1}', {2}, {3}, {4}, {5}, '{6}')", pNotas.Matricula, pNotas.Nombre, pNotas.N1, pNotas.N2, pNotas.N3, pNotas.NF, pNotas.Fecha_Examen), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("Insert into NotasExamenOral (Matricula, Nombre, N1, N2, N3, NF, Fecha_Examen, NivelID) values ({0}, '{1}', {2}, {3}, {4}, {5}, '{6}', '{7}')", pNotas.Matricula, pNotas.Nombre, pNotas.N1, pNotas.N2, pNotas.N3, pNotas.NF, pNotas.Fecha_Examen, nivelID), conexion);
                 retorno = comando.ExecuteNonQuery();
                 conexion.Close();
             }
             return retorno;
         }
-        public static int RegistrarNotaExposicion(Notas pNotas)
+        public static int RegistrarNotaExposicion(Notas pNotas, string nivelID)
         {
             int retorno = -1;
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("Insert into NotasExposicion (Matricula, Nombre, N1, N2, N3, NF, Fecha_Examen) values ({0}, '{1}', {2}, {3}, {4}, {5}, '{6}')", pNotas.Matricula, pNotas.Nombre, pNotas.N1, pNotas.N2, pNotas.N3, pNotas.NF, pNotas.Fecha_Examen), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("Insert into NotasExposicion (Matricula, Nombre, N1, N2, N3, NF, Fecha_Examen, NivelID) values ({0}, '{1}', {2}, {3}, {4}, {5}, '{6}', '{7}')", pNotas.Matricula, pNotas.Nombre, pNotas.N1, pNotas.N2, pNotas.N3, pNotas.NF, pNotas.Fecha_Examen, nivelID), conexion);
                 retorno = comando.ExecuteNonQuery();
                 conexion.Close();
             }

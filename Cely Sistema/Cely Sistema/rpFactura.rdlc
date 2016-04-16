@@ -416,7 +416,7 @@
         <Top>3.26042in</Top>
         <Left>3.54042in</Left>
         <Height>0.5in</Height>
-        <Width>2.66667in</Width>
+        <Width>2.66668in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -803,7 +803,7 @@
         </Style>
       </Image>
     </ReportItems>
-    <Height>6.05902in</Height>
+    <Height>5.45485in</Height>
     <Style />
   </Body>
   <Width>6.86334in</Width>

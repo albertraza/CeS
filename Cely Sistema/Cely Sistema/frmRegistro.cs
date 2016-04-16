@@ -529,21 +529,13 @@ namespace Cely_Sistema
                     FI = FechaI;
 
                     FechaA = DateTime.Today;
-
-                    if(FechaI.Date == FechaA.Date)
+                    if (rbMensual.Checked == true)
                     {
-                        MessageBox.Show("Error al Obtener la fecha de Inicio", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FechaPP = FechaI.AddMonths(1);
                     }
                     else
                     {
-                        if(rbMensual.Checked == true)
-                        {
-                           FechaPP = FechaI.AddMonths(1);
-                        }
-                        else
-                        {
-                            FechaPP = FechaI.AddDays(7);
-                        }
+                        FechaPP = FechaI.AddDays(7);
                     }
 
                     if (pGS != null)
