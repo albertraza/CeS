@@ -41,6 +41,7 @@ namespace Cely_Sistema
                 MaximizeBox = false;
                 btnBuscarEstudiante.Visible = false;
                 tContador.Start();
+                tReloj.Start();
             }
             catch(Exception ex)
             {
@@ -421,6 +422,19 @@ namespace Cely_Sistema
             try
             {
                 dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tReloj_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                lblFecha.Text = "Fecha: ";
+                lblFecha.Text = "Fecha: " + DateTime.Now.ToLongDateString() + " Hora: " + DateTime.Now.ToLongTimeString();
             }
             catch(Exception ex)
             {

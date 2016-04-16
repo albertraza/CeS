@@ -78,6 +78,8 @@
             this.verGruposwHorarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.verGruposwHorarioTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter();
             this.tContador = new System.Windows.Forms.Timer(this.components);
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.tReloj = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
@@ -285,6 +287,7 @@
             this.calificacionesToolStripMenuItem1,
             this.empleadosToolStripMenuItem2,
             this.facturasToolStripMenuItem2});
+            this.acercaDeToolStripMenuItem.Enabled = false;
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.acercaDeToolStripMenuItem.Text = "Reportes";
@@ -292,32 +295,32 @@
             // gananciasToolStripMenuItem1
             // 
             this.gananciasToolStripMenuItem1.Name = "gananciasToolStripMenuItem1";
-            this.gananciasToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.gananciasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.gananciasToolStripMenuItem1.Text = "Ganancias";
             // 
             // estudiantesToolStripMenuItem2
             // 
             this.estudiantesToolStripMenuItem2.Name = "estudiantesToolStripMenuItem2";
-            this.estudiantesToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
+            this.estudiantesToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.estudiantesToolStripMenuItem2.Text = "Estudiantes";
             // 
             // calificacionesToolStripMenuItem1
             // 
             this.calificacionesToolStripMenuItem1.Name = "calificacionesToolStripMenuItem1";
-            this.calificacionesToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.calificacionesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.calificacionesToolStripMenuItem1.Text = "Calificaciones";
             this.calificacionesToolStripMenuItem1.Click += new System.EventHandler(this.calificacionesToolStripMenuItem1_Click);
             // 
             // empleadosToolStripMenuItem2
             // 
             this.empleadosToolStripMenuItem2.Name = "empleadosToolStripMenuItem2";
-            this.empleadosToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
+            this.empleadosToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.empleadosToolStripMenuItem2.Text = "Empleados";
             // 
             // facturasToolStripMenuItem2
             // 
             this.facturasToolStripMenuItem2.Name = "facturasToolStripMenuItem2";
-            this.facturasToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
+            this.facturasToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.facturasToolStripMenuItem2.Text = "Facturas";
             // 
             // salirToolStripMenuItem
@@ -369,7 +372,7 @@
             // 
             // btnSeleccionar
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(30, 347);
+            this.btnSeleccionar.Location = new System.Drawing.Point(24, 375);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(104, 23);
             this.btnSeleccionar.TabIndex = 2;
@@ -418,7 +421,7 @@
             this.gbAsistencia.Controls.Add(this.btnRegistrarAsistencia);
             this.gbAsistencia.Controls.Add(this.gbNiveles);
             this.gbAsistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbAsistencia.Location = new System.Drawing.Point(18, 27);
+            this.gbAsistencia.Location = new System.Drawing.Point(12, 55);
             this.gbAsistencia.Name = "gbAsistencia";
             this.gbAsistencia.Size = new System.Drawing.Size(1056, 314);
             this.gbAsistencia.TabIndex = 1;
@@ -469,7 +472,7 @@
             // btnBuscarEstudiante
             // 
             this.btnBuscarEstudiante.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarEstudiante.Location = new System.Drawing.Point(166, 347);
+            this.btnBuscarEstudiante.Location = new System.Drawing.Point(160, 375);
             this.btnBuscarEstudiante.Name = "btnBuscarEstudiante";
             this.btnBuscarEstudiante.Size = new System.Drawing.Size(117, 23);
             this.btnBuscarEstudiante.TabIndex = 3;
@@ -496,11 +499,26 @@
             this.tContador.Interval = 5000;
             this.tContador.Tick += new System.EventHandler(this.tContador_Tick);
             // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Location = new System.Drawing.Point(831, 396);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(40, 13);
+            this.lblFecha.TabIndex = 4;
+            this.lblFecha.Text = "Fecha:";
+            // 
+            // tReloj
+            // 
+            this.tReloj.Interval = 1000;
+            this.tReloj.Tick += new System.EventHandler(this.tReloj_Tick);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1086, 418);
+            this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.gbAsistencia);
             this.Controls.Add(this.btnBuscarEstudiante);
             this.Controls.Add(this.btnSeleccionar);
@@ -579,5 +597,7 @@
         private CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter verGruposwHorarioTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem ingresosVIPToolStripMenuItem;
         private System.Windows.Forms.Timer tContador;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Timer tReloj;
     }
 }
