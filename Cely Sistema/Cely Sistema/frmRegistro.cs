@@ -388,8 +388,7 @@ namespace Cely_Sistema
                     pEstudiante.D_Idioma = cbD_Idioma.Text;
                     pEstudiante.NivelA = txtNivel.Text;
                     pEstudiante.ID = EstudianteSeleccionado.ID;
-                    pEstudiante.Codigo_Grupo = pGS.ID;
-
+                    pGS = GruposDB.ObtenerGrupos(pEstudiante.Codigo_Grupo);
                     if (rbMensual.Checked == true)
                     {
                         pEstudiante.Modo_Pago = rbMensual.Text;
@@ -399,7 +398,7 @@ namespace Cely_Sistema
                         pEstudiante.Modo_Pago = rbSemanal.Text;
                     }
 
-                    if (pGS.ID != 0)
+                    if (pGS.ID > 0 || pGS.Aula != null)
                     {
                         int retorno = EstudianteDB.Modificar(pEstudiante);
 

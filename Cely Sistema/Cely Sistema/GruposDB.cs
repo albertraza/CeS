@@ -41,19 +41,19 @@ namespace Cely_Sistema
 
             using(SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("Select * from Grupos Where ID = {0}", pID), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("Select Grupos.ID as CodigoGrupo, Nivel, Profesor, Aula, Fecha_Inicio, Total_Inscritos, Horarios.ID as Horario from Grupos inner join Horarios on Horarios.ID = Grupos.Codigo_Horario Where Grupos.ID = {0}", pID), conexion);
 
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while(reader.Read())
                 {
-                    pG.ID = reader.GetInt32(0);
-                    pG.Nivel = reader.GetString(1);
-                    pG.Profesor = reader.GetString(2);
-                    pG.Aula = reader.GetString(3);
-                    pG.Horario = reader.GetInt32(4);
-                    pG.Fecha_Inicio = reader.GetDateTime(5).ToString();
-                    pG.Total_Inscritos = reader.GetInt32(6);
+                    pG.ID = int.Parse(reader["CodigoGrupo"].ToString());
+                    pG.Nivel = reader["Nivel"].ToString();
+                    pG.Profesor = reader["Profesor"].ToString();
+                    pG.Aula = reader["Aula"].ToString();
+                    pG.Horario = reader["Horario"].ToString();
+                    pG.Fecha_Inicio = Convert.ToDateTime(reader["Fecha_Inicio"]).ToString("dd-MM-yyyy");
+                    pG.Total_Inscritos = int.Parse(reader["Total_Inscritos"].ToString());
                 }
                 conexion.Close();
             }
@@ -65,20 +65,20 @@ namespace Cely_Sistema
 
             using(SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand("Select * from Grupos", conexion);
+                SqlCommand comando = new SqlCommand("Select Grupos.ID as CodigoGrupo, Nivel, Profesor, Aula, Fecha_Inicio, Total_Inscritos, Horarios.Dias + ' ' + Horarios.Hora as Horario from Grupos inner join Horarios on Horarios.ID = Grupos.Codigo_Horario", conexion);
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while(reader.Read())
                 {
                     Grupos pG = new Grupos();
 
-                    pG.ID = reader.GetInt32(0);
-                    pG.Nivel = reader.GetString(1);
-                    pG.Profesor = reader.GetString(2);
-                    pG.Aula = reader.GetString(3);
-                    pG.Horario = reader.GetInt32(4);
-                    pG.Fecha_Inicio = reader.GetDateTime(5).ToString();
-                    pG.Total_Inscritos = reader.GetInt32(6);
+                    pG.ID = int.Parse(reader["CodigoGrupo"].ToString());
+                    pG.Nivel = reader["Nivel"].ToString();
+                    pG.Profesor = reader["Profesor"].ToString();
+                    pG.Aula = reader["Aula"].ToString();
+                    pG.Horario = reader["Horario"].ToString();
+                    pG.Fecha_Inicio = Convert.ToDateTime(reader["Fecha_Inicio"]).ToString("dd-MM-yyyy");
+                    pG.Total_Inscritos = int.Parse(reader["Total_Inscritos"].ToString());
 
                     List.Add(pG);
                 }
@@ -91,18 +91,18 @@ namespace Cely_Sistema
             List<Grupos> List = new List<Grupos>();
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("Select * from Grupos where Nivel like '{0}%' and Profesor like '{1}%' and Fecha_Inicio like '{2}%' and Aula like '{3}%'", nivel, profesor, fechaInicio, aula), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("Select Grupos.ID as CodigoGrupo, Nivel, Profesor, Aula, Fecha_Inicio, Total_Inscritos, Horarios.Dias + ' ' + Horarios.Hora as Horario from Grupos inner join Horarios on Horarios.ID = Grupos.Codigo_Horario where Nivel like '{0}%' and Profesor like '{1}%' and Fecha_Inicio like '{2}%' and Aula like '{3}%'", nivel, profesor, fechaInicio, aula), conexion);
                 SqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
                     Grupos pG = new Grupos();
-                    pG.ID = reader.GetInt32(0);
-                    pG.Nivel = reader.GetString(1);
-                    pG.Profesor = reader.GetString(2);
-                    pG.Aula = reader.GetString(3);
-                    pG.Horario = reader.GetInt32(4);
-                    pG.Fecha_Inicio = reader.GetDateTime(5).ToString();
-                    pG.Total_Inscritos = reader.GetInt32(6);
+                    pG.ID = int.Parse(reader["CodigoGrupo"].ToString());
+                    pG.Nivel = reader["Nivel"].ToString();
+                    pG.Profesor = reader["Profesor"].ToString();
+                    pG.Aula = reader["Aula"].ToString();
+                    pG.Horario = reader["Horario"].ToString();
+                    pG.Fecha_Inicio = Convert.ToDateTime(reader["Fecha_Inicio"]).ToString("dd-MM-yyyy");
+                    pG.Total_Inscritos = int.Parse(reader["Total_Inscritos"].ToString());
                     List.Add(pG);
                 }
                 conexion.Close();
@@ -198,18 +198,18 @@ namespace Cely_Sistema
             List<Grupos> List = new List<Grupos>();
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("Select * from Grupos where Fecha_Inicio = '{0}'", pFecha), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("Select Grupos.ID as CodigoGrupo, Nivel, Profesor, Aula, Fecha_Inicio, Total_Inscritos, Horarios.Dias + ' ' + Horarios.Hora as Horario from Grupos inner join Horarios on Horarios.ID = Grupos.Codigo_Horario where Grupos.Fecha_Inicio = '{0}'", pFecha), conexion);
                 SqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
                     Grupos pG = new Grupos();
-                    pG.ID = reader.GetInt32(0);
-                    pG.Nivel = reader.GetString(1);
-                    pG.Profesor = reader.GetString(2);
-                    pG.Aula = reader.GetString(3);
-                    pG.Horario = reader.GetInt32(4);
-                    pG.Fecha_Inicio = reader.GetDateTime(5).ToString();
-                    pG.Total_Inscritos = reader.GetInt32(6);
+                    pG.ID = int.Parse(reader["CodigoGrupo"].ToString());
+                    pG.Nivel = reader["Nivel"].ToString();
+                    pG.Profesor = reader["Profesor"].ToString();
+                    pG.Aula = reader["Aula"].ToString();
+                    pG.Horario = reader["Horario"].ToString();
+                    pG.Fecha_Inicio = Convert.ToDateTime(reader["Fecha_Inicio"]).ToString("dd-MM-yyyy");
+                    pG.Total_Inscritos = int.Parse(reader["Total_Inscritos"].ToString());
                     List.Add(pG);
                 }
                 conexion.Close();
