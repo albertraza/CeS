@@ -331,6 +331,8 @@ namespace Cely_Sistema
             lblMora.Text = "Mora:";
             lblTotalaPagar.Text = "Total a Pagar:";
             lblProximoPago.Text = "Proximo Pago:";
+            lblPendientes.Text = "Pendiente:";
+            lblPendientes.ForeColor = Color.Black;
             lblUltimoPAgo.Visible = true;
             lblTotalaPagar.Visible = true;
             lblProximoPago.Visible = true;
@@ -355,6 +357,8 @@ namespace Cely_Sistema
             lblMora.Text = "Mora:";
             lblTotalaPagar.Text = "Total a Pagar:";
             lblProximoPago.Text = "Proximo Pago:";
+            lblPendientes.Text = "Pendiente:";
+            lblPendientes.ForeColor = Color.Black;
             lblUltimoPAgo.Visible = true;
             lblTotalaPagar.Visible = true;
             lblProximoPago.Visible = true;
@@ -459,6 +463,9 @@ namespace Cely_Sistema
                                     {
                                         if (CompF < 0)
                                         {
+                                            double cantPendiente = (DateTime.Today.Date - pPago).TotalDays / 30;
+                                            lblPendientes.ForeColor = Color.Red;
+                                            lblPendientes.Text = "Meses Pendientes: " + cantPendiente.ToString("f0");
                                             string Mora = MoraDB.ObtenerMoraMensual();
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                             pPago0 = pPago0.AddMonths(1);
@@ -477,6 +484,7 @@ namespace Cely_Sistema
                                         }
                                         else
                                         {
+                                            lblPendientes.Text = "Meses Pendientes: 0";
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                             pPago0 = pPago0.AddMonths(1);
                                             lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
@@ -493,6 +501,9 @@ namespace Cely_Sistema
                                     {
                                         if (CompF < 0)
                                         {
+                                            double cantPendiente = (DateTime.Today.Date - pPago).TotalDays / 7;
+                                            lblPendientes.ForeColor = Color.Red;
+                                            lblPendientes.Text = "Semanas Pendientes: " + cantPendiente.ToString("f0");
                                             string Mora = MoraDB.ObtenerMoraSemanal();
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                             pPago0 = pPago0.AddDays(7);
@@ -511,6 +522,7 @@ namespace Cely_Sistema
                                         }
                                         else
                                         {
+                                            lblPendientes.Text = "Semanas Pendientes: 0";
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                             pPago0 = pPago0.AddDays(7);
                                             lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
@@ -532,6 +544,9 @@ namespace Cely_Sistema
                                     {
                                         if (CompF < 0)
                                         {
+                                            double cantPendiente = (DateTime.Today.Date - pPago).TotalDays / 30;
+                                            lblPendientes.ForeColor = Color.Red;
+                                            lblPendientes.Text = "Meses Pendientes: " + cantPendiente.ToString("f0");
                                             string Mora = MoraDB.GetVIPpayments().Mora_Mensual;
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                             pPago0 = pPago0.AddMonths(1);
@@ -550,6 +565,7 @@ namespace Cely_Sistema
                                         }
                                         else
                                         {
+                                            lblPendientes.Text = "Meses Pendientes: 0";
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                             pPago0 = pPago0.AddMonths(1);
                                             lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
@@ -566,6 +582,9 @@ namespace Cely_Sistema
                                     {
                                         if (CompF < 0)
                                         {
+                                            double cantPendiente = (DateTime.Today.Date - pPago).TotalDays / 7;
+                                            lblPendientes.ForeColor = Color.Red;
+                                            lblPendientes.Text = "Semanas Pendientes: " + cantPendiente.ToString("f0");
                                             string Mora = MoraDB.GetVIPpayments().Mora_Semanal;
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                             pPago0 = pPago0.AddDays(7);
@@ -584,6 +603,7 @@ namespace Cely_Sistema
                                         }
                                         else
                                         {
+                                            lblPendientes.Text = "Semanas Pendientes: 0";
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                             pPago0 = pPago0.AddDays(7);
                                             lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
@@ -1439,6 +1459,9 @@ namespace Cely_Sistema
                                     {
                                         if (CompF < 0)
                                         {
+                                            double cantMeses = (DateTime.Today.Date - pPago).TotalDays / 30;
+                                            lblPendientes.ForeColor = Color.Red;
+                                            lblPendientes.Text = "Meses Pendientes: " + cantMeses.ToString("f0");
                                             string Mora = MoraDB.ObtenerMoraMensual();
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                             pPago0 = pPago0.AddMonths(1);
@@ -1457,6 +1480,7 @@ namespace Cely_Sistema
                                         }
                                         else
                                         {
+                                            lblPendientes.Text = "Meses Pendientes: 0";
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                             pPago0 = pPago0.AddMonths(1);
                                             lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
@@ -1473,6 +1497,9 @@ namespace Cely_Sistema
                                     {
                                         if (CompF < 0)
                                         {
+                                            double cantMeses = (DateTime.Today.Date - pPago).TotalDays / 7;
+                                            lblPendientes.ForeColor = Color.Red;
+                                            lblPendientes.Text = "Semanas Pendientes: " + cantMeses.ToString("f0");
                                             string Mora = MoraDB.ObtenerMoraSemanal();
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                             pPago0 = pPago0.AddDays(7);
@@ -1491,6 +1518,7 @@ namespace Cely_Sistema
                                         }
                                         else
                                         {
+                                            lblPendientes.Text = "Semanas Pendientes: 0";
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                             pPago0 = pPago0.AddDays(7);
                                             lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
@@ -1512,6 +1540,9 @@ namespace Cely_Sistema
                                     {
                                         if (CompF < 0)
                                         {
+                                            double cantMeses = (DateTime.Today.Date - pPago).TotalDays / 30;
+                                            lblPendientes.ForeColor = Color.Red;
+                                            lblPendientes.Text = "Meses Pendientes: " + cantMeses.ToString("f0");
                                             string Mora = MoraDB.GetVIPpayments().Mora_Mensual;
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                             pPago0 = pPago0.AddMonths(1);
@@ -1530,6 +1561,7 @@ namespace Cely_Sistema
                                         }
                                         else
                                         {
+                                            lblPendientes.Text = "Meses Pendientes = 0";
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                             pPago0 = pPago0.AddMonths(1);
                                             lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
@@ -1546,6 +1578,9 @@ namespace Cely_Sistema
                                     {
                                         if (CompF < 0)
                                         {
+                                            double cantMeses = (DateTime.Today.Date - pPago).TotalDays / 7;
+                                            lblPendientes.ForeColor = Color.Red;
+                                            lblPendientes.Text = "Semanas Pendientes: " + cantMeses.ToString("f0");
                                             string Mora = MoraDB.GetVIPpayments().Mora_Semanal;
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                             pPago0 = pPago0.AddDays(7);
@@ -1564,6 +1599,7 @@ namespace Cely_Sistema
                                         }
                                         else
                                         {
+                                            lblPendientes.Text = "Semanas Pendientes: 0";
                                             txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                             pPago0 = pPago0.AddDays(7);
                                             lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
@@ -1683,6 +1719,9 @@ namespace Cely_Sistema
                             {
                                 if (CompF < 0)
                                 {
+                                    double cantMeses = (DateTime.Today.Date - pPago).TotalDays / 30;
+                                    lblPendientes.ForeColor = Color.Red;
+                                    lblPendientes.Text = "Meses Pendientes: " + cantMeses.ToString("f0");
                                     string Mora = MoraDB.ObtenerMoraMensual();
                                     txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                     pPago0 = pPago0.AddMonths(1);
@@ -1701,6 +1740,7 @@ namespace Cely_Sistema
                                 }
                                 else
                                 {
+                                    lblPendientes.Text = "Meses Pendientes: 0";
                                     txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                     pPago0 = pPago0.AddMonths(1);
                                     lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
@@ -1717,6 +1757,9 @@ namespace Cely_Sistema
                             {
                                 if (CompF < 0)
                                 {
+                                    double cantMeses = (DateTime.Today.Date - pPago).TotalDays / 7;
+                                    lblPendientes.ForeColor = Color.Red;
+                                    lblPendientes.Text = "Semanas Pendientes: " + cantMeses.ToString("f0");
                                     string Mora = MoraDB.ObtenerMoraSemanal();
                                     txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                     pPago0 = pPago0.AddDays(7);
@@ -1735,6 +1778,7 @@ namespace Cely_Sistema
                                 }
                                 else
                                 {
+                                    lblPendientes.Text = "Semanas Pendientes: 0";
                                     txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                     pPago0 = pPago0.AddDays(7);
                                     lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
@@ -1873,6 +1917,9 @@ namespace Cely_Sistema
                                         {
                                             if (CompF < 0)
                                             {
+                                                double cantMeses = (DateTime.Today.Date - pPago).TotalDays / 30;
+                                                lblPendientes.ForeColor = Color.Red;
+                                                lblPendientes.Text = "Meses Pendientes: " + cantMeses.ToString("f0");
                                                 string Mora = MoraDB.ObtenerMoraMensual();
                                                 txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                                 pPago0 = pPago0.AddMonths(1);
@@ -1891,6 +1938,7 @@ namespace Cely_Sistema
                                             }
                                             else
                                             {
+                                                lblPendientes.Text = "Meses Pendientes: 0";
                                                 txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                                 pPago0 = pPago0.AddMonths(1);
                                                 lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
@@ -1907,6 +1955,9 @@ namespace Cely_Sistema
                                         {
                                             if (CompF < 0)
                                             {
+                                                double cantMeses = (DateTime.Today.Date - pPago).TotalDays / 30;
+                                                lblPendientes.ForeColor = Color.Red;
+                                                lblPendientes.Text = "Meses Pendientes: " + cantMeses.ToString("f0");
                                                 string Mora = MoraDB.ObtenerMoraSemanal();
                                                 txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                                 pPago0 = pPago0.AddDays(7);
@@ -1925,6 +1976,7 @@ namespace Cely_Sistema
                                             }
                                             else
                                             {
+                                                lblPendientes.Text = "Semanas Pendientes: 0";
                                                 txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                                 pPago0 = pPago0.AddDays(7);
                                                 lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
@@ -1946,6 +1998,9 @@ namespace Cely_Sistema
                                         {
                                             if (CompF < 0)
                                             {
+                                                double cantMeses = (DateTime.Today.Date - pPago).TotalDays / 30;
+                                                lblPendientes.ForeColor = Color.Red;
+                                                lblPendientes.Text = "Meses Pendientes: " + cantMeses.ToString("f0");
                                                 string Mora = MoraDB.GetVIPpayments().Mora_Mensual;
                                                 txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                                 pPago0 = pPago0.AddMonths(1);
@@ -1964,6 +2019,7 @@ namespace Cely_Sistema
                                             }
                                             else
                                             {
+                                                lblPendientes.Text = "Meses Pendientes: 0";
                                                 txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
                                                 pPago0 = pPago0.AddMonths(1);
                                                 lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
@@ -1980,6 +2036,9 @@ namespace Cely_Sistema
                                         {
                                             if (CompF < 0)
                                             {
+                                                double cantMeses = (DateTime.Today.Date - pPago).TotalDays / 7;
+                                                lblPendientes.ForeColor = Color.Red;
+                                                lblPendientes.Text = "Semanas Pendientes: " + cantMeses.ToString("f0");
                                                 string Mora = MoraDB.GetVIPpayments().Mora_Semanal;
                                                 txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                                 pPago0 = pPago0.AddDays(7);
@@ -1998,6 +2057,7 @@ namespace Cely_Sistema
                                             }
                                             else
                                             {
+                                                lblPendientes.Text = "Semanas Pendientes: 0";
                                                 txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                                 pPago0 = pPago0.AddDays(7);
                                                 lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");

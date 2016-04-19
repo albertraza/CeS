@@ -63,6 +63,9 @@
             this.rbPago = new System.Windows.Forms.RadioButton();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.lblCantidadaPagar = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblPendientes = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtabla)).BeginInit();
             this.gbUltimosPagos.SuspendLayout();
             this.gbInformacionEstudiante.SuspendLayout();
@@ -82,7 +85,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(35, 385);
+            this.btnAceptar.Location = new System.Drawing.Point(12, 469);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 1;
@@ -135,7 +138,7 @@
             // 
             this.lblMotivodePago.AutoSize = true;
             this.lblMotivodePago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMotivodePago.Location = new System.Drawing.Point(8, 130);
+            this.lblMotivodePago.Location = new System.Drawing.Point(8, 164);
             this.lblMotivodePago.Name = "lblMotivodePago";
             this.lblMotivodePago.Size = new System.Drawing.Size(121, 16);
             this.lblMotivodePago.TabIndex = 9;
@@ -143,14 +146,14 @@
             // 
             // txtMotivodePago
             // 
-            this.txtMotivodePago.Location = new System.Drawing.Point(135, 127);
+            this.txtMotivodePago.Location = new System.Drawing.Point(135, 161);
             this.txtMotivodePago.Name = "txtMotivodePago";
             this.txtMotivodePago.Size = new System.Drawing.Size(100, 22);
             this.txtMotivodePago.TabIndex = 1;
             // 
             // btnVerFacturas
             // 
-            this.btnVerFacturas.Location = new System.Drawing.Point(227, 385);
+            this.btnVerFacturas.Location = new System.Drawing.Point(204, 469);
             this.btnVerFacturas.Name = "btnVerFacturas";
             this.btnVerFacturas.Size = new System.Drawing.Size(75, 23);
             this.btnVerFacturas.TabIndex = 3;
@@ -160,7 +163,7 @@
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(324, 385);
+            this.btnCerrar.Location = new System.Drawing.Point(301, 469);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
             this.btnCerrar.TabIndex = 4;
@@ -181,7 +184,7 @@
             // 
             // txtUltimoPago
             // 
-            this.txtUltimoPago.Location = new System.Drawing.Point(241, 26);
+            this.txtUltimoPago.Location = new System.Drawing.Point(241, 60);
             this.txtUltimoPago.Name = "txtUltimoPago";
             this.txtUltimoPago.Size = new System.Drawing.Size(10, 22);
             this.txtUltimoPago.TabIndex = 4;
@@ -190,7 +193,7 @@
             // 
             this.lblUltimoPAgo.AutoSize = true;
             this.lblUltimoPAgo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUltimoPAgo.Location = new System.Drawing.Point(32, 48);
+            this.lblUltimoPAgo.Location = new System.Drawing.Point(32, 82);
             this.lblUltimoPAgo.Name = "lblUltimoPAgo";
             this.lblUltimoPAgo.Size = new System.Drawing.Size(97, 16);
             this.lblUltimoPAgo.TabIndex = 15;
@@ -203,7 +206,7 @@
             this.dgvtabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvtabla.Location = new System.Drawing.Point(6, 19);
             this.dgvtabla.Name = "dgvtabla";
-            this.dgvtabla.Size = new System.Drawing.Size(666, 347);
+            this.dgvtabla.Size = new System.Drawing.Size(666, 431);
             this.dgvtabla.TabIndex = 16;
             // 
             // gbUltimosPagos
@@ -211,7 +214,7 @@
             this.gbUltimosPagos.Controls.Add(this.dgvtabla);
             this.gbUltimosPagos.Location = new System.Drawing.Point(372, 7);
             this.gbUltimosPagos.Name = "gbUltimosPagos";
-            this.gbUltimosPagos.Size = new System.Drawing.Size(683, 372);
+            this.gbUltimosPagos.Size = new System.Drawing.Size(683, 456);
             this.gbUltimosPagos.TabIndex = 17;
             this.gbUltimosPagos.TabStop = false;
             this.gbUltimosPagos.Text = "Ultimos Pagos";
@@ -220,7 +223,7 @@
             // 
             this.lblProximoPago.AutoSize = true;
             this.lblProximoPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProximoPago.Location = new System.Drawing.Point(20, 114);
+            this.lblProximoPago.Location = new System.Drawing.Point(20, 148);
             this.lblProximoPago.Name = "lblProximoPago";
             this.lblProximoPago.Size = new System.Drawing.Size(109, 16);
             this.lblProximoPago.TabIndex = 19;
@@ -228,7 +231,7 @@
             // 
             // txtProximoPAgo
             // 
-            this.txtProximoPAgo.Location = new System.Drawing.Point(241, 79);
+            this.txtProximoPAgo.Location = new System.Drawing.Point(241, 113);
             this.txtProximoPAgo.Name = "txtProximoPAgo";
             this.txtProximoPAgo.Size = new System.Drawing.Size(10, 22);
             this.txtProximoPAgo.TabIndex = 18;
@@ -246,7 +249,7 @@
             // 
             this.lblFechaPago.AutoSize = true;
             this.lblFechaPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaPago.Location = new System.Drawing.Point(33, 32);
+            this.lblFechaPago.Location = new System.Drawing.Point(33, 66);
             this.lblFechaPago.Name = "lblFechaPago";
             this.lblFechaPago.Size = new System.Drawing.Size(96, 16);
             this.lblFechaPago.TabIndex = 23;
@@ -254,7 +257,7 @@
             // 
             // txtFechaPago
             // 
-            this.txtFechaPago.Location = new System.Drawing.Point(240, 52);
+            this.txtFechaPago.Location = new System.Drawing.Point(240, 86);
             this.txtFechaPago.Name = "txtFechaPago";
             this.txtFechaPago.Size = new System.Drawing.Size(10, 22);
             this.txtFechaPago.TabIndex = 22;
@@ -263,7 +266,7 @@
             // 
             this.lblMora.AutoSize = true;
             this.lblMora.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMora.Location = new System.Drawing.Point(82, 79);
+            this.lblMora.Location = new System.Drawing.Point(82, 113);
             this.lblMora.Name = "lblMora";
             this.lblMora.Size = new System.Drawing.Size(47, 16);
             this.lblMora.TabIndex = 25;
@@ -272,7 +275,7 @@
             // 
             // txtTotalaPagar
             // 
-            this.txtTotalaPagar.Location = new System.Drawing.Point(134, 95);
+            this.txtTotalaPagar.Location = new System.Drawing.Point(134, 129);
             this.txtTotalaPagar.Name = "txtTotalaPagar";
             this.txtTotalaPagar.Size = new System.Drawing.Size(101, 22);
             this.txtTotalaPagar.TabIndex = 0;
@@ -281,7 +284,7 @@
             // 
             this.lblTotalaPagar.AutoSize = true;
             this.lblTotalaPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalaPagar.Location = new System.Drawing.Point(22, 95);
+            this.lblTotalaPagar.Location = new System.Drawing.Point(22, 129);
             this.lblTotalaPagar.Name = "lblTotalaPagar";
             this.lblTotalaPagar.Size = new System.Drawing.Size(107, 16);
             this.lblTotalaPagar.TabIndex = 8;
@@ -291,7 +294,7 @@
             // 
             this.lblPagoMensual.AutoSize = true;
             this.lblPagoMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPagoMensual.Location = new System.Drawing.Point(18, 64);
+            this.lblPagoMensual.Location = new System.Drawing.Point(18, 98);
             this.lblPagoMensual.Name = "lblPagoMensual";
             this.lblPagoMensual.Size = new System.Drawing.Size(111, 16);
             this.lblPagoMensual.TabIndex = 26;
@@ -329,6 +332,9 @@
             // gbFactura
             // 
             this.gbFactura.BackColor = System.Drawing.Color.White;
+            this.gbFactura.Controls.Add(this.lblPendientes);
+            this.gbFactura.Controls.Add(this.lblCantidadaPagar);
+            this.gbFactura.Controls.Add(this.textBox1);
             this.gbFactura.Controls.Add(this.lblAnularPago);
             this.gbFactura.Controls.Add(this.lblFechaPago);
             this.gbFactura.Controls.Add(this.txtTotalaPagar);
@@ -345,7 +351,7 @@
             this.gbFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbFactura.Location = new System.Drawing.Point(0, 211);
             this.gbFactura.Name = "gbFactura";
-            this.gbFactura.Size = new System.Drawing.Size(363, 168);
+            this.gbFactura.Size = new System.Drawing.Size(363, 252);
             this.gbFactura.TabIndex = 28;
             this.gbFactura.TabStop = false;
             this.gbFactura.Text = "Factura";
@@ -399,7 +405,7 @@
             // 
             // btnImprimir
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(134, 385);
+            this.btnImprimir.Location = new System.Drawing.Point(111, 469);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(75, 23);
             this.btnImprimir.TabIndex = 2;
@@ -417,12 +423,38 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // lblCantidadaPagar
+            // 
+            this.lblCantidadaPagar.AutoSize = true;
+            this.lblCantidadaPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadaPagar.Location = new System.Drawing.Point(8, 192);
+            this.lblCantidadaPagar.Name = "lblCantidadaPagar";
+            this.lblCantidadaPagar.Size = new System.Drawing.Size(133, 16);
+            this.lblCantidadaPagar.TabIndex = 29;
+            this.lblCantidadaPagar.Text = "Cantidad a Pagar:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(147, 189);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.TabIndex = 28;
+            // 
+            // lblPendientes
+            // 
+            this.lblPendientes.AutoSize = true;
+            this.lblPendientes.Location = new System.Drawing.Point(12, 50);
+            this.lblPendientes.Name = "lblPendientes";
+            this.lblPendientes.Size = new System.Drawing.Size(90, 16);
+            this.lblPendientes.TabIndex = 18;
+            this.lblPendientes.Text = "Pendientes:";
+            // 
             // frmFacturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1068, 420);
+            this.ClientSize = new System.Drawing.Size(1068, 504);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.gbMotivoPago);
@@ -489,5 +521,8 @@
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.LinkLabel lblAnularPago;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Label lblCantidadaPagar;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblPendientes;
     }
 }
