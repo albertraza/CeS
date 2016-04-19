@@ -1955,9 +1955,9 @@ namespace Cely_Sistema
                                         {
                                             if (CompF < 0)
                                             {
-                                                double cantMeses = (DateTime.Today.Date - pPago).TotalDays / 30;
+                                                double cantMeses = (DateTime.Today.Date - pPago).TotalDays / 7;
                                                 lblPendientes.ForeColor = Color.Red;
-                                                lblPendientes.Text = "Meses Pendientes: " + cantMeses.ToString("f0");
+                                                lblPendientes.Text = "Semanas Pendientes: " + cantMeses.ToString("f0");
                                                 string Mora = MoraDB.ObtenerMoraSemanal();
                                                 txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
                                                 pPago0 = pPago0.AddDays(7);
