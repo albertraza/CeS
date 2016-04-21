@@ -304,6 +304,12 @@ namespace Cely_Sistema
                         lblProximoPago.Visible = false;
                         lblUltimoPAgo.Visible = false;
                         txtTotalaPagar.Visible = true;
+                        lblPendientes.Visible = false;
+                        lblMesesoSemanas.Visible = false;
+                        lblCantMesesPagar.Visible = false;
+                        lblCantidadaPagar.Visible = false;
+                        nCantPagar.Visible = false;
+                        txtCantPagar.Visible = false;
                         string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
                         string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
                         if (nombre != null)
@@ -371,6 +377,12 @@ namespace Cely_Sistema
             lblFechaPago.Visible = true;
             txtMotivodePago.Clear();
             txtTotalaPagar.Clear();
+            lblPendientes.Visible = true;
+            lblCantidadaPagar.Visible = true;
+            nCantPagar.Visible = true;
+            lblCantMesesPagar.Visible = true;
+            lblMesesoSemanas.Visible = true;
+            txtCantPagar.Visible = true;
             txtTotalaPagar.Visible = false;
             lblAnularPago.Visible = false;
             gbFactura.BackColor = Color.White;
@@ -676,6 +688,12 @@ namespace Cely_Sistema
                     lblProximoPago.Visible = false;
                     lblUltimoPAgo.Visible = false;
                     txtTotalaPagar.Visible = true;
+                    lblPendientes.Visible = false;
+                    lblMesesoSemanas.Visible = false;
+                    lblCantMesesPagar.Visible = false;
+                    lblCantidadaPagar.Visible = false;
+                    nCantPagar.Visible = false;
+                    txtCantPagar.Visible = false;
                     string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
                     string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
                     if (nombre != null)
@@ -1229,6 +1247,12 @@ namespace Cely_Sistema
                             lblProximoPago.Visible = false;
                             lblUltimoPAgo.Visible = false;
                             txtTotalaPagar.Visible = true;
+                            lblPendientes.Visible = false;
+                            lblMesesoSemanas.Visible = false;
+                            lblCantMesesPagar.Visible = false;
+                            lblCantidadaPagar.Visible = false;
+                            nCantPagar.Visible = false;
+                            txtCantPagar.Visible = false;
                             string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
                             string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
                             if (nombre != null)
@@ -1706,7 +1730,11 @@ namespace Cely_Sistema
                     lblUltimoPAgo.Visible = false;
                     txtTotalaPagar.Visible = true;
                     lblPendientes.Visible = false;
-                    lblPendientes.Visible = false;
+                    lblMesesoSemanas.Visible = false;
+                    lblCantMesesPagar.Visible = false;
+                    lblCantidadaPagar.Visible = false;
+                    nCantPagar.Visible = false;
+                    txtCantPagar.Visible = false;
                     string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
                     string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
                     if (nombre != null)
@@ -1997,6 +2025,12 @@ namespace Cely_Sistema
                         lblProximoPago.Visible = false;
                         lblUltimoPAgo.Visible = false;
                         txtTotalaPagar.Visible = true;
+                        lblPendientes.Visible = false;
+                        lblMesesoSemanas.Visible = false;
+                        lblCantMesesPagar.Visible = false;
+                        lblCantidadaPagar.Visible = false;
+                        nCantPagar.Visible = false;
+                        txtCantPagar.Visible = false;
                         string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
                         string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
                         if (nombre != null)
@@ -2272,6 +2306,12 @@ namespace Cely_Sistema
                     lblProximoPago.Visible = false;
                     lblUltimoPAgo.Visible = false;
                     txtTotalaPagar.Visible = true;
+                    lblPendientes.Visible = false;
+                    lblMesesoSemanas.Visible = false;
+                    lblCantMesesPagar.Visible = false;
+                    lblCantidadaPagar.Visible = false;
+                    nCantPagar.Visible = false;
+                    txtCantPagar.Visible = false;
                     string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
                     string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
                     if (nombre != null)
@@ -2565,6 +2605,12 @@ namespace Cely_Sistema
                         lblProximoPago.Visible = false;
                         lblUltimoPAgo.Visible = false;
                         txtTotalaPagar.Visible = true;
+                        lblPendientes.Visible = false;
+                        lblMesesoSemanas.Visible = false;
+                        lblCantMesesPagar.Visible = false;
+                        lblCantidadaPagar.Visible = false;
+                        nCantPagar.Visible = false;
+                        txtCantPagar.Visible = false;
                         string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
                         string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
                         if (nombre != null)

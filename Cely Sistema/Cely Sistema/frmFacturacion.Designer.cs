@@ -57,24 +57,25 @@
             this.gbInformacionEstudiante = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbFactura = new System.Windows.Forms.GroupBox();
+            this.nCantPagar = new System.Windows.Forms.NumericUpDown();
+            this.lblCantMesesPagar = new System.Windows.Forms.Label();
             this.lblPendientes = new System.Windows.Forms.Label();
             this.lblCantidadaPagar = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCantPagar = new System.Windows.Forms.TextBox();
             this.lblAnularPago = new System.Windows.Forms.LinkLabel();
             this.gbMotivoPago = new System.Windows.Forms.GroupBox();
             this.rbOtros = new System.Windows.Forms.RadioButton();
             this.rbPago = new System.Windows.Forms.RadioButton();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.nCantPagar = new System.Windows.Forms.NumericUpDown();
+            this.lblMesesoSemanas = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtabla)).BeginInit();
             this.gbUltimosPagos.SuspendLayout();
             this.gbInformacionEstudiante.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbFactura.SuspendLayout();
-            this.gbMotivoPago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nCantPagar)).BeginInit();
+            this.gbMotivoPago.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtMatricula
@@ -335,11 +336,12 @@
             // gbFactura
             // 
             this.gbFactura.BackColor = System.Drawing.Color.White;
+            this.gbFactura.Controls.Add(this.lblMesesoSemanas);
             this.gbFactura.Controls.Add(this.nCantPagar);
-            this.gbFactura.Controls.Add(this.label1);
+            this.gbFactura.Controls.Add(this.lblCantMesesPagar);
             this.gbFactura.Controls.Add(this.lblPendientes);
             this.gbFactura.Controls.Add(this.lblCantidadaPagar);
-            this.gbFactura.Controls.Add(this.textBox1);
+            this.gbFactura.Controls.Add(this.txtCantPagar);
             this.gbFactura.Controls.Add(this.lblAnularPago);
             this.gbFactura.Controls.Add(this.lblFechaPago);
             this.gbFactura.Controls.Add(this.txtTotalaPagar);
@@ -361,6 +363,24 @@
             this.gbFactura.TabStop = false;
             this.gbFactura.Text = "Factura";
             // 
+            // nCantPagar
+            // 
+            this.nCantPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nCantPagar.Location = new System.Drawing.Point(126, 32);
+            this.nCantPagar.Name = "nCantPagar";
+            this.nCantPagar.Size = new System.Drawing.Size(40, 22);
+            this.nCantPagar.TabIndex = 31;
+            this.nCantPagar.ValueChanged += new System.EventHandler(this.nCantPagar_ValueChanged);
+            // 
+            // lblCantMesesPagar
+            // 
+            this.lblCantMesesPagar.AutoSize = true;
+            this.lblCantMesesPagar.Location = new System.Drawing.Point(33, 34);
+            this.lblCantMesesPagar.Name = "lblCantMesesPagar";
+            this.lblCantMesesPagar.Size = new System.Drawing.Size(88, 16);
+            this.lblCantMesesPagar.TabIndex = 30;
+            this.lblCantMesesPagar.Text = "Cant pagar:";
+            // 
             // lblPendientes
             // 
             this.lblPendientes.AutoSize = true;
@@ -380,12 +400,12 @@
             this.lblCantidadaPagar.TabIndex = 29;
             this.lblCantidadaPagar.Text = "Cantidad a Pagar:";
             // 
-            // textBox1
+            // txtCantPagar
             // 
-            this.textBox1.Location = new System.Drawing.Point(147, 189);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 28;
+            this.txtCantPagar.Location = new System.Drawing.Point(147, 189);
+            this.txtCantPagar.Name = "txtCantPagar";
+            this.txtCantPagar.Size = new System.Drawing.Size(100, 22);
+            this.txtCantPagar.TabIndex = 28;
             // 
             // lblAnularPago
             // 
@@ -454,23 +474,14 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // label1
+            // lblMesesoSemanas
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 16);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "Cant pagar:";
-            // 
-            // nCantPagar
-            // 
-            this.nCantPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nCantPagar.Location = new System.Drawing.Point(126, 32);
-            this.nCantPagar.Name = "nCantPagar";
-            this.nCantPagar.Size = new System.Drawing.Size(40, 22);
-            this.nCantPagar.TabIndex = 31;
-            this.nCantPagar.ValueChanged += new System.EventHandler(this.nCantPagar_ValueChanged);
+            this.lblMesesoSemanas.AutoSize = true;
+            this.lblMesesoSemanas.Location = new System.Drawing.Point(172, 34);
+            this.lblMesesoSemanas.Name = "lblMesesoSemanas";
+            this.lblMesesoSemanas.Size = new System.Drawing.Size(51, 16);
+            this.lblMesesoSemanas.TabIndex = 32;
+            this.lblMesesoSemanas.Text = "label1";
             // 
             // frmFacturacion
             // 
@@ -501,9 +512,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gbFactura.ResumeLayout(false);
             this.gbFactura.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nCantPagar)).EndInit();
             this.gbMotivoPago.ResumeLayout(false);
             this.gbMotivoPago.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nCantPagar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -546,9 +557,10 @@
         private System.Windows.Forms.LinkLabel lblAnularPago;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Label lblCantidadaPagar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCantPagar;
         private System.Windows.Forms.Label lblPendientes;
         private System.Windows.Forms.NumericUpDown nCantPagar;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCantMesesPagar;
+        private System.Windows.Forms.Label lblMesesoSemanas;
     }
 }
