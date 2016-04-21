@@ -2566,7 +2566,7 @@ namespace Cely_Sistema
                                                 lblMora.ForeColor = Color.Red;
                                                 lblMora.Text = lblMora.Text + " " + Mora;
                                                 rbPago.Text = "Pago Semanal";
-                                                txtMotivodePago.Text = "Pago Semanal";
+                                                txtMotivodePago.Text = "Pago Semanal";  
                                                 pMora = true;
                                             }
                                             else
