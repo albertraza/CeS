@@ -57,21 +57,24 @@
             this.gbInformacionEstudiante = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbFactura = new System.Windows.Forms.GroupBox();
+            this.lblPendientes = new System.Windows.Forms.Label();
+            this.lblCantidadaPagar = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblAnularPago = new System.Windows.Forms.LinkLabel();
             this.gbMotivoPago = new System.Windows.Forms.GroupBox();
             this.rbOtros = new System.Windows.Forms.RadioButton();
             this.rbPago = new System.Windows.Forms.RadioButton();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.lblCantidadaPagar = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblPendientes = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nCantPagar = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtabla)).BeginInit();
             this.gbUltimosPagos.SuspendLayout();
             this.gbInformacionEstudiante.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbFactura.SuspendLayout();
             this.gbMotivoPago.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nCantPagar)).BeginInit();
             this.SuspendLayout();
             // 
             // txtMatricula
@@ -332,6 +335,8 @@
             // gbFactura
             // 
             this.gbFactura.BackColor = System.Drawing.Color.White;
+            this.gbFactura.Controls.Add(this.nCantPagar);
+            this.gbFactura.Controls.Add(this.label1);
             this.gbFactura.Controls.Add(this.lblPendientes);
             this.gbFactura.Controls.Add(this.lblCantidadaPagar);
             this.gbFactura.Controls.Add(this.textBox1);
@@ -355,6 +360,32 @@
             this.gbFactura.TabIndex = 28;
             this.gbFactura.TabStop = false;
             this.gbFactura.Text = "Factura";
+            // 
+            // lblPendientes
+            // 
+            this.lblPendientes.AutoSize = true;
+            this.lblPendientes.Location = new System.Drawing.Point(18, 18);
+            this.lblPendientes.Name = "lblPendientes";
+            this.lblPendientes.Size = new System.Drawing.Size(90, 16);
+            this.lblPendientes.TabIndex = 18;
+            this.lblPendientes.Text = "Pendientes:";
+            // 
+            // lblCantidadaPagar
+            // 
+            this.lblCantidadaPagar.AutoSize = true;
+            this.lblCantidadaPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadaPagar.Location = new System.Drawing.Point(8, 192);
+            this.lblCantidadaPagar.Name = "lblCantidadaPagar";
+            this.lblCantidadaPagar.Size = new System.Drawing.Size(133, 16);
+            this.lblCantidadaPagar.TabIndex = 29;
+            this.lblCantidadaPagar.Text = "Cantidad a Pagar:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(147, 189);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.TabIndex = 28;
             // 
             // lblAnularPago
             // 
@@ -423,31 +454,23 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // lblCantidadaPagar
+            // label1
             // 
-            this.lblCantidadaPagar.AutoSize = true;
-            this.lblCantidadaPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadaPagar.Location = new System.Drawing.Point(8, 192);
-            this.lblCantidadaPagar.Name = "lblCantidadaPagar";
-            this.lblCantidadaPagar.Size = new System.Drawing.Size(133, 16);
-            this.lblCantidadaPagar.TabIndex = 29;
-            this.lblCantidadaPagar.Text = "Cantidad a Pagar:";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(33, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 16);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Cant pagar:";
             // 
-            // textBox1
+            // nCantPagar
             // 
-            this.textBox1.Location = new System.Drawing.Point(147, 189);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 28;
-            // 
-            // lblPendientes
-            // 
-            this.lblPendientes.AutoSize = true;
-            this.lblPendientes.Location = new System.Drawing.Point(12, 50);
-            this.lblPendientes.Name = "lblPendientes";
-            this.lblPendientes.Size = new System.Drawing.Size(90, 16);
-            this.lblPendientes.TabIndex = 18;
-            this.lblPendientes.Text = "Pendientes:";
+            this.nCantPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nCantPagar.Location = new System.Drawing.Point(126, 32);
+            this.nCantPagar.Name = "nCantPagar";
+            this.nCantPagar.Size = new System.Drawing.Size(40, 22);
+            this.nCantPagar.TabIndex = 31;
+            this.nCantPagar.ValueChanged += new System.EventHandler(this.nCantPagar_ValueChanged);
             // 
             // frmFacturacion
             // 
@@ -480,6 +503,7 @@
             this.gbFactura.PerformLayout();
             this.gbMotivoPago.ResumeLayout(false);
             this.gbMotivoPago.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nCantPagar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -524,5 +548,7 @@
         private System.Windows.Forms.Label lblCantidadaPagar;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblPendientes;
+        private System.Windows.Forms.NumericUpDown nCantPagar;
+        private System.Windows.Forms.Label label1;
     }
 }
