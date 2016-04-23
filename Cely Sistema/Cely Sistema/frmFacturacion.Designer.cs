@@ -57,6 +57,7 @@
             this.gbInformacionEstudiante = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbFactura = new System.Windows.Forms.GroupBox();
+            this.lblMesesoSemanas = new System.Windows.Forms.Label();
             this.nCantPagar = new System.Windows.Forms.NumericUpDown();
             this.lblCantMesesPagar = new System.Windows.Forms.Label();
             this.lblPendientes = new System.Windows.Forms.Label();
@@ -68,7 +69,6 @@
             this.rbPago = new System.Windows.Forms.RadioButton();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.lblMesesoSemanas = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtabla)).BeginInit();
             this.gbUltimosPagos.SuspendLayout();
             this.gbInformacionEstudiante.SuspendLayout();
@@ -85,6 +85,7 @@
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.Size = new System.Drawing.Size(81, 20);
             this.txtMatricula.TabIndex = 0;
+            this.txtMatricula.TextChanged += new System.EventHandler(this.txtMatricula_TextChanged);
             this.txtMatricula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMatricula_KeyPress);
             // 
             // btnAceptar
@@ -363,6 +364,14 @@
             this.gbFactura.TabStop = false;
             this.gbFactura.Text = "Factura";
             // 
+            // lblMesesoSemanas
+            // 
+            this.lblMesesoSemanas.AutoSize = true;
+            this.lblMesesoSemanas.Location = new System.Drawing.Point(172, 34);
+            this.lblMesesoSemanas.Name = "lblMesesoSemanas";
+            this.lblMesesoSemanas.Size = new System.Drawing.Size(0, 16);
+            this.lblMesesoSemanas.TabIndex = 32;
+            // 
             // nCantPagar
             // 
             this.nCantPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -473,15 +482,6 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
-            // 
-            // lblMesesoSemanas
-            // 
-            this.lblMesesoSemanas.AutoSize = true;
-            this.lblMesesoSemanas.Location = new System.Drawing.Point(172, 34);
-            this.lblMesesoSemanas.Name = "lblMesesoSemanas";
-            this.lblMesesoSemanas.Size = new System.Drawing.Size(51, 16);
-            this.lblMesesoSemanas.TabIndex = 32;
-            this.lblMesesoSemanas.Text = "label1";
             // 
             // frmFacturacion
             // 
