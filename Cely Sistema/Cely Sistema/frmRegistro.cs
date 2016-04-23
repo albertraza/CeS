@@ -71,6 +71,14 @@ namespace Cely_Sistema
                     {
                         rbSemanal.Checked = true;
                     }
+                    if(EstudianteSeleccionado.VIP == "Si")
+                    {
+                        cbVIP.Checked = true;
+                    }
+                    else
+                    {
+                        cbVIP.Checked = false;
+                    }
 
                     btnRegistrar.Visible = false;
                     lblBuscarAlumno.Visible = false;
