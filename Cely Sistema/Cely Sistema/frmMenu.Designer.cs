@@ -69,16 +69,16 @@
             this.dgvEstudiantes = new System.Windows.Forms.DataGridView();
             this.btnRegistrarAsistencia = new System.Windows.Forms.Button();
             this.gbAsistencia = new System.Windows.Forms.GroupBox();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnBuscarEstudiante = new System.Windows.Forms.Button();
             this.txtMatricula = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnBuscarEstudiante = new System.Windows.Forms.Button();
             this.celyDBDataSet = new Cely_Sistema.CelyDBDataSet();
             this.verGruposwHorarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.verGruposwHorarioTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter();
             this.tContador = new System.Windows.Forms.Timer(this.components);
-            this.lblFecha = new System.Windows.Forms.Label();
             this.tReloj = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
@@ -433,6 +433,16 @@
             this.gbAsistencia.Text = "Asistencia";
             this.gbAsistencia.Enter += new System.EventHandler(this.gbAsistencia_Enter);
             // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(463, 433);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(40, 13);
+            this.lblFecha.TabIndex = 4;
+            this.lblFecha.Text = "Fecha:";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -452,6 +462,17 @@
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 13;
             this.label1.Text = "Matricula:";
+            // 
+            // btnBuscarEstudiante
+            // 
+            this.btnBuscarEstudiante.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarEstudiante.Location = new System.Drawing.Point(145, 256);
+            this.btnBuscarEstudiante.Name = "btnBuscarEstudiante";
+            this.btnBuscarEstudiante.Size = new System.Drawing.Size(117, 23);
+            this.btnBuscarEstudiante.TabIndex = 3;
+            this.btnBuscarEstudiante.Text = "Buscar Estudiante";
+            this.btnBuscarEstudiante.UseVisualStyleBackColor = true;
+            this.btnBuscarEstudiante.Click += new System.EventHandler(this.btnBuscarEstudiante_Click);
             // 
             // txtMatricula
             // 
@@ -473,17 +494,6 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // btnBuscarEstudiante
-            // 
-            this.btnBuscarEstudiante.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarEstudiante.Location = new System.Drawing.Point(145, 256);
-            this.btnBuscarEstudiante.Name = "btnBuscarEstudiante";
-            this.btnBuscarEstudiante.Size = new System.Drawing.Size(117, 23);
-            this.btnBuscarEstudiante.TabIndex = 3;
-            this.btnBuscarEstudiante.Text = "Buscar Estudiante";
-            this.btnBuscarEstudiante.UseVisualStyleBackColor = true;
-            this.btnBuscarEstudiante.Click += new System.EventHandler(this.btnBuscarEstudiante_Click);
-            // 
             // celyDBDataSet
             // 
             this.celyDBDataSet.DataSetName = "CelyDBDataSet";
@@ -500,18 +510,8 @@
             // 
             // tContador
             // 
-            this.tContador.Interval = 5000;
+            this.tContador.Interval = 60000;
             this.tContador.Tick += new System.EventHandler(this.tContador_Tick);
-            // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(463, 433);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(40, 13);
-            this.lblFecha.TabIndex = 4;
-            this.lblFecha.Text = "Fecha:";
             // 
             // tReloj
             // 
