@@ -36,6 +36,7 @@
             this.cancelacionDeCobrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroDeMoraYCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ingresosVIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estudiantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarEstudianteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarEstudianteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,6 +77,9 @@
             this.celyDBDataSet = new Cely_Sistema.CelyDBDataSet();
             this.verGruposwHorarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.verGruposwHorarioTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter();
+            this.tContador = new System.Windows.Forms.Timer(this.components);
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.tReloj = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
@@ -99,7 +103,7 @@
             this.salirToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1086, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(816, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -109,7 +113,8 @@
             this.hacerFacturaToolStripMenuItem,
             this.cancelacionDeCobrosToolStripMenuItem,
             this.ingresosToolStripMenuItem,
-            this.registroDeMoraYCToolStripMenuItem});
+            this.registroDeMoraYCToolStripMenuItem,
+            this.ingresosVIPToolStripMenuItem});
             this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
             this.facturasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.facturasToolStripMenuItem.Text = "Cobros";
@@ -141,6 +146,13 @@
             this.registroDeMoraYCToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.registroDeMoraYCToolStripMenuItem.Text = "Registro de Pagos";
             this.registroDeMoraYCToolStripMenuItem.Click += new System.EventHandler(this.registroDeMoraYCToolStripMenuItem_Click);
+            // 
+            // ingresosVIPToolStripMenuItem
+            // 
+            this.ingresosVIPToolStripMenuItem.Name = "ingresosVIPToolStripMenuItem";
+            this.ingresosVIPToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.ingresosVIPToolStripMenuItem.Text = "Ingresos VIP";
+            this.ingresosVIPToolStripMenuItem.Click += new System.EventHandler(this.ingresosVIPToolStripMenuItem_Click);
             // 
             // estudiantesToolStripMenuItem
             // 
@@ -275,6 +287,7 @@
             this.calificacionesToolStripMenuItem1,
             this.empleadosToolStripMenuItem2,
             this.facturasToolStripMenuItem2});
+            this.acercaDeToolStripMenuItem.Enabled = false;
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.acercaDeToolStripMenuItem.Text = "Reportes";
@@ -328,7 +341,7 @@
             // lblAcercaDe
             // 
             this.lblAcercaDe.AutoSize = true;
-            this.lblAcercaDe.Location = new System.Drawing.Point(954, 425);
+            this.lblAcercaDe.Location = new System.Drawing.Point(731, 510);
             this.lblAcercaDe.Name = "lblAcercaDe";
             this.lblAcercaDe.Size = new System.Drawing.Size(56, 13);
             this.lblAcercaDe.TabIndex = 1;
@@ -342,7 +355,7 @@
             this.dgvNiveles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNiveles.Location = new System.Drawing.Point(6, 19);
             this.dgvNiveles.Name = "dgvNiveles";
-            this.dgvNiveles.Size = new System.Drawing.Size(439, 255);
+            this.dgvNiveles.Size = new System.Drawing.Size(439, 193);
             this.dgvNiveles.TabIndex = 2;
             this.dgvNiveles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -352,14 +365,15 @@
             this.gbNiveles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbNiveles.Location = new System.Drawing.Point(6, 25);
             this.gbNiveles.Name = "gbNiveles";
-            this.gbNiveles.Size = new System.Drawing.Size(451, 283);
+            this.gbNiveles.Size = new System.Drawing.Size(451, 224);
             this.gbNiveles.TabIndex = 3;
             this.gbNiveles.TabStop = false;
             this.gbNiveles.Text = "Niveles";
             // 
             // btnSeleccionar
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(30, 347);
+            this.btnSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSeleccionar.Location = new System.Drawing.Point(18, 256);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(104, 23);
             this.btnSeleccionar.TabIndex = 2;
@@ -371,9 +385,9 @@
             // 
             this.gbEstudiante.Controls.Add(this.dgvEstudiantes);
             this.gbEstudiante.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbEstudiante.Location = new System.Drawing.Point(473, 119);
+            this.gbEstudiante.Location = new System.Drawing.Point(12, 285);
             this.gbEstudiante.Name = "gbEstudiante";
-            this.gbEstudiante.Size = new System.Drawing.Size(577, 189);
+            this.gbEstudiante.Size = new System.Drawing.Size(445, 161);
             this.gbEstudiante.TabIndex = 5;
             this.gbEstudiante.TabStop = false;
             this.gbEstudiante.Text = "Estudiantes";
@@ -384,13 +398,13 @@
             this.dgvEstudiantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEstudiantes.Location = new System.Drawing.Point(6, 22);
             this.dgvEstudiantes.Name = "dgvEstudiantes";
-            this.dgvEstudiantes.Size = new System.Drawing.Size(565, 161);
+            this.dgvEstudiantes.Size = new System.Drawing.Size(433, 127);
             this.dgvEstudiantes.TabIndex = 2;
             // 
             // btnRegistrarAsistencia
             // 
             this.btnRegistrarAsistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrarAsistencia.Location = new System.Drawing.Point(569, 90);
+            this.btnRegistrarAsistencia.Location = new System.Drawing.Point(570, 239);
             this.btnRegistrarAsistencia.Name = "btnRegistrarAsistencia";
             this.btnRegistrarAsistencia.Size = new System.Drawing.Size(117, 23);
             this.btnRegistrarAsistencia.TabIndex = 2;
@@ -400,17 +414,20 @@
             // 
             // gbAsistencia
             // 
+            this.gbAsistencia.Controls.Add(this.lblFecha);
             this.gbAsistencia.Controls.Add(this.pictureBox1);
             this.gbAsistencia.Controls.Add(this.label1);
+            this.gbAsistencia.Controls.Add(this.btnBuscarEstudiante);
             this.gbAsistencia.Controls.Add(this.txtMatricula);
+            this.gbAsistencia.Controls.Add(this.btnSeleccionar);
             this.gbAsistencia.Controls.Add(this.btnBuscar);
             this.gbAsistencia.Controls.Add(this.gbEstudiante);
             this.gbAsistencia.Controls.Add(this.btnRegistrarAsistencia);
             this.gbAsistencia.Controls.Add(this.gbNiveles);
             this.gbAsistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbAsistencia.Location = new System.Drawing.Point(18, 27);
+            this.gbAsistencia.Location = new System.Drawing.Point(12, 55);
             this.gbAsistencia.Name = "gbAsistencia";
-            this.gbAsistencia.Size = new System.Drawing.Size(1056, 314);
+            this.gbAsistencia.Size = new System.Drawing.Size(775, 452);
             this.gbAsistencia.TabIndex = 1;
             this.gbAsistencia.TabStop = false;
             this.gbAsistencia.Text = "Asistencia";
@@ -419,7 +436,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(804, 25);
+            this.pictureBox1.Location = new System.Drawing.Point(514, 62);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(197, 88);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -430,7 +447,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(510, 44);
+            this.label1.Location = new System.Drawing.Point(511, 193);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 13;
@@ -439,7 +456,7 @@
             // txtMatricula
             // 
             this.txtMatricula.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMatricula.Location = new System.Drawing.Point(569, 41);
+            this.txtMatricula.Location = new System.Drawing.Point(570, 190);
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.Size = new System.Drawing.Size(94, 20);
             this.txtMatricula.TabIndex = 0;
@@ -448,7 +465,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(669, 39);
+            this.btnBuscar.Location = new System.Drawing.Point(670, 188);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(69, 23);
             this.btnBuscar.TabIndex = 1;
@@ -459,7 +476,7 @@
             // btnBuscarEstudiante
             // 
             this.btnBuscarEstudiante.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarEstudiante.Location = new System.Drawing.Point(166, 347);
+            this.btnBuscarEstudiante.Location = new System.Drawing.Point(145, 256);
             this.btnBuscarEstudiante.Name = "btnBuscarEstudiante";
             this.btnBuscarEstudiante.Size = new System.Drawing.Size(117, 23);
             this.btnBuscarEstudiante.TabIndex = 3;
@@ -481,14 +498,32 @@
             // 
             this.verGruposwHorarioTableAdapter.ClearBeforeFill = true;
             // 
+            // tContador
+            // 
+            this.tContador.Interval = 5000;
+            this.tContador.Tick += new System.EventHandler(this.tContador_Tick);
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(463, 433);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(40, 13);
+            this.lblFecha.TabIndex = 4;
+            this.lblFecha.Text = "Fecha:";
+            // 
+            // tReloj
+            // 
+            this.tReloj.Interval = 1000;
+            this.tReloj.Tick += new System.EventHandler(this.tReloj_Tick);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 418);
+            this.ClientSize = new System.Drawing.Size(816, 533);
             this.Controls.Add(this.gbAsistencia);
-            this.Controls.Add(this.btnBuscarEstudiante);
-            this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.lblAcercaDe);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -562,5 +597,9 @@
         private CelyDBDataSet celyDBDataSet;
         private System.Windows.Forms.BindingSource verGruposwHorarioBindingSource;
         private CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter verGruposwHorarioTableAdapter;
+        private System.Windows.Forms.ToolStripMenuItem ingresosVIPToolStripMenuItem;
+        private System.Windows.Forms.Timer tContador;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Timer tReloj;
     }
 }

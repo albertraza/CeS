@@ -193,7 +193,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Matricula</rd:DefaultName>
@@ -233,7 +235,7 @@
         </TablixRowHierarchy>
         <DataSetName>FacturaEstudiante</DataSetName>
         <Top>3.26042in</Top>
-        <Left>1.41542in</Left>
+        <Left>0.54042in</Left>
         <Height>0.5in</Height>
         <Width>3in</Width>
         <Style>
@@ -246,10 +248,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.33334in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.33334in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -335,10 +337,14 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!CantPago.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>'$'0.00;('$'0.00)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>CantPago</rd:DefaultName>
@@ -351,6 +357,7 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -407,9 +414,9 @@
         </TablixRowHierarchy>
         <DataSetName>FacturaEstudiante</DataSetName>
         <Top>3.26042in</Top>
-        <Left>4.41542in</Left>
+        <Left>3.54042in</Left>
         <Height>0.5in</Height>
-        <Width>2in</Width>
+        <Width>2.66668in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -485,7 +492,7 @@
         </TablixRowHierarchy>
         <DataSetName>FacturaEstudiante</DataSetName>
         <Top>2.11805in</Top>
-        <Left>1.41542in</Left>
+        <Left>0.54042in</Left>
         <Height>0.23958in</Height>
         <Width>2.79167in</Width>
         <ZIndex>2</ZIndex>
@@ -563,7 +570,7 @@
         </TablixRowHierarchy>
         <DataSetName>FacturaEstudiante</DataSetName>
         <Top>2.42708in</Top>
-        <Left>1.41542in</Left>
+        <Left>0.54042in</Left>
         <Height>0.27083in</Height>
         <Width>2.79167in</Width>
         <ZIndex>3</ZIndex>
@@ -637,7 +644,7 @@
         </TablixRowHierarchy>
         <DataSetName>FacturaEstudiante</DataSetName>
         <Top>2.73958in</Top>
-        <Left>1.41542in</Left>
+        <Left>0.54042in</Left>
         <Height>0.26042in</Height>
         <Width>2.79167in</Width>
         <ZIndex>4</ZIndex>
@@ -649,7 +656,7 @@
       </Tablix>
       <Line Name="Line1">
         <Top>5.06944in</Top>
-        <Left>5.20709in</Left>
+        <Left>3.88417in</Left>
         <Height>0in</Height>
         <Width>1.65625in</Width>
         <ZIndex>5</ZIndex>
@@ -675,7 +682,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
         <Top>4.81944in</Top>
-        <Left>4.69667in</Left>
+        <Left>3.37375in</Left>
         <Height>0.25in</Height>
         <Width>0.45833in</Width>
         <ZIndex>6</ZIndex>
@@ -698,7 +705,7 @@
               <TextRun>
                 <Value>Campos English Learning Institute</Value>
                 <Style>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -729,8 +736,14 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>          La manera mas confiable de aprender ingles</Value>
+                <Value xml:space="preserve">  </Value>
                 <Style />
+              </TextRun>
+              <TextRun>
+                <Value>        La manera mas confiable de aprender ingles</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -739,7 +752,9 @@
             <TextRuns>
               <TextRun>
                 <Value>Calle Francisco del Rosario Sanchez #2 Almirante Caña</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -748,7 +763,9 @@
             <TextRuns>
               <TextRun>
                 <Value>                           Telefono 809-414-7758</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -770,12 +787,12 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Image Name="Logo2">
+      <Image Name="Logo3">
         <Source>Embedded</Source>
         <Value>CELI</Value>
         <Sizing>FitProportional</Sizing>
         <Top>0.14458in</Top>
-        <Left>6.49417in</Left>
+        <Left>0.24938in</Left>
         <Height>1.33334in</Height>
         <Width>1.94791in</Width>
         <ZIndex>9</ZIndex>
@@ -785,26 +802,11 @@
           </Border>
         </Style>
       </Image>
-      <Image Name="Logo3">
-        <Source>Embedded</Source>
-        <Value>CELI</Value>
-        <Sizing>FitProportional</Sizing>
-        <Top>0.14458in</Top>
-        <Left>0.24938in</Left>
-        <Height>1.33334in</Height>
-        <Width>1.94791in</Width>
-        <ZIndex>10</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Image>
     </ReportItems>
-    <Height>6.05902in</Height>
+    <Height>5.45485in</Height>
     <Style />
   </Body>
-  <Width>8.8425in</Width>
+  <Width>6.86334in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>

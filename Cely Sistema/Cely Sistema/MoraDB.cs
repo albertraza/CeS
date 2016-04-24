@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data.SqlClient;
 
 namespace Cely_Sistema
@@ -71,6 +69,55 @@ namespace Cely_Sistema
                 conexion.Close();
             }
             return List;
+        }
+        public static List<Mora> VerMorayPagosVIP()
+        {
+            List<Mora> list = new List<Mora>();
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select * from CantidadPagoVIP"), con);
+                SqlDataReader reader = comand.ExecuteReader();
+                while (reader.Read())
+                {
+                    Mora pM = new Mora();
+                    pM.Mora_Mensual = reader["Mora_Mensual"].ToString();
+                    pM.Mora_Semanal = reader["Mora_Semanal"].ToString();
+                    pM.Pago_Mensual = reader["Pago_VIP"].ToString();
+                    pM.Pago_Semanal = reader["Pago_Semanal"].ToString();
+                    list.Add(pM);
+                }
+                con.Close();
+            }
+            return list;
+        }
+        public static int ModificarVIP(Mora pM)
+        {
+            int r = -1;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("update CantidadPagoVIP set Pago_VIP = {0}, Pago_Semanal = {1}, Mora_Semanal = {2}, Mora_Mensual = {3} where ID = 1", pM.Pago_Mensual, pM.Pago_Semanal, pM.Mora_Semanal, pM.Mora_Mensual), con);
+                r = comand.ExecuteNonQuery();
+                con.Close();
+            }
+            return r;
+        }
+        public static Mora GetVIPpayments()
+        {
+            Mora pM = new Mora();
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select * from CantidadPagoVIP"), con);
+                SqlDataReader reader = comand.ExecuteReader();
+                while (reader.Read())
+                {
+                    pM.Mora_Mensual = reader["Mora_Mensual"].ToString();
+                    pM.Mora_Semanal = reader["Mora_Semanal"].ToString();
+                    pM.Pago_Mensual = reader["Pago_VIP"].ToString();
+                    pM.Pago_Semanal = reader["Pago_Semanal"].ToString();
+                }
+                con.Close();
+            }
+            return pM;
         }
     }
 }

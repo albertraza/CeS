@@ -23,12 +23,12 @@ namespace Cely_Sistema
         public string Sector { get; set; }
         public Int32 Codigo_Grupo { get; set; }
         public string Modo_Pago { get; set; }
-
+        public string VIP { get; set; }
 
         public Estudiante() { }
 
         public Estudiante(string pNombre, string pApellido, string pFecha_N, string pFecha_Ins, string pDireccion, string pOcupacion,
-            string pE_Mail, string pD_Idioma, string pN_Academico, string pNivelA, string pTelefono, string pEdad, Int64 pID, string pSector, Int32 CG, string MP)
+            string pE_Mail, string pD_Idioma, string pN_Academico, string pNivelA, string pTelefono, string pEdad, Int64 pID, string pSector, Int32 CG, string MP, string vip)
         {
             this.Nombre = pNombre;
             this.Apellido = pApellido;
@@ -46,6 +46,7 @@ namespace Cely_Sistema
             this.Sector = pSector;
             this.Codigo_Grupo = CG;
             this.Modo_Pago = MP;
+            this.VIP = vip;
         }
     }
 }

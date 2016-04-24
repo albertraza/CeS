@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>E:\Cely Installer\</PublishUrl>
+    <PublishUrl>E:\Installer Cely Sistema\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>es-DO</TargetCulture>
-    <ApplicationRevision>29</ApplicationRevision>
+    <ApplicationRevision>37</ApplicationRevision>
     <ApplicationVersion>3.2.52.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -246,6 +246,12 @@
     <Compile Include="frmMontoPagosyMora.Designer.cs">
       <DependentUpon>frmMontoPagosyMora.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPagosVIP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPagosVIP.Designer.cs">
+      <DependentUpon>frmPagosVIP.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProfesoresA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -387,6 +393,9 @@
     <EmbeddedResource Include="frmMontoPagosyMora.resx">
       <DependentUpon>frmMontoPagosyMora.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPagosVIP.resx">
+      <DependentUpon>frmPagosVIP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmProfesoresA.resx">
       <DependentUpon>frmProfesoresA.cs</DependentUpon>
     </EmbeddedResource>
@@ -457,7 +466,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

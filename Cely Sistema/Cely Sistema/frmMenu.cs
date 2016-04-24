@@ -40,6 +40,8 @@ namespace Cely_Sistema
                 MinimizeBox = false;
                 MaximizeBox = false;
                 btnBuscarEstudiante.Visible = false;
+                tContador.Start();
+                tReloj.Start();
             }
             catch(Exception ex)
             {
@@ -400,6 +402,43 @@ namespace Cely_Sistema
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void ingresosVIPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Nivel > 3)
+            {
+                frmPagosVIP pP = new frmPagosVIP();
+                pP.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tienes Acceso, Contacta al Administrador del Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+        }
+        private void tContador_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tReloj_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                lblFecha.Text = "Fecha: ";
+                lblFecha.Text = "Fecha: " + DateTime.Now.ToLongDateString() + " Hora: " + DateTime.Now.ToLongTimeString();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

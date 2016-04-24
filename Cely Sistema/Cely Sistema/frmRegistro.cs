@@ -26,6 +26,9 @@ namespace Cely_Sistema
             txtOcupacion.Clear();
             txtSector.Clear();
             txtTelefono.Clear();
+            cbVIP.Checked = false;
+            rbMensual.Checked = false;
+            rbSemanal.Checked = false;
         }
         public frmRegistro()
         {
@@ -67,6 +70,14 @@ namespace Cely_Sistema
                     else
                     {
                         rbSemanal.Checked = true;
+                    }
+                    if(EstudianteSeleccionado.VIP == "Si")
+                    {
+                        cbVIP.Checked = true;
+                    }
+                    else
+                    {
+                        cbVIP.Checked = false;
                     }
 
                     btnRegistrar.Visible = false;
@@ -210,6 +221,16 @@ namespace Cely_Sistema
                         {
 
                             MessageBox.Show("La Matricula del nuevo estudiante es: " + matricula, "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (cbVIP.Checked == true)
+                            {
+                                string res = "Si";
+                                EstudianteDB.UpdateVIPstatus(res, matricula.ToString());
+                            }
+                            else
+                            {
+                                string res = "No";
+                                EstudianteDB.UpdateVIPstatus(res, matricula.ToString());
+                            }
                             string FechaProximoP = FechaPP.ToString("yyyy-MM-dd");
                             EstudianteDB.ActualizarProximoPago(int.Parse(matricula), FechaProximoP);
                             /* Datos para registrar Asistencia */
@@ -220,6 +241,9 @@ namespace Cely_Sistema
                             pA.Ultima_Asistencia = DateTime.Today.Date.ToString("yyyy-MM-dd");
                             AsistenciaDB.RegistrarAsistencia(pA);
                             Limpiar();
+                            int NTotalInscritos = GruposDB.ObtenerTotalInscritos(pID);
+                            int NuevaCant = NTotalInscritos + 1;
+                            GruposDB.ActualizarCantidadEstudiantes(pID, NuevaCant);
                         }
                     }
                     else
@@ -267,7 +291,15 @@ namespace Cely_Sistema
                     {
                         rbSemanal.Checked = true;
                     }
-
+                    // VIP estudiante
+                    if (pBusqueda.EstudianteSeleccionado.VIP == "Si")
+                    {
+                        cbVIP.Checked = true;
+                    }
+                    else
+                    {
+                        cbVIP.Checked = false;
+                    }
                     btnRegistrar.Visible = false;
                     lblBuscarAlumno.Visible = false;
                     lblTitulo.Text = "Estudiante";
@@ -364,8 +396,7 @@ namespace Cely_Sistema
                     pEstudiante.D_Idioma = cbD_Idioma.Text;
                     pEstudiante.NivelA = txtNivel.Text;
                     pEstudiante.ID = EstudianteSeleccionado.ID;
-                    pEstudiante.Codigo_Grupo = pGS.ID;
-
+                    pGS = GruposDB.ObtenerGrupos(pEstudiante.Codigo_Grupo);
                     if (rbMensual.Checked == true)
                     {
                         pEstudiante.Modo_Pago = rbMensual.Text;
@@ -375,33 +406,68 @@ namespace Cely_Sistema
                         pEstudiante.Modo_Pago = rbSemanal.Text;
                     }
 
-                    int retorno = EstudianteDB.Modificar(pEstudiante);
-
-                    if (retorno > 0)
+                    if (pGS.ID > 0 || pGS.Aula != null)
                     {
-                        if (CodigoNivelAnterior != pGS.ID)
+                        int retorno = EstudianteDB.Modificar(pEstudiante);
+
+                        if (retorno > 0)
                         {
-                            int CantidadEstudiantesGrupoAnt = GruposDB.ObtenerTotalInscritos(CodigoNivelAnterior);
-                            int NuevacantGrupoAnt = CantidadEstudiantesGrupoAnt - 1;
-                            int R0 = GruposDB.ActualizarCantidadEstudiantes(CodigoNivelAnterior, NuevacantGrupoAnt);
-                            int CantEstudiantesNuevoGrupo = GruposDB.ObtenerTotalInscritos(pGS.ID);
-                            int NuevaCantNuevoGrupo = CantEstudiantesNuevoGrupo + 1;
-                            int R1 = GruposDB.ActualizarCantidadEstudiantes(pGS.ID, NuevaCantNuevoGrupo);
-                            if (R1 > 0 & R0 > 0)
+                            if (CodigoNivelAnterior != pGS.ID)
+                            {
+                                int CantidadEstudiantesGrupoAnt = GruposDB.ObtenerTotalInscritos(CodigoNivelAnterior);
+                                int NuevacantGrupoAnt = CantidadEstudiantesGrupoAnt - 1;
+                                int R0 = GruposDB.ActualizarCantidadEstudiantes(CodigoNivelAnterior, NuevacantGrupoAnt);
+                                int CantEstudiantesNuevoGrupo = GruposDB.ObtenerTotalInscritos(pGS.ID);
+                                int NuevaCantNuevoGrupo = CantEstudiantesNuevoGrupo + 1;
+                                int R1 = GruposDB.ActualizarCantidadEstudiantes(pGS.ID, NuevaCantNuevoGrupo);
+                                if (R1 > 0 & R0 > 0)
+                                {
+                                    MessageBox.Show("Estudiante Modificado con Exito", "Registro de Estudiantes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    // VIP student
+                                    if (cbVIP.Checked == true)
+                                    {
+                                        EstudianteDB.UpdateVIPstatus("Si", pEstudiante.ID.ToString());
+                                    }
+                                    else
+                                    {
+                                        EstudianteDB.UpdateVIPstatus("No", pEstudiante.ID.ToString());
+                                    }
+                                    Limpiar();
+                                    btnModificar.Visible = false;
+                                    btnEliminar.Visible = false;
+                                    btnRegistrar.Visible = true;
+                                    lblBuscarAlumno.Visible = true;
+                                    pGS.ID = 0;
+                                }
+                            }
+                            else
                             {
                                 MessageBox.Show("Estudiante Modificado con Exito", "Registro de Estudiantes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                // VIP student
+                                if (cbVIP.Checked == true)
+                                {
+                                    EstudianteDB.UpdateVIPstatus("Si", pEstudiante.ID.ToString());
+                                }
+                                else
+                                {
+                                    EstudianteDB.UpdateVIPstatus("No", pEstudiante.ID.ToString());
+                                }
+                                Limpiar();
+                                btnModificar.Visible = false;
+                                btnEliminar.Visible = false;
+                                btnRegistrar.Visible = true;
+                                lblBuscarAlumno.Visible = true;
                             }
                         }
-                        Limpiar();
-                        btnModificar.Visible = false;
-                        btnEliminar.Visible = false;
-                        btnRegistrar.Visible = true;
-                        lblBuscarAlumno.Visible = true;
+                        else
+                        {
+                            MessageBox.Show("No se Pudo Modificar la informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        };
                     }
                     else
                     {
-                        MessageBox.Show("No se Pudo Modificar la informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    };
+                        MessageBox.Show("Selecciona un Nivel de la tabla", "Registro de estudiantes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
             catch(Exception ex)
@@ -470,21 +536,13 @@ namespace Cely_Sistema
                     FI = FechaI;
 
                     FechaA = DateTime.Today;
-
-                    if(FechaI.Date == FechaA.Date)
+                    if (rbMensual.Checked == true)
                     {
-                        MessageBox.Show("Error al Obtener la fecha de Inicio", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FechaPP = FechaI.AddMonths(1);
                     }
                     else
                     {
-                        if(rbMensual.Checked == true)
-                        {
-                           FechaPP = FechaI.AddMonths(1);
-                        }
-                        else
-                        {
-                            FechaPP = FechaI.AddDays(7);
-                        }
+                        FechaPP = FechaI.AddDays(7);
                     }
 
                     if (pGS != null)

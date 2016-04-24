@@ -70,7 +70,7 @@ namespace Cely_Sistema
                 try
                 {
                     pGS = GruposDB.ObtenerGrupos(int.Parse(IDg));
-                    pHs = HorariosDB.ObtenerHorario(pGS.Horario);
+                    pHs = HorariosDB.ObtenerHorario(int.Parse(pGS.Horario));
                     txtHorario.Text = pHs.Dias + " " + pHs.Hora;
                     txtNivel.Text = pGS.Nivel;
                     txtProfesor.Text = pGS.Profesor;
@@ -141,7 +141,7 @@ namespace Cely_Sistema
                     pG.Nivel = txtNivel.Text;
                     pG.Profesor = txtProfesor.Text;
                     pG.Total_Inscritos = 0;
-                    pG.Horario = pHs.ID;
+                    pG.Horario = pHs.ID.ToString();
 
                     if (cbAula.SelectedIndex == -1)
                     {
@@ -195,7 +195,7 @@ namespace Cely_Sistema
                     {
                         txtProfesor.Text = pGS.Profesor;
                         txtNivel.Text = pGS.Nivel;
-                        pHs = HorariosDB.ObtenerHorario(pGS.Horario);
+                        pHs = HorariosDB.ObtenerHorario(int.Parse(pGS.Horario));
                         txtHorario.Text = pHs.Dias + " " + pHs.Hora;
                         cbAula.Text = pGS.Aula;
                         string fechaI = dtpFechaInicio.Value.Date.ToString("yyyy-MM-dd");
@@ -231,7 +231,7 @@ namespace Cely_Sistema
                     pG.ID = pGS.ID;
                     pG.Nivel = txtNivel.Text;
                     pG.Profesor = txtProfesor.Text;
-                    pG.Horario = pHs.ID;
+                    pG.Horario = pHs.ID.ToString();
                     pG.Fecha_Inicio = dtpFechaInicio.Value.Date.ToString("yyyy-MM-dd");
 
                     if (cbAula.SelectedIndex == -1)

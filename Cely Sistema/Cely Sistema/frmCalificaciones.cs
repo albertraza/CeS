@@ -55,13 +55,13 @@ namespace Cely_Sistema
                     {
                         txtNombre.Text = nombre;
                         txtApellido.Text = apellido;
-                        dgvUltimasCalificaciones.DataSource = CalificacionesDB.BuscarCalificacionesE(Convert.ToInt32(txtMatricula.Text));
                         dgvAsistencia.DataSource = AsistenciaDB.BuscarAsistencia(int.Parse(txtMatricula.Text));
                         dgvNotaAsistencia.DataSource = NotaAsistenciaDB.BuscarCalificaciones(int.Parse(txtMatricula.Text));
                         btnCargarCalificacion.Enabled = true;
                         btnGuardar.Enabled = true;
                         btnModificar.Enabled = false;
                         btnEliminar.Enabled = false;
+                        rbExamenEscrito.Checked = true;
                     }
                     else
                     {
@@ -90,39 +90,45 @@ namespace Cely_Sistema
                     }
                     else
                     {
-
-                        if (int.Parse(txtPrimerPalcial.Text) > 100 || int.Parse(txtSegundoParcial.Text) > 100 || int.Parse(txtTercerParcial.Text) > 100)
+                        // evaluation to verify if textboxes are empty.
+                        if (txtPrimerPalcial.Text == string.Empty || txtSegundoParcial.Text == string.Empty || txtTercerParcial.Text == string.Empty)
                         {
-                            MessageBox.Show("La notas de los parciales debe ser menos o igual que 100, digite las notas nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtPrimerPalcial.Focus();
+                            MessageBox.Show("Complete la nota de todos los parciales", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        else
-                        {
-                            Notas pNotas = new Notas();
-
-                            pNotas.Matricula = int.Parse(txtMatricula.Text);
-                            pNotas.Nombre = txtNombre.Text + " " + txtApellido.Text;
-                            pNotas.N1 = Int32.Parse(txtPrimerPalcial.Text);
-                            pNotas.N2 = Int32.Parse(txtSegundoParcial.Text);
-                            pNotas.N3 = Int32.Parse(txtTercerParcial.Text);
-                            int NFF = pNotas.N1 + pNotas.N2 + pNotas.N3;
-                            NFF = NFF / 3;
-                            pNotas.NF = NFF;
-                            pNotas.Fecha_Examen = dtpFechaParcial.Value.Date.ToString("yyyy-MM-dd");
-                            if (MessageBox.Show("Seguro que desea registrar la calificacion?", "Calificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        else {
+                            // validate if textboxes value is less than 100.
+                            if (int.Parse(txtPrimerPalcial.Text) > 100 || int.Parse(txtSegundoParcial.Text) > 100 || int.Parse(txtTercerParcial.Text) > 100)
                             {
-                                int calificacion = NotasDB.RegistrarNotaExamenE(pNotas);
+                                MessageBox.Show("La notas de los parciales debe ser menos o igual que 100, digite las notas nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtPrimerPalcial.Focus();
+                            }
+                            else
+                            {
+                                Notas pNotas = new Notas();
 
-                                if (calificacion > 0)
+                                pNotas.Matricula = int.Parse(txtMatricula.Text);
+                                pNotas.Nombre = txtNombre.Text + " " + txtApellido.Text;
+                                pNotas.N1 = Int32.Parse(txtPrimerPalcial.Text);
+                                pNotas.N2 = Int32.Parse(txtSegundoParcial.Text);
+                                pNotas.N3 = Int32.Parse(txtTercerParcial.Text);
+                                int NFF = pNotas.N1 + pNotas.N2 + pNotas.N3;
+                                NFF = NFF / 3;
+                                pNotas.NF = NFF;
+                                pNotas.Fecha_Examen = dtpFechaParcial.Value.Date.ToString("yyyy-MM-dd");
+                                if (MessageBox.Show("Seguro que desea registrar la calificacion?", "Calificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                 {
-                                    MessageBox.Show("Calificacion Registrada con Exito!", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    btnCargarCalificacion.Enabled = false;
-                                    dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExmenEscrM(Convert.ToInt32(txtMatricula.Text), "");
-                                    Limpiar();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No se Pudo Registrar la Calificacion, Intentelo Nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    int calificacion = NotasDB.RegistrarNotaExamenE(pNotas, EstudianteDB.ObtenerCodigoNivel(int.Parse(txtMatricula.Text)));
+
+                                    if (calificacion > 0)
+                                    {
+                                        MessageBox.Show("Calificacion Registrada con Exito!", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExmenEscrM(Convert.ToInt32(txtMatricula.Text), "");
+                                        Limpiar();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No se Pudo Registrar la Calificacion, Intentelo Nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
                         }
@@ -138,39 +144,45 @@ namespace Cely_Sistema
                     }
                     else
                     {
-
-                        if (int.Parse(txtPrimerPalcial.Text) > 100 || int.Parse(txtSegundoParcial.Text) > 100 || int.Parse(txtTercerParcial.Text) > 100)
+                        // evaluation to verify if textboxes are empty.
+                        if (txtPrimerPalcial.Text == string.Empty || txtSegundoParcial.Text == string.Empty || txtTercerParcial.Text == string.Empty)
                         {
-                            MessageBox.Show("La notas de los parciales debe ser menos o igual que 100, digite las notas nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtPrimerPalcial.Focus();
+                            MessageBox.Show("Complete la nota de todos los parciales", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        else
-                        {
-                            Notas pNotas = new Notas();
-
-                            pNotas.Matricula = int.Parse(txtMatricula.Text);
-                            pNotas.Nombre = txtNombre.Text + " " + txtApellido.Text;
-                            pNotas.N1 = Int32.Parse(txtPrimerPalcial.Text);
-                            pNotas.N2 = Int32.Parse(txtSegundoParcial.Text);
-                            pNotas.N3 = Int32.Parse(txtTercerParcial.Text);
-                            int NFF = pNotas.N1 + pNotas.N2 + pNotas.N3;
-                            NFF = NFF / 3;
-                            pNotas.NF = NFF;
-                            pNotas.Fecha_Examen = dtpFechaParcial.Value.Date.ToString("yyyy-MM-dd");
-                            if (MessageBox.Show("Seguro que desea registrar la calificacion?", "Calificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        else {
+                            if (int.Parse(txtPrimerPalcial.Text) > 100 || int.Parse(txtSegundoParcial.Text) > 100 || int.Parse(txtTercerParcial.Text) > 100)
                             {
-                                int calificacion = NotasDB.RegistrarNotaExamenL(pNotas);
+                                MessageBox.Show("La notas de los parciales debe ser menos o igual que 100, digite las notas nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtPrimerPalcial.Focus();
+                            }
+                            else
+                            {
+                                Notas pNotas = new Notas();
 
-                                if (calificacion > 0)
+                                pNotas.Matricula = int.Parse(txtMatricula.Text);
+                                pNotas.Nombre = txtNombre.Text + " " + txtApellido.Text;
+                                pNotas.N1 = Int32.Parse(txtPrimerPalcial.Text);
+                                pNotas.N2 = Int32.Parse(txtSegundoParcial.Text);
+                                pNotas.N3 = Int32.Parse(txtTercerParcial.Text);
+                                int NFF = pNotas.N1 + pNotas.N2 + pNotas.N3;
+                                NFF = NFF / 3;
+                                pNotas.NF = NFF;
+                                pNotas.Fecha_Examen = dtpFechaParcial.Value.Date.ToString("yyyy-MM-dd");
+                                if (MessageBox.Show("Seguro que desea registrar la calificacion?", "Calificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                 {
-                                    MessageBox.Show("Calificacion Registrada con Exito!", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    btnCargarCalificacion.Enabled = false;
-                                    dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenLecM(Convert.ToInt32(txtMatricula.Text), "");
-                                    Limpiar();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No se Pudo Registrar la Calificacion, Intentelo Nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    int calificacion = NotasDB.RegistrarNotaExamenL(pNotas, EstudianteDB.ObtenerCodigoNivel(int.Parse(txtMatricula.Text)));
+
+                                    if (calificacion > 0)
+                                    {
+                                        MessageBox.Show("Calificacion Registrada con Exito!", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        btnCargarCalificacion.Enabled = false;
+                                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenLecM(Convert.ToInt32(txtMatricula.Text), "");
+                                        Limpiar();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No se Pudo Registrar la Calificacion, Intentelo Nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
                         }
@@ -186,40 +198,46 @@ namespace Cely_Sistema
                     }
                     else
                     {
-
-                        if (int.Parse(txtPrimerPalcial.Text) > 100 || int.Parse(txtSegundoParcial.Text) > 100 || int.Parse(txtTercerParcial.Text) > 100)
+                        // evaluation to verify if textboxes are empty.
+                        if (txtPrimerPalcial.Text == string.Empty || txtSegundoParcial.Text == string.Empty || txtTercerParcial.Text == string.Empty)
                         {
-                            MessageBox.Show("La notas de los parciales debe ser menos o igual a 100, digite las notas nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtPrimerPalcial.Focus();
+                            MessageBox.Show("Complete la nota de todos los parciales", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        else
-                        {
-                            Notas pNotas = new Notas();
-
-                            pNotas.Matricula = int.Parse(txtMatricula.Text);
-                            pNotas.Nombre = txtNombre.Text + " " + txtApellido.Text;
-                            pNotas.N1 = Int32.Parse(txtPrimerPalcial.Text);
-                            pNotas.N2 = Int32.Parse(txtSegundoParcial.Text);
-                            pNotas.N3 = Int32.Parse(txtTercerParcial.Text);
-                            int NFF = pNotas.N1 + pNotas.N2 + pNotas.N3;
-                            NFF = NFF / 3;
-                            pNotas.NF = NFF;
-                            pNotas.Fecha_Examen = dtpFechaParcial.Value.Date.ToString("yyyy-MM-dd");
-                            if (MessageBox.Show("Seguro que desea registrar la calificacion?", "Calificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        else {
+                            if (int.Parse(txtPrimerPalcial.Text) > 100 || int.Parse(txtSegundoParcial.Text) > 100 || int.Parse(txtTercerParcial.Text) > 100)
                             {
-                                int calificacion = NotasDB.RegistrarNotaExamenO(pNotas);
+                                MessageBox.Show("La notas de los parciales debe ser menos o igual a 100, digite las notas nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtPrimerPalcial.Focus();
+                            }
+                            else
+                            {
+                                Notas pNotas = new Notas();
 
-                                if (calificacion > 0)
+                                pNotas.Matricula = int.Parse(txtMatricula.Text);
+                                pNotas.Nombre = txtNombre.Text + " " + txtApellido.Text;
+                                pNotas.N1 = Int32.Parse(txtPrimerPalcial.Text);
+                                pNotas.N2 = Int32.Parse(txtSegundoParcial.Text);
+                                pNotas.N3 = Int32.Parse(txtTercerParcial.Text);
+                                int NFF = pNotas.N1 + pNotas.N2 + pNotas.N3;
+                                NFF = NFF / 3;
+                                pNotas.NF = NFF;
+                                pNotas.Fecha_Examen = dtpFechaParcial.Value.Date.ToString("yyyy-MM-dd");
+                                if (MessageBox.Show("Seguro que desea registrar la calificacion?", "Calificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                 {
-                                    MessageBox.Show("Calificacion Registrada con Exito!", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    
-                                    btnCargarCalificacion.Enabled = false;
-                                    dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenOralM(Convert.ToInt32(txtMatricula.Text), "");
-                                    Limpiar();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No se Pudo Registrar la Calificacion, Intentelo Nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    int calificacion = NotasDB.RegistrarNotaExamenO(pNotas, EstudianteDB.ObtenerCodigoNivel(int.Parse(txtMatricula.Text)));
+
+                                    if (calificacion > 0)
+                                    {
+                                        MessageBox.Show("Calificacion Registrada con Exito!", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                        btnCargarCalificacion.Enabled = false;
+                                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenOralM(Convert.ToInt32(txtMatricula.Text), "");
+                                        Limpiar();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No se Pudo Registrar la Calificacion, Intentelo Nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
                         }
@@ -234,47 +252,53 @@ namespace Cely_Sistema
                     }
                     else
                     {
-
-                        if (int.Parse(txtPrimerPalcial.Text) > 100 || int.Parse(txtSegundoParcial.Text) > 100 || int.Parse(txtTercerParcial.Text) > 100)
+                        // evaluation to verify if textboxes are empty.
+                        if (txtPrimerPalcial.Text == string.Empty || txtSegundoParcial.Text == string.Empty || txtTercerParcial.Text == string.Empty)
                         {
-                            MessageBox.Show("La notas de los parciales debe ser menos o igual a 100, digite las notas nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtPrimerPalcial.Focus();
+                            MessageBox.Show("Complete la nota de todos los parciales", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        else
-                        {
-                            Notas pNotas = new Notas();
-
-                            pNotas.Matricula = int.Parse(txtMatricula.Text);
-                            pNotas.Nombre = txtNombre.Text + " " + txtApellido.Text;
-                            pNotas.N1 = Int32.Parse(txtPrimerPalcial.Text);
-                            pNotas.N2 = Int32.Parse(txtSegundoParcial.Text);
-                            pNotas.N3 = Int32.Parse(txtTercerParcial.Text);
-                            int NFF = pNotas.N1 + pNotas.N2 + pNotas.N3;
-                            NFF = NFF / 3;
-                            pNotas.NF = NFF;
-                            pNotas.Fecha_Examen = dtpFechaParcial.Value.Date.ToString("yyyy-MM-dd");
-                            if (MessageBox.Show("Seguro que desea registrar la calificacion?", "Calificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        else {
+                            if (int.Parse(txtPrimerPalcial.Text) > 100 || int.Parse(txtSegundoParcial.Text) > 100 || int.Parse(txtTercerParcial.Text) > 100)
                             {
-                                int calificacion = NotasDB.RegistrarNotaExposicion(pNotas);
+                                MessageBox.Show("La notas de los parciales debe ser menos o igual a 100, digite las notas nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtPrimerPalcial.Focus();
+                            }
+                            else
+                            {
+                                Notas pNotas = new Notas();
 
-                                if (calificacion > 0)
+                                pNotas.Matricula = int.Parse(txtMatricula.Text);
+                                pNotas.Nombre = txtNombre.Text + " " + txtApellido.Text;
+                                pNotas.N1 = Int32.Parse(txtPrimerPalcial.Text);
+                                pNotas.N2 = Int32.Parse(txtSegundoParcial.Text);
+                                pNotas.N3 = Int32.Parse(txtTercerParcial.Text);
+                                int NFF = pNotas.N1 + pNotas.N2 + pNotas.N3;
+                                NFF = NFF / 3;
+                                pNotas.NF = NFF;
+                                pNotas.Fecha_Examen = dtpFechaParcial.Value.Date.ToString("yyyy-MM-dd");
+                                if (MessageBox.Show("Seguro que desea registrar la calificacion?", "Calificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                 {
-                                    MessageBox.Show("Calificacion Registrada con Exito!", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    
-                                    btnCargarCalificacion.Enabled = false;
-                                    dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExpM(Convert.ToInt32(txtMatricula.Text), "");
-                                    Limpiar();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No se Pudo Registrar la Calificacion, Intentelo Nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    int calificacion = NotasDB.RegistrarNotaExposicion(pNotas, EstudianteDB.ObtenerCodigoNivel(int.Parse(txtMatricula.Text)));
+
+                                    if (calificacion > 0)
+                                    {
+                                        MessageBox.Show("Calificacion Registrada con Exito!", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                        btnCargarCalificacion.Enabled = false;
+                                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExpM(Convert.ToInt32(txtMatricula.Text), "");
+                                        Limpiar();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No se Pudo Registrar la Calificacion, Intentelo Nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -579,6 +603,7 @@ namespace Cely_Sistema
             btnModificar.Enabled = false;
             btnCargarCalificacion.Enabled = false;
             btnCargraEstudiante.Enabled = true;
+            btnCargarCalificacion.Enabled = false;
         }
 
         private void btnVerNotas_Click(object sender, EventArgs e)
@@ -989,13 +1014,13 @@ namespace Cely_Sistema
                         {
                             txtNombre.Text = nombre;
                             txtApellido.Text = apellido;
-                            dgvUltimasCalificaciones.DataSource = CalificacionesDB.BuscarCalificacionesE(Convert.ToInt32(txtMatricula.Text));
                             dgvAsistencia.DataSource = AsistenciaDB.BuscarAsistencia(int.Parse(txtMatricula.Text));
                             dgvNotaAsistencia.DataSource = NotaAsistenciaDB.BuscarCalificaciones(int.Parse(txtMatricula.Text));
                             btnCargarCalificacion.Enabled = true;
                             btnGuardar.Enabled = true;
                             btnModificar.Enabled = false;
                             btnEliminar.Enabled = false;
+                            rbExamenEscrito.Checked = true;
                         }
                         else
                         {

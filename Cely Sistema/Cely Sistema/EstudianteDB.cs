@@ -53,6 +53,7 @@ namespace Cely_Sistema
                     pEstuidante.NivelA = reader.GetString(13);
                     pEstuidante.Codigo_Grupo = reader.GetInt32(15);
                     pEstuidante.Modo_Pago = reader.GetString(16);
+                    pEstuidante.VIP = reader["VIP"].ToString();
 
                     lista.Add(pEstuidante);
 
@@ -90,6 +91,7 @@ namespace Cely_Sistema
                     pEstudiante.NivelA = reader.GetString(13);
                     pEstudiante.Codigo_Grupo = reader.GetInt32(15);
                     pEstudiante.Modo_Pago = reader.GetString(16);
+                    pEstudiante.VIP = reader["VIP"].ToString();
 
                 }
                 conexion.Close();
@@ -232,6 +234,7 @@ namespace Cely_Sistema
                     pEstuidante.NivelA = reader.GetString(13);
                     pEstuidante.Codigo_Grupo = reader.GetInt32(15);
                     pEstuidante.Modo_Pago = reader.GetString(16);
+                    pEstuidante.VIP = reader["VIP"].ToString();
 
                     lista.Add(pEstuidante);
 
@@ -313,12 +316,24 @@ namespace Cely_Sistema
                     E.NivelA = reader.GetString(13);
                     E.Codigo_Grupo = reader.GetInt32(15);
                     E.Modo_Pago = reader.GetString(16);
+                    E.VIP = reader["VIP"].ToString();
                     list.Add(E);
 
                 }
                 conexion.Close();
             }
             return list;
+        }
+        public static int UpdateVIPstatus(string vipS, string ID)
+        {
+            int r = -1;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("update Estudiantes set VIP= '{0}' where ID = {1}", vipS, ID), con);
+                r = comand.ExecuteNonQuery();
+                con.Close();
+            }
+            return r;
         }
     }
 }

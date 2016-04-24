@@ -209,7 +209,7 @@
             this.dgvUltimasCalificaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUltimasCalificaciones.Location = new System.Drawing.Point(6, 16);
             this.dgvUltimasCalificaciones.Name = "dgvUltimasCalificaciones";
-            this.dgvUltimasCalificaciones.Size = new System.Drawing.Size(843, 209);
+            this.dgvUltimasCalificaciones.Size = new System.Drawing.Size(663, 209);
             this.dgvUltimasCalificaciones.TabIndex = 7;
             // 
             // lblPrimerParcial
@@ -355,7 +355,7 @@
             this.gbNotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbNotas.Location = new System.Drawing.Point(482, 12);
             this.gbNotas.Name = "gbNotas";
-            this.gbNotas.Size = new System.Drawing.Size(856, 243);
+            this.gbNotas.Size = new System.Drawing.Size(682, 243);
             this.gbNotas.TabIndex = 6;
             this.gbNotas.TabStop = false;
             this.gbNotas.Text = "Notas";
@@ -615,7 +615,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 535);
+            this.ClientSize = new System.Drawing.Size(1176, 535);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.gbInfomacionAsistencia);
             this.Controls.Add(this.lblTitulo);
