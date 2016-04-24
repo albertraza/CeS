@@ -105,19 +105,8 @@ namespace Cely_Sistema
                                         lblPendientes.Text = "Meses Pendientes: " + cantMeses.ToString("f0");
                                         lblMesesoSemanas.Text = "Meses";
                                         nCantPagar.Value = Convert.ToInt32(cantMeses);
-                                        string Mora = MoraDB.ObtenerMoraMensual();
-                                        txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
-                                        pPago0 = pPago0.AddMonths(Convert.ToInt32(cantPAgar));
-                                        lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
                                         double pM = Convert.ToDouble(PagosDB.ObtenerPagoMensual());
-                                        double TotalPagar = pM * Convert.ToInt32(nCantPagar.Value);
                                         lblPagoMensual.Text = lblPagoMensual.Text + " " + pM.ToString("f2");
-                                        double DMora = (double.Parse(Mora) * Convert.ToInt32(nCantPagar.Value));
-                                        TotalPagar = TotalPagar + (DMora);
-                                        lblTotalaPagar.Text = lblTotalaPagar.Text + " " + TotalPagar.ToString("f2");
-                                        txtTotalaPagar.Text = TotalPagar.ToString("f2");
-                                        lblMora.ForeColor = Color.Red;
-                                        lblMora.Text = lblMora.Text + " " + DMora.ToString("f2");
                                         rbPago.Text = "Pago Mensual";
                                         txtMotivodePago.Text = "Pago Mes";
                                         pMora = true;
@@ -127,15 +116,8 @@ namespace Cely_Sistema
                                         lblPendientes.Text = "Meses Pendientes: 0";
                                         lblMesesoSemanas.Text = "Meses";
                                         nCantPagar.Value = 1;
-                                        txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
-                                        pPago0 = pPago0.AddMonths(1);
-                                        lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
                                         double pM = PagosDB.ObtenerPagoMensual();
-                                        double totalPagar = pM * cantPAgar;
-                                        lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalPagar.ToString("f2");
                                         lblPagoMensual.Text = lblPagoMensual.Text + " " + pM.ToString("f2");
-                                        txtTotalaPagar.Text = totalPagar.ToString("f2");
-                                        lblMora.Text = lblMora.Text + " " + "0";
                                         rbPago.Text = "Pago Mensual";
                                         txtMotivodePago.Text = "Pago Mes";
                                         pMora = false;
@@ -150,19 +132,8 @@ namespace Cely_Sistema
                                         lblPendientes.Text = "Semanas Pendientes: " + cantMeses.ToString("f0");
                                         lblMesesoSemanas.Text = "Semanas";
                                         nCantPagar.Value = Convert.ToInt32(cantMeses);
-                                        string Mora = MoraDB.ObtenerMoraSemanal();
-                                        txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays((Convert.ToInt32(cantPAgar) * 7)));
-                                        pPago0 = pPago0.AddDays((Convert.ToInt32(cantPAgar) * 7));
-                                        lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
                                         double pS = Convert.ToDouble(PagosDB.ObtenerPagoSemanal());
-                                        double totalPAgar = pS * Convert.ToInt32(nCantPagar.Value);
-                                        double DMora = (double.Parse(Mora) * Convert.ToInt32(nCantPagar.Value));
                                         lblPagoMensual.Text = "Pago Semanal:" + " " + pS.ToString("f2");
-                                        totalPAgar = totalPAgar + DMora;
-                                        lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalPAgar.ToString("f2");
-                                        txtTotalaPagar.Text = totalPAgar.ToString("f2");
-                                        lblMora.ForeColor = Color.Red;
-                                        lblMora.Text = lblMora.Text + " " + DMora.ToString("f2");
                                         rbPago.Text = "Pago Semanal";
                                         txtMotivodePago.Text = "Pago Semanal";
                                         pMora = true;
@@ -171,14 +142,9 @@ namespace Cely_Sistema
                                     {
                                         lblPendientes.Text = "Semanas Pensientes: 0";
                                         lblMesesoSemanas.Text = "Semanas";
-                                        txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
-                                        pPago0 = pPago0.AddDays(7);
                                         double pS = PagosDB.ObtenerPagoSemanal();
-                                        lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
                                         lblPagoMensual.Text = "Pago Semanal:" + " " + pS.ToString("f2");
-                                        lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pS.ToString("f2");
                                         txtTotalaPagar.Text = pS.ToString("f2");
-                                        lblMora.Text = lblMora.Text + " " + "0";
                                         rbPago.Text = "Pago Semanal";
                                         txtMotivodePago.Text = "Pago Semanal";
                                         pMora = false;
@@ -197,20 +163,9 @@ namespace Cely_Sistema
                                         lblPendientes.ForeColor = Color.Red;
                                         lblPendientes.Text = "Meses Pendientes: " + cantMeses.ToString("f0");
                                         lblMesesoSemanas.Text = "Meses";
-                                        nCantPagar.Value = Convert.ToInt32(cantMeses);
-                                        string Mora = MoraDB.GetVIPpayments().Mora_Mensual;
-                                        txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(Convert.ToInt32(cantPAgar)));
-                                        pPago0 = pPago0.AddMonths(Convert.ToInt32(cantPAgar));
-                                        lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
-                                        double pM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);
-                                        double totalPAgar = pM * Convert.ToInt32(nCantPagar.Value);
+                                        nCantPagar.Value = Convert.ToInt32(cantMeses);                                                                                                                                                                
+                                        double pM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);                                      
                                         lblPagoMensual.Text = lblPagoMensual.Text + " " + pM.ToString("f2");
-                                        double DMora = (double.Parse(Mora) * Convert.ToInt32(nCantPagar.Value));
-                                        totalPAgar = totalPAgar + (DMora);
-                                        lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalPAgar.ToString("f2");
-                                        txtTotalaPagar.Text = totalPAgar.ToString("f2");
-                                        lblMora.ForeColor = Color.Red;
-                                        lblMora.Text = lblMora.Text + " " + DMora.ToString("f2");
                                         rbPago.Text = "Pago Mensual";
                                         txtMotivodePago.Text = "Pago Mes";
                                         pMora = true;
@@ -220,14 +175,8 @@ namespace Cely_Sistema
                                         lblPendientes.Text = "Meses Pendientes: 0";
                                         lblMesesoSemanas.Text = "Meses";
                                         nCantPagar.Value = 1;
-                                        txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1));
-                                        pPago0 = pPago0.AddMonths(1);
-                                        lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
                                         double pM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);
-                                        lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pM.ToString("f2");
                                         lblPagoMensual.Text = lblPagoMensual.Text + " " + pM.ToString("f2");
-                                        txtTotalaPagar.Text = pM.ToString("f2");
-                                        lblMora.Text = lblMora.Text + " " + "0";
                                         rbPago.Text = "Pago Mensual";
                                         txtMotivodePago.Text = "Pago Mes";
                                         pMora = false;
@@ -242,19 +191,8 @@ namespace Cely_Sistema
                                         lblPendientes.Text = "Semanas Pendientes: " + cantMeses.ToString("f0");
                                         lblMesesoSemanas.Text = "Semanas";
                                         nCantPagar.Value = Convert.ToInt32(cantMeses);
-                                        string Mora = MoraDB.GetVIPpayments().Mora_Semanal;
-                                        txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays((Convert.ToInt32(cantPAgar) * 7)));
-                                        pPago0 = pPago0.AddDays((Convert.ToInt32(cantPAgar) * 7));
-                                        lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
                                         double pS = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal);
-                                        double totalPagar = pS * Convert.ToInt32(nCantPagar.Value);
-                                        double DMora = (double.Parse(Mora) * Convert.ToInt32(nCantPagar.Value));
                                         lblPagoMensual.Text = "Pago Semanal:" + " " + pS.ToString("f2");
-                                        totalPagar = totalPagar + DMora;
-                                        lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalPagar.ToString("f2");
-                                        txtTotalaPagar.Text = totalPagar.ToString("f2");
-                                        lblMora.ForeColor = Color.Red;
-                                        lblMora.Text = lblMora.Text + " " + DMora.ToString("f2");
                                         rbPago.Text = "Pago Semanal";
                                         txtMotivodePago.Text = "Pago Semanal";
                                         pMora = true;
@@ -264,14 +202,9 @@ namespace Cely_Sistema
                                         lblPendientes.Text = "Semanas Pendientes: 0";
                                         lblMesesoSemanas.Text = "Semanas";
                                         nCantPagar.Value = 1;
-                                        txtProximoPAgo.Text = Convert.ToString(pPago0.AddDays(7));
-                                        pPago0 = pPago0.AddDays(7);
                                         double pS = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal);
-                                        lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.ToString("dd-MM-yyyy");
                                         lblPagoMensual.Text = "Pago Semanal:" + " " + pS.ToString("f2");
-                                        lblTotalaPagar.Text = lblTotalaPagar.Text + " " + pS.ToString("f2");
                                         txtTotalaPagar.Text = pS.ToString("f2");
-                                        lblMora.Text = lblMora.Text + " " + "0";
                                         rbPago.Text = "Pago Semanal";
                                         txtMotivodePago.Text = "Pago Semanal";
                                         pMora = false;
@@ -322,6 +255,7 @@ namespace Cely_Sistema
         {
             lblMora.Text = "Mora:";
             lblProximoPago.Text = "Proximo Pago:";
+            lblTotalaPagar.Text = "Total a Pagar:";
         }
         private void frmFacturacion_Load(object sender, EventArgs e)
         {
@@ -421,6 +355,7 @@ namespace Cely_Sistema
 
         private void Limpiar()
         {
+            nCantPagar.Value = 0;
             lblFechaPago.ForeColor = Color.Black;
             lblUltimoPAgo.ForeColor = Color.Black;
             lblFechaPago.Text = "Fecha Pago:";
@@ -453,6 +388,7 @@ namespace Cely_Sistema
         }
         private void LimpiarM()
         {
+            nCantPagar.Value = 0;
             lblFechaPago.ForeColor = Color.Black;
             lblUltimoPAgo.ForeColor = Color.Black;
             lblFechaPago.Text = "Fecha Pago:";
@@ -1317,28 +1253,30 @@ namespace Cely_Sistema
                                                 lblMora.ForeColor = Color.Red;
                                                 double mora = Convert.ToDouble(MoraDB.ObtenerMoraMensual());
                                                 mora = mora * (Convert.ToInt32(nCantPagar.Value));
+                                                lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
                                                 double pagoM = Convert.ToDouble(PagosDB.ObtenerPagoMensual());
                                                 pagoM = pagoM * (Convert.ToInt32(nCantPagar.Value));
                                                 double totalpagar = mora + pagoM;
                                                 lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalpagar.ToString("f2");
                                                 txtTotalaPagar.Text = totalpagar.ToString("f2");
-                                                pPago0.AddMonths(1 * (Convert.ToInt32(nCantPagar.Value)));
-                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.ToString("dd-MM-yyyy");
-                                                txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1 * (Convert.ToInt32(nCantPagar.Value))));
+                                                pPago0.Date.AddMonths(Convert.ToInt32(nCantPagar.Value));
+                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.AddMonths(Convert.ToInt32(nCantPagar.Value)).ToString("dd-MM-yyyy");
+                                                txtProximoPAgo.Text = Convert.ToString(pPago0.Date.AddMonths(Convert.ToInt32(nCantPagar.Value)));
                                             }
                                             else
                                             {
                                                 // pago mensual no VIP no MORA
                                                 double mora = 0;
                                                 mora = mora * (Convert.ToInt32(nCantPagar.Value));
+                                                lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
                                                 double pagoM = Convert.ToDouble(PagosDB.ObtenerPagoMensual());
                                                 pagoM = pagoM * (Convert.ToInt32(nCantPagar.Value));
                                                 double totalpagar = mora + pagoM;
                                                 lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalpagar.ToString("f2");
                                                 txtTotalaPagar.Text = totalpagar.ToString("f2");
-                                                pPago0.AddMonths(1 * (Convert.ToInt32(nCantPagar.Value)));
-                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.ToString("dd-MM-yyyy");
-                                                txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1 * (Convert.ToInt32(nCantPagar.Value))));
+                                                pPago0.Date.AddMonths((Convert.ToInt32(nCantPagar.Value)));
+                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.AddMonths(Convert.ToInt32(nCantPagar.Value)).ToString("dd-MM-yyyy");
+                                                txtProximoPAgo.Text = Convert.ToString(pPago0.Date.AddMonths(Convert.ToInt32(nCantPagar.Value)));
                                             }
                                         }
                                         else
@@ -1349,29 +1287,32 @@ namespace Cely_Sistema
                                                 lblMora.ForeColor = Color.Red;
                                                 double mora = Convert.ToDouble(MoraDB.ObtenerMoraSemanal());
                                                 mora = mora * (Convert.ToInt32(nCantPagar.Value));
+                                                lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
                                                 double pagoS = Convert.ToDouble(PagosDB.ObtenerPagoSemanal());
                                                 pagoS = pagoS * (Convert.ToInt32(nCantPagar.Value));
                                                 double totalpagar = mora + pagoS;
                                                 lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalpagar.ToString("f2");
                                                 txtTotalaPagar.Text = totalpagar.ToString("f2");
-                                                pPago0.AddDays(7 * (Convert.ToInt32(nCantPagar.Value)));
-                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.ToString("dd-MM-yyyy");
-                                                txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(7 * (Convert.ToInt32(nCantPagar.Value))));
-                                                txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(7 * (Convert.ToInt32(nCantPagar.Value))));
+                                                int days = (Convert.ToInt32(nCantPagar.Value)) * 7;
+                                                pPago0.Date.AddDays(days);
+                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.AddDays(days).ToString("dd-MM-yyyy");
+                                                txtProximoPAgo.Text = Convert.ToString(pPago0.Date.AddDays(days));
                                             }
                                             else
                                             {
                                                 // pago semanal no VIP no MORA
                                                 double mora = 0;
                                                 mora = mora * (Convert.ToInt32(nCantPagar.Value));
+                                                lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
                                                 double pagoS = Convert.ToDouble(PagosDB.ObtenerPagoSemanal());
                                                 pagoS = pagoS * (Convert.ToInt32(nCantPagar.Value));
                                                 double totalpagar = mora + pagoS;
                                                 lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalpagar.ToString("f2");
                                                 txtTotalaPagar.Text = totalpagar.ToString("f2");
-                                                pPago0.AddMonths(7 * (Convert.ToInt32(nCantPagar.Value)));
-                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.ToString("dd-MM-yyyy");
-                                                txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(7 * (Convert.ToInt32(nCantPagar.Value))));
+                                                int days = (Convert.ToInt32(nCantPagar.Value)) * 7;
+                                                pPago0.Date.AddDays(days);
+                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.AddDays(days).ToString("dd-MM-yyyy");
+                                                txtProximoPAgo.Text = Convert.ToString(pPago0.Date.AddDays(days));
                                             }
                                         }
                                     }
@@ -1387,28 +1328,30 @@ namespace Cely_Sistema
                                                 lblMora.ForeColor = Color.Red;
                                                 double mora = Convert.ToDouble(MoraDB.GetVIPpayments().Mora_Mensual);
                                                 mora = mora * (Convert.ToInt32(nCantPagar.Value));
+                                                lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
                                                 double pagoM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);
                                                 pagoM = pagoM * (Convert.ToInt32(nCantPagar.Value));
                                                 double totalpagar = mora + pagoM;
                                                 lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalpagar.ToString("f2");
                                                 txtTotalaPagar.Text = totalpagar.ToString("f2");
-                                                pPago0.AddMonths(1 * (Convert.ToInt32(nCantPagar.Value)));
-                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.ToString("dd-MM-yyyy");
-                                                txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1 * (Convert.ToInt32(nCantPagar.Value))));
+                                                pPago0.Date.AddMonths((Convert.ToInt32(nCantPagar.Value)));
+                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.AddMonths(Convert.ToInt32(nCantPagar.Value)).ToString("dd-MM-yyyy");
+                                                txtProximoPAgo.Text = Convert.ToString(pPago0.Date.AddMonths(Convert.ToInt32(nCantPagar.Value)));
                                             }
                                             else
                                             {
                                                 // pago mensual VIP No mora
                                                 double mora = 0;
                                                 mora = mora * (Convert.ToInt32(nCantPagar.Value));
+                                                lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
                                                 double pagoM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);
                                                 pagoM = pagoM * (Convert.ToInt32(nCantPagar.Value));
                                                 double totalpagar = mora + pagoM;
                                                 lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalpagar.ToString("f2");
                                                 txtTotalaPagar.Text = totalpagar.ToString("f2");
-                                                pPago0.AddMonths(1 * (Convert.ToInt32(nCantPagar.Value)));
-                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.ToString("dd-MM-yyyy");
-                                                txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(1 * (Convert.ToInt32(nCantPagar.Value))));
+                                                pPago0.Date.AddMonths((Convert.ToInt32(nCantPagar.Value)));
+                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.AddMonths(Convert.ToInt32(nCantPagar.Value)).ToString("dd-MM-yyyy");
+                                                txtProximoPAgo.Text = Convert.ToString(pPago0.Date.AddMonths(Convert.ToInt32(nCantPagar.Value)));
                                             }
                                         }
                                         else
@@ -1419,28 +1362,32 @@ namespace Cely_Sistema
                                                 lblMora.ForeColor = Color.Red;
                                                 double mora = Convert.ToDouble(MoraDB.GetVIPpayments().Mora_Semanal);
                                                 mora = mora * (Convert.ToInt32(nCantPagar.Value));
+                                                lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
                                                 double pagoM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal);
                                                 pagoM = pagoM * (Convert.ToInt32(nCantPagar.Value));
                                                 double totalpagar = mora + pagoM;
                                                 lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalpagar.ToString("f2");
                                                 txtTotalaPagar.Text = totalpagar.ToString("f2");
-                                                pPago0.AddMonths(7 * (Convert.ToInt32(nCantPagar.Value)));
-                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.ToString("dd-MM-yyyy");
-                                                txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(7 * (Convert.ToInt32(nCantPagar.Value))));
+                                                int days = (Convert.ToInt32(nCantPagar.Value)) * 7;
+                                                pPago0.Date.AddDays(days);
+                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.AddDays(days).ToString("dd-MM-yyyy");
+                                                txtProximoPAgo.Text = Convert.ToString(pPago0.Date.AddDays(days));
                                             }
                                             else
                                             {
                                                 // sin mora pago semanal VIP student
                                                 double mora = 0;
                                                 mora = mora * (Convert.ToInt32(nCantPagar.Value));
+                                                lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
                                                 double pagoM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal);
                                                 pagoM = pagoM * (Convert.ToInt32(nCantPagar.Value));
                                                 double totalpagar = mora + pagoM;
                                                 lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalpagar.ToString("f2");
                                                 txtTotalaPagar.Text = totalpagar.ToString("f2");
-                                                pPago0.AddMonths(7 * (Convert.ToInt32(nCantPagar.Value)));
-                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.ToString("dd-MM-yyyy");
-                                                txtProximoPAgo.Text = Convert.ToString(pPago0.AddMonths(7 * (Convert.ToInt32(nCantPagar.Value))));
+                                                int days = (Convert.ToInt32(nCantPagar.Value)) * 7;
+                                                pPago0.Date.AddDays(days);
+                                                lblProximoPago.Text = lblProximoPago.Text + " " + pPago0.Date.AddDays(days).ToString("dd-MM-yyyy");
+                                                txtProximoPAgo.Text = Convert.ToString(pPago0.Date.AddDays(days));
                                             }
                                         }
                                     }
