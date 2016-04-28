@@ -377,6 +377,10 @@ namespace Cely_Sistema
         }
         private void LimpiarM()
         {
+            MesesSemanasRestan = 0;
+            cantMesesSemanasPagos = 0;
+            devuelta = 0;
+            pagoCon = 0;
             descM = 0;
             txtMatricula.Clear();
             desc = 0;
@@ -432,6 +436,7 @@ namespace Cely_Sistema
         }
 
         public Ganancias pGSeleccionada { get; set; }
+        private double pagoCon, devuelta, cantMesesSemanasPagos, MesesSemanasRestan;
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Esta seguro que desea registrar la factura?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
@@ -460,6 +465,11 @@ namespace Cely_Sistema
                             MessageBox.Show("No se ha Cargado un Estudiante, Digite una Matricula valida", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             txtMatricula.Focus();
                         }
+                        else if(txtCantPagar.Text == string.Empty)
+                        {
+                            MessageBox.Show("No se ha digitado la moneda con la que se pagara", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtCantPagar.Focus();
+                        }
                         else if(EstudianteDB.ObtenerApellido(int.Parse(txtMatricula.Text)) != null)
                         {
 
@@ -472,8 +482,42 @@ namespace Cely_Sistema
                             pFactura.Fecha_Factura = DateTime.Today.Date.ToString("yyyy-MM-dd");
                             pFactura.Cancelacion_Pago = "0";
 
-                            int Factura = FacturacionDB.CrearFactura(pFactura);
+                            // calculo de la devuelta
+                            pagoCon = Convert.ToDouble(txtCantPagar.Text);
 
+                            devuelta = pagoCon - (Convert.ToDouble(txtTotalaPagar.Text));
+                            int Factura = -1;
+
+                            if (devuelta >= 0)
+                            {
+                                Factura = FacturacionDB.CrearFactura(pFactura);
+                            }
+                            else
+                            {
+                                MessageBox.Show("La cantidad con la que se pagara es menol que el total a pagar, digite una cantidad valida", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                txtTotalaPagar.Clear();
+                                txtTotalaPagar.Focus();
+                            }
+
+                            // calculo semanas restantes
+                            string MP = EstudianteDB.ObtenerModoPago(int.Parse(txtMatricula.Text));
+                            cantMesesSemanasPagos = Convert.ToInt32(nCantPagar.Value);
+                            if (MP == "M" || MP == "Mensual")
+                            {
+                                MesesSemanasRestan = MesesP - cantMesesSemanasPagos;
+                                if(MesesSemanasRestan <= 0)
+                                {
+                                    MesesSemanasRestan = 0;
+                                }
+                            }
+                            else
+                            {
+                                MesesSemanasRestan = semanasP - cantMesesSemanasPagos;
+                                if (MesesSemanasRestan <= 0)
+                                {
+                                    MesesSemanasRestan = 0;
+                                }
+                            }
 
                             if (Factura > 0)
                             {
@@ -530,7 +574,7 @@ namespace Cely_Sistema
 
                                 if (codigo != null & ultimop > 0 & PP > 0 & retorno1 > 0)
                                 {
-                                    MessageBox.Show("Codigo Factura: " + codigo, "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("Codigo Factura: " + codigo + "\n" + "Devuelta: " + devuelta.ToString("f2") + "\n" + "Cant Pendiente: " + MesesSemanasRestan.ToString("f0"), "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     lblAnularPago.Visible = false;
                                     if (MessageBox.Show("Desea Imprimir la Factura?", "Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                     {
@@ -902,7 +946,6 @@ namespace Cely_Sistema
             cantPagar = Convert.ToInt32(nCantPagar.Value);
             if (txtNombre.Text == null || txtMatricula.Text == null || txtMatricula.Text == string.Empty || txtNombre.Text == string.Empty)
             {
-                MessageBox.Show("No se ha cargado un Estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -1111,8 +1154,8 @@ namespace Cely_Sistema
                                                     mora = (mora - (descM)) * (Convert.ToInt32(cantPagar));
                                                 }
                                                 lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
-                                                pagoM = pagoM * (Convert.ToInt32(cantPagar));
-                                                double totalpagar = mora + pagoM;
+                                                pagoS = pagoS * (Convert.ToInt32(cantPagar));
+                                                double totalpagar = mora + pagoS;
                                                 lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalpagar.ToString("f2");
                                                 txtTotalaPagar.Text = totalpagar.ToString("f2");
                                                 int days = (Convert.ToInt32(cantPagar)) * 7;
@@ -1129,8 +1172,8 @@ namespace Cely_Sistema
                                                 double mora = 0;
                                                 mora = mora * (Convert.ToInt32(cantPagar));
                                                 lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
-                                                pagoM = pagoM * (Convert.ToInt32(cantPagar));
-                                                double totalpagar = mora + pagoM;
+                                                pagoS = pagoS * (Convert.ToInt32(cantPagar));
+                                                double totalpagar = mora + pagoS;
                                                 lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalpagar.ToString("f2");
                                                 txtTotalaPagar.Text = totalpagar.ToString("f2");
                                                 int days = (Convert.ToInt32(cantPagar)) * 7;
