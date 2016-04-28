@@ -488,16 +488,6 @@ namespace Cely_Sistema
                             devuelta = pagoCon - (Convert.ToDouble(txtTotalaPagar.Text));
                             int Factura = -1;
 
-                            if (devuelta >= 0)
-                            {
-                                Factura = FacturacionDB.CrearFactura(pFactura);
-                            }
-                            else
-                            {
-                                MessageBox.Show("La cantidad con la que se pagara es menol que el total a pagar, digite una cantidad valida", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                txtTotalaPagar.Clear();
-                                txtTotalaPagar.Focus();
-                            }
 
                             // calculo semanas restantes
                             string MP = EstudianteDB.ObtenerModoPago(int.Parse(txtMatricula.Text));
@@ -517,6 +507,18 @@ namespace Cely_Sistema
                                 {
                                     MesesSemanasRestan = 0;
                                 }
+                            }
+
+                            // evaluation for facturas
+                            if (devuelta >= 0)
+                            {
+                                Factura = FacturacionDB.CrearFactura(pFactura, Convert.ToInt32(MesesSemanasRestan.ToString("f0")), int.Parse(txtCantPagar.Text), Convert.ToDouble(devuelta.ToString("f2")), Convert.ToInt32(nCantPagar.Value));
+                            }
+                            else
+                            {
+                                MessageBox.Show("La cantidad con la que se pagara es menol que el total a pagar, digite una cantidad valida", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                txtTotalaPagar.Clear();
+                                txtTotalaPagar.Focus();
                             }
 
                             if (Factura > 0)
@@ -633,7 +635,7 @@ namespace Cely_Sistema
                         pF.Razon_Pago = txtMotivodePago.Text;
                         pF.Fecha_Factura = DateTime.Now.Date.ToString("yyyy-MM-dd");
                         pF.Cancelacion_Pago = "0";
-                        int R = FacturacionDB.CrearFactura(pF);
+                        int R = FacturacionDB.CrearFactura(pF, 0, 0, 0, 0);
                         if (R > 0)
                         {
                             string G = GananciasDB.ObtenerCantidad(DateTime.Today.Date.Date.ToString("yyyy-MM-dd"));
@@ -772,6 +774,14 @@ namespace Cely_Sistema
             }
         }
 
+        private void txtCantPagar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                btnAceptar.Focus();
+            }
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -887,7 +897,7 @@ namespace Cely_Sistema
                         pF.Precio = 0.00;
                         pF.Razon_Pago = "PAGO ANULADO";
 
-                        int R1 = FacturacionDB.CrearFactura(pF);
+                        int R1 = FacturacionDB.CrearFactura(pF, 0, 0, 0, 0);
                         if (R1 > 0 & R0 > 0)
                         {
                             MessageBox.Show("Pago Anulado!", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -909,7 +919,7 @@ namespace Cely_Sistema
                         pF.Precio = 0.00;
                         pF.Razon_Pago = "PAGO ANULADO";
 
-                        int R1 = FacturacionDB.CrearFactura(pF);
+                        int R1 = FacturacionDB.CrearFactura(pF, 0, 0, 0, 0);
                         if (R1 > 0 & R0 > 0)
                         {
                             MessageBox.Show("Pago Anulado!", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);

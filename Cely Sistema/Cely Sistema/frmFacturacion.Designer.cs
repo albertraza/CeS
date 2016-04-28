@@ -415,6 +415,7 @@
             this.txtCantPagar.Name = "txtCantPagar";
             this.txtCantPagar.Size = new System.Drawing.Size(100, 22);
             this.txtCantPagar.TabIndex = 28;
+            this.txtCantPagar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantPagar_KeyPress);
             // 
             // lblAnularPago
             // 
