@@ -666,7 +666,7 @@ namespace Cely_Sistema
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                cbD_Idioma.Focus();
+                txtRespuesta1.Focus();
             }
         }
 
@@ -674,7 +674,7 @@ namespace Cely_Sistema
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                rbMensual.Focus();
+                cbN_Academico.Focus();
             }
         }
 
@@ -682,7 +682,7 @@ namespace Cely_Sistema
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                btnRegistrar.Focus();
+                cbVIP.Focus();
             }
         }
 
@@ -691,6 +691,59 @@ namespace Cely_Sistema
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 rbSemanal.Focus();
+            }
+        }
+
+        private void gbEstudiante_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTelefono_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                txtCelular.Focus();
+            }
+        }
+
+        private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                cbD_Idioma.Focus();
+            }
+        }
+
+        private void cbD_Idioma_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                txtEdad.Focus();
+            }
+        }
+
+        private void txtRespuesta2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                rbMensual.Focus();
+            }
+        }
+
+        private void txtRespuesta1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                txtRespuesta2.Focus();
+            }
+        }
+
+        private void cbVIP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                btnRegistrar.Focus();
             }
         }
     }

@@ -51,7 +51,6 @@
             this.txtSector = new System.Windows.Forms.TextBox();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.lblDominioDelIdioma = new System.Windows.Forms.Label();
             this.lblNivelAcademico = new System.Windows.Forms.Label();
             this.lblFechaActual = new System.Windows.Forms.Label();
@@ -61,6 +60,11 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.gbEstudiante = new System.Windows.Forms.GroupBox();
+            this.txtCelular = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
+            this.lblCelular = new System.Windows.Forms.Label();
+            this.gbVIP = new System.Windows.Forms.GroupBox();
+            this.cbVIP = new System.Windows.Forms.CheckBox();
             this.cbN_Academico = new System.Windows.Forms.ComboBox();
             this.cbD_Idioma = new System.Windows.Forms.ComboBox();
             this.pModoPago = new System.Windows.Forms.Panel();
@@ -76,15 +80,17 @@
             this.celyDBDataSet = new Cely_Sistema.CelyDBDataSet();
             this.verGruposwHorarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.verGruposwHorarioTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter();
-            this.gbVIP = new System.Windows.Forms.GroupBox();
-            this.cbVIP = new System.Windows.Forms.CheckBox();
+            this.lblPregunta1 = new System.Windows.Forms.Label();
+            this.txtRespuesta1 = new System.Windows.Forms.TextBox();
+            this.txtRespuesta2 = new System.Windows.Forms.TextBox();
+            this.lblPregunta2 = new System.Windows.Forms.Label();
             this.gbEstudiante.SuspendLayout();
+            this.gbVIP.SuspendLayout();
             this.pModoPago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.celyDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.verGruposwHorarioBindingSource)).BeginInit();
-            this.gbVIP.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNombre
@@ -252,31 +258,23 @@
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(13, 342);
+            this.btnRegistrar.Location = new System.Drawing.Point(18, 467);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(75, 23);
-            this.btnRegistrar.TabIndex = 2;
+            this.btnRegistrar.TabIndex = 0;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = true;
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(412, 342);
+            this.btnCancelar.Location = new System.Drawing.Point(417, 467);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(78, 204);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(84, 20);
-            this.txtTelefono.TabIndex = 8;
-            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // lblDominioDelIdioma
             // 
@@ -290,7 +288,7 @@
             // lblNivelAcademico
             // 
             this.lblNivelAcademico.AutoSize = true;
-            this.lblNivelAcademico.Location = new System.Drawing.Point(167, 207);
+            this.lblNivelAcademico.Location = new System.Drawing.Point(23, 283);
             this.lblNivelAcademico.Name = "lblNivelAcademico";
             this.lblNivelAcademico.Size = new System.Drawing.Size(90, 13);
             this.lblNivelAcademico.TabIndex = 38;
@@ -324,36 +322,43 @@
             // lblBuscarAlumno
             // 
             this.lblBuscarAlumno.AutoSize = true;
-            this.lblBuscarAlumno.Location = new System.Drawing.Point(884, 352);
+            this.lblBuscarAlumno.Location = new System.Drawing.Point(517, 472);
             this.lblBuscarAlumno.Name = "lblBuscarAlumno";
             this.lblBuscarAlumno.Size = new System.Drawing.Size(78, 13);
-            this.lblBuscarAlumno.TabIndex = 6;
+            this.lblBuscarAlumno.TabIndex = 4;
             this.lblBuscarAlumno.TabStop = true;
             this.lblBuscarAlumno.Text = "Buscar Alumno";
             this.lblBuscarAlumno.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblBuscarAlumno_LinkClicked);
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(147, 342);
+            this.btnModificar.Location = new System.Drawing.Point(152, 467);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
-            this.btnModificar.TabIndex = 3;
+            this.btnModificar.TabIndex = 1;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(288, 342);
+            this.btnEliminar.Location = new System.Drawing.Point(293, 467);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // gbEstudiante
             // 
+            this.gbEstudiante.Controls.Add(this.txtRespuesta2);
+            this.gbEstudiante.Controls.Add(this.lblPregunta2);
+            this.gbEstudiante.Controls.Add(this.txtRespuesta1);
+            this.gbEstudiante.Controls.Add(this.lblPregunta1);
+            this.gbEstudiante.Controls.Add(this.txtCelular);
+            this.gbEstudiante.Controls.Add(this.txtTelefono);
+            this.gbEstudiante.Controls.Add(this.lblCelular);
             this.gbEstudiante.Controls.Add(this.gbVIP);
             this.gbEstudiante.Controls.Add(this.cbN_Academico);
             this.gbEstudiante.Controls.Add(this.cbD_Idioma);
@@ -374,7 +379,6 @@
             this.gbEstudiante.Controls.Add(this.lblDireccion);
             this.gbEstudiante.Controls.Add(this.lblDominioDelIdioma);
             this.gbEstudiante.Controls.Add(this.txtDireccion);
-            this.gbEstudiante.Controls.Add(this.txtTelefono);
             this.gbEstudiante.Controls.Add(this.lblOcupacion);
             this.gbEstudiante.Controls.Add(this.txtOcupacion);
             this.gbEstudiante.Controls.Add(this.txtEmail);
@@ -382,10 +386,58 @@
             this.gbEstudiante.Controls.Add(this.lblSector);
             this.gbEstudiante.Location = new System.Drawing.Point(13, 28);
             this.gbEstudiante.Name = "gbEstudiante";
-            this.gbEstudiante.Size = new System.Drawing.Size(384, 308);
+            this.gbEstudiante.Size = new System.Drawing.Size(384, 433);
             this.gbEstudiante.TabIndex = 0;
             this.gbEstudiante.TabStop = false;
             this.gbEstudiante.Text = "Estudiante";
+            this.gbEstudiante.Enter += new System.EventHandler(this.gbEstudiante_Enter);
+            // 
+            // txtCelular
+            // 
+            this.txtCelular.Location = new System.Drawing.Point(231, 204);
+            this.txtCelular.Mask = "(999) 000-0000";
+            this.txtCelular.Name = "txtCelular";
+            this.txtCelular.Size = new System.Drawing.Size(100, 20);
+            this.txtCelular.TabIndex = 9;
+            this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelular_KeyPress);
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(78, 204);
+            this.txtTelefono.Mask = "(999) 000-0000";
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefono.TabIndex = 8;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress_1);
+            // 
+            // lblCelular
+            // 
+            this.lblCelular.AutoSize = true;
+            this.lblCelular.Location = new System.Drawing.Point(187, 207);
+            this.lblCelular.Name = "lblCelular";
+            this.lblCelular.Size = new System.Drawing.Size(42, 13);
+            this.lblCelular.TabIndex = 48;
+            this.lblCelular.Text = "Celular:";
+            // 
+            // gbVIP
+            // 
+            this.gbVIP.Controls.Add(this.cbVIP);
+            this.gbVIP.Location = new System.Drawing.Point(283, 397);
+            this.gbVIP.Name = "gbVIP";
+            this.gbVIP.Size = new System.Drawing.Size(56, 33);
+            this.gbVIP.TabIndex = 46;
+            this.gbVIP.TabStop = false;
+            this.gbVIP.Text = "VIP";
+            // 
+            // cbVIP
+            // 
+            this.cbVIP.AutoSize = true;
+            this.cbVIP.Location = new System.Drawing.Point(18, 13);
+            this.cbVIP.Name = "cbVIP";
+            this.cbVIP.Size = new System.Drawing.Size(15, 14);
+            this.cbVIP.TabIndex = 0;
+            this.cbVIP.UseVisualStyleBackColor = true;
+            this.cbVIP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbVIP_KeyPress);
             // 
             // cbN_Academico
             // 
@@ -393,11 +445,12 @@
             this.cbN_Academico.Items.AddRange(new object[] {
             "Estudiante",
             "Universitario",
-            "Profesional"});
-            this.cbN_Academico.Location = new System.Drawing.Point(258, 203);
+            "Profesional",
+            "Otros"});
+            this.cbN_Academico.Location = new System.Drawing.Point(114, 279);
             this.cbN_Academico.Name = "cbN_Academico";
             this.cbN_Academico.Size = new System.Drawing.Size(103, 21);
-            this.cbN_Academico.TabIndex = 9;
+            this.cbN_Academico.TabIndex = 12;
             this.cbN_Academico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbN_Academico_KeyPress);
             // 
             // cbD_Idioma
@@ -406,18 +459,20 @@
             this.cbD_Idioma.Items.AddRange(new object[] {
             "Basico",
             "Intermedio",
-            "Avazado"});
+            "Avazado",
+            "Ninguno"});
             this.cbD_Idioma.Location = new System.Drawing.Point(122, 239);
             this.cbD_Idioma.Name = "cbD_Idioma";
             this.cbD_Idioma.Size = new System.Drawing.Size(103, 21);
             this.cbD_Idioma.TabIndex = 10;
+            this.cbD_Idioma.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbD_Idioma_KeyPress);
             // 
             // pModoPago
             // 
             this.pModoPago.Controls.Add(this.lblMododePago);
             this.pModoPago.Controls.Add(this.rbMensual);
             this.pModoPago.Controls.Add(this.rbSemanal);
-            this.pModoPago.Location = new System.Drawing.Point(23, 266);
+            this.pModoPago.Location = new System.Drawing.Point(26, 401);
             this.pModoPago.Name = "pModoPago";
             this.pModoPago.Size = new System.Drawing.Size(245, 26);
             this.pModoPago.TabIndex = 45;
@@ -461,7 +516,7 @@
             this.dgvNiveles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNiveles.Location = new System.Drawing.Point(6, 76);
             this.dgvNiveles.Name = "dgvNiveles";
-            this.dgvNiveles.Size = new System.Drawing.Size(544, 197);
+            this.dgvNiveles.Size = new System.Drawing.Size(544, 351);
             this.dgvNiveles.TabIndex = 4;
             // 
             // gbNiveles
@@ -475,7 +530,7 @@
             this.gbNiveles.Controls.Add(this.lblNivel);
             this.gbNiveles.Location = new System.Drawing.Point(412, 28);
             this.gbNiveles.Name = "gbNiveles";
-            this.gbNiveles.Size = new System.Drawing.Size(566, 279);
+            this.gbNiveles.Size = new System.Drawing.Size(566, 433);
             this.gbNiveles.TabIndex = 1;
             this.gbNiveles.TabStop = false;
             this.gbNiveles.Text = "Niveles";
@@ -531,30 +586,45 @@
             // 
             this.verGruposwHorarioTableAdapter.ClearBeforeFill = true;
             // 
-            // gbVIP
+            // lblPregunta1
             // 
-            this.gbVIP.Controls.Add(this.cbVIP);
-            this.gbVIP.Location = new System.Drawing.Point(280, 262);
-            this.gbVIP.Name = "gbVIP";
-            this.gbVIP.Size = new System.Drawing.Size(56, 33);
-            this.gbVIP.TabIndex = 46;
-            this.gbVIP.TabStop = false;
-            this.gbVIP.Text = "VIP";
+            this.lblPregunta1.AutoSize = true;
+            this.lblPregunta1.Location = new System.Drawing.Point(111, 317);
+            this.lblPregunta1.Name = "lblPregunta1";
+            this.lblPregunta1.Size = new System.Drawing.Size(141, 13);
+            this.lblPregunta1.TabIndex = 51;
+            this.lblPregunta1.Text = "¿Ha estudiado ingles antes?";
             // 
-            // cbVIP
+            // txtRespuesta1
             // 
-            this.cbVIP.AutoSize = true;
-            this.cbVIP.Location = new System.Drawing.Point(18, 13);
-            this.cbVIP.Name = "cbVIP";
-            this.cbVIP.Size = new System.Drawing.Size(15, 14);
-            this.cbVIP.TabIndex = 0;
-            this.cbVIP.UseVisualStyleBackColor = true;
+            this.txtRespuesta1.Location = new System.Drawing.Point(32, 333);
+            this.txtRespuesta1.Name = "txtRespuesta1";
+            this.txtRespuesta1.Size = new System.Drawing.Size(337, 20);
+            this.txtRespuesta1.TabIndex = 13;
+            this.txtRespuesta1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRespuesta1_KeyPress);
+            // 
+            // txtRespuesta2
+            // 
+            this.txtRespuesta2.Location = new System.Drawing.Point(32, 377);
+            this.txtRespuesta2.Name = "txtRespuesta2";
+            this.txtRespuesta2.Size = new System.Drawing.Size(337, 20);
+            this.txtRespuesta2.TabIndex = 14;
+            this.txtRespuesta2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRespuesta2_KeyPress);
+            // 
+            // lblPregunta2
+            // 
+            this.lblPregunta2.AutoSize = true;
+            this.lblPregunta2.Location = new System.Drawing.Point(114, 361);
+            this.lblPregunta2.Name = "lblPregunta2";
+            this.lblPregunta2.Size = new System.Drawing.Size(115, 13);
+            this.lblPregunta2.TabIndex = 53;
+            this.lblPregunta2.Text = "¿Donde ha estudiado?";
             // 
             // frmRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 388);
+            this.ClientSize = new System.Drawing.Size(990, 502);
             this.Controls.Add(this.gbNiveles);
             this.Controls.Add(this.gbEstudiante);
             this.Controls.Add(this.btnEliminar);
@@ -571,6 +641,8 @@
             this.Load += new System.EventHandler(this.frmRegistro_Load);
             this.gbEstudiante.ResumeLayout(false);
             this.gbEstudiante.PerformLayout();
+            this.gbVIP.ResumeLayout(false);
+            this.gbVIP.PerformLayout();
             this.pModoPago.ResumeLayout(false);
             this.pModoPago.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).EndInit();
@@ -578,8 +650,6 @@
             this.gbNiveles.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.celyDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.verGruposwHorarioBindingSource)).EndInit();
-            this.gbVIP.ResumeLayout(false);
-            this.gbVIP.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -608,7 +678,6 @@
         private System.Windows.Forms.TextBox txtSector;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label lblDominioDelIdioma;
         private System.Windows.Forms.Label lblNivelAcademico;
         private System.Windows.Forms.Label lblFechaActual;
@@ -635,5 +704,12 @@
         private System.Windows.Forms.ComboBox cbD_Idioma;
         private System.Windows.Forms.GroupBox gbVIP;
         private System.Windows.Forms.CheckBox cbVIP;
+        private System.Windows.Forms.MaskedTextBox txtCelular;
+        private System.Windows.Forms.MaskedTextBox txtTelefono;
+        private System.Windows.Forms.Label lblCelular;
+        private System.Windows.Forms.TextBox txtRespuesta2;
+        private System.Windows.Forms.Label lblPregunta2;
+        private System.Windows.Forms.TextBox txtRespuesta1;
+        private System.Windows.Forms.Label lblPregunta1;
     }
 }
