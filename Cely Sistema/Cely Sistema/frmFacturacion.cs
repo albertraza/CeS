@@ -139,7 +139,8 @@ namespace Cely_Sistema
                                     {
                                         lblPendientes.ForeColor = Color.Black;
                                         semanasP = 0;
-                                        lblPendientes.Text = "Semanas Pensientes: 0";
+                                        lblPendientes.Text = "Semanas Pendientes: 0";
+                                        nCantPagar.Value = Convert.ToInt32(semanasP + 1);
                                         lblMesesoSemanas.Text = "Semanas";
                                         rbPago.Text = "Pago Semanal";
                                         txtMotivodePago.Text = "Pago Semanal";
