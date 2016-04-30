@@ -113,6 +113,7 @@ namespace Cely_Sistema
                                     else
                                     {
                                         MesesP = 0;
+                                        lblPendientes.ForeColor = Color.Black;
                                         lblPendientes.Text = "Meses Pendientes: 0";
                                         lblMesesoSemanas.Text = "Meses";
                                         nCantPagar.Value = 1;
@@ -136,6 +137,7 @@ namespace Cely_Sistema
                                     }
                                     else
                                     {
+                                        lblPendientes.ForeColor = Color.Black;
                                         semanasP = 0;
                                         lblPendientes.Text = "Semanas Pensientes: 0";
                                         lblMesesoSemanas.Text = "Semanas";
@@ -164,6 +166,7 @@ namespace Cely_Sistema
                                     }
                                     else
                                     {
+                                        lblPendientes.ForeColor = Color.Black;
                                         MesesP = 0;
                                         lblPendientes.Text = "Meses Pendientes: 0";
                                         lblMesesoSemanas.Text = "Meses";
@@ -188,6 +191,7 @@ namespace Cely_Sistema
                                     }
                                     else
                                     {
+                                        lblPendientes.ForeColor = Color.Black;
                                         semanasP = 0;
                                         lblPendientes.Text = "Semanas Pendientes: 0";
                                         lblMesesoSemanas.Text = "Semanas";
@@ -780,6 +784,11 @@ namespace Cely_Sistema
             {
                 btnAceptar.Focus();
             }
+        }
+
+        private void gbInformacionEstudiante_Enter(object sender, EventArgs e)
+        {
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

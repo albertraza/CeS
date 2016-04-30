@@ -64,6 +64,8 @@ namespace Cely_Sistema
                     txtCelular.Text = EstudianteSeleccionado.Celular;
                     txtRespuesta1.Text = EstudianteSeleccionado.Respuesta1;
                     txtRespuesta2.Text = EstudianteSeleccionado.Respuesta2;
+                    CodigoNivelAnterior = EstudianteSeleccionado.Codigo_Grupo;
+                    pGrupoAnteriol = GruposDB.ObtenerGrupos(EstudianteSeleccionado.Codigo_Grupo);
                     dtpFechaActual.Value = Convert.ToDateTime(EstudianteSeleccionado.Fecha_Ins);
                     dtpFechaNacimiento.Value = Convert.ToDateTime(EstudianteSeleccionado.Fecha_N);
                     dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
@@ -307,7 +309,7 @@ namespace Cely_Sistema
                     dtpFechaActual.Value = Convert.ToDateTime(pBusqueda.EstudianteSeleccionado.Fecha_Ins);
                     dtpFechaNacimiento.Value = Convert.ToDateTime(pBusqueda.EstudianteSeleccionado.Fecha_N);
                     CodigoNivelAnterior = pBusqueda.EstudianteSeleccionado.Codigo_Grupo;
-                    getGrupoAnteriol();
+                    pGrupoAnteriol = GruposDB.ObtenerGrupos(pBusqueda.EstudianteSeleccionado.Codigo_Grupo);
 
                     if(pBusqueda.EstudianteSeleccionado.Modo_Pago == "Mensual")
                     {
@@ -449,7 +451,6 @@ namespace Cely_Sistema
                     pEstudiante.Respuesta1 = txtRespuesta1.Text;
                     pEstudiante.Respuesta2 = txtRespuesta2.Text;
                     pEstudiante.Celular = txtCelular.Text;
-                    pEstudiante.Codigo_Grupo = pGrupoAnteriol.ID;
 
                     if (rbMensual.Checked == true)
                     {
@@ -469,7 +470,7 @@ namespace Cely_Sistema
                     }
                     else if (pGrupoAnteriol.ID != 0)
                     {
-                        pEstudiante.Codigo_Grupo = pGrupoAnteriol.ID;
+                        pEstudiante.Codigo_Grupo = CodigoNivelAnterior;
                         retorno = EstudianteDB.Modificar(pEstudiante);
                     }
                     else

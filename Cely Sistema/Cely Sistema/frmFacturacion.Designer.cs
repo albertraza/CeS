@@ -322,6 +322,7 @@
             this.gbInformacionEstudiante.TabIndex = 27;
             this.gbInformacionEstudiante.TabStop = false;
             this.gbInformacionEstudiante.Text = "Informacion Estudiante";
+            this.gbInformacionEstudiante.Enter += new System.EventHandler(this.gbInformacionEstudiante_Enter);
             // 
             // pictureBox1
             // 
