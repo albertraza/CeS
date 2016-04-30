@@ -8,13 +8,14 @@ namespace Cely_Sistema
 {
     public class EstudianteDB
     {
-        public static int RegistrarEstudiante(Estudiante E)
+        public static int RegistrarEstudiante(EstudianteBase E, string Celular, string Respuesta1, string Respuesta2)
         {
             int retorno = 0;
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("execute RegistrarEstudiante '{0}','{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', '{15}'",
-                    E.Nombre, E.Apellido, E.Fecha_N, E.Edad, E.Telefono, E.Fecha_Ins, E.Fecha_N, E.E_Mail, E.Direccion, E.Sector, E.Ocupacion, E.N_Academico, E.D_Idioma, E.NivelA, E.Codigo_Grupo, E.Modo_Pago), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("insert into Estudiantes (Nombre, Apellido, FechaN, Edad, Telefono, FechaA, Email, Direccion, Sector, Ocupacion, NivelA, DominioIdiomaIngles, Nivel, Codigo_Grupo, Modo_Pago, Celular, Respuesta1, Respuesta2)"
+                    + " values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', '{15}', '{16}', '{17}')",
+                    E.Nombre, E.Apellido, E.Fecha_N, E.Edad, E.Telefono, E.Fecha_Ins, E.E_Mail, E.Direccion, E.Sector, E.Ocupacion, E.N_Academico, E.D_Idioma, E.NivelA, E.Codigo_Grupo, E.Modo_Pago, Celular, Respuesta1, Respuesta2), conexion);
 
                 retorno = comando.ExecuteNonQuery();
 
@@ -63,9 +64,9 @@ namespace Cely_Sistema
                 return lista;
             }
         }
-        public static Estudiante SeleccionarEstudiante(Int64 pID)
+        public static EstudianteBase SeleccionarEstudiante(Int64 pID)
         {
-            Estudiante pEstudiante = new Estudiante();
+            EstudianteBase pEstudiante = new EstudianteBase();
 
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
@@ -89,9 +90,12 @@ namespace Cely_Sistema
                     pEstudiante.N_Academico = reader.GetString(11);
                     pEstudiante.D_Idioma = reader.GetString(12);
                     pEstudiante.NivelA = reader.GetString(13);
-                    pEstudiante.Codigo_Grupo = reader.GetInt32(15);
+                    pEstudiante.Codigo_Grupo = Convert.ToInt32(reader["Codigo_Grupo"]);
                     pEstudiante.Modo_Pago = reader.GetString(16);
                     pEstudiante.VIP = reader["VIP"].ToString();
+                    pEstudiante.Respuesta1 = reader["Respuesta1"].ToString();
+                    pEstudiante.Respuesta2 = reader["Respuesta2"].ToString();
+                    pEstudiante.Celular = reader["Celular"].ToString();
 
                 }
                 conexion.Close();
@@ -99,14 +103,14 @@ namespace Cely_Sistema
 
             }
         }
-        public static int Modificar(Estudiante pEstudiante)
+        public static int Modificar(EstudianteBase pEstudiante)
         {
             int retorno = -1;
 
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("update Estudiantes set Nombre = '{0}', Apellido = '{1}', FechaN = '{2}', Edad = '{3}', Telefono = '{4}', FechaA = '{5}', Email = '{6}', Direccion = '{7}', Sector = '{8}', Ocupacion = '{9}', NivelA = '{10}', DominioIdiomaIngles = '{11}', Nivel = '{12}', Codigo_Grupo = {13}, Modo_Pago = '{14}' where ID = {15}",
-                    pEstudiante.Nombre, pEstudiante.Apellido, pEstudiante.Fecha_N, pEstudiante.Edad, pEstudiante.Telefono, pEstudiante.Fecha_Ins, pEstudiante.E_Mail, pEstudiante.Direccion, pEstudiante.Sector, pEstudiante.Ocupacion, pEstudiante.N_Academico, pEstudiante.D_Idioma, pEstudiante.NivelA, pEstudiante.Codigo_Grupo, pEstudiante.Modo_Pago, pEstudiante.ID), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("update Estudiantes set Nombre = '{0}', Apellido = '{1}', FechaN = '{2}', Edad = '{3}', Telefono = '{4}', FechaA = '{5}', Email = '{6}', Direccion = '{7}', Sector = '{8}', Ocupacion = '{9}', NivelA = '{10}', DominioIdiomaIngles = '{11}', Nivel = '{12}', Codigo_Grupo = {13}, Modo_Pago = '{14}', Celular = '{15}', Respuesta1 = '{16}', Respuesta2 = '{17}' where ID = {18}",
+                    pEstudiante.Nombre, pEstudiante.Apellido, pEstudiante.Fecha_N, pEstudiante.Edad, pEstudiante.Telefono, pEstudiante.Fecha_Ins, pEstudiante.E_Mail, pEstudiante.Direccion, pEstudiante.Sector, pEstudiante.Ocupacion, pEstudiante.N_Academico, pEstudiante.D_Idioma, pEstudiante.NivelA, pEstudiante.Codigo_Grupo, pEstudiante.Modo_Pago, pEstudiante.Celular, pEstudiante.Respuesta1, pEstudiante.Respuesta2 , pEstudiante.ID), conexion);
 
                 retorno = comando.ExecuteNonQuery();
                 conexion.Close();
@@ -114,7 +118,7 @@ namespace Cely_Sistema
             return retorno;
         }
 
-        public static int EliminarEstudiante(Estudiante pEstudiante)
+        public static int EliminarEstudiante(EstudianteBase pEstudiante)
         {
             int retorno = -1;
 
@@ -129,7 +133,7 @@ namespace Cely_Sistema
             return retorno;
         }
 
-        public static string ObtenerMatricula(Estudiante pEstudiante)
+        public static string ObtenerMatricula(EstudianteBase pEstudiante)
         {
             string matricula = null;
             using (SqlConnection conexion = DBcomun.ObetenerConexion())

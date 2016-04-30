@@ -99,6 +99,7 @@
     <Compile Include="Control.cs" />
     <Compile Include="DBcomun.cs" />
     <Compile Include="Estudiante.cs" />
+    <Compile Include="EstudianteBase.cs" />
     <Compile Include="EstudianteDB.cs" />
     <Compile Include="Facturacion.cs" />
     <Compile Include="FacturacionDB.cs" />

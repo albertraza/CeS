@@ -11,10 +11,13 @@ namespace Cely_Sistema
 {
     public partial class frmRegistro : Form
     {
-        public Estudiante EstudianteSeleccionado { get; set; }
+        public EstudianteBase EstudianteSeleccionado { get; set; }
         public Grupos pGS { get; set; }
         public void Limpiar()
         {
+            txtCelular.Clear();
+            txtRespuesta1.Clear();
+            txtRespuesta2.Clear();
             txtNombre.Clear();
             txtApellido.Clear();
             txtDireccion.Clear();
@@ -34,8 +37,8 @@ namespace Cely_Sistema
         {
             InitializeComponent();
         }
-        private Estudiante IDEstudiante;
-        public Estudiante GetIDestudiante
+        private EstudianteBase IDEstudiante;
+        public EstudianteBase GetIDestudiante
         {
             get { return IDEstudiante; }
             set { IDEstudiante = value; }
@@ -58,6 +61,9 @@ namespace Cely_Sistema
                     txtOcupacion.Text = EstudianteSeleccionado.Ocupacion;
                     txtSector.Text = EstudianteSeleccionado.Sector;
                     txtTelefono.Text = EstudianteSeleccionado.Telefono;
+                    txtCelular.Text = EstudianteSeleccionado.Celular;
+                    txtRespuesta1.Text = EstudianteSeleccionado.Respuesta1;
+                    txtRespuesta2.Text = EstudianteSeleccionado.Respuesta2;
                     dtpFechaActual.Value = Convert.ToDateTime(EstudianteSeleccionado.Fecha_Ins);
                     dtpFechaNacimiento.Value = Convert.ToDateTime(EstudianteSeleccionado.Fecha_N);
                     dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
@@ -154,7 +160,7 @@ namespace Cely_Sistema
                     MessageBox.Show("Fecha Vacia, Complete El Campo Fecha de Nacimiento Con la fecha de nacimiento", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dtpFechaNacimiento.Focus();
                 }
-                else if(txtTelefono.Text == string.Empty)
+                else if(!txtTelefono.MaskCompleted)
                 {
                     MessageBox.Show("Telefono Vacio, Complete El Campo Telefono", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtTelefono.Focus();
@@ -184,9 +190,24 @@ namespace Cely_Sistema
                     MessageBox.Show("Nivel Vacio, Complete El Campo Nivel", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtNivel.Focus();
                 }
+                else if (!txtCelular.MaskCompleted)
+                {
+                    MessageBox.Show("Complete el Celular del Estudiante", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCelular.Focus();
+                }
+                else if(txtRespuesta1.Text == string.Empty)
+                {
+                    MessageBox.Show("La respuesta a la pregunta numero 1 esta vacia", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtRespuesta1.Focus();
+                }
+                else if(txtRespuesta2.Text == string.Empty)
+                {
+                    MessageBox.Show("La respuesta a la pregunta numero 2 esta vacia", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtRespuesta2.Focus();
+                }
                 else
                 {
-                    Estudiante pE = new Estudiante();
+                    EstudianteBase pE = new EstudianteBase();
                     pE.Nombre = txtNombre.Text;
                     pE.Apellido = txtApellido.Text;
                     pE.D_Idioma = cbD_Idioma.Text;
@@ -212,7 +233,7 @@ namespace Cely_Sistema
                     }
                     pE.Codigo_Grupo = pGS.ID;
 
-                    int r = EstudianteDB.RegistrarEstudiante(pE);
+                    int r = EstudianteDB.RegistrarEstudiante(pE, txtCelular.Text, txtRespuesta1.Text, txtRespuesta2.Text);
                     if (r > 0)
                     {
                         MessageBox.Show("Estudiante Registrado con exito!", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -280,8 +301,13 @@ namespace Cely_Sistema
                     txtOcupacion.Text = pBusqueda.EstudianteSeleccionado.Ocupacion;
                     txtSector.Text = pBusqueda.EstudianteSeleccionado.Sector;
                     txtTelefono.Text = pBusqueda.EstudianteSeleccionado.Telefono;
+                    txtCelular.Text = pBusqueda.EstudianteSeleccionado.Celular;
+                    txtRespuesta1.Text = pBusqueda.EstudianteSeleccionado.Respuesta1;
+                    txtRespuesta2.Text = pBusqueda.EstudianteSeleccionado.Respuesta2;
                     dtpFechaActual.Value = Convert.ToDateTime(pBusqueda.EstudianteSeleccionado.Fecha_Ins);
                     dtpFechaNacimiento.Value = Convert.ToDateTime(pBusqueda.EstudianteSeleccionado.Fecha_N);
+                    CodigoNivelAnterior = pBusqueda.EstudianteSeleccionado.Codigo_Grupo;
+                    getGrupoAnteriol();
 
                     if(pBusqueda.EstudianteSeleccionado.Modo_Pago == "Mensual")
                     {
@@ -312,7 +338,18 @@ namespace Cely_Sistema
                 MessageBox.Show("Error: " + ex.Message, "Registro Estudiantil", MessageBoxButtons.OK);
             }
         }
-        int CodigoNivelAnterior;
+        private int CodigoNivelAnterior { get; set; }
+        private int codigoNuevoGrupo { get; set; }
+        private Grupos nuevoGrupo { get; set; }
+        private Grupos pGrupoAnteriol { get; set; }
+        private void getGrupoAnteriol()
+        {
+            pGrupoAnteriol = GruposDB.ObtenerGrupos(CodigoNivelAnterior);
+        }
+        private void getNuevoGrupo()
+        {
+            nuevoGrupo = GruposDB.ObtenerGrupos(codigoNuevoGrupo);
+        }
         private void btnModificar_Click(object sender, EventArgs e)
         {
             try
@@ -372,15 +409,28 @@ namespace Cely_Sistema
                     MessageBox.Show("Nivel Vacio, Complete El Campo Nivel", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtNivel.Focus();
                 }
+                else if (!txtCelular.MaskCompleted)
+                {
+                    MessageBox.Show("El Celular esta vacio", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCelular.Focus();
+                }
+                else if (txtRespuesta1.Text == string.Empty)
+                {
+                    MessageBox.Show("La respuesta a la primera pregunta esta vacia, digite una valida", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtRespuesta1.Focus();
+                }
+                else if (txtRespuesta2.Text == string.Empty)
+                {
+                    MessageBox.Show("La respuesta a la segunda pregunta esta vacia", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtRespuesta2.Focus();
+                }
                 else
                 {
                     // *Actualizar canti Nivel* //
                     Int64 ID = EstudianteSeleccionado.ID;
-                    CodigoNivelAnterior = int.Parse(EstudianteDB.ObtenerCodigoNivel(ID));
-
                     // ************************ //
 
-                    Estudiante pEstudiante = new Estudiante();
+                    EstudianteBase pEstudiante = new EstudianteBase();
 
                     pEstudiante.Nombre = txtNombre.Text;
                     pEstudiante.Apellido = txtApellido.Text;
@@ -396,7 +446,11 @@ namespace Cely_Sistema
                     pEstudiante.D_Idioma = cbD_Idioma.Text;
                     pEstudiante.NivelA = txtNivel.Text;
                     pEstudiante.ID = EstudianteSeleccionado.ID;
-                    pGS = GruposDB.ObtenerGrupos(pEstudiante.Codigo_Grupo);
+                    pEstudiante.Respuesta1 = txtRespuesta1.Text;
+                    pEstudiante.Respuesta2 = txtRespuesta2.Text;
+                    pEstudiante.Celular = txtCelular.Text;
+                    pEstudiante.Codigo_Grupo = pGrupoAnteriol.ID;
+
                     if (rbMensual.Checked == true)
                     {
                         pEstudiante.Modo_Pago = rbMensual.Text;
@@ -406,41 +460,35 @@ namespace Cely_Sistema
                         pEstudiante.Modo_Pago = rbSemanal.Text;
                     }
 
-                    if (pGS.ID > 0 || pGS.Aula != null)
+                    int retorno;
+                    // verificar si el codigo del grupo fue canbiado
+                    if (pEstudiante.Codigo_Grupo != codigoNuevoGrupo)
                     {
-                        int retorno = EstudianteDB.Modificar(pEstudiante);
+                        pEstudiante.Codigo_Grupo = codigoNuevoGrupo;
+                        retorno = EstudianteDB.Modificar(pEstudiante);
+                    }
+                    else if (pGrupoAnteriol.ID != 0)
+                    {
+                        pEstudiante.Codigo_Grupo = pGrupoAnteriol.ID;
+                        retorno = EstudianteDB.Modificar(pEstudiante);
+                    }
+                    else
+                    {
+                        MessageBox.Show("El codigo del nivel del estudiante es igual a cero", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        retorno = 0;
+                    }
 
-                        if (retorno > 0)
+                    if (retorno > 0)
+                    {
+                        if (CodigoNivelAnterior != codigoNuevoGrupo & codigoNuevoGrupo != 0 & CodigoNivelAnterior != 0)
                         {
-                            if (CodigoNivelAnterior != pGS.ID)
-                            {
-                                int CantidadEstudiantesGrupoAnt = GruposDB.ObtenerTotalInscritos(CodigoNivelAnterior);
-                                int NuevacantGrupoAnt = CantidadEstudiantesGrupoAnt - 1;
-                                int R0 = GruposDB.ActualizarCantidadEstudiantes(CodigoNivelAnterior, NuevacantGrupoAnt);
-                                int CantEstudiantesNuevoGrupo = GruposDB.ObtenerTotalInscritos(pGS.ID);
-                                int NuevaCantNuevoGrupo = CantEstudiantesNuevoGrupo + 1;
-                                int R1 = GruposDB.ActualizarCantidadEstudiantes(pGS.ID, NuevaCantNuevoGrupo);
-                                if (R1 > 0 & R0 > 0)
-                                {
-                                    MessageBox.Show("Estudiante Modificado con Exito", "Registro de Estudiantes", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    // VIP student
-                                    if (cbVIP.Checked == true)
-                                    {
-                                        EstudianteDB.UpdateVIPstatus("Si", pEstudiante.ID.ToString());
-                                    }
-                                    else
-                                    {
-                                        EstudianteDB.UpdateVIPstatus("No", pEstudiante.ID.ToString());
-                                    }
-                                    Limpiar();
-                                    btnModificar.Visible = false;
-                                    btnEliminar.Visible = false;
-                                    btnRegistrar.Visible = true;
-                                    lblBuscarAlumno.Visible = true;
-                                    pGS.ID = 0;
-                                }
-                            }
-                            else
+                            int CantidadEstudiantesGrupoAnt = GruposDB.ObtenerTotalInscritos(CodigoNivelAnterior);
+                            int NuevacantGrupoAnt = CantidadEstudiantesGrupoAnt - 1;
+                            int R0 = GruposDB.ActualizarCantidadEstudiantes(CodigoNivelAnterior, NuevacantGrupoAnt);
+                            int CantEstudiantesNuevoGrupo = GruposDB.ObtenerTotalInscritos(pGS.ID);
+                            int NuevaCantNuevoGrupo = CantEstudiantesNuevoGrupo + 1;
+                            int R1 = GruposDB.ActualizarCantidadEstudiantes(codigoNuevoGrupo, NuevaCantNuevoGrupo);
+                            if (R1 > 0 & R0 > 0)
                             {
                                 MessageBox.Show("Estudiante Modificado con Exito", "Registro de Estudiantes", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 // VIP student
@@ -459,18 +507,32 @@ namespace Cely_Sistema
                                 lblBuscarAlumno.Visible = true;
                             }
                         }
-                        else
+                        else if (CodigoNivelAnterior != 0)
                         {
-                            MessageBox.Show("No se Pudo Modificar la informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        };
+                            MessageBox.Show("Estudiante Modificado con Exito", "Registro de Estudiantes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // VIP student
+                            if (cbVIP.Checked == true)
+                            {
+                                EstudianteDB.UpdateVIPstatus("Si", pEstudiante.ID.ToString());
+                            }
+                            else
+                            {
+                                EstudianteDB.UpdateVIPstatus("No", pEstudiante.ID.ToString());
+                            }
+                            Limpiar();
+                            btnModificar.Visible = false;
+                            btnEliminar.Visible = false;
+                            btnRegistrar.Visible = true;
+                            lblBuscarAlumno.Visible = true;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Selecciona un Nivel de la tabla", "Registro de estudiantes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("No se Pudo Modificar la informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -524,9 +586,11 @@ namespace Cely_Sistema
                     Int32 ID;
                     ID = Convert.ToInt32(dgvNiveles.CurrentRow.Cells[0].Value);
                     pID = ID;
+                    codigoNuevoGrupo = ID;
                     pGS = GruposDB.ObtenerGrupos(ID);
+                    // obetner el nuevo grupo para modificar el estudiante
+                    getNuevoGrupo();
                     // Obtener cantidad Inscritos
-
                     CantidadInscritos = GruposDB.ObtenerTotalInscritos(ID);
 
 

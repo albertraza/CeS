@@ -11,7 +11,7 @@ namespace Cely_Sistema
 {
     public partial class frmBusquedaDeAlumnos : Form
     {
-        public Estudiante EstudianteSeleccionado { get; set; }
+        public EstudianteBase EstudianteSeleccionado { get; set; }
         public frmBusquedaDeAlumnos()
         {
             InitializeComponent();
