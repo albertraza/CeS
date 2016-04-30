@@ -1041,6 +1041,8 @@ namespace Cely_Sistema
                                             else
                                             {
                                                 // pago mensual no VIP no MORA
+                                                lblPendientes.ForeColor = Color.Black;
+                                                lblMora.ForeColor = Color.Black;
                                                 pagoM = PagosDB.ObtenerPagoMensual();
                                                 pagoM -= desc;
                                                 lblPagoMensual.Text = lblPagoMensual.Text + " " + pagoM.ToString("f2");
@@ -1088,6 +1090,8 @@ namespace Cely_Sistema
                                             else
                                             {
                                                 // pago semanal no VIP no MORA
+                                                lblPendientes.ForeColor = Color.Black;
+                                                lblMora.ForeColor = Color.Black;
                                                 pagoS = PagosDB.ObtenerPagoSemanal();
                                                 pagoS -= desc;
                                                 lblPagoMensual.Text = "Pago Semanal:" + " " + pagoS.ToString("f2");
@@ -1139,6 +1143,8 @@ namespace Cely_Sistema
                                             else
                                             {
                                                 // pago mensual VIP No mora
+                                                lblPendientes.ForeColor = Color.Black;
+                                                lblMora.ForeColor = Color.Black;
                                                 pagoM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);
                                                 pagoM -= desc;
                                                 lblPagoMensual.Text = lblPagoMensual.Text + " " + pagoM.ToString("f2");
@@ -1185,6 +1191,8 @@ namespace Cely_Sistema
                                             else
                                             {
                                                 // sin mora pago semanal VIP student
+                                                lblPendientes.ForeColor = Color.Black;
+                                                lblMora.ForeColor = Color.Black;
                                                 pagoS = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal);
                                                 pagoS -= desc;
                                                 lblPagoMensual.Text = "Pago Semanal:" + " " + pagoS.ToString("f2");
