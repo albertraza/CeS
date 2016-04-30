@@ -318,6 +318,11 @@
     <Compile Include="ProfesoresDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporting.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios.cs" />
     <Compile Include="UsuariosB.cs" />
     <Compile Include="UsuariosDB.cs" />
@@ -460,6 +465,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Reporting.xsc">
+      <DependentUpon>Reporting.xsd</DependentUpon>
+    </None>
+    <None Include="Reporting.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Reporting.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reporting.xss">
+      <DependentUpon>Reporting.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="CELI.ico" />
