@@ -254,6 +254,8 @@ namespace Cely_Sistema
                                 string res = "No";
                                 EstudianteDB.UpdateVIPstatus(res, matricula.ToString());
                             }
+
+                            // Analizis de la fecha de pago para el Estudiante
                             string FechaProximoP = FechaPP.ToString("yyyy-MM-dd");
                             EstudianteDB.ActualizarProximoPago(int.Parse(matricula), FechaProximoP);
                             /* Datos para registrar Asistencia */
@@ -601,15 +603,33 @@ namespace Cely_Sistema
                     FI = FechaI;
 
                     FechaA = DateTime.Today;
+
+                    double comp;
+                    
                     if (rbMensual.Checked == true)
                     {
-                        FechaPP = FechaI.AddMonths(1);
+                        comp = (FechaA - FechaI).TotalDays / 30;
+                        if (comp <= 0)
+                        {
+                            FechaPP = FechaI.AddMonths(1);
+                        }
+                        else
+                        {
+                            FechaPP = FechaA.AddMonths(1);
+                        }
                     }
-                    else
+                    else if (rbSemanal.Checked)
                     {
-                        FechaPP = FechaI.AddDays(7);
+                        comp = (FechaA - FechaI).TotalDays / 7;
+                        if (comp <= 0)
+                        {
+                            FechaPP = FechaI.AddDays(7);
+                        }
+                        else
+                        {
+                            FechaPP = FechaA.AddDays(7);
+                        }
                     }
-
                     if (pGS != null)
                     {
                         txtNivel.Text = pGS.Nivel;
