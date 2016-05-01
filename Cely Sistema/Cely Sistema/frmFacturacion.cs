@@ -576,7 +576,7 @@ namespace Cely_Sistema
                                 MessageBox.Show("Factura Creada con Exito", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 string codigo = FacturacionDB.ObtenerCodigo(pFactura);
                                 int ultimop = EstudianteDB.UltimoPago(pFactura.Fecha_Factura, pFactura.Matricula_Estudiante);
-                                int PP = EstudianteDB.ActualizarProximoPago(Convert.ToInt32(txtMatricula.Text), txtProximoPAgo.Text);
+                                int PP = EstudianteDB.ActualizarProximoPago(Convert.ToInt32(txtMatricula.Text), Convert.ToDateTime(txtProximoPAgo.Text).ToString("yyyy-MM-dd"));
                                 int retorno1 = FacturacionDB.ActualizarFechaPAgoAnterior(int.Parse(codigo), pPagoA.Date.ToString("yyyy-MM-dd"));
 
                                 if (codigo != null & ultimop > 0 & PP > 0 & retorno1 > 0)
@@ -1050,7 +1050,6 @@ namespace Cely_Sistema
                                                 double mora = 0;
                                                 mora = mora * (Convert.ToInt32(MesesP));
                                                 lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
-                                                pagoM = Convert.ToDouble(PagosDB.ObtenerPagoMensual());
                                                 pagoM = pagoM * (Convert.ToInt32(cantPagar));
                                                 double totalpagar = mora + pagoM;
                                                 lblTotalaPagar.Text = lblTotalaPagar.Text + " " + totalpagar.ToString("f2");
