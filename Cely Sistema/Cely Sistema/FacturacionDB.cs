@@ -57,7 +57,7 @@ namespace Cely_Sistema
                     pFactura.Matricula_Estudiante = reader.GetInt32(0);
                     pFactura.Nombre_Estudiante = reader.GetString(1);
                     pFactura.Precio = Convert.ToDouble(reader.GetValue(2));
-                    pFactura.Fecha_Factura = reader.GetDateTime(3).ToString();
+                    pFactura.Fecha_Factura = reader.GetDateTime(3).ToLongDateString();
                     pFactura.Razon_Pago = reader.GetString(4);
                     pFactura.Cancelacion_Pago = reader.GetString(5);
                     pFactura.Codigo_Factura = reader.GetInt32(6);
@@ -85,7 +85,7 @@ namespace Cely_Sistema
                     pFactura.Matricula_Estudiante = reader.GetInt32(0);
                     pFactura.Nombre_Estudiante = reader.GetString(1);
                     pFactura.Precio = Convert.ToDouble(reader.GetValue(2));
-                    pFactura.Fecha_Factura = reader.GetDateTime(3).ToString();
+                    pFactura.Fecha_Factura = reader.GetDateTime(3).ToLongDateString();
                     pFactura.Razon_Pago = reader.GetString(4);
                     pFactura.Cancelacion_Pago = reader.GetString(5);
                     pFactura.Codigo_Factura = reader.GetInt32(6);
@@ -113,7 +113,7 @@ namespace Cely_Sistema
                     pFactura.Matricula_Estudiante = reader.GetInt32(0);
                     pFactura.Nombre_Estudiante = reader.GetString(1);
                     pFactura.Precio = Convert.ToDouble(reader.GetValue(2));
-                    pFactura.Fecha_Factura = reader.GetDateTime(3).ToString();
+                    pFactura.Fecha_Factura = reader.GetDateTime(3).ToLongDateString();
                     pFactura.Razon_Pago = reader.GetString(4);
                     pFactura.Cancelacion_Pago = reader.GetString(5);
                     pFactura.Codigo_Factura = reader.GetInt32(6);
@@ -139,7 +139,7 @@ namespace Cely_Sistema
                     pFactura.Matricula_Estudiante = reader.GetInt32(0);
                     pFactura.Nombre_Estudiante = reader.GetString(1);
                     pFactura.Precio = Convert.ToDouble(reader.GetValue(2));
-                    pFactura.Fecha_Factura = reader.GetDateTime(3).ToString();
+                    pFactura.Fecha_Factura = reader.GetDateTime(3).ToLongDateString();
                     pFactura.Razon_Pago = reader.GetString(4);
                     pFactura.Cancelacion_Pago = reader.GetString(5);
                     pFactura.Codigo_Factura = reader.GetInt32(6);
@@ -164,7 +164,7 @@ namespace Cely_Sistema
                     pCP.Matricula = reader.GetInt32(1);
                     pCP.Nombre = reader.GetString(2);
                     pCP.Monto = reader.GetDecimal(3);
-                    pCP.Fecha_Pago = reader.GetDateTime(4).ToString();
+                    pCP.Fecha_Pago = reader.GetDateTime(4).ToLongDateString();
                     list.Add(pCP);
                 }
                 conexion.Close();
@@ -211,6 +211,28 @@ namespace Cely_Sistema
             {
                 SqlCommand comand = new SqlCommand(string.Format("select CancelacionPago from Facturacion where CodigoFacturacion = {0}", pID), con);
                 r = comand.ExecuteScalar().ToString();
+                con.Close();
+            }
+            return r;
+        }
+        public static int ObtenerCantSemanasMesesPagos(int IDF)
+        {
+            int r = 0;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("SELECT CantSemanasMesesPagos FROM Facturacion WHERE CodigoFacturacion = '{0}'", IDF), con);
+                r = int.Parse(comand.ExecuteScalar().ToString());
+                con.Close();
+            }
+            return r; 
+        }
+        public static double ObtenerCantidadPagada(int IDF)
+        {
+            double r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("SELECT Precio FROM Facturacion WHERE CodigoFacturacion = '{0}'", IDF), con);
+                r = Convert.ToDouble(comand.ExecuteScalar());
                 con.Close();
             }
             return r;
