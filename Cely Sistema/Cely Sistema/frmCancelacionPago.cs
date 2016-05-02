@@ -23,7 +23,7 @@ namespace Cely_Sistema
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -52,6 +52,11 @@ namespace Cely_Sistema
             {
                 txtCodigoFactura.Clear();
                 dgvFactura.ClearSelection();
+                txtTotalRemborso.Enabled = false;
+                txtTotalRemborso.Text = "0";
+                nCant.Value = 0;
+                btnCancelarPago.Enabled = false;
+                dgvFactura.DataSource = FacturacionDB.TodasLasFacturasND();
             }
             catch(Exception ex)
             {
@@ -146,6 +151,8 @@ namespace Cely_Sistema
                 try
                 {
                     dgvFactura.DataSource = FacturacionDB.TodasLasFacturasND();
+                    txtTotalRemborso.Enabled = false;
+                    txtTotalRemborso.Text = "0";
                 }
                 catch(Exception ex)
                 {
@@ -171,6 +178,110 @@ namespace Cely_Sistema
                 {
                     MessageBox.Show(ex.Message, "Cancelacion Pago", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
+            }
+        }
+
+        private void lblModificar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtTotalRemborso.Enabled = true;
+        }
+
+        // method for getting data ready when a bill is selected.
+        private void LoadValues()
+        {
+            if (dgvFactura.SelectedRows.Count == 1)
+            {
+                try
+                {
+                    if (txtCodigoFactura.Text != null)
+                    {
+                        Int32 ID = int.Parse(dgvFactura.CurrentRow.Cells[0].Value.ToString());
+                        nCant.Value = FacturacionDB.ObtenerCantSemanasMesesPagos(ID);
+                        double CantPagada = FacturacionDB.ObtenerCantidadPagada(ID);
+                        double pagoMensualSemanal = CantPagada / (FacturacionDB.ObtenerCantSemanasMesesPagos(ID));
+                        int CantRemborso = Convert.ToInt32(nCant.Value);
+                        double totalRemborso = pagoMensualSemanal * CantRemborso;
+                        txtTotalRemborso.Clear();
+                        txtTotalRemborso.Text = totalRemborso.ToString("f2");
+                    }
+                    else
+                    {
+                        Int32 ID = int.Parse(dgvFactura.CurrentRow.Cells[6].Value.ToString());
+                        nCant.Value = FacturacionDB.ObtenerCantSemanasMesesPagos(ID);
+                        double CantPagada = FacturacionDB.ObtenerCantidadPagada(ID);
+                        double pagoMensualSemanal = CantPagada / (FacturacionDB.ObtenerCantSemanasMesesPagos(ID));
+                        int CantRemborso = Convert.ToInt32(nCant.Value);
+                        double totalRemborso = pagoMensualSemanal * CantRemborso;
+                        txtTotalRemborso.Clear();
+                        txtTotalRemborso.Text = totalRemborso.ToString("f2");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una factura de la tabla", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void btnSeleccionarFactura_Click(object sender, EventArgs e)
+        {
+            LoadValues();
+        }
+
+        private void nCant_ValueChanged(object sender, EventArgs e)
+        {
+            if (dgvFactura.SelectedRows.Count == 1)
+            {
+                try
+                {
+                    if (txtCodigoFactura.Text != null)
+                    {
+                        Int32 ID = int.Parse(dgvFactura.CurrentRow.Cells[0].Value.ToString());
+                        double CantPagada = FacturacionDB.ObtenerCantidadPagada(ID);
+                        if (FacturacionDB.ObtenerCantSemanasMesesPagos(ID) >= Convert.ToInt32(nCant.Value))
+                        {
+                            double pagoMensualSemanal = CantPagada / (FacturacionDB.ObtenerCantSemanasMesesPagos(ID));
+                            int CantRemborso = Convert.ToInt32(nCant.Value);
+                            double totalRemborso = pagoMensualSemanal * CantRemborso;
+                            txtTotalRemborso.Clear();
+                            txtTotalRemborso.Text = totalRemborso.ToString("f2");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ya se ha excedido del maximo pagado en ese dia", "Mensaje", MessageBoxButtons.OK);
+                            nCant.Value = Convert.ToInt32(FacturacionDB.ObtenerCantSemanasMesesPagos(ID));
+                        }
+                    }
+                    else
+                    {
+                        Int32 ID = int.Parse(dgvFactura.CurrentRow.Cells[6].Value.ToString());
+                        double CantPagada = FacturacionDB.ObtenerCantidadPagada(ID);
+                        if (FacturacionDB.ObtenerCantSemanasMesesPagos(ID) >= Convert.ToInt32(nCant.Value))
+                        {
+                            double pagoMensualSemanal = CantPagada / (FacturacionDB.ObtenerCantSemanasMesesPagos(ID));
+                            int CantRemborso = Convert.ToInt32(nCant.Value);
+                            double totalRemborso = pagoMensualSemanal * CantRemborso;
+                            txtTotalRemborso.Clear();
+                            txtTotalRemborso.Text = totalRemborso.ToString("f2");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ya se ha excedido del maximo pagado en ese dia", "Mensaje", MessageBoxButtons.OK);
+                            nCant.Value = Convert.ToInt32(FacturacionDB.ObtenerCantSemanasMesesPagos(ID));
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una factura de la tabla", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

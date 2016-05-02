@@ -34,10 +34,17 @@
             this.lblIDFactura = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.gbFactura = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCancelarPago = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.lblCanRemborso = new System.Windows.Forms.Label();
+            this.nCant = new System.Windows.Forms.NumericUpDown();
+            this.lblTotalRemborso = new System.Windows.Forms.Label();
+            this.txtTotalRemborso = new System.Windows.Forms.TextBox();
+            this.lblModificar = new System.Windows.Forms.LinkLabel();
+            this.btnSeleccionarFactura = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             this.gbFactura.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nCant)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvFactura
@@ -46,7 +53,7 @@
             this.dgvFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFactura.Location = new System.Drawing.Point(12, 143);
             this.dgvFactura.Name = "dgvFactura";
-            this.dgvFactura.Size = new System.Drawing.Size(402, 150);
+            this.dgvFactura.Size = new System.Drawing.Size(590, 150);
             this.dgvFactura.TabIndex = 0;
             this.dgvFactura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -86,43 +93,103 @@
             this.gbFactura.Controls.Add(this.btnBuscar);
             this.gbFactura.Controls.Add(this.txtCodigoFactura);
             this.gbFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbFactura.Location = new System.Drawing.Point(12, 23);
+            this.gbFactura.Location = new System.Drawing.Point(12, 12);
             this.gbFactura.Name = "gbFactura";
-            this.gbFactura.Size = new System.Drawing.Size(402, 83);
+            this.gbFactura.Size = new System.Drawing.Size(341, 83);
             this.gbFactura.TabIndex = 4;
             this.gbFactura.TabStop = false;
             this.gbFactura.Text = "Factura";
             this.gbFactura.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // button1
+            // btnCancelarPago
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(29, 313);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Cancelar Pago";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCancelarPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarPago.Location = new System.Drawing.Point(12, 313);
+            this.btnCancelarPago.Name = "btnCancelarPago";
+            this.btnCancelarPago.Size = new System.Drawing.Size(89, 23);
+            this.btnCancelarPago.TabIndex = 5;
+            this.btnCancelarPago.Text = "Cancelar Pago";
+            this.btnCancelarPago.UseVisualStyleBackColor = true;
+            this.btnCancelarPago.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnLimpiar
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(311, 313);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(510, 313);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(89, 23);
+            this.btnLimpiar.TabIndex = 6;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // lblCanRemborso
+            // 
+            this.lblCanRemborso.AutoSize = true;
+            this.lblCanRemborso.Location = new System.Drawing.Point(375, 23);
+            this.lblCanRemborso.Name = "lblCanRemborso";
+            this.lblCanRemborso.Size = new System.Drawing.Size(130, 13);
+            this.lblCanRemborso.TabIndex = 7;
+            this.lblCanRemborso.Text = "Cant Semanas Remborso:";
+            // 
+            // nCant
+            // 
+            this.nCant.Location = new System.Drawing.Point(511, 21);
+            this.nCant.Name = "nCant";
+            this.nCant.Size = new System.Drawing.Size(53, 20);
+            this.nCant.TabIndex = 8;
+            this.nCant.ValueChanged += new System.EventHandler(this.nCant_ValueChanged);
+            // 
+            // lblTotalRemborso
+            // 
+            this.lblTotalRemborso.AutoSize = true;
+            this.lblTotalRemborso.Location = new System.Drawing.Point(375, 50);
+            this.lblTotalRemborso.Name = "lblTotalRemborso";
+            this.lblTotalRemborso.Size = new System.Drawing.Size(97, 13);
+            this.lblTotalRemborso.TabIndex = 9;
+            this.lblTotalRemborso.Text = "Total a Remborsar:";
+            // 
+            // txtTotalRemborso
+            // 
+            this.txtTotalRemborso.Location = new System.Drawing.Point(478, 48);
+            this.txtTotalRemborso.Name = "txtTotalRemborso";
+            this.txtTotalRemborso.Size = new System.Drawing.Size(86, 20);
+            this.txtTotalRemborso.TabIndex = 10;
+            // 
+            // lblModificar
+            // 
+            this.lblModificar.AutoSize = true;
+            this.lblModificar.Location = new System.Drawing.Point(493, 71);
+            this.lblModificar.Name = "lblModificar";
+            this.lblModificar.Size = new System.Drawing.Size(50, 13);
+            this.lblModificar.TabIndex = 11;
+            this.lblModificar.TabStop = true;
+            this.lblModificar.Text = "Modificar";
+            this.lblModificar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblModificar_LinkClicked);
+            // 
+            // btnSeleccionarFactura
+            // 
+            this.btnSeleccionarFactura.Location = new System.Drawing.Point(26, 114);
+            this.btnSeleccionarFactura.Name = "btnSeleccionarFactura";
+            this.btnSeleccionarFactura.Size = new System.Drawing.Size(134, 23);
+            this.btnSeleccionarFactura.TabIndex = 12;
+            this.btnSeleccionarFactura.Text = "Seleccionar Factura";
+            this.btnSeleccionarFactura.UseVisualStyleBackColor = true;
+            this.btnSeleccionarFactura.Click += new System.EventHandler(this.btnSeleccionarFactura_Click);
             // 
             // frmCancelacionPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 348);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(611, 348);
+            this.Controls.Add(this.btnSeleccionarFactura);
+            this.Controls.Add(this.lblModificar);
+            this.Controls.Add(this.txtTotalRemborso);
+            this.Controls.Add(this.lblTotalRemborso);
+            this.Controls.Add(this.nCant);
+            this.Controls.Add(this.lblCanRemborso);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnCancelarPago);
             this.Controls.Add(this.gbFactura);
             this.Controls.Add(this.dgvFactura);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -134,7 +201,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).EndInit();
             this.gbFactura.ResumeLayout(false);
             this.gbFactura.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nCant)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -145,7 +214,13 @@
         private System.Windows.Forms.Label lblIDFactura;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.GroupBox gbFactura;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCancelarPago;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Label lblCanRemborso;
+        private System.Windows.Forms.NumericUpDown nCant;
+        private System.Windows.Forms.Label lblTotalRemborso;
+        private System.Windows.Forms.TextBox txtTotalRemborso;
+        private System.Windows.Forms.LinkLabel lblModificar;
+        private System.Windows.Forms.Button btnSeleccionarFactura;
     }
 }
