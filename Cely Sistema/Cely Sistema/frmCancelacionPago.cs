@@ -64,6 +64,9 @@ namespace Cely_Sistema
             }
         }
         private int Retorno { get; set; }
+        private int Matricula;
+        private int IDFactura;
+        private DateTime FechaFactura;
         private void button1_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Esta seguro que desea Cancelar el Pago?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
@@ -72,52 +75,62 @@ namespace Cely_Sistema
                 {
                     if (dgvFactura.SelectedRows.Count == 1)
                     {
-                        int ID;
-                        ID = Convert.ToInt32(dgvFactura.CurrentRow.Cells[0].Value);
-                        if (FacturacionDB.ObtenerCancelacionPago(ID) == "0")
+                        if (txtCodigoFactura.Text != string.Empty)
                         {
-                            int R = FacturacionDB.CancelarPago(ID, "Cancelado");
-                            DateTime FechaFactura = Convert.ToDateTime(dgvFactura.CurrentRow.Cells[4].Value);
-                            int Matricula = Convert.ToInt32(dgvFactura.CurrentRow.Cells[1].Value);
-                            Decimal Ganancia = Convert.ToDecimal(GananciasDB.ObtenerCantidad(FechaFactura.Date.ToString("yyyy-MM-dd")));
-                            Decimal Pago = Convert.ToDecimal(dgvFactura.CurrentRow.Cells[3].Value);
-                            decimal NuevaGanancia = Ganancia - Pago;
-                            int R0 = GananciasDB.ActualizarGananciasF(FechaFactura.Date.ToString("yyyy-MM-dd"), NuevaGanancia);
-                            DateTime FP = Convert.ToDateTime(EstudianteDB.ObtenerFechaProximoPago(Matricula));
+                            Matricula = Convert.ToInt32(dgvFactura.CurrentRow.Cells[1].Value);
+                            IDFactura = Convert.ToInt32(dgvFactura.CurrentRow.Cells[0].Value);
+                            FechaFactura = Convert.ToDateTime(dgvFactura.CurrentRow.Cells[4].Value);
+                        }
+                        else
+                        {
+                            Matricula = Convert.ToInt32(dgvFactura.CurrentRow.Cells[1].Value);
+                            IDFactura = Convert.ToInt32(dgvFactura.CurrentRow.Cells[6].Value);
+                            FechaFactura = Convert.ToDateTime(dgvFactura.CurrentRow.Cells[3].Value);
+                        }
+                        if (FacturacionDB.ObtenerCancelacionPago(IDFactura) == "0")
+                        {
+                            int r = 0;
                             string Modopago = EstudianteDB.ObtenerModoPago(Matricula);
+                            DateTime FechaPago = EstudianteDB.ObtenerFechaProximoPago(Matricula);
+                            double Pago = FacturacionDB.ObtenerCantidadPagada(IDFactura);
+                            double ganancias = Convert.ToDouble(GananciasDB.ObtenerCantidad(FechaFactura.ToString("yyyy-MM-dd")));
+                            ganancias -= double.Parse(txtTotalRemborso.Text);
+                            int R01 = GananciasDB.ActualizarGananciasF(FechaFactura.ToString("yyyy-MM-dd"), Convert.ToDecimal(ganancias));
+                            int R02 = 0;
                             if (Modopago == "Mensual")
                             {
-                                DateTime Time = FP;
-                                TimeSpan Tiempo = TimeSpan.FromDays(30);
-                                Time = Time.Subtract(Tiempo);
-                                int R2 = EstudianteDB.ActualizarProximoPago(Matricula, Time.ToString("yyyy-MM-dd"));
-                                Retorno = R2;
+                                int Days = 30 * Convert.ToInt32(nCant.Value);
+                                TimeSpan TimeS = TimeSpan.FromDays(Days);
+                                FechaPago = FechaPago.Subtract(TimeS);
+                                r = EstudianteDB.ActualizarProximoPago(Matricula, FechaPago.ToString("yyyy-MM-dd"));
+                                R02 = FacturacionDB.CancelarPago(IDFactura, "Remborso " + nCant.Value.ToString() + " Meses");
                             }
                             else if (Modopago == "Semanal")
                             {
-                                DateTime Time = FP;
-                                TimeSpan Tiempo = TimeSpan.FromDays(7);
-                                Time = Time.Subtract(Tiempo);
-                                int R2 = EstudianteDB.ActualizarProximoPago(Matricula, Time.ToString("yyyy-MM-dd"));
-                                Retorno = R2;
+                                int Days = 7 * Convert.ToInt32(nCant.Value);
+                                TimeSpan TimeS = TimeSpan.FromDays(Days);
+                                FechaPago = FechaPago.Subtract(TimeS);
+                                r = EstudianteDB.ActualizarProximoPago(Matricula, FechaPago.ToString("yyyy-MM-dd"));
+                                R02 = FacturacionDB.CancelarPago(IDFactura, "Remborso " + nCant.Value.ToString() + " Semanas");
                             }
-                            if (R > 0 & R0 > 0 & Retorno > 0)
+
+                            if(r > 0 && R02 > 0 && R01 > 0)
                             {
-                                MessageBox.Show("Pago Cancelado!", "Cancelacion Pago", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("El Pago fue cancelado Exitosamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
-                                MessageBox.Show("Ocurrio un Error", "Cancelacion Pago", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MessageBox.Show("No se pudo cancelar el pago", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                         else
                         {
-                            MessageBox.Show("El Pago ya fue Cancelado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("El Pago ya fue cancelado", "Cancelacion de pagos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Selecciona una factura de la lista", "Cancelacion Pago", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Seleccione una factura de la tabla", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 catch (Exception ex)
