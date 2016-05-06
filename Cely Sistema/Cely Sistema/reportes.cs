@@ -15,7 +15,7 @@ namespace Cely_Sistema
             DataTable r = new DataTable();
             using(SqlConnection con = DBcomun.ObetenerConexion())
             {
-                SqlDataAdapter da = new SqlDataAdapter(string.Format("Select Estudiantes.ID as Matricula, Nombre, Apellido, FechaN as FechaNacimiento, Edad, Telefono, Celular, Email, Sector, Direccion, Ocupacion, NivelA as NivelAcademico, DominioIdiomaIngles as DominioIdiomaIngles, Pago_VIP as PagoMensualSemanal, Mora_Mensual as Mora, VIP from Estudiantes Inner join CantidadPagoVIP on CantidadPagoVIP.ID = 1 where VIP = 'Si' and Modo_Pago = 'Mensual' and Estudiantes.ID = '{0}'", Matricula), con);
+                SqlDataAdapter da = new SqlDataAdapter(string.Format("Select Estudiantes.ID as Matricula, Nombre, Apellido as Apellidos, FechaN as FechaNacimiento, Edad, Telefono, Celular, Email, Sector, Direccion, Ocupacion, NivelA as NivelAcademico, DominioIdiomaIngles as DominioIdiomaIngles, Pago_VIP as PagoMensualSemanal, Mora_Mensual as Mora, VIP from Estudiantes Inner join CantidadPagoVIP on CantidadPagoVIP.ID = 1 where VIP = 'Si' and Modo_Pago = 'Mensual' and Estudiantes.ID = '{0}'", Matricula), con);
                 da.Fill(r);
                 con.Close();
             }
@@ -27,7 +27,7 @@ namespace Cely_Sistema
             DataTable r = new DataTable();
             using (SqlConnection con = DBcomun.ObetenerConexion())
             {
-                SqlDataAdapter da = new SqlDataAdapter(string.Format("Select Estudiantes.ID as Matricula, Nombre, Apellido, FechaN as FechaNacimiento, Edad, Telefono, Celular, Email, Sector, Direccion, Ocupacion, NivelA as NivelAcademico, DominioIdiomaIngles as DominioIdiomaIngles, Pago_Semanal as PagoMensualSemanal, Mora_Semanal as Mora, VIP from Estudiantes Inner join CantidadPagoVIP on CantidadPagoVIP.ID = 1 where VIP = 'Si' and Modo_Pago = 'Semanal' and Estudiantes.ID = '{0}'", Matricula), con);
+                SqlDataAdapter da = new SqlDataAdapter(string.Format("Select Estudiantes.ID as Matricula, Nombre, Apellido as Apellidos, FechaN as FechaNacimiento, Edad, Telefono, Celular, Email, Sector, Direccion, Ocupacion, NivelA as NivelAcademico, DominioIdiomaIngles as DominioIdiomaIngles, Pago_Semanal as PagoMensualSemanal, Mora_Semanal as Mora, VIP from Estudiantes Inner join CantidadPagoVIP on CantidadPagoVIP.ID = 1 where VIP = 'Si' and Modo_Pago = 'Semanal' and Estudiantes.ID = '{0}'", Matricula), con);
                 da.Fill(r);
                 con.Close();
             }
@@ -39,7 +39,7 @@ namespace Cely_Sistema
             DataTable r = new DataTable();
             using (SqlConnection con = DBcomun.ObetenerConexion())
             {
-                SqlDataAdapter da = new SqlDataAdapter(string.Format("Select Estudiantes.ID as Matricula, Nombre, Apellido, FechaN as FechaNacimiento, Edad, Telefono, Celular, Email, Sector, Direccion, Ocupacion, NivelA as NivelAcademico, DominioIdiomaIngles as DominioIdiomaIngles, Pago_Semanal as PagoMensualSemanal, Mora_Semanal as Mora, VIP from Estudiantes Inner join CantidadPago on CantidadPago.ID = 1 inner join Mora on Mora.ID = 1 where VIP = 'NO' and Modo_Pago = 'Semanal' and Estudiantes.ID = '{0}'", Matricula), con);
+                SqlDataAdapter da = new SqlDataAdapter(string.Format("Select Estudiantes.ID as Matricula, Nombre, Apellido as Apellidos, FechaN as FechaNacimiento, Edad, Telefono, Celular, Email, Sector, Direccion, Ocupacion, NivelA as NivelAcademico, DominioIdiomaIngles as DominioIdiomaIngles, Pago_Semanal as PagoMensualSemanal, Mora_Semanal as Mora, VIP from Estudiantes Inner join CantidadPago on CantidadPago.ID = 1 inner join Mora on Mora.ID = 1 where VIP = 'NO' and Modo_Pago = 'Semanal' and Estudiantes.ID = '{0}'", Matricula), con);
                 da.Fill(r);
                 con.Close();
             }
@@ -51,7 +51,7 @@ namespace Cely_Sistema
             DataTable r = new DataTable();
             using (SqlConnection con = DBcomun.ObetenerConexion())
             {
-                SqlDataAdapter da = new SqlDataAdapter(string.Format("Select Estudiantes.ID as Matricula, Nombre, Apellido, FechaN as FechaNacimiento, Edad, Telefono, Celular, Email, Sector, Direccion, Ocupacion, NivelA as NivelAcademico, DominioIdiomaIngles as DominioIdiomaIngles, Pago_Mensual as PagoMensualSemanal, Mora_Mensual as Mora, VIP from Estudiantes Inner join CantidadPago on CantidadPago.ID = 1 inner join Mora on Mora.ID = 1 where VIP = 'NO' and Modo_Pago = 'Mensual' and Estudiantes.ID = '{0}'", Matricula), con);
+                SqlDataAdapter da = new SqlDataAdapter(string.Format("Select Estudiantes.ID as Matricula, Nombre, Apellido as Apellidos, FechaN as FechaNacimiento, Edad, Telefono, Celular, Email, Sector, Direccion, Ocupacion, NivelA as NivelAcademico, DominioIdiomaIngles as DominioIdiomaIngles, Pago_Mensual as PagoMensualSemanal, Mora_Mensual as Mora, VIP from Estudiantes Inner join CantidadPago on CantidadPago.ID = 1 inner join Mora on Mora.ID = 1 where VIP = 'NO' and Modo_Pago = 'Mensual' and Estudiantes.ID = '{0}'", Matricula), con);
                 da.Fill(r);
                 con.Close();
             }

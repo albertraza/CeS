@@ -334,7 +334,7 @@
     <Compile Include="UsuariosB.cs" />
     <Compile Include="UsuariosDB.cs" />
     <Compile Include="UsuariosS.cs" />
-    <EmbeddedResource Include="Contrato.rdlc" />
+    <EmbeddedResource Include="bin\Debug\Contrato.rdlc" />
     <EmbeddedResource Include="frmBuscarCalificacion.resx">
       <DependentUpon>frmBuscarCalificacion.cs</DependentUpon>
     </EmbeddedResource>

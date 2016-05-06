@@ -326,5 +326,21 @@ namespace Cely_Sistema
                 MessageBox.Show("No se ha seleccionado ningun Estudiante", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if(dataGridView1.SelectedRows.Count == 1)
+            {
+                if (MessageBox.Show("Desea Imprimir el Contrato del Estudiante", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    frmReporte pContrato = new frmReporte();
+                    string matricula = dataGridView1.CurrentRow.Cells[12].Value.ToString();
+                    pContrato.Matricula = matricula;
+                    pContrato.ModoPago = EstudianteDB.ObtenerModoPago(int.Parse(matricula));
+                    pContrato.VIP = EstudianteDB.SeleccionarEstudiante(int.Parse(matricula)).VIP;
+                    pContrato.ShowDialog();
+                }
+            }
+        }
     }
 }

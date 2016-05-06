@@ -46,6 +46,7 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnHacerFactura = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.celyDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estudiantesBindingSource)).BeginInit();
@@ -72,7 +73,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(472, 9);
+            this.btnBuscar.Location = new System.Drawing.Point(519, 9);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 3;
@@ -117,7 +118,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(588, 9);
+            this.btnSalir.Location = new System.Drawing.Point(635, 9);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 4;
@@ -158,7 +159,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(472, 43);
+            this.btnModificar.Location = new System.Drawing.Point(519, 43);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 6;
@@ -168,7 +169,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(588, 43);
+            this.btnEliminar.Location = new System.Drawing.Point(635, 43);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 7;
@@ -178,7 +179,7 @@
             // 
             // btnHacerFactura
             // 
-            this.btnHacerFactura.Location = new System.Drawing.Point(681, 9);
+            this.btnHacerFactura.Location = new System.Drawing.Point(735, 9);
             this.btnHacerFactura.Name = "btnHacerFactura";
             this.btnHacerFactura.Size = new System.Drawing.Size(78, 56);
             this.btnHacerFactura.TabIndex = 8;
@@ -186,11 +187,22 @@
             this.btnHacerFactura.UseVisualStyleBackColor = true;
             this.btnHacerFactura.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(393, 43);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Imprimir Contrato";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // frmBusquedaDeAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 386);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnHacerFactura);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
@@ -236,5 +248,6 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnHacerFactura;
+        private System.Windows.Forms.Button button1;
     }
 }

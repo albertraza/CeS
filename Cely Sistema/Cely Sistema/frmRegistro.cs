@@ -254,7 +254,12 @@ namespace Cely_Sistema
                                 string res = "No";
                                 EstudianteDB.UpdateVIPstatus(res, matricula.ToString());
                             }
-
+                            // for contrato
+                            frmReporte pContrato = new frmReporte();
+                            pContrato.Matricula = matricula;
+                            pContrato.VIP = EstudianteDB.SeleccionarEstudiante(int.Parse(matricula)).VIP;
+                            pContrato.ModoPago = EstudianteDB.ObtenerModoPago(int.Parse(matricula));
+                            pContrato.ShowDialog();
                             // Analizis de la fecha de pago para el Estudiante
                             string FechaProximoP = FechaPP.ToString("yyyy-MM-dd");
                             EstudianteDB.ActualizarProximoPago(int.Parse(matricula), FechaProximoP);
