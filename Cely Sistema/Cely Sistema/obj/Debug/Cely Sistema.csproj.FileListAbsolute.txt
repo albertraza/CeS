@@ -88,3 +88,16 @@ C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\
 C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmPagosVIP.resources
 C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\RdlCompile.cache
 C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\RdlCompile.compiled
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmReporte.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\Microsoft.SqlServer.Types.dll
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\de\Microsoft.SqlServer.Types.resources.dll
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\es\Microsoft.SqlServer.Types.resources.dll
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\it\Microsoft.SqlServer.Types.resources.dll
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\ja\Microsoft.SqlServer.Types.resources.dll
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\ko\Microsoft.SqlServer.Types.resources.dll
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\pt\Microsoft.SqlServer.Types.resources.dll
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
