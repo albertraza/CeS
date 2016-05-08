@@ -61,7 +61,6 @@
             this.facturasToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirDelSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblAcercaDe = new System.Windows.Forms.LinkLabel();
             this.dgvNiveles = new System.Windows.Forms.DataGridView();
             this.gbNiveles = new System.Windows.Forms.GroupBox();
             this.btnSeleccionar = new System.Windows.Forms.Button();
@@ -69,17 +68,67 @@
             this.dgvEstudiantes = new System.Windows.Forms.DataGridView();
             this.btnRegistrarAsistencia = new System.Windows.Forms.Button();
             this.gbAsistencia = new System.Windows.Forms.GroupBox();
-            this.lblFecha = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscarEstudiante = new System.Windows.Forms.Button();
             this.txtMatricula = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.celyDBDataSet = new Cely_Sistema.CelyDBDataSet();
             this.verGruposwHorarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.verGruposwHorarioTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter();
             this.tContador = new System.Windows.Forms.Timer(this.components);
             this.tReloj = new System.Windows.Forms.Timer(this.components);
+            this.tcMenuP = new System.Windows.Forms.TabControl();
+            this.tpAsistencia = new System.Windows.Forms.TabPage();
+            this.tbConsulta = new System.Windows.Forms.TabPage();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.gbInformacionPagos = new System.Windows.Forms.GroupBox();
+            this.btnHacerFactura = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblProximoPago = new System.Windows.Forms.Label();
+            this.lblTotalPagar = new System.Windows.Forms.Label();
+            this.lblPendientes = new System.Windows.Forms.Label();
+            this.txtMora = new System.Windows.Forms.TextBox();
+            this.lblMora = new System.Windows.Forms.Label();
+            this.txtPagoMensual = new System.Windows.Forms.TextBox();
+            this.lblPagoMensual = new System.Windows.Forms.Label();
+            this.lblVIP = new System.Windows.Forms.Label();
+            this.lblTipodePago = new System.Windows.Forms.Label();
+            this.gbDatosPersonales = new System.Windows.Forms.GroupBox();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.lblBuscar = new System.Windows.Forms.LinkLabel();
+            this.txtNivel = new System.Windows.Forms.TextBox();
+            this.lblnivel = new System.Windows.Forms.Label();
+            this.txtFechaRegistro = new System.Windows.Forms.TextBox();
+            this.lblFechaRegistro = new System.Windows.Forms.Label();
+            this.txtMatriculaCon = new System.Windows.Forms.TextBox();
+            this.lblMatriculaCon = new System.Windows.Forms.Label();
+            this.txtDominiodelIdiomaIngles = new System.Windows.Forms.TextBox();
+            this.lblDominioIdiomaIngles = new System.Windows.Forms.Label();
+            this.txtNivelAcademico = new System.Windows.Forms.TextBox();
+            this.lblNivelAca = new System.Windows.Forms.Label();
+            this.txtOcupacion = new System.Windows.Forms.TextBox();
+            this.lblOcupacion = new System.Windows.Forms.Label();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.lblDireccion = new System.Windows.Forms.Label();
+            this.txtSector = new System.Windows.Forms.TextBox();
+            this.lblSector = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtCelular = new System.Windows.Forms.TextBox();
+            this.lblCelular = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.lblTelefono = new System.Windows.Forms.Label();
+            this.txtEdad = new System.Windows.Forms.TextBox();
+            this.lblEdad = new System.Windows.Forms.Label();
+            this.txtFechaNacimiento = new System.Windows.Forms.TextBox();
+            this.lblFechaNacimiento = new System.Windows.Forms.Label();
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.lblApellido = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
@@ -89,6 +138,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.celyDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.verGruposwHorarioBindingSource)).BeginInit();
+            this.tcMenuP.SuspendLayout();
+            this.tpAsistencia.SuspendLayout();
+            this.tbConsulta.SuspendLayout();
+            this.gbInformacionPagos.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.gbDatosPersonales.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -103,7 +158,7 @@
             this.salirToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(816, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(813, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -338,17 +393,6 @@
             this.salirDelSistemaToolStripMenuItem.Text = "Salir del Sistema";
             this.salirDelSistemaToolStripMenuItem.Click += new System.EventHandler(this.salirDelSistemaToolStripMenuItem_Click);
             // 
-            // lblAcercaDe
-            // 
-            this.lblAcercaDe.AutoSize = true;
-            this.lblAcercaDe.Location = new System.Drawing.Point(731, 510);
-            this.lblAcercaDe.Name = "lblAcercaDe";
-            this.lblAcercaDe.Size = new System.Drawing.Size(56, 13);
-            this.lblAcercaDe.TabIndex = 1;
-            this.lblAcercaDe.TabStop = true;
-            this.lblAcercaDe.Text = "Acerca de";
-            this.lblAcercaDe.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAcercaDe_LinkClicked);
-            // 
             // dgvNiveles
             // 
             this.dgvNiveles.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -414,7 +458,6 @@
             // 
             // gbAsistencia
             // 
-            this.gbAsistencia.Controls.Add(this.lblFecha);
             this.gbAsistencia.Controls.Add(this.pictureBox1);
             this.gbAsistencia.Controls.Add(this.label1);
             this.gbAsistencia.Controls.Add(this.btnBuscarEstudiante);
@@ -425,23 +468,13 @@
             this.gbAsistencia.Controls.Add(this.btnRegistrarAsistencia);
             this.gbAsistencia.Controls.Add(this.gbNiveles);
             this.gbAsistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbAsistencia.Location = new System.Drawing.Point(12, 55);
+            this.gbAsistencia.Location = new System.Drawing.Point(6, 20);
             this.gbAsistencia.Name = "gbAsistencia";
             this.gbAsistencia.Size = new System.Drawing.Size(775, 452);
             this.gbAsistencia.TabIndex = 1;
             this.gbAsistencia.TabStop = false;
             this.gbAsistencia.Text = "Asistencia";
             this.gbAsistencia.Enter += new System.EventHandler(this.gbAsistencia_Enter);
-            // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(463, 433);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(40, 13);
-            this.lblFecha.TabIndex = 4;
-            this.lblFecha.Text = "Fecha:";
             // 
             // pictureBox1
             // 
@@ -494,6 +527,16 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(7, 544);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(40, 13);
+            this.lblFecha.TabIndex = 4;
+            this.lblFecha.Text = "Fecha:";
+            // 
             // celyDBDataSet
             // 
             this.celyDBDataSet.DataSetName = "CelyDBDataSet";
@@ -518,13 +561,527 @@
             this.tReloj.Interval = 1000;
             this.tReloj.Tick += new System.EventHandler(this.tReloj_Tick);
             // 
+            // tcMenuP
+            // 
+            this.tcMenuP.Controls.Add(this.tpAsistencia);
+            this.tcMenuP.Controls.Add(this.tbConsulta);
+            this.tcMenuP.Location = new System.Drawing.Point(0, 27);
+            this.tcMenuP.Name = "tcMenuP";
+            this.tcMenuP.SelectedIndex = 0;
+            this.tcMenuP.Size = new System.Drawing.Size(816, 518);
+            this.tcMenuP.TabIndex = 2;
+            // 
+            // tpAsistencia
+            // 
+            this.tpAsistencia.Controls.Add(this.gbAsistencia);
+            this.tpAsistencia.Location = new System.Drawing.Point(4, 22);
+            this.tpAsistencia.Name = "tpAsistencia";
+            this.tpAsistencia.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAsistencia.Size = new System.Drawing.Size(808, 492);
+            this.tpAsistencia.TabIndex = 0;
+            this.tpAsistencia.Text = "Asistencia";
+            this.tpAsistencia.UseVisualStyleBackColor = true;
+            // 
+            // tbConsulta
+            // 
+            this.tbConsulta.Controls.Add(this.btnEliminar);
+            this.tbConsulta.Controls.Add(this.btnModificar);
+            this.tbConsulta.Controls.Add(this.gbInformacionPagos);
+            this.tbConsulta.Controls.Add(this.gbDatosPersonales);
+            this.tbConsulta.Location = new System.Drawing.Point(4, 22);
+            this.tbConsulta.Name = "tbConsulta";
+            this.tbConsulta.Padding = new System.Windows.Forms.Padding(3);
+            this.tbConsulta.Size = new System.Drawing.Size(808, 492);
+            this.tbConsulta.TabIndex = 1;
+            this.tbConsulta.Text = "Consulta";
+            this.tbConsulta.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(249, 423);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(124, 23);
+            this.btnEliminar.TabIndex = 9;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(78, 423);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(124, 23);
+            this.btnModificar.TabIndex = 8;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // gbInformacionPagos
+            // 
+            this.gbInformacionPagos.Controls.Add(this.btnHacerFactura);
+            this.gbInformacionPagos.Controls.Add(this.groupBox1);
+            this.gbInformacionPagos.Controls.Add(this.txtMora);
+            this.gbInformacionPagos.Controls.Add(this.lblMora);
+            this.gbInformacionPagos.Controls.Add(this.txtPagoMensual);
+            this.gbInformacionPagos.Controls.Add(this.lblPagoMensual);
+            this.gbInformacionPagos.Controls.Add(this.lblVIP);
+            this.gbInformacionPagos.Controls.Add(this.lblTipodePago);
+            this.gbInformacionPagos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbInformacionPagos.Location = new System.Drawing.Point(497, 17);
+            this.gbInformacionPagos.Name = "gbInformacionPagos";
+            this.gbInformacionPagos.Size = new System.Drawing.Size(300, 383);
+            this.gbInformacionPagos.TabIndex = 1;
+            this.gbInformacionPagos.TabStop = false;
+            this.gbInformacionPagos.Text = "Informacion pagos";
+            // 
+            // btnHacerFactura
+            // 
+            this.btnHacerFactura.Location = new System.Drawing.Point(95, 304);
+            this.btnHacerFactura.Name = "btnHacerFactura";
+            this.btnHacerFactura.Size = new System.Drawing.Size(114, 58);
+            this.btnHacerFactura.TabIndex = 7;
+            this.btnHacerFactura.Text = "Hacer Factura";
+            this.btnHacerFactura.UseVisualStyleBackColor = true;
+            this.btnHacerFactura.Click += new System.EventHandler(this.btnHacerFactura_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblProximoPago);
+            this.groupBox1.Controls.Add(this.lblTotalPagar);
+            this.groupBox1.Controls.Add(this.lblPendientes);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(23, 124);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(252, 174);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Estatus del Estudiante";
+            // 
+            // lblProximoPago
+            // 
+            this.lblProximoPago.AutoSize = true;
+            this.lblProximoPago.Location = new System.Drawing.Point(7, 46);
+            this.lblProximoPago.Name = "lblProximoPago";
+            this.lblProximoPago.Size = new System.Drawing.Size(88, 13);
+            this.lblProximoPago.TabIndex = 3;
+            this.lblProximoPago.Text = "Proximo Pago:";
+            // 
+            // lblTotalPagar
+            // 
+            this.lblTotalPagar.AutoSize = true;
+            this.lblTotalPagar.Location = new System.Drawing.Point(7, 116);
+            this.lblTotalPagar.Name = "lblTotalPagar";
+            this.lblTotalPagar.Size = new System.Drawing.Size(73, 13);
+            this.lblTotalPagar.TabIndex = 2;
+            this.lblTotalPagar.Text = "Total Pagar";
+            // 
+            // lblPendientes
+            // 
+            this.lblPendientes.AutoSize = true;
+            this.lblPendientes.Location = new System.Drawing.Point(7, 84);
+            this.lblPendientes.Name = "lblPendientes";
+            this.lblPendientes.Size = new System.Drawing.Size(70, 13);
+            this.lblPendientes.TabIndex = 1;
+            this.lblPendientes.Text = "Pendientes";
+            // 
+            // txtMora
+            // 
+            this.txtMora.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMora.Location = new System.Drawing.Point(215, 80);
+            this.txtMora.Name = "txtMora";
+            this.txtMora.Size = new System.Drawing.Size(60, 20);
+            this.txtMora.TabIndex = 5;
+            // 
+            // lblMora
+            // 
+            this.lblMora.AutoSize = true;
+            this.lblMora.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMora.Location = new System.Drawing.Point(175, 83);
+            this.lblMora.Name = "lblMora";
+            this.lblMora.Size = new System.Drawing.Size(34, 13);
+            this.lblMora.TabIndex = 4;
+            this.lblMora.Text = "Mora:";
+            // 
+            // txtPagoMensual
+            // 
+            this.txtPagoMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPagoMensual.Location = new System.Drawing.Point(100, 80);
+            this.txtPagoMensual.Name = "txtPagoMensual";
+            this.txtPagoMensual.Size = new System.Drawing.Size(60, 20);
+            this.txtPagoMensual.TabIndex = 3;
+            // 
+            // lblPagoMensual
+            // 
+            this.lblPagoMensual.AutoSize = true;
+            this.lblPagoMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPagoMensual.Location = new System.Drawing.Point(16, 83);
+            this.lblPagoMensual.Name = "lblPagoMensual";
+            this.lblPagoMensual.Size = new System.Drawing.Size(78, 13);
+            this.lblPagoMensual.TabIndex = 2;
+            this.lblPagoMensual.Text = "Pago Mensual:";
+            // 
+            // lblVIP
+            // 
+            this.lblVIP.AutoSize = true;
+            this.lblVIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVIP.Location = new System.Drawing.Point(164, 38);
+            this.lblVIP.Name = "lblVIP";
+            this.lblVIP.Size = new System.Drawing.Size(31, 13);
+            this.lblVIP.TabIndex = 1;
+            this.lblVIP.Text = "VIP:";
+            // 
+            // lblTipodePago
+            // 
+            this.lblTipodePago.AutoSize = true;
+            this.lblTipodePago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipodePago.Location = new System.Drawing.Point(20, 38);
+            this.lblTipodePago.Name = "lblTipodePago";
+            this.lblTipodePago.Size = new System.Drawing.Size(74, 13);
+            this.lblTipodePago.TabIndex = 0;
+            this.lblTipodePago.Text = "Tipo de Pago:";
+            // 
+            // gbDatosPersonales
+            // 
+            this.gbDatosPersonales.Controls.Add(this.btnLimpiar);
+            this.gbDatosPersonales.Controls.Add(this.lblBuscar);
+            this.gbDatosPersonales.Controls.Add(this.txtNivel);
+            this.gbDatosPersonales.Controls.Add(this.lblnivel);
+            this.gbDatosPersonales.Controls.Add(this.txtFechaRegistro);
+            this.gbDatosPersonales.Controls.Add(this.lblFechaRegistro);
+            this.gbDatosPersonales.Controls.Add(this.txtMatriculaCon);
+            this.gbDatosPersonales.Controls.Add(this.lblMatriculaCon);
+            this.gbDatosPersonales.Controls.Add(this.txtDominiodelIdiomaIngles);
+            this.gbDatosPersonales.Controls.Add(this.lblDominioIdiomaIngles);
+            this.gbDatosPersonales.Controls.Add(this.txtNivelAcademico);
+            this.gbDatosPersonales.Controls.Add(this.lblNivelAca);
+            this.gbDatosPersonales.Controls.Add(this.txtOcupacion);
+            this.gbDatosPersonales.Controls.Add(this.lblOcupacion);
+            this.gbDatosPersonales.Controls.Add(this.txtDireccion);
+            this.gbDatosPersonales.Controls.Add(this.lblDireccion);
+            this.gbDatosPersonales.Controls.Add(this.txtSector);
+            this.gbDatosPersonales.Controls.Add(this.lblSector);
+            this.gbDatosPersonales.Controls.Add(this.txtEmail);
+            this.gbDatosPersonales.Controls.Add(this.lblEmail);
+            this.gbDatosPersonales.Controls.Add(this.txtCelular);
+            this.gbDatosPersonales.Controls.Add(this.lblCelular);
+            this.gbDatosPersonales.Controls.Add(this.txtTelefono);
+            this.gbDatosPersonales.Controls.Add(this.lblTelefono);
+            this.gbDatosPersonales.Controls.Add(this.txtEdad);
+            this.gbDatosPersonales.Controls.Add(this.lblEdad);
+            this.gbDatosPersonales.Controls.Add(this.txtFechaNacimiento);
+            this.gbDatosPersonales.Controls.Add(this.lblFechaNacimiento);
+            this.gbDatosPersonales.Controls.Add(this.txtApellido);
+            this.gbDatosPersonales.Controls.Add(this.lblApellido);
+            this.gbDatosPersonales.Controls.Add(this.txtNombre);
+            this.gbDatosPersonales.Controls.Add(this.lblNombre);
+            this.gbDatosPersonales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbDatosPersonales.Location = new System.Drawing.Point(18, 17);
+            this.gbDatosPersonales.Name = "gbDatosPersonales";
+            this.gbDatosPersonales.Size = new System.Drawing.Size(453, 383);
+            this.gbDatosPersonales.TabIndex = 0;
+            this.gbDatosPersonales.TabStop = false;
+            this.gbDatosPersonales.Text = "Datos Personales";
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(280, 35);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 10;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // lblBuscar
+            // 
+            this.lblBuscar.AutoSize = true;
+            this.lblBuscar.Location = new System.Drawing.Point(177, 41);
+            this.lblBuscar.Name = "lblBuscar";
+            this.lblBuscar.Size = new System.Drawing.Size(46, 13);
+            this.lblBuscar.TabIndex = 30;
+            this.lblBuscar.TabStop = true;
+            this.lblBuscar.Text = "Buscar";
+            this.lblBuscar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblBuscar_LinkClicked);
+            // 
+            // txtNivel
+            // 
+            this.txtNivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNivel.Location = new System.Drawing.Point(74, 80);
+            this.txtNivel.Name = "txtNivel";
+            this.txtNivel.Size = new System.Drawing.Size(97, 20);
+            this.txtNivel.TabIndex = 29;
+            // 
+            // lblnivel
+            // 
+            this.lblnivel.AutoSize = true;
+            this.lblnivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnivel.Location = new System.Drawing.Point(21, 83);
+            this.lblnivel.Name = "lblnivel";
+            this.lblnivel.Size = new System.Drawing.Size(34, 13);
+            this.lblnivel.TabIndex = 28;
+            this.lblnivel.Text = "Nivel:";
+            // 
+            // txtFechaRegistro
+            // 
+            this.txtFechaRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechaRegistro.Location = new System.Drawing.Point(280, 77);
+            this.txtFechaRegistro.Name = "txtFechaRegistro";
+            this.txtFechaRegistro.Size = new System.Drawing.Size(142, 20);
+            this.txtFechaRegistro.TabIndex = 27;
+            // 
+            // lblFechaRegistro
+            // 
+            this.lblFechaRegistro.AutoSize = true;
+            this.lblFechaRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaRegistro.Location = new System.Drawing.Point(192, 80);
+            this.lblFechaRegistro.Name = "lblFechaRegistro";
+            this.lblFechaRegistro.Size = new System.Drawing.Size(82, 13);
+            this.lblFechaRegistro.TabIndex = 26;
+            this.lblFechaRegistro.Text = "Fecha Registro:";
+            // 
+            // txtMatriculaCon
+            // 
+            this.txtMatriculaCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMatriculaCon.Location = new System.Drawing.Point(74, 38);
+            this.txtMatriculaCon.Name = "txtMatriculaCon";
+            this.txtMatriculaCon.Size = new System.Drawing.Size(97, 20);
+            this.txtMatriculaCon.TabIndex = 25;
+            this.txtMatriculaCon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMatriculaCon_KeyPress);
+            // 
+            // lblMatriculaCon
+            // 
+            this.lblMatriculaCon.AutoSize = true;
+            this.lblMatriculaCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMatriculaCon.Location = new System.Drawing.Point(15, 41);
+            this.lblMatriculaCon.Name = "lblMatriculaCon";
+            this.lblMatriculaCon.Size = new System.Drawing.Size(53, 13);
+            this.lblMatriculaCon.TabIndex = 24;
+            this.lblMatriculaCon.Text = "Matricula:";
+            // 
+            // txtDominiodelIdiomaIngles
+            // 
+            this.txtDominiodelIdiomaIngles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDominiodelIdiomaIngles.Location = new System.Drawing.Point(361, 342);
+            this.txtDominiodelIdiomaIngles.Name = "txtDominiodelIdiomaIngles";
+            this.txtDominiodelIdiomaIngles.Size = new System.Drawing.Size(66, 20);
+            this.txtDominiodelIdiomaIngles.TabIndex = 23;
+            // 
+            // lblDominioIdiomaIngles
+            // 
+            this.lblDominioIdiomaIngles.AutoSize = true;
+            this.lblDominioIdiomaIngles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDominioIdiomaIngles.Location = new System.Drawing.Point(225, 345);
+            this.lblDominioIdiomaIngles.Name = "lblDominioIdiomaIngles";
+            this.lblDominioIdiomaIngles.Size = new System.Drawing.Size(130, 13);
+            this.lblDominioIdiomaIngles.TabIndex = 22;
+            this.lblDominioIdiomaIngles.Text = "Dominio del Idioma Ingles:";
+            // 
+            // txtNivelAcademico
+            // 
+            this.txtNivelAcademico.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNivelAcademico.Location = new System.Drawing.Point(122, 342);
+            this.txtNivelAcademico.Name = "txtNivelAcademico";
+            this.txtNivelAcademico.Size = new System.Drawing.Size(88, 20);
+            this.txtNivelAcademico.TabIndex = 21;
+            // 
+            // lblNivelAca
+            // 
+            this.lblNivelAca.AutoSize = true;
+            this.lblNivelAca.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNivelAca.Location = new System.Drawing.Point(26, 345);
+            this.lblNivelAca.Name = "lblNivelAca";
+            this.lblNivelAca.Size = new System.Drawing.Size(90, 13);
+            this.lblNivelAca.TabIndex = 20;
+            this.lblNivelAca.Text = "Nivel Academico:";
+            // 
+            // txtOcupacion
+            // 
+            this.txtOcupacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOcupacion.Location = new System.Drawing.Point(297, 299);
+            this.txtOcupacion.Name = "txtOcupacion";
+            this.txtOcupacion.Size = new System.Drawing.Size(125, 20);
+            this.txtOcupacion.TabIndex = 19;
+            // 
+            // lblOcupacion
+            // 
+            this.lblOcupacion.AutoSize = true;
+            this.lblOcupacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOcupacion.Location = new System.Drawing.Point(227, 302);
+            this.lblOcupacion.Name = "lblOcupacion";
+            this.lblOcupacion.Size = new System.Drawing.Size(62, 13);
+            this.lblOcupacion.TabIndex = 18;
+            this.lblOcupacion.Text = "Ocupacion:";
+            // 
+            // txtDireccion
+            // 
+            this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDireccion.Location = new System.Drawing.Point(79, 299);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(131, 20);
+            this.txtDireccion.TabIndex = 17;
+            // 
+            // lblDireccion
+            // 
+            this.lblDireccion.AutoSize = true;
+            this.lblDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccion.Location = new System.Drawing.Point(21, 302);
+            this.lblDireccion.Name = "lblDireccion";
+            this.lblDireccion.Size = new System.Drawing.Size(55, 13);
+            this.lblDireccion.TabIndex = 16;
+            this.lblDireccion.Text = "Direccion:";
+            // 
+            // txtSector
+            // 
+            this.txtSector.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSector.Location = new System.Drawing.Point(280, 251);
+            this.txtSector.Name = "txtSector";
+            this.txtSector.Size = new System.Drawing.Size(142, 20);
+            this.txtSector.TabIndex = 15;
+            // 
+            // lblSector
+            // 
+            this.lblSector.AutoSize = true;
+            this.lblSector.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSector.Location = new System.Drawing.Point(227, 254);
+            this.lblSector.Name = "lblSector";
+            this.lblSector.Size = new System.Drawing.Size(41, 13);
+            this.lblSector.TabIndex = 14;
+            this.lblSector.Text = "Sector:";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(74, 251);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(136, 20);
+            this.txtEmail.TabIndex = 13;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(21, 254);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(39, 13);
+            this.lblEmail.TabIndex = 12;
+            this.lblEmail.Text = "E-Mail:";
+            // 
+            // txtCelular
+            // 
+            this.txtCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCelular.Location = new System.Drawing.Point(280, 208);
+            this.txtCelular.Name = "txtCelular";
+            this.txtCelular.Size = new System.Drawing.Size(142, 20);
+            this.txtCelular.TabIndex = 11;
+            // 
+            // lblCelular
+            // 
+            this.lblCelular.AutoSize = true;
+            this.lblCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCelular.Location = new System.Drawing.Point(227, 211);
+            this.lblCelular.Name = "lblCelular";
+            this.lblCelular.Size = new System.Drawing.Size(42, 13);
+            this.lblCelular.TabIndex = 10;
+            this.lblCelular.Text = "Celular:";
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefono.Location = new System.Drawing.Point(79, 208);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(131, 20);
+            this.txtTelefono.TabIndex = 9;
+            // 
+            // lblTelefono
+            // 
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefono.Location = new System.Drawing.Point(21, 211);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(52, 13);
+            this.lblTelefono.TabIndex = 8;
+            this.lblTelefono.Text = "Telefono:";
+            // 
+            // txtEdad
+            // 
+            this.txtEdad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEdad.Location = new System.Drawing.Point(280, 163);
+            this.txtEdad.Name = "txtEdad";
+            this.txtEdad.Size = new System.Drawing.Size(142, 20);
+            this.txtEdad.TabIndex = 7;
+            // 
+            // lblEdad
+            // 
+            this.lblEdad.AutoSize = true;
+            this.lblEdad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEdad.Location = new System.Drawing.Point(227, 166);
+            this.lblEdad.Name = "lblEdad";
+            this.lblEdad.Size = new System.Drawing.Size(35, 13);
+            this.lblEdad.TabIndex = 6;
+            this.lblEdad.Text = "Edad:";
+            // 
+            // txtFechaNacimiento
+            // 
+            this.txtFechaNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechaNacimiento.Location = new System.Drawing.Point(138, 163);
+            this.txtFechaNacimiento.Name = "txtFechaNacimiento";
+            this.txtFechaNacimiento.Size = new System.Drawing.Size(72, 20);
+            this.txtFechaNacimiento.TabIndex = 5;
+            // 
+            // lblFechaNacimiento
+            // 
+            this.lblFechaNacimiento.AutoSize = true;
+            this.lblFechaNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaNacimiento.Location = new System.Drawing.Point(21, 166);
+            this.lblFechaNacimiento.Name = "lblFechaNacimiento";
+            this.lblFechaNacimiento.Size = new System.Drawing.Size(111, 13);
+            this.lblFechaNacimiento.TabIndex = 4;
+            this.lblFechaNacimiento.Text = "Fecha de Nacimiento:";
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellido.Location = new System.Drawing.Point(280, 121);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(142, 20);
+            this.txtApellido.TabIndex = 3;
+            // 
+            // lblApellido
+            // 
+            this.lblApellido.AutoSize = true;
+            this.lblApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApellido.Location = new System.Drawing.Point(227, 124);
+            this.lblApellido.Name = "lblApellido";
+            this.lblApellido.Size = new System.Drawing.Size(47, 13);
+            this.lblApellido.TabIndex = 2;
+            this.lblApellido.Text = "Apellido:";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Location = new System.Drawing.Point(74, 121);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(136, 20);
+            this.txtNombre.TabIndex = 1;
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Location = new System.Drawing.Point(21, 124);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(47, 13);
+            this.lblNombre.TabIndex = 0;
+            this.lblNombre.Text = "Nombre:";
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 533);
-            this.Controls.Add(this.gbAsistencia);
-            this.Controls.Add(this.lblAcercaDe);
+            this.ClientSize = new System.Drawing.Size(813, 557);
+            this.Controls.Add(this.lblFecha);
+            this.Controls.Add(this.tcMenuP);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -544,6 +1101,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.celyDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.verGruposwHorarioBindingSource)).EndInit();
+            this.tcMenuP.ResumeLayout(false);
+            this.tpAsistencia.ResumeLayout(false);
+            this.tbConsulta.ResumeLayout(false);
+            this.gbInformacionPagos.ResumeLayout(false);
+            this.gbInformacionPagos.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.gbDatosPersonales.ResumeLayout(false);
+            this.gbDatosPersonales.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -562,7 +1128,6 @@
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirDelSistemaToolStripMenuItem;
-        private System.Windows.Forms.LinkLabel lblAcercaDe;
         private System.Windows.Forms.ToolStripMenuItem buscarEstudianteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estudiantesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem1;
@@ -601,5 +1166,55 @@
         private System.Windows.Forms.Timer tContador;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Timer tReloj;
+        private System.Windows.Forms.TabControl tcMenuP;
+        private System.Windows.Forms.TabPage tpAsistencia;
+        private System.Windows.Forms.TabPage tbConsulta;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.GroupBox gbInformacionPagos;
+        private System.Windows.Forms.Button btnHacerFactura;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblTotalPagar;
+        private System.Windows.Forms.Label lblPendientes;
+        private System.Windows.Forms.TextBox txtMora;
+        private System.Windows.Forms.Label lblMora;
+        private System.Windows.Forms.TextBox txtPagoMensual;
+        private System.Windows.Forms.Label lblPagoMensual;
+        private System.Windows.Forms.Label lblVIP;
+        private System.Windows.Forms.Label lblTipodePago;
+        private System.Windows.Forms.GroupBox gbDatosPersonales;
+        private System.Windows.Forms.LinkLabel lblBuscar;
+        private System.Windows.Forms.TextBox txtNivel;
+        private System.Windows.Forms.Label lblnivel;
+        private System.Windows.Forms.TextBox txtFechaRegistro;
+        private System.Windows.Forms.Label lblFechaRegistro;
+        private System.Windows.Forms.TextBox txtMatriculaCon;
+        private System.Windows.Forms.Label lblMatriculaCon;
+        private System.Windows.Forms.TextBox txtDominiodelIdiomaIngles;
+        private System.Windows.Forms.Label lblDominioIdiomaIngles;
+        private System.Windows.Forms.TextBox txtNivelAcademico;
+        private System.Windows.Forms.Label lblNivelAca;
+        private System.Windows.Forms.TextBox txtOcupacion;
+        private System.Windows.Forms.Label lblOcupacion;
+        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.Label lblDireccion;
+        private System.Windows.Forms.TextBox txtSector;
+        private System.Windows.Forms.Label lblSector;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.TextBox txtCelular;
+        private System.Windows.Forms.Label lblCelular;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.Label lblTelefono;
+        private System.Windows.Forms.TextBox txtEdad;
+        private System.Windows.Forms.Label lblEdad;
+        private System.Windows.Forms.TextBox txtFechaNacimiento;
+        private System.Windows.Forms.Label lblFechaNacimiento;
+        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.Label lblApellido;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Label lblProximoPago;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

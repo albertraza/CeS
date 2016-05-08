@@ -15,7 +15,184 @@ namespace Cely_Sistema
         {
             InitializeComponent();
         }
+        private void DisabledConsultaItens()
+        {
+            txtApellido.Enabled = false;
+            txtCelular.Enabled = false;
+            txtDireccion.Enabled = false;
+            txtDominiodelIdiomaIngles.Enabled = false;
+            txtEdad.Enabled = false;
+            txtEmail.Enabled = false;
+            txtFechaNacimiento.Enabled = false;
+            txtFechaRegistro.Enabled = false;
+            txtMora.Enabled = false;
+            txtNivel.Enabled = false;
+            txtNivelAcademico.Enabled = false;
+            txtNombre.Enabled = false;
+            txtOcupacion.Enabled = false;
+            txtPagoMensual.Enabled = false;
+            txtSector.Enabled = false;
+            txtTelefono.Enabled = false;
+        }
+        private void LoadStudentData()
+        {
+            if (txtMatriculaCon.Text == string.Empty)
+            {
+                MessageBox.Show("La matricula esta vacia, digite la matricula del estudiante a buscar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMatriculaCon.Focus();
+            }
+            else
+            {
+                EstudianteBase pEstudiante = EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatriculaCon.Text));
 
+                if (EstudianteDB.ObtenerNombre(int.Parse(txtMatriculaCon.Text)) != null)
+                {
+                    txtApellido.Text = pEstudiante.Apellido;
+                    txtCelular.Text = pEstudiante.Celular;
+                    txtDireccion.Text = pEstudiante.Direccion;
+                    txtDominiodelIdiomaIngles.Text = pEstudiante.D_Idioma;
+                    txtEdad.Text = pEstudiante.Edad;
+                    txtEmail.Text = pEstudiante.E_Mail;
+                    txtFechaNacimiento.Text = pEstudiante.Fecha_N;
+                    txtFechaRegistro.Text = pEstudiante.Fecha_Ins;
+                    lblTipodePago.Text = "Tipo de Pago: " + pEstudiante.Modo_Pago;
+                    txtNivel.Text = pEstudiante.NivelA;
+                    txtNivelAcademico.Text = pEstudiante.N_Academico;
+                    txtNombre.Text = pEstudiante.Nombre;
+                    txtOcupacion.Text = pEstudiante.Ocupacion;
+                    txtSector.Text = pEstudiante.Sector;
+                    txtTelefono.Text = pEstudiante.Telefono;
+
+                    // getting payments info
+
+                    if (pEstudiante.VIP == "NO" || pEstudiante.VIP == "No")
+                    {
+                        lblVIP.ForeColor = Color.Black;
+                        lblVIP.Text = "VIP: " + pEstudiante.VIP;
+
+                        if (pEstudiante.Modo_Pago == "Mensual")
+                        {
+                            txtPagoMensual.Text = PagosDB.ObtenerPagoMensual().ToString("f2");
+                            txtMora.Text = MoraDB.ObtenerMoraMensual();
+                        }
+                        else
+                        {
+                            txtPagoMensual.Text = PagosDB.ObtenerPagoSemanal().ToString("f2");
+                            txtMora.Text = MoraDB.ObtenerMoraSemanal();
+                        }
+                    }
+                    else
+                    {
+                        lblVIP.ForeColor = Color.Red;
+                        lblVIP.Text = "VIP: " + pEstudiante.VIP;
+
+                        if (pEstudiante.Modo_Pago == "Mensual")
+                        {
+                            txtPagoMensual.Text = double.Parse(MoraDB.GetVIPpayments().Pago_Mensual).ToString("f2");
+                            txtMora.Text = double.Parse(MoraDB.GetVIPpayments().Mora_Mensual).ToString("f2");
+                        }
+                        else
+                        {
+                            txtPagoMensual.Text = double.Parse(MoraDB.GetVIPpayments().Pago_Semanal).ToString("f2");
+                            txtMora.Text = double.Parse(MoraDB.GetVIPpayments().Mora_Semanal).ToString("f2");
+                        }
+                    }
+
+                    DateTime fp = EstudianteDB.ObtenerFechaProximoPago(int.Parse(txtMatriculaCon.Text));
+                    DateTime fa = DateTime.Today.Date;
+
+                    int Comp = DateTime.Compare(fp, fa);
+
+                    if (Comp < 0)
+                    {
+                        if (pEstudiante.Modo_Pago == "Mensual")
+                        {
+                            lblProximoPago.ForeColor = Color.Red;
+                            lblProximoPago.Text = "Proximo Pago: " + fp.ToLongDateString();
+                            double P = (DateTime.Today.Date - fp).TotalDays / 30;
+                            if (P < 0)
+                            {
+                                P *= -1;
+                            }
+                            int raw = Convert.ToInt32(P);
+                            lblPendientes.ForeColor = Color.Red;
+                            lblPendientes.Text = "Meses Pendientes: " + raw.ToString();
+                            double totalMora = double.Parse(txtMora.Text) * (raw);
+                            double totalpagar = (double.Parse(txtPagoMensual.Text) * (raw + 1)) + totalMora;
+                            lblTotalPagar.Text = "Total Pagar: " + totalpagar.ToString("f2");
+                        }
+                        else
+                        {
+                            lblProximoPago.ForeColor = Color.Red;
+                            lblProximoPago.Text = "Proximo Pago: " + fp.ToLongDateString();
+                            double P = (DateTime.Today.Date - fp).TotalDays / 7;
+                            if (P < 0)
+                            {
+                                P *= -1;
+                            }
+                            int raw = Convert.ToInt32(P);
+                            lblPendientes.ForeColor = Color.Red;
+                            lblPendientes.Text = "Semanas Pendientes: " + raw.ToString();
+                            double totalMora = double.Parse(txtMora.Text) * (raw);
+                            double totalpagar = (double.Parse(txtPagoMensual.Text) * (raw + 1)) + totalMora;
+                            lblTotalPagar.Text = "Total Pagar: " + totalpagar.ToString("f2");
+                        }
+                    }
+                    else
+                    {
+                        lblProximoPago.ForeColor = Color.Black;
+                        lblProximoPago.Text = "Proximo Pago: " + fp.ToLongDateString();
+
+                        if (pEstudiante.Modo_Pago == "Mensual")
+                        {
+                            lblPendientes.ForeColor = Color.Black;
+                            lblPendientes.Text = "Meses Pendientes: 0";
+                            lblTotalPagar.Text = "Total Pagar: " + txtPagoMensual.Text;
+                        }
+                        else
+                        {
+                            lblPendientes.ForeColor = Color.Black;
+                            lblPendientes.Text = "Semanas Pendientes: 0";
+                            lblTotalPagar.Text = "Total Pagar: " + txtPagoMensual.Text;
+                        }
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("El Estudiante no existe", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtMatricula.Focus();
+                }
+            }
+        }
+        private void LimpiarCampos()
+        {
+            txtMatricula.Clear();
+            txtApellido.Clear();
+            txtCelular.Clear();
+            txtDireccion.Clear();
+            txtDominiodelIdiomaIngles.Clear();
+            txtEdad.Clear();
+            txtEmail.Clear();
+            txtFechaNacimiento.Clear();
+            txtFechaRegistro.Clear();
+            txtMatriculaCon.Clear();
+            txtMora.Clear();
+            txtNivel.Clear();
+            txtNivelAcademico.Clear();
+            txtNombre.Clear();
+            txtOcupacion.Clear();
+            txtPagoMensual.Clear();
+            txtSector.Clear();
+            txtTelefono.Clear();
+            lblVIP.ForeColor = Color.Black;
+            lblVIP.Text = "VIP:";
+            lblPendientes.Text = "Pendientes: ";
+            lblPendientes.ForeColor = Color.Black;
+            lblTotalPagar.Text = "Total a Pagar:";
+            lblProximoPago.Text = "Proximo Pago:";
+            lblProximoPago.ForeColor = Color.Black;
+        }
         private Int32 Nivel = 9;
         public Int32 ObNivel
         {
@@ -42,6 +219,7 @@ namespace Cely_Sistema
                 btnBuscarEstudiante.Visible = false;
                 tContador.Start();
                 tReloj.Start();
+                DisabledConsultaItens();
             }
             catch(Exception ex)
             {
@@ -440,6 +618,103 @@ namespace Cely_Sistema
             {
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtMatriculaCon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                try {
+                    LoadStudentData();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void lblBuscar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                LoadStudentData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            frmRegistro pRegistro = new frmRegistro();
+            if(txtMora.Text == string.Empty)
+            {
+                MessageBox.Show("El Estudiante no se ha cargado, Digite uno valido", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if(txtMatriculaCon.Text == string.Empty)
+                {
+                    MessageBox.Show("la matricula esta vacia, digite una valida", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    pRegistro.GetIDestudiante = EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatriculaCon.Text));
+                    pRegistro.ShowDialog();
+                    LoadStudentData();
+                }
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            frmRegistro pRegistro = new frmRegistro();
+            if (txtMora.Text == string.Empty)
+            {
+                MessageBox.Show("El Estudiante no se ha cargado, Digite uno valido", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (txtMatriculaCon.Text == string.Empty)
+                {
+                    MessageBox.Show("la matricula esta vacia, digite una valida", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    pRegistro.GetIDestudiante = EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatriculaCon.Text));
+                    pRegistro.ShowDialog();
+                    LoadStudentData();
+                }
+            }
+        }
+
+        private void btnHacerFactura_Click(object sender, EventArgs e)
+        {
+            frmFacturacion pFactura = new frmFacturacion();
+            if (txtMora.Text == string.Empty)
+            {
+                MessageBox.Show("El Estudiante no se ha cargado, Digite uno valido", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (txtMatriculaCon.Text == string.Empty)
+                {
+                    MessageBox.Show("la matricula esta vacia, digite una valida", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    pFactura.getID = txtMatriculaCon.Text.ToString();
+                    pFactura.ShowDialog();
+                    LoadStudentData();
+                }
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
         }
     }
 }
