@@ -151,6 +151,7 @@ namespace Cely_Sistema
             {
                 try
                 {
+                    txtCodigoFactura.Text = CodigoFactura;
                     txtCodigoFactura.Focus();
                     dgvFactura.DataSource = FacturacionDB.BuscarfacturasCP(int.Parse(CodigoFactura));
                 }
