@@ -214,7 +214,7 @@ namespace Cely_Sistema
 
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("select * from Estudiantes"), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("select * from Estudiantes order by ID desc"), conexion);
 
                 SqlDataReader reader = comando.ExecuteReader();
 
@@ -335,6 +335,17 @@ namespace Cely_Sistema
             {
                 SqlCommand comand = new SqlCommand(string.Format("update Estudiantes set VIP= '{0}' where ID = {1}", vipS, ID), con);
                 r = comand.ExecuteNonQuery();
+                con.Close();
+            }
+            return r;
+        }
+        public static int getTotalStudentsRegistered()
+        {
+            int r;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("select COUNT(*) as CantRegistrados from Estudiantes", con);
+                r = int.Parse(comand.ExecuteScalar().ToString());
                 con.Close();
             }
             return r;
