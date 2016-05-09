@@ -199,12 +199,15 @@ namespace Cely_Sistema
             get { return Nivel; }
             set { Nivel = value; }
         }
+
         private void frmMenu_Load(object sender, EventArgs e)
         {
             try
             {
                 // TODO: esta línea de código carga datos en la tabla 'celyDBDataSet.VerGruposwHorario' Puede moverla o quitarla según sea necesario.
                 this.verGruposwHorarioTableAdapter.Fill(this.celyDBDataSet.VerGruposwHorario);
+                tContador.Start();
+                tReloj.Start();
                 dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
                 Console.Write("Digite su nombre: ");
                 string nombre = Console.ReadLine();
@@ -217,8 +220,6 @@ namespace Cely_Sistema
                 MinimizeBox = false;
                 MaximizeBox = false;
                 btnBuscarEstudiante.Visible = false;
-                tContador.Start();
-                tReloj.Start();
                 DisabledConsultaItens();
             }
             catch(Exception ex)
@@ -613,6 +614,9 @@ namespace Cely_Sistema
             {
                 lblFecha.Text = "Fecha: ";
                 lblFecha.Text = "Fecha: " + DateTime.Now.ToLongDateString() + " Hora: " + DateTime.Now.ToLongTimeString();
+                lblCantidadEstudiantesRegistrados.Text = "Cantidad de Estudiantes Registrados: ";
+                lblCantidadEstudiantesRegistrados.Text = "Cantidad de Estudiantes Registrados: " + EstudianteDB.getTotalStudentsRegistered().ToString();
+
             }
             catch(Exception ex)
             {

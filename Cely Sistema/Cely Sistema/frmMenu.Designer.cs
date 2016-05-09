@@ -129,6 +129,7 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.lblCantidadEstudiantesRegistrados = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
@@ -458,6 +459,7 @@
             // 
             // gbAsistencia
             // 
+            this.gbAsistencia.Controls.Add(this.lblCantidadEstudiantesRegistrados);
             this.gbAsistencia.Controls.Add(this.pictureBox1);
             this.gbAsistencia.Controls.Add(this.label1);
             this.gbAsistencia.Controls.Add(this.btnBuscarEstudiante);
@@ -1075,6 +1077,16 @@
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "Nombre:";
             // 
+            // lblCantidadEstudiantesRegistrados
+            // 
+            this.lblCantidadEstudiantesRegistrados.AutoSize = true;
+            this.lblCantidadEstudiantesRegistrados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadEstudiantesRegistrados.Location = new System.Drawing.Point(463, 307);
+            this.lblCantidadEstudiantesRegistrados.Name = "lblCantidadEstudiantesRegistrados";
+            this.lblCantidadEstudiantesRegistrados.Size = new System.Drawing.Size(248, 16);
+            this.lblCantidadEstudiantesRegistrados.TabIndex = 5;
+            this.lblCantidadEstudiantesRegistrados.Text = "Cantidad Estudiantes Registrados:";
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1216,5 +1228,6 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblProximoPago;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Label lblCantidadEstudiantesRegistrados;
     }
 }
