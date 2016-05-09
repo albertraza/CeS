@@ -21,32 +21,47 @@ namespace Cely_Sistema
         private void frmSplash_Load(object sender, EventArgs e)
         {
             timer1.Start();
+            SqlConnection con = new SqlConnection(Cely_Sistema.Properties.Settings.Default.CelyDBConnectionString);
+            try
+            {
+                con.Open(); c += 30;
+                progressBar1.Value = c;
+                GananciasDB.updateDescuentos();
+                c += 30;
+                progressBar1.Value = c;
+                GananciasDB.updateTotalGanancias();
+                c += 40;
+                progressBar1.Value = c;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " La aplicacion se cerrara", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
         int c = 0;
+        int a = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            c++;
-            progressBar1.Value = c;
-            if (c == 100)
+            a++;
+            if(c == 100)
             {
-                SqlConnection con = new SqlConnection(Cely_Sistema.Properties.Settings.Default.CelyDBConnectionString);
-                try
+                if (a == 5)
                 {
-                    con.Open();
+                    frmLogin lg = new frmLogin();
+                    lg.Show();
+                    this.Hide();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    con.Close();
-                }
-                timer1.Stop();
-                this.Hide();
-                frmLogin lg = new frmLogin();
-                lg.Show();
             }
+            else
+            {
+
+            }
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
