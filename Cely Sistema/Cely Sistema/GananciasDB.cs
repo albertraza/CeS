@@ -129,5 +129,28 @@ namespace Cely_Sistema
             }
             return list;
         }
+        public static int updateDescuentos()
+        {
+            int r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("update Ganancias set Total_Descuentos = 0 where Total_Descuentos is null", con);
+                comand.ExecuteNonQuery(); r = 1;
+                con.Close();
+            }
+            return r;
+        }
+        public static int updateTotalGanancias()
+        {
+            int r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("update Ganancias set Total_Ganancias = Ingresos where Total_Ganancias is null and Total_Descuentos = 0 or Total_Descuentos is null", con);
+                comand.ExecuteNonQuery();
+                r = 1;
+                con.Close();
+            }
+            return r;
+        }
     }
 }
