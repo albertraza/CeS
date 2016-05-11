@@ -811,6 +811,14 @@ namespace Cely_Sistema {
             
             private global::System.Data.DataColumn columnMotivodePago;
             
+            private global::System.Data.DataColumn columnMora;
+            
+            private global::System.Data.DataColumn columnTotalMensualSemanal;
+            
+            private global::System.Data.DataColumn columnTotalMora;
+            
+            private global::System.Data.DataColumn columnDescuento;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public FacturaDataTable() {
@@ -942,6 +950,38 @@ namespace Cely_Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MoraColumn {
+                get {
+                    return this.columnMora;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalMensualSemanalColumn {
+                get {
+                    return this.columnTotalMensualSemanal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalMoraColumn {
+                get {
+                    return this.columnTotalMora;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DescuentoColumn {
+                get {
+                    return this.columnDescuento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -977,7 +1017,23 @@ namespace Cely_Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FacturaRow AddFacturaRow(string Nombre, string Apellido, string PagoMensualSemanal, string CantSemanasMesesPagados, string CantSemanasMesesPendientes, string TotalPagado, string FechaPago, string FechaProximoPago, string PagoCon, string Devuelta, string CodigoFactura, string MotivodePago) {
+            public FacturaRow AddFacturaRow(
+                        string Nombre, 
+                        string Apellido, 
+                        decimal PagoMensualSemanal, 
+                        int CantSemanasMesesPagados, 
+                        int CantSemanasMesesPendientes, 
+                        decimal TotalPagado, 
+                        System.DateTime FechaPago, 
+                        System.DateTime FechaProximoPago, 
+                        double PagoCon, 
+                        decimal Devuelta, 
+                        int CodigoFactura, 
+                        string MotivodePago, 
+                        decimal Mora, 
+                        decimal TotalMensualSemanal, 
+                        decimal TotalMora, 
+                        decimal Descuento) {
                 FacturaRow rowFacturaRow = ((FacturaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Nombre,
@@ -991,7 +1047,11 @@ namespace Cely_Sistema {
                         PagoCon,
                         Devuelta,
                         CodigoFactura,
-                        MotivodePago};
+                        MotivodePago,
+                        Mora,
+                        TotalMensualSemanal,
+                        TotalMora,
+                        Descuento};
                 rowFacturaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFacturaRow);
                 return rowFacturaRow;
@@ -1026,6 +1086,10 @@ namespace Cely_Sistema {
                 this.columnDevuelta = base.Columns["Devuelta"];
                 this.columnCodigoFactura = base.Columns["CodigoFactura"];
                 this.columnMotivodePago = base.Columns["MotivodePago"];
+                this.columnMora = base.Columns["Mora"];
+                this.columnTotalMensualSemanal = base.Columns["TotalMensualSemanal"];
+                this.columnTotalMora = base.Columns["TotalMora"];
+                this.columnDescuento = base.Columns["Descuento"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1035,26 +1099,34 @@ namespace Cely_Sistema {
                 base.Columns.Add(this.columnNombre);
                 this.columnApellido = new global::System.Data.DataColumn("Apellido", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnApellido);
-                this.columnPagoMensualSemanal = new global::System.Data.DataColumn("PagoMensualSemanal", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnPagoMensualSemanal = new global::System.Data.DataColumn("PagoMensualSemanal", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPagoMensualSemanal);
-                this.columnCantSemanasMesesPagados = new global::System.Data.DataColumn("CantSemanasMesesPagados", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnCantSemanasMesesPagados = new global::System.Data.DataColumn("CantSemanasMesesPagados", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCantSemanasMesesPagados);
-                this.columnCantSemanasMesesPendientes = new global::System.Data.DataColumn("CantSemanasMesesPendientes", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnCantSemanasMesesPendientes = new global::System.Data.DataColumn("CantSemanasMesesPendientes", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCantSemanasMesesPendientes);
-                this.columnTotalPagado = new global::System.Data.DataColumn("TotalPagado", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnTotalPagado = new global::System.Data.DataColumn("TotalPagado", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalPagado);
-                this.columnFechaPago = new global::System.Data.DataColumn("FechaPago", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFechaPago = new global::System.Data.DataColumn("FechaPago", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaPago);
-                this.columnFechaProximoPago = new global::System.Data.DataColumn("FechaProximoPago", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFechaProximoPago = new global::System.Data.DataColumn("FechaProximoPago", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaProximoPago);
-                this.columnPagoCon = new global::System.Data.DataColumn("PagoCon", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnPagoCon = new global::System.Data.DataColumn("PagoCon", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPagoCon);
-                this.columnDevuelta = new global::System.Data.DataColumn("Devuelta", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDevuelta = new global::System.Data.DataColumn("Devuelta", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDevuelta);
-                this.columnCodigoFactura = new global::System.Data.DataColumn("CodigoFactura", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnCodigoFactura = new global::System.Data.DataColumn("CodigoFactura", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodigoFactura);
                 this.columnMotivodePago = new global::System.Data.DataColumn("MotivodePago", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMotivodePago);
+                this.columnMora = new global::System.Data.DataColumn("Mora", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMora);
+                this.columnTotalMensualSemanal = new global::System.Data.DataColumn("TotalMensualSemanal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalMensualSemanal);
+                this.columnTotalMora = new global::System.Data.DataColumn("TotalMora", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalMora);
+                this.columnDescuento = new global::System.Data.DataColumn("Descuento", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescuento);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1692,10 +1764,10 @@ namespace Cely_Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PagoMensualSemanal {
+            public decimal PagoMensualSemanal {
                 get {
                     try {
-                        return ((string)(this[this.tableFactura.PagoMensualSemanalColumn]));
+                        return ((decimal)(this[this.tableFactura.PagoMensualSemanalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'PagoMensualSemanal\' in table \'Factura\' is DBNull.", e);
@@ -1708,10 +1780,10 @@ namespace Cely_Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CantSemanasMesesPagados {
+            public int CantSemanasMesesPagados {
                 get {
                     try {
-                        return ((string)(this[this.tableFactura.CantSemanasMesesPagadosColumn]));
+                        return ((int)(this[this.tableFactura.CantSemanasMesesPagadosColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'CantSemanasMesesPagados\' in table \'Factura\' is DBNull.", e);
@@ -1724,10 +1796,10 @@ namespace Cely_Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CantSemanasMesesPendientes {
+            public int CantSemanasMesesPendientes {
                 get {
                     try {
-                        return ((string)(this[this.tableFactura.CantSemanasMesesPendientesColumn]));
+                        return ((int)(this[this.tableFactura.CantSemanasMesesPendientesColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'CantSemanasMesesPendientes\' in table \'Factura\' is DBNull.", e);
@@ -1740,10 +1812,10 @@ namespace Cely_Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TotalPagado {
+            public decimal TotalPagado {
                 get {
                     try {
-                        return ((string)(this[this.tableFactura.TotalPagadoColumn]));
+                        return ((decimal)(this[this.tableFactura.TotalPagadoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TotalPagado\' in table \'Factura\' is DBNull.", e);
@@ -1756,10 +1828,10 @@ namespace Cely_Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FechaPago {
+            public System.DateTime FechaPago {
                 get {
                     try {
-                        return ((string)(this[this.tableFactura.FechaPagoColumn]));
+                        return ((global::System.DateTime)(this[this.tableFactura.FechaPagoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'FechaPago\' in table \'Factura\' is DBNull.", e);
@@ -1772,10 +1844,10 @@ namespace Cely_Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FechaProximoPago {
+            public System.DateTime FechaProximoPago {
                 get {
                     try {
-                        return ((string)(this[this.tableFactura.FechaProximoPagoColumn]));
+                        return ((global::System.DateTime)(this[this.tableFactura.FechaProximoPagoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'FechaProximoPago\' in table \'Factura\' is DBNull.", e);
@@ -1788,10 +1860,10 @@ namespace Cely_Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PagoCon {
+            public double PagoCon {
                 get {
                     try {
-                        return ((string)(this[this.tableFactura.PagoConColumn]));
+                        return ((double)(this[this.tableFactura.PagoConColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'PagoCon\' in table \'Factura\' is DBNull.", e);
@@ -1804,10 +1876,10 @@ namespace Cely_Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Devuelta {
+            public decimal Devuelta {
                 get {
                     try {
-                        return ((string)(this[this.tableFactura.DevueltaColumn]));
+                        return ((decimal)(this[this.tableFactura.DevueltaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Devuelta\' in table \'Factura\' is DBNull.", e);
@@ -1820,10 +1892,10 @@ namespace Cely_Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CodigoFactura {
+            public int CodigoFactura {
                 get {
                     try {
-                        return ((string)(this[this.tableFactura.CodigoFacturaColumn]));
+                        return ((int)(this[this.tableFactura.CodigoFacturaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'CodigoFactura\' in table \'Factura\' is DBNull.", e);
@@ -1847,6 +1919,70 @@ namespace Cely_Sistema {
                 }
                 set {
                     this[this.tableFactura.MotivodePagoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Mora {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableFactura.MoraColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Mora\' in table \'Factura\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFactura.MoraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal TotalMensualSemanal {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableFactura.TotalMensualSemanalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalMensualSemanal\' in table \'Factura\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFactura.TotalMensualSemanalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal TotalMora {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableFactura.TotalMoraColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalMora\' in table \'Factura\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFactura.TotalMoraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Descuento {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableFactura.DescuentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Descuento\' in table \'Factura\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFactura.DescuentoColumn] = value;
                 }
             }
             
@@ -1992,6 +2128,54 @@ namespace Cely_Sistema {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMotivodePagoNull() {
                 this[this.tableFactura.MotivodePagoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMoraNull() {
+                return this.IsNull(this.tableFactura.MoraColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMoraNull() {
+                this[this.tableFactura.MoraColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalMensualSemanalNull() {
+                return this.IsNull(this.tableFactura.TotalMensualSemanalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalMensualSemanalNull() {
+                this[this.tableFactura.TotalMensualSemanalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalMoraNull() {
+                return this.IsNull(this.tableFactura.TotalMoraColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalMoraNull() {
+                this[this.tableFactura.TotalMoraColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDescuentoNull() {
+                return this.IsNull(this.tableFactura.DescuentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDescuentoNull() {
+                this[this.tableFactura.DescuentoColumn] = global::System.Convert.DBNull;
             }
         }
         

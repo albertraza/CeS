@@ -335,6 +335,8 @@
     <Compile Include="UsuariosDB.cs" />
     <Compile Include="UsuariosS.cs" />
     <EmbeddedResource Include="bin\Debug\Contrato.rdlc" />
+    <EmbeddedResource Include="bin\Debug\rpFacturaMensual.rdlc" />
+    <EmbeddedResource Include="bin\Debug\rpFacturaSemanal.rdlc" />
     <EmbeddedResource Include="frmBuscarCalificacion.resx">
       <DependentUpon>frmBuscarCalificacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -448,7 +450,6 @@
     </Compile>
     <EmbeddedResource Include="rpCalificaciones.rdlc" />
     <EmbeddedResource Include="rpCalificacionesEstudiantiles.rdlc" />
-    <EmbeddedResource Include="rpFactura.rdlc" />
     <EmbeddedResource Include="rpTodasCalificaciones.rdlc" />
     <None Include="app.config">
       <SubType>Designer</SubType>

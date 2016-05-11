@@ -15,6 +15,8 @@ namespace Cely_Sistema
         public string Matricula { get; set; }
         public string ModoPago { get; set; }
         public string VIP { get; set; }
+        public string codigoFactura { get; set; }
+        public string TipoReporte { get; set; }
 
         public frmReporte()
         {
@@ -23,7 +25,19 @@ namespace Cely_Sistema
 
         private void frmReporte_Load(object sender, EventArgs e)
         {
-            LoadReport();
+            if (TipoReporte == "Contrato")
+            {
+                LoadReport();
+            }
+            else if(TipoReporte == "Factura")
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("No se Reconoce el Reporte a cargar, esta ventana se cerrara", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Close();
+            }
             this.reportViewer1.RefreshReport();
         }
         private void LoadReport()
@@ -76,6 +90,10 @@ namespace Cely_Sistema
                     reportViewer1.Refresh();
                 }
             }
+        }
+        private void LoadFactura()
+        {
+
         }
     }
 }
