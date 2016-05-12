@@ -819,6 +819,8 @@ namespace Cely_Sistema {
             
             private global::System.Data.DataColumn columnDescuento;
             
+            private global::System.Data.DataColumn columncantMora;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public FacturaDataTable() {
@@ -982,6 +984,14 @@ namespace Cely_Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cantMoraColumn {
+                get {
+                    return this.columncantMora;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1033,7 +1043,8 @@ namespace Cely_Sistema {
                         decimal Mora, 
                         decimal TotalMensualSemanal, 
                         decimal TotalMora, 
-                        decimal Descuento) {
+                        decimal Descuento, 
+                        int cantMora) {
                 FacturaRow rowFacturaRow = ((FacturaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Nombre,
@@ -1051,7 +1062,8 @@ namespace Cely_Sistema {
                         Mora,
                         TotalMensualSemanal,
                         TotalMora,
-                        Descuento};
+                        Descuento,
+                        cantMora};
                 rowFacturaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFacturaRow);
                 return rowFacturaRow;
@@ -1090,6 +1102,7 @@ namespace Cely_Sistema {
                 this.columnTotalMensualSemanal = base.Columns["TotalMensualSemanal"];
                 this.columnTotalMora = base.Columns["TotalMora"];
                 this.columnDescuento = base.Columns["Descuento"];
+                this.columncantMora = base.Columns["cantMora"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1127,6 +1140,8 @@ namespace Cely_Sistema {
                 base.Columns.Add(this.columnTotalMora);
                 this.columnDescuento = new global::System.Data.DataColumn("Descuento", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescuento);
+                this.columncantMora = new global::System.Data.DataColumn("cantMora", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncantMora);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1988,6 +2003,22 @@ namespace Cely_Sistema {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int cantMora {
+                get {
+                    try {
+                        return ((int)(this[this.tableFactura.cantMoraColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cantMora\' in table \'Factura\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFactura.cantMoraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNombreNull() {
                 return this.IsNull(this.tableFactura.NombreColumn);
             }
@@ -2176,6 +2207,18 @@ namespace Cely_Sistema {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDescuentoNull() {
                 this[this.tableFactura.DescuentoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscantMoraNull() {
+                return this.IsNull(this.tableFactura.cantMoraColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcantMoraNull() {
+                this[this.tableFactura.cantMoraColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -704,14 +704,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="CantSemanasMesesPagados1">
+                    <Textbox Name="cantMora">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!CantSemanasMesesPagados.Value</Value>
+                              <Value>=Fields!cantMora.Value</Value>
                               <Style>
                                 <Format>0;(0)</Format>
                               </Style>
@@ -720,7 +720,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>CantSemanasMesesPagados1</rd:DefaultName>
+                      <rd:DefaultName>cantMora</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -732,6 +732,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1499,6 +1500,10 @@
         <Field Name="Descuento">
           <DataField>Descuento</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="cantMora">
+          <DataField>cantMora</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>

@@ -11,7 +11,7 @@ namespace Cely_Sistema
 {
     public partial class frmFacturacion : Form
     {
-        private double semanasP, MesesP, cantPagar, pagoS, pagoM, desc, MoraEs, PagoMensualSemanal, TotalPagoMensualSemanal, TotalMora, TotalDescuento;
+        private double semanasP, MesesP, cantPagar, pagoS, pagoM, desc, MoraEs, PagoMensualSemanal, TotalPagoMensualSemanal, TotalMora, TotalDescuento, cantMora;
         public frmFacturacion()
         {
             InitializeComponent();
@@ -398,6 +398,7 @@ namespace Cely_Sistema
         }
         private void LimpiarM()
         {
+            cantMora = 0;
             TotalPagoMensualSemanal = 0;
             TotalMora = 0;
             PagoMensualSemanal = 0;
@@ -538,7 +539,7 @@ namespace Cely_Sistema
                             // evaluation for facturas
                             if (devuelta >= 0)
                             {
-                                Factura = FacturacionDB.CrearFactura(pFactura, Convert.ToInt32(MesesSemanasRestan.ToString("f0")), int.Parse(txtCantPagar.Text), Convert.ToDouble(devuelta.ToString("f2")), Convert.ToInt32(nCantPagar.Value), PagoMensualSemanal, TotalPagoMensualSemanal, MoraEs, TotalMora, TotalDescuento);
+                                Factura = FacturacionDB.CrearFactura(pFactura, Convert.ToInt32(MesesSemanasRestan.ToString("f0")), int.Parse(txtCantPagar.Text), Convert.ToDouble(devuelta.ToString("f2")), Convert.ToInt32(nCantPagar.Value), PagoMensualSemanal, TotalPagoMensualSemanal, MoraEs, TotalMora, TotalDescuento, Convert.ToInt32(cantMora));
                             }
                             else
                             {
@@ -667,7 +668,7 @@ namespace Cely_Sistema
                         pF.Razon_Pago = txtMotivodePago.Text;
                         pF.Fecha_Factura = DateTime.Now.Date.ToString("yyyy-MM-dd");
                         pF.Cancelacion_Pago = "0";
-                        int R = FacturacionDB.CrearFactura(pF, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                        int R = FacturacionDB.CrearFactura(pF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
                         if (R > 0)
                         {
                             string G = GananciasDB.ObtenerCantidad(DateTime.Today.Date.Date.ToString("yyyy-MM-dd"));
@@ -938,7 +939,7 @@ namespace Cely_Sistema
                         pF.Precio = 0.00;
                         pF.Razon_Pago = "PAGO ANULADO";
 
-                        int R1 = FacturacionDB.CrearFactura(pF, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                        int R1 = FacturacionDB.CrearFactura(pF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
                         if (R1 > 0 & R0 > 0)
                         {
                             MessageBox.Show("Pago Anulado!", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -960,7 +961,7 @@ namespace Cely_Sistema
                         pF.Precio = 0.00;
                         pF.Razon_Pago = "PAGO ANULADO";
 
-                        int R1 = FacturacionDB.CrearFactura(pF, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                        int R1 = FacturacionDB.CrearFactura(pF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
                         if (R1 > 0 & R0 > 0)
                         {
                             MessageBox.Show("Pago Anulado!", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1057,10 +1058,12 @@ namespace Cely_Sistema
                                                 if (Convert.ToInt32(cantPagar) > Convert.ToInt32(MesesP))
                                                 {
                                                     mora = (mora - (descM)) * (Convert.ToInt32(MesesP));
+                                                    cantMora = Convert.ToInt32(MesesP);
                                                 }
                                                 else
                                                 {
                                                     mora = (mora - (descM)) * (Convert.ToInt32(cantPagar));
+                                                    cantMora = Convert.ToInt32(cantPagar);
                                                 }
                                                 lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
                                                 pagoM = pagoM * (Convert.ToInt32(cantPagar));
@@ -1110,10 +1113,12 @@ namespace Cely_Sistema
                                                 if (Convert.ToInt32(cantPagar) > Convert.ToInt32(semanasP))
                                                 {
                                                     mora = (mora - (descM)) * (Convert.ToInt32(semanasP));
+                                                    cantMora = Convert.ToInt32(semanasP);
                                                 }
                                                 else
                                                 {
                                                     mora = (mora - (descM)) * (Convert.ToInt32(cantPagar));
+                                                    cantMora = Convert.ToInt32(cantPagar);
                                                 }
                                                 lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
                                                 pagoS = pagoS * (Convert.ToInt32(cantPagar));
@@ -1170,10 +1175,12 @@ namespace Cely_Sistema
                                                 if (Convert.ToInt32(cantPagar) > Convert.ToInt32(MesesP))
                                                 {
                                                     mora = (mora - (descM)) * (Convert.ToInt32(MesesP));
+                                                    cantMora = Convert.ToInt32(MesesP);
                                                 }
                                                 else
                                                 {
                                                     mora = (mora - (descM)) * (Convert.ToInt32(cantPagar));
+                                                    cantMora = Convert.ToInt32(cantPagar);
                                                 }
                                                 lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
                                                 pagoM = pagoM * (Convert.ToInt32(cantPagar));
@@ -1223,10 +1230,12 @@ namespace Cely_Sistema
                                                 if (Convert.ToInt32(cantPagar) > Convert.ToInt32(semanasP))
                                                 {
                                                     mora = (mora - (descM)) * (Convert.ToInt32(semanasP));
+                                                    cantMora = Convert.ToInt32(semanasP);
                                                 }
                                                 else
                                                 {
                                                     mora = (mora - (descM)) * (Convert.ToInt32(cantPagar));
+                                                    cantMora = Convert.ToInt32(cantPagar);
                                                 }
                                                 lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
                                                 pagoS = pagoS * (Convert.ToInt32(cantPagar));
