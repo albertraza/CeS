@@ -335,8 +335,10 @@ namespace Cely_Sistema
                 {
                     frmReporte pContrato = new frmReporte();
                     string matricula = dataGridView1.CurrentRow.Cells[12].Value.ToString();
+                    pContrato.TipoReporte = "Contrato";
                     pContrato.Matricula = matricula;
-                    pContrato.ModoPago = EstudianteDB.ObtenerModoPago(int.Parse(matricula));
+                    string MP = EstudianteDB.ObtenerModoPago(int.Parse(matricula));
+                    pContrato.ModoPago = MP;
                     pContrato.VIP = EstudianteDB.SeleccionarEstudiante(int.Parse(matricula)).VIP;
                     pContrato.ShowDialog();
                 }

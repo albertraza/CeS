@@ -257,6 +257,7 @@ namespace Cely_Sistema
                             // for contrato
                             frmReporte pContrato = new frmReporte();
                             pContrato.Matricula = matricula;
+                            pContrato.TipoReporte = "Contrato";
                             pContrato.VIP = EstudianteDB.SeleccionarEstudiante(int.Parse(matricula)).VIP;
                             pContrato.ModoPago = EstudianteDB.ObtenerModoPago(int.Parse(matricula));
                             pContrato.ShowDialog();

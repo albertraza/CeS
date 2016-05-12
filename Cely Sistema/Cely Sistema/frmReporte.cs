@@ -31,12 +31,11 @@ namespace Cely_Sistema
             }
             else if(TipoReporte == "Factura")
             {
-
+                LoadFactura();
             }
             else
             {
                 MessageBox.Show("No se Reconoce el Reporte a cargar, esta ventana se cerrara", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Close();
             }
             this.reportViewer1.RefreshReport();
         }
@@ -93,7 +92,24 @@ namespace Cely_Sistema
         }
         private void LoadFactura()
         {
-
+            if(ModoPago == "Mensual")
+            {
+                DataTable dtFactura = reportes.Factura(codigoFactura);
+                reportViewer1.Reset();
+                reportViewer1.LocalReport.ReportPath = "rpFacturaMensual.rdlc";
+                ReportDataSource ds = new ReportDataSource("Factura", dtFactura);
+                reportViewer1.LocalReport.DataSources.Add(ds);
+                reportViewer1.Refresh();
+            }
+            else
+            {
+                DataTable dtFactura = reportes.Factura(codigoFactura);
+                reportViewer1.Reset();
+                reportViewer1.LocalReport.ReportPath = "rpFacturaSemanal.rdlc";
+                ReportDataSource ds = new ReportDataSource("Factura", dtFactura);
+                reportViewer1.LocalReport.DataSources.Add(ds);
+                reportViewer1.Refresh();
+            }
         }
     }
 }

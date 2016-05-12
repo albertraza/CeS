@@ -65,7 +65,7 @@ namespace Cely_Sistema
             DataTable r = new DataTable();
             using(SqlConnection con = DBcomun.ObetenerConexion())
             {
-                SqlDataAdapter da = new SqlDataAdapter(string.Format("select Estudiantes.Nombre, Estudiantes.Apellido, Facturacion.PagoMensualSemanal, Facturacion.CantSemanasMesesPagos, Facturacion.MesesSemnasRestantes as CantSemanasMesesPendientes, Facturacion.PagoCon as TotalPagado, Facturacion.FechaFactura as FechaPago, Estudiantes.FechaProximoPago, Facturacion.PagoCon, Facturacion.devuelta as Devuelta, Facturacion.CodigoFacturacion as CodigoFactura, Facturacion.Notas as MotivodePago, Facturacion.mora as Mora, Facturacion.TotalMensualSemanal, Facturacion.TotalMora, Facturacion.Descuento from Facturacion inner join Estudiantes on Estudiantes.ID = Facturacion.IDCLiente where Facturacion.CodigoFacturacion = '{0}'", codigoFactura), con);
+                SqlDataAdapter da = new SqlDataAdapter(string.Format("select Estudiantes.Nombre, Estudiantes.Apellido, Facturacion.PagoMensualSemanal, Facturacion.CantSemanasMesesPagos as CantSemanasMesesPagados, Facturacion.MesesSemnasRestantes as CantSemanasMesesPendientes, Facturacion.Precio as TotalPagado, Facturacion.FechaFactura as FechaPago, Estudiantes.FechaProximoPago, Facturacion.PagoCon, Facturacion.devuelta as Devuelta, Facturacion.CodigoFacturacion as CodigoFactura, Facturacion.Notas as MotivodePago, Facturacion.mora as Mora, Facturacion.TotalMensualSemanal, Facturacion.TotalMora, Facturacion.Descuento from Facturacion inner join Estudiantes on Estudiantes.ID = Facturacion.IDCLiente where Facturacion.CodigoFacturacion = '{0}'", codigoFactura), con);
                 da.Fill(r);
                 con.Close();
             }

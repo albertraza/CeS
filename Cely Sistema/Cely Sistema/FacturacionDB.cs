@@ -237,5 +237,17 @@ namespace Cely_Sistema
             }
             return r;
         }
+        public static string getFacturaID(string matricula, string notas, string fechaFactura, string mesesSemanasRestantes, string pagoCon, string descuento)
+        {
+            string codigo = null;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select CodigoFacturacion from Facturacion where IDCLiente = '{0}' and Notas = '{1}' and FechaFactura = '{2}' and MesesSemnasRestantes = '{3}' and PagoCon = '{4}' and Descuento = '{5}'",
+                    matricula, notas, fechaFactura, mesesSemanasRestantes, pagoCon, descuento), con);
+                codigo = comand.ExecuteScalar().ToString();
+                con.Close();
+            }
+            return codigo;
+        }
     }
 }
