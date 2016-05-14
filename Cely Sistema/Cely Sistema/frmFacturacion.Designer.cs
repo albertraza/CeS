@@ -63,7 +63,6 @@
             this.lblPendientes = new System.Windows.Forms.Label();
             this.lblCantidadaPagar = new System.Windows.Forms.Label();
             this.txtCantPagar = new System.Windows.Forms.TextBox();
-            this.lblAnularPago = new System.Windows.Forms.LinkLabel();
             this.gbMotivoPago = new System.Windows.Forms.GroupBox();
             this.rbOtros = new System.Windows.Forms.RadioButton();
             this.rbPago = new System.Windows.Forms.RadioButton();
@@ -344,7 +343,6 @@
             this.gbFactura.Controls.Add(this.lblPendientes);
             this.gbFactura.Controls.Add(this.lblCantidadaPagar);
             this.gbFactura.Controls.Add(this.txtCantPagar);
-            this.gbFactura.Controls.Add(this.lblAnularPago);
             this.gbFactura.Controls.Add(this.lblFechaPago);
             this.gbFactura.Controls.Add(this.txtTotalaPagar);
             this.gbFactura.Controls.Add(this.lblPagoMensual);
@@ -417,18 +415,6 @@
             this.txtCantPagar.Size = new System.Drawing.Size(100, 22);
             this.txtCantPagar.TabIndex = 28;
             this.txtCantPagar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantPagar_KeyPress);
-            // 
-            // lblAnularPago
-            // 
-            this.lblAnularPago.AutoSize = true;
-            this.lblAnularPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnularPago.Location = new System.Drawing.Point(292, 149);
-            this.lblAnularPago.Name = "lblAnularPago";
-            this.lblAnularPago.Size = new System.Drawing.Size(65, 13);
-            this.lblAnularPago.TabIndex = 27;
-            this.lblAnularPago.TabStop = true;
-            this.lblAnularPago.Text = "Anular Pago";
-            this.lblAnularPago.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAnularPago_LinkClicked);
             // 
             // gbMotivoPago
             // 
@@ -556,7 +542,6 @@
         private System.Windows.Forms.RadioButton rbOtros;
         private System.Windows.Forms.RadioButton rbPago;
         private System.Windows.Forms.Button btnImprimir;
-        private System.Windows.Forms.LinkLabel lblAnularPago;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Label lblCantidadaPagar;
         private System.Windows.Forms.TextBox txtCantPagar;

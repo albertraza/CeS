@@ -87,7 +87,6 @@ namespace Cely_Sistema
                             txtNombre.Text = nombre;
                             txtApellido.Text = apellido;
                             dgvtabla.DataSource = FacturacionDB.BuscarFacturas(Int32.Parse(txtMatricula.Text));
-                            lblAnularPago.Visible = true;
                             btnAceptar.Focus();
                             int CompF = DateTime.Compare(pPago0, fechaActual);
 
@@ -274,7 +273,6 @@ namespace Cely_Sistema
             if (lblMatricula.Text != null)
             {
                 rbPago.Checked = true;
-                lblAnularPago.Visible = false;
                 txtFechaPago.Visible = false;
                 txtProximoPAgo.Visible = false;
                 txtTotalaPagar.Visible = false;
@@ -341,7 +339,6 @@ namespace Cely_Sistema
             {
                 Limpiar();
                 rbPago.Checked = true;
-                lblAnularPago.Visible = false;
                 txtFechaPago.Visible = false;
                 txtProximoPAgo.Visible = false;
                 txtTotalaPagar.Visible = false;
@@ -393,7 +390,6 @@ namespace Cely_Sistema
             lblMesesoSemanas.Visible = true;
             txtCantPagar.Visible = true;
             txtTotalaPagar.Visible = false;
-            lblAnularPago.Visible = false;
             gbFactura.BackColor = Color.White;
         }
         private void LimpiarM()
@@ -438,7 +434,6 @@ namespace Cely_Sistema
             txtMotivodePago.Clear();
             txtTotalaPagar.Clear();
             txtTotalaPagar.Visible = false;
-            lblAnularPago.Visible = false;
             txtNombre.Clear();
             txtApellido.Clear();
             txtMatricula.Focus();
@@ -604,7 +599,6 @@ namespace Cely_Sistema
                                 if (codigo != null & ultimop > 0 & PP > 0 & retorno1 > 0)
                                 {
                                     MessageBox.Show("Codigo Factura: " + codigo + "\n" + "Devuelta: " + devuelta.ToString("f2") + "\n" + "Cant Pendiente: " + MesesSemanasRestan.ToString("f0"), "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    lblAnularPago.Visible = false;
                                     if (MessageBox.Show("Desea Imprimir la Factura?", "Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                     {
                                         frmReporte pFacturaImpr = new frmReporte();
@@ -629,7 +623,6 @@ namespace Cely_Sistema
                                         if (codigo != null)
                                         {
                                             MessageBox.Show("Codigo Factura: " + codigo, "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            lblAnularPago.Visible = false;
                                             if (MessageBox.Show("Desea Imprimir la Factura?", "Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                             {
                                                 frmReporte pFacturaImpr = new frmReporte();
@@ -913,71 +906,7 @@ namespace Cely_Sistema
 
         private void lblAnularPago_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            try
-            {
-                if (txtMatricula.Text == string.Empty)
-                {
-                    MessageBox.Show("Matricula vacia, Digite una valida", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtMatricula.Focus();
-                }
-                else if (txtNombre.Text == string.Empty & txtApellido.Text == string.Empty)
-                {
-                    MessageBox.Show("No se ha buscado un estudiante, digite una matricula valida", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtMatricula.Focus();
-                }
-                else
-                {
-                    string Modopago = EstudianteDB.ObtenerModoPago(int.Parse(txtMatricula.Text));
-                    if (Modopago == "Mensual" || Modopago == "M")
-                    {
-                        Facturacion pF = new Facturacion();
-                        int R0 = EstudianteDB.ActualizarProximoPago(int.Parse(txtMatricula.Text), pPago0.ToString("yyyy-MM-dd"));
-                        pF.Nombre_Estudiante = txtNombre.Text + " " + txtApellido.Text;
-                        pF.Cancelacion_Pago = "PAGO ANULADO";
-                        pF.Fecha_Factura = DateTime.Today.Date.ToString("yyyy-MM-dd");
-                        pF.Matricula_Estudiante = int.Parse(txtMatricula.Text);
-                        pF.Precio = 0.00;
-                        pF.Razon_Pago = "PAGO ANULADO";
-
-                        int R1 = FacturacionDB.CrearFactura(pF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-                        if (R1 > 0 & R0 > 0)
-                        {
-                            MessageBox.Show("Pago Anulado!", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Limpiar();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error, No se Pudo anular el Pago", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
-                    }
-                    else
-                    {
-                        Facturacion pF = new Facturacion();
-                        int R0 = EstudianteDB.ActualizarProximoPago(int.Parse(txtMatricula.Text), pPago0.ToString("yyyy-MM-dd"));
-                        pF.Nombre_Estudiante = txtNombre.Text + " " + txtApellido.Text;
-                        pF.Cancelacion_Pago = "PAGO ANULADO";
-                        pF.Fecha_Factura = DateTime.Today.Date.ToString("yyyy-MM-dd");
-                        pF.Matricula_Estudiante = int.Parse(txtMatricula.Text);
-                        pF.Precio = 0.00;
-                        pF.Razon_Pago = "PAGO ANULADO";
-
-                        int R1 = FacturacionDB.CrearFactura(pF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-                        if (R1 > 0 & R0 > 0)
-                        {
-                            MessageBox.Show("Pago Anulado!", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Limpiar();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error, No se Pudo anular el Pago", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            /// this iten was deleted
         }
 
         private void rbPago_CheckedChanged(object sender, EventArgs e)

@@ -53,8 +53,8 @@ namespace Cely_Sistema
                     txtDominiodelIdiomaIngles.Text = pEstudiante.D_Idioma;
                     txtEdad.Text = pEstudiante.Edad;
                     txtEmail.Text = pEstudiante.E_Mail;
-                    txtFechaNacimiento.Text = pEstudiante.Fecha_N;
-                    txtFechaRegistro.Text = pEstudiante.Fecha_Ins;
+                    txtFechaNacimiento.Text = Convert.ToDateTime(pEstudiante.Fecha_N).ToString("dd-MM-yyyy");
+                    txtFechaRegistro.Text = Convert.ToDateTime(pEstudiante.Fecha_Ins).ToString("dd-MM-yyyy");
                     lblTipodePago.Text = "Tipo de Pago: " + pEstudiante.Modo_Pago;
                     txtNivel.Text = pEstudiante.NivelA;
                     txtNivelAcademico.Text = pEstudiante.N_Academico;
@@ -161,6 +161,7 @@ namespace Cely_Sistema
                 else
                 {
                     MessageBox.Show("El Estudiante no existe", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    LimpiarCampos();
                     txtMatricula.Focus();
                 }
             }
