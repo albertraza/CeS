@@ -23,7 +23,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>es-DO</TargetCulture>
-    <ApplicationRevision>45</ApplicationRevision>
+    <ApplicationRevision>48</ApplicationRevision>
     <ApplicationVersion>3.2.52.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -187,11 +187,23 @@
     <Compile Include="frmFacturacion.Designer.cs">
       <DependentUpon>frmFacturacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFacturaMensual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFacturaMensual.Designer.cs">
+      <DependentUpon>frmFacturaMensual.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFacturasA.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmFacturasA.Designer.cs">
       <DependentUpon>frmFacturasA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFacturaSemanal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFacturaSemanal.Designer.cs">
+      <DependentUpon>frmFacturaSemanal.cs</DependentUpon>
     </Compile>
     <Compile Include="frmHorarioA.cs">
       <SubType>Form</SubType>
@@ -379,8 +391,14 @@
     <EmbeddedResource Include="frmFacturacion.resx">
       <DependentUpon>frmFacturacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFacturaMensual.resx">
+      <DependentUpon>frmFacturaMensual.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFacturasA.resx">
       <DependentUpon>frmFacturasA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFacturaSemanal.resx">
+      <DependentUpon>frmFacturaSemanal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHorarioA.resx">
       <DependentUpon>frmHorarioA.cs</DependentUpon>

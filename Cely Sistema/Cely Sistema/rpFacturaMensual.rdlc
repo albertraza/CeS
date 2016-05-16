@@ -1470,7 +1470,7 @@
         </Field>
         <Field Name="PagoCon">
           <DataField>PagoCon</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="Devuelta">
           <DataField>Devuelta</DataField>
@@ -1509,9 +1509,9 @@
         <rd:DataSetName>Reporting</rd:DataSetName>
         <rd:SchemaPath>C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\Reporting.xsd</rd:SchemaPath>
         <rd:TableName>Factura</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>FacturaTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
