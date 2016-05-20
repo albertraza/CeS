@@ -333,14 +333,39 @@ namespace Cely_Sistema
             {
                 if (MessageBox.Show("Desea Imprimir el Contrato del Estudiante", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    frmReporte pContrato = new frmReporte();
                     string matricula = dataGridView1.CurrentRow.Cells[12].Value.ToString();
-                    pContrato.TipoReporte = "Contrato";
-                    pContrato.Matricula = matricula;
                     string MP = EstudianteDB.ObtenerModoPago(int.Parse(matricula));
-                    pContrato.ModoPago = MP;
-                    pContrato.VIP = EstudianteDB.SeleccionarEstudiante(int.Parse(matricula)).VIP;
-                    pContrato.ShowDialog();
+                    string VIP = EstudianteDB.SeleccionarEstudiante(int.Parse(matricula)).VIP;
+                    if(VIP == "Si")
+                    {
+                        if(MP == "Mensual")
+                        {
+                            frmContratoVIPMensual pcontrato = new frmContratoVIPMensual();
+                            pcontrato.matricula = int.Parse(matricula);
+                            pcontrato.ShowDialog();
+                        }
+                        else
+                        {
+                            frmContratoVIPSemanal pcontrato = new frmContratoVIPSemanal();
+                            pcontrato.matricula = int.Parse(matricula);
+                            pcontrato.ShowDialog();
+                        }
+                    }
+                    else
+                    {
+                        if(MP == "Mensual")
+                        {
+                            frmContratoMensual pcontrato = new frmContratoMensual();
+                            pcontrato.matricula = int.Parse(matricula);
+                            pcontrato.ShowDialog();
+                        }
+                        else
+                        {
+                            frmContratoSemanal pcontrato = new frmContratoSemanal();
+                            pcontrato.matricula = int.Parse(matricula);
+                            pcontrato.ShowDialog();
+                        }
+                    }
                 }
             }
         }

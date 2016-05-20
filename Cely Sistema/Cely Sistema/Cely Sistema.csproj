@@ -169,6 +169,30 @@
     <Compile Include="frmConsultaUsuarios.Designer.cs">
       <DependentUpon>frmConsultaUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmContratoMensual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContratoMensual.Designer.cs">
+      <DependentUpon>frmContratoMensual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmContratoSemanal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContratoSemanal.Designer.cs">
+      <DependentUpon>frmContratoSemanal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmContratoVIPMensual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContratoVIPMensual.Designer.cs">
+      <DependentUpon>frmContratoVIPMensual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmContratoVIPSemanal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContratoVIPSemanal.Designer.cs">
+      <DependentUpon>frmContratoVIPSemanal.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDescuentoFacturacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -337,6 +361,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="reportes.cs" />
+    <Compile Include="Reporting.cs">
+      <DependentUpon>Reporting.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reporting.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -346,7 +373,6 @@
     <Compile Include="UsuariosB.cs" />
     <Compile Include="UsuariosDB.cs" />
     <Compile Include="UsuariosS.cs" />
-    <EmbeddedResource Include="bin\Debug\Contrato.rdlc" />
     <EmbeddedResource Include="bin\Debug\rpFacturaMensual.rdlc" />
     <EmbeddedResource Include="bin\Debug\rpFacturaSemanal.rdlc" />
     <EmbeddedResource Include="frmBuscarCalificacion.resx">
@@ -381,6 +407,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaUsuarios.resx">
       <DependentUpon>frmConsultaUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContratoMensual.resx">
+      <DependentUpon>frmContratoMensual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContratoSemanal.resx">
+      <DependentUpon>frmContratoSemanal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContratoVIPMensual.resx">
+      <DependentUpon>frmContratoVIPMensual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContratoVIPSemanal.resx">
+      <DependentUpon>frmContratoVIPSemanal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDescuentoFacturacion.resx">
       <DependentUpon>frmDescuentoFacturacion.cs</DependentUpon>
@@ -468,6 +506,10 @@
     </Compile>
     <EmbeddedResource Include="rpCalificaciones.rdlc" />
     <EmbeddedResource Include="rpCalificacionesEstudiantiles.rdlc" />
+    <EmbeddedResource Include="rpContratoMensual.rdlc" />
+    <EmbeddedResource Include="rpContratoSemanal.rdlc" />
+    <EmbeddedResource Include="rpContratoVIPMensual.rdlc" />
+    <EmbeddedResource Include="rpContratoVIPSemanal.rdlc" />
     <EmbeddedResource Include="rpTodasCalificaciones.rdlc" />
     <None Include="app.config">
       <SubType>Designer</SubType>

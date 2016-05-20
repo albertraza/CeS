@@ -255,12 +255,40 @@ namespace Cely_Sistema
                                 EstudianteDB.UpdateVIPstatus(res, matricula.ToString());
                             }
                             // for contrato
-                            frmReporte pContrato = new frmReporte();
-                            pContrato.Matricula = matricula;
-                            pContrato.TipoReporte = "Contrato";
-                            pContrato.VIP = EstudianteDB.SeleccionarEstudiante(int.Parse(matricula)).VIP;
-                            pContrato.ModoPago = EstudianteDB.ObtenerModoPago(int.Parse(matricula));
-                            pContrato.ShowDialog();
+
+                            if (cbVIP.Checked)
+                            {
+                                // means that the student is a vip
+                                if (rbMensual.Checked)
+                                {
+                                    frmContratoVIPMensual pContrato = new frmContratoVIPMensual();
+                                    pContrato.matricula = int.Parse(matricula);
+                                    pContrato.ShowDialog();
+                                }
+                                else
+                                {
+                                    frmContratoVIPSemanal pcontrato = new frmContratoVIPSemanal();
+                                    pcontrato.matricula = int.Parse(matricula);
+                                    pcontrato.ShowDialog();
+                                }
+                            }
+                            else
+                            {
+                                // no vip student
+                                if (rbMensual.Checked)
+                                {
+                                    frmContratoMensual pcontrato = new frmContratoMensual();
+                                    pcontrato.matricula = int.Parse(matricula);
+                                    pcontrato.ShowDialog();
+                                }
+                                else
+                                {
+                                    frmContratoMensual pcontrato = new frmContratoMensual();
+                                    pcontrato.matricula = int.Parse(matricula);
+                                    pcontrato.ShowDialog();
+                                }
+                            }
+
                             // Analizis de la fecha de pago para el Estudiante
                             string FechaProximoP = FechaPP.ToString("yyyy-MM-dd");
                             EstudianteDB.ActualizarProximoPago(int.Parse(matricula), FechaProximoP);
