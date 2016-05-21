@@ -539,8 +539,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>Contrato</DataSetName>
-        <Top>2.42014in</Top>
-        <Left>0.30729in</Left>
+        <Top>1.85591in</Top>
+        <Left>0.29682in</Left>
         <Height>1.63542in</Height>
         <Width>5.80208in</Width>
         <Style>
@@ -567,8 +567,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.10069in</Top>
-        <Left>2.43229in</Left>
+        <Top>1.53646in</Top>
+        <Left>2.42182in</Left>
         <Height>0.25in</Height>
         <Width>1.47917in</Width>
         <ZIndex>1</ZIndex>
@@ -586,8 +586,8 @@
         <Source>Embedded</Source>
         <Value>ID1533909_1443572492541488_1599702328_n</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>0.30555in</Top>
-        <Left>2.4323in</Left>
+        <Top>0.06077in</Top>
+        <Left>2.42188in</Left>
         <Height>1.15625in</Height>
         <Width>1.53125in</Width>
         <ZIndex>2</ZIndex>
@@ -621,8 +621,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.4618in</Top>
-        <Left>1.75397in</Left>
+        <Top>1.21702in</Top>
+        <Left>1.74355in</Left>
         <Height>0.25in</Height>
         <Width>2.9375in</Width>
         <ZIndex>3</ZIndex>
@@ -654,8 +654,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox18</rd:DefaultName>
-        <Top>4.40278in</Top>
-        <Left>2.43229in</Left>
+        <Top>3.58855in</Top>
+        <Left>2.42182in</Left>
         <Height>0.25in</Height>
         <Width>1.47916in</Width>
         <ZIndex>4</ZIndex>
@@ -673,12 +673,12 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>5.80208in</Width>
+              <Width>5.18751in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>3.95833in</Height>
+              <Height>4.04166in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -705,9 +705,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox19</rd:DefaultName>
-                          <Left>0.00001in</Left>
-                          <Height>0.25in</Height>
-                          <Width>5.80208in</Width>
+                          <Left>0.00004in</Left>
+                          <Height>0.39583in</Height>
+                          <Width>5.18749in</Width>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -736,8 +736,10 @@
                                 <TextRun>
                                   <Value>=Fields!Mora.Value</Value>
                                   <Style>
+                                    <FontStyle>Normal</FontStyle>
+                                    <FontWeight>Normal</FontWeight>
                                     <Format>'$'0.00;('$'0.00)</Format>
-                                    <TextDecoration>Underline</TextDecoration>
+                                    <TextDecoration>None</TextDecoration>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -747,10 +749,10 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Mora</rd:DefaultName>
-                          <Top>0.25in</Top>
-                          <Left>0.00001in</Left>
+                          <Top>0.39583in</Top>
+                          <Left>0.00005in</Left>
                           <Height>0.25in</Height>
-                          <Width>5.80208in</Width>
+                          <Width>5.1875in</Width>
                           <ZIndex>1</ZIndex>
                           <Style>
                             <Border>
@@ -784,10 +786,10 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox21</rd:DefaultName>
-                          <Top>0.5in</Top>
-                          <Left>0.00001in</Left>
+                          <Top>0.64583in</Top>
+                          <Left>0.00005in</Left>
                           <Height>0.40625in</Height>
-                          <Width>5.80208in</Width>
+                          <Width>5.1875in</Width>
                           <ZIndex>2</ZIndex>
                           <Style>
                             <Border>
@@ -820,10 +822,10 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox22</rd:DefaultName>
-                          <Top>0.90625in</Top>
-                          <Left>0.00001in</Left>
+                          <Top>1.05208in</Top>
+                          <Left>0.00005in</Left>
                           <Height>0.40625in</Height>
-                          <Width>5.80208in</Width>
+                          <Width>5.1875in</Width>
                           <ZIndex>3</ZIndex>
                           <Style>
                             <Border>
@@ -856,10 +858,10 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Top>1.3125in</Top>
-                          <Left>0.00001in</Left>
-                          <Height>0.25in</Height>
-                          <Width>5.80208in</Width>
+                          <Top>1.45833in</Top>
+                          <Left>0.00005in</Left>
+                          <Height>0.40625in</Height>
+                          <Width>5.18747in</Width>
                           <ZIndex>4</ZIndex>
                           <Style>
                             <Border>
@@ -892,9 +894,10 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox24</rd:DefaultName>
-                          <Top>1.5625in</Top>
-                          <Height>0.25in</Height>
-                          <Width>5.80208in</Width>
+                          <Top>1.86458in</Top>
+                          <Left>0.00001in</Left>
+                          <Height>0.38542in</Height>
+                          <Width>5.18751in</Width>
                           <ZIndex>5</ZIndex>
                           <Style>
                             <Border>
@@ -927,10 +930,10 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox25</rd:DefaultName>
-                          <Top>1.8125in</Top>
+                          <Top>2.25in</Top>
                           <Left>0.00001in</Left>
                           <Height>0.57292in</Height>
-                          <Width>5.80208in</Width>
+                          <Width>5.1875in</Width>
                           <ZIndex>6</ZIndex>
                           <Style>
                             <Border>
@@ -963,9 +966,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox26</rd:DefaultName>
-                          <Top>2.38542in</Top>
+                          <Top>2.82292in</Top>
                           <Height>0.41667in</Height>
-                          <Width>5.80208in</Width>
+                          <Width>5.18751in</Width>
                           <ZIndex>7</ZIndex>
                           <Style>
                             <Border>
@@ -1006,10 +1009,10 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Matricula</rd:DefaultName>
-                          <Top>2.80208in</Top>
+                          <Top>3.23958in</Top>
                           <Left>0.00001in</Left>
                           <Height>0.23958in</Height>
-                          <Width>5.80208in</Width>
+                          <Width>5.1875in</Width>
                           <ZIndex>8</ZIndex>
                           <Style>
                             <Border>
@@ -1040,7 +1043,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox28</rd:DefaultName>
-                          <Top>3.39583in</Top>
+                          <Top>3.64583in</Top>
                           <Left>0.60417in</Left>
                           <Height>0.25in</Height>
                           <Width>1.34375in</Width>
@@ -1056,7 +1059,7 @@
                           </Style>
                         </Textbox>
                         <Line Name="Line1">
-                          <Top>3.6875in</Top>
+                          <Top>3.9375in</Top>
                           <Left>2.00348in</Left>
                           <Height>0in</Height>
                           <Width>2.17361in</Width>
@@ -1094,10 +1097,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>Contrato</DataSetName>
-        <Top>4.89236in</Top>
-        <Left>0.30729in</Left>
-        <Height>3.95833in</Height>
-        <Width>5.80208in</Width>
+        <Top>4.07813in</Top>
+        <Left>0.29682in</Left>
+        <Height>4.04166in</Height>
+        <Width>5.18751in</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -1106,10 +1109,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>9.42708in</Height>
+    <Height>8.27083in</Height>
     <Style />
   </Body>
-  <Width>6.61458in</Width>
+  <Width>6.5in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
@@ -1124,7 +1127,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>53bc29df-1c90-483e-a98b-da9ec88e27b1</rd:DataSourceID>
+      <rd:DataSourceID>62cd4af9-83a3-4724-8ba7-95a587b5b50e</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -1225,5 +1228,5 @@ U/WRwTcvEzM81miUIMzGAPt2PctAmkSEZVZVrhKmDSGPB9PYnXwGw/rujCA2i35R+qXA78L3g++qOEEB
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>6886f26d-95cb-475e-9575-b1425cf5da73</rd:ReportID>
+  <rd:ReportID>e382b2ab-6c56-4aa9-991a-616dcaf3cb88</rd:ReportID>
 </Report>
