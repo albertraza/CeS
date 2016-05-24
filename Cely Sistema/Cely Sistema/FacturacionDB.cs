@@ -74,7 +74,7 @@ namespace Cely_Sistema
 
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("Select * from Facturacion"), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("Select * from Facturacion order by CodigoFacturacion desc"), conexion);
 
                 SqlDataReader reader = comando.ExecuteReader();
 

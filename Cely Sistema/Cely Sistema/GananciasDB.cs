@@ -145,7 +145,7 @@ namespace Cely_Sistema
             int r = -1;
             using(SqlConnection con = DBcomun.ObetenerConexion())
             {
-                SqlCommand comand = new SqlCommand("update Ganancias set Total_Ganancias = Ingresos where Total_Ganancias is null and Total_Descuentos = 0 or Total_Descuentos is null", con);
+                SqlCommand comand = new SqlCommand("update Ganancias set Total_Ganancias = Ingresos where Total_Ganancias is null or Total_Descuentos = 0 or Total_Descuentos is null", con);
                 comand.ExecuteNonQuery();
                 r = 1;
                 con.Close();
