@@ -197,7 +197,7 @@ namespace Cely_Sistema
             string retorno = null;
             using (SqlConnection con = DBcomun.ObetenerConexion())
             {
-                SqlCommand comand = new SqlCommand(string.Format("select ReInscripcion from Ganancias where Fecha_Ganancias = '{0}'", fecha), con);
+                SqlCommand comand = new SqlCommand(string.Format("select Reinscripcion from Ganancias where Fecha_Ganancias = '{0}'", fecha), con);
                 SqlDataReader reader = comand.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -238,6 +238,26 @@ namespace Cely_Sistema
             using (SqlConnection con = DBcomun.ObetenerConexion())
             {
                 SqlCommand comand = new SqlCommand(string.Format("select DerechoExamen from Ganancias where Fecha_Ganancias = '{0}'", fecha), con);
+                SqlDataReader reader = comand.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Close();
+                    retorno = comand.ExecuteScalar().ToString();
+                }
+                else
+                {
+                    retorno = null;
+                }
+                con.Close();
+            }
+            return retorno;
+        }
+        public static string getTotalCuotas(string fecha)
+        {
+            string retorno = null;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("Select Cuota from Ganancias where Fecha_Ganancias = '{0}'", fecha), con);
                 SqlDataReader reader = comand.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -307,13 +327,24 @@ namespace Cely_Sistema
             }
             return retorno;
         }
+        public static int updateTotalCuota(string fecha, decimal total)
+        {
+            int r = -1;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("Update Ganancias set Cuota = '{0}' where Fecha_Ganancias = '{1}'", total, fecha), con);
+                r = comand.ExecuteNonQuery();
+                con.Close();
+            }
+                return r;
+        }
         public static int getAndUpdateGanancias(string tipoPago, string fecha, decimal total)
         {
             int retorno = -1;
             if (tipoPago == "Inscripcion")
             {
                 string Ins = getTotalInscripcion(fecha);
-                decimal ins = 0;
+                decimal ins;
                 if (Ins == null || string.Empty == Ins)
                 {
                     ins = total;
@@ -328,22 +359,22 @@ namespace Cely_Sistema
             else if (tipoPago == "Reinscripcion")
             {
                 string ReIns = getTotalReInscripcion(fecha);
-                decimal reIns = 0;
-                if (ReIns == null || string.Empty == ReIns)
+                decimal reIns;
+                if (ReIns == null || string.Empty == ReIns || decimal.Parse(ReIns) == 0)
                 {
                     reIns = total;
                 }
                 else
                 {
                     reIns = decimal.Parse(ReIns);
-                    ReIns += total;
+                    reIns += total;
                 }
-                retorno = updateTotalReInscripcion(fecha, total);
+                retorno = updateTotalReInscripcion(fecha, reIns);
             }
             else if (tipoPago == "Libros")
             {
                 string Libr = getTotalLibros(fecha);
-                decimal libr = 0;
+                decimal libr;
                 if (string.Empty == Libr || Libr == null)
                 {
                     libr = total;
@@ -358,7 +389,7 @@ namespace Cely_Sistema
             else if (tipoPago == "Derecho a Examen")
             {
                 string Der = getTotalDerechoExamen(fecha);
-                decimal der = 0;
+                decimal der;
                 if(Der == null || string.Empty == Der)
                 {
                     der = total;
@@ -369,6 +400,21 @@ namespace Cely_Sistema
                     der += total;
                 }
                 retorno = updateTotalDerechoExamen(fecha, der);
+            }
+            else if(tipoPago == "Cuota")
+            {
+                string cuo = getTotalCuotas(fecha);
+                decimal Cuo;
+                if(cuo == string.Empty || cuo == null)
+                {
+                    Cuo = total;
+                }
+                else
+                {
+                    Cuo = decimal.Parse(cuo);
+                    Cuo += total;
+                }
+                retorno = updateTotalCuota(fecha, Cuo);
             }
             else
             {

@@ -47,7 +47,7 @@ namespace Cely_Sistema
 
             using(SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("Select * from Facturacion where FechaFactura = '{0}'", pFecha), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("Select * from Facturacion where FechaFactura = '{0}' order by CodigoFacturacion desc", pFecha), conexion);
 
                 SqlDataReader reader = comando.ExecuteReader();
 
@@ -102,7 +102,7 @@ namespace Cely_Sistema
 
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("Select * from Facturacion where IDCliente = {0}", pMatricula), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("Select * from Facturacion where IDCliente = {0} order by CodigoFacturacion desc", pMatricula), conexion);
 
                 SqlDataReader reader = comando.ExecuteReader();
 
@@ -129,7 +129,7 @@ namespace Cely_Sistema
             List<Facturacion> Factura = new List<Facturacion>();
             using(SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("select * from Facturacion where IDCLiente like '{0}%' and NombreCLiente like '{1}%' and Precio like '{2}%' and FechaFactura like '{3}%' and Notas like '{4}%' and CodigoFacturacion like '{5}%'",
+                SqlCommand comando = new SqlCommand(string.Format("select * from Facturacion where IDCLiente like '{0}%' and NombreCLiente like '{1}%' and Precio like '{2}%' and FechaFactura like '{3}%' and Notas like '{4}%' and CodigoFacturacion like '{5}%' order by CodigoFacturacion desc",
                     Matricula, NombreApellido, Precio, FechaFa, notas, CodigoFa), conexion);
                 SqlDataReader reader = comando.ExecuteReader();
 
