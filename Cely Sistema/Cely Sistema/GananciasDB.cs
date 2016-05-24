@@ -152,5 +152,229 @@ namespace Cely_Sistema
             }
             return r;
         }
+        public static string getTotalLibros(string fecha)
+        {
+            string retorno = null;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select Libros from Ganancias where Fecha_Ganancias = '{0}'", fecha), con);
+                SqlDataReader reader = comand.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Close();
+                    retorno = comand.ExecuteScalar().ToString();
+                }
+                else
+                {
+                    retorno = null;
+                }
+                con.Close();
+            }
+            return retorno;
+        }
+        public static string getTotalInscripcion(string fecha)
+        {
+            string retorno = null;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select Inscripcion from Ganancias where Fecha_Ganancias = '{0}'", fecha), con);
+                SqlDataReader reader = comand.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Close();
+                    retorno = comand.ExecuteScalar().ToString();
+                }
+                else
+                {
+                    retorno = null;
+                }
+                con.Close();
+            }
+            return retorno;
+        }
+        public static string getTotalReInscripcion(string fecha)
+        {
+            string retorno = null;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select ReInscripcion from Ganancias where Fecha_Ganancias = '{0}'", fecha), con);
+                SqlDataReader reader = comand.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Close();
+                    retorno = comand.ExecuteScalar().ToString();
+                }
+                else
+                {
+                    retorno = null;
+                }
+                con.Close();
+            }
+            return retorno;
+        }
+        public static string getTotalDetallesGastos(string fecha)
+        {
+            string retorno = null;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select DetallesGastos from Ganancias where Fecha_Ganancias = '{0}'", fecha), con);
+                SqlDataReader reader = comand.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Close();
+                    retorno = comand.ExecuteScalar().ToString();
+                }
+                else
+                {
+                    retorno = null;
+                }
+                con.Close();
+            }
+            return retorno;
+        }
+        public static string getTotalDerechoExamen(string fecha)
+        {
+            string retorno = null;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select DerechoExamen from Ganancias where Fecha_Ganancias = '{0}'", fecha), con);
+                SqlDataReader reader = comand.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Close();
+                    retorno = comand.ExecuteScalar().ToString();
+                }
+                else
+                {
+                    retorno = null;
+                }
+                con.Close();
+            }
+            return retorno;
+        }
+        public static int updateTotalLibros(string fecha, decimal Total)
+        {
+            int retorno = -1;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("update Ganancias set Libros = '{0}' where Fecha_Ganancias = '{1}'", Total, fecha), con);
+                retorno = comand.ExecuteNonQuery();
+                con.Close();
+            }
+            return retorno;
+        }
+        public static int updateTotalInscripcion(string fecha, decimal Total)
+        {
+            int retorno = -1;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("update Ganancias set Inscripcion = '{0}' where Fecha_Ganancias = '{1}'", Total, fecha), con);
+                retorno = comand.ExecuteNonQuery();
+                con.Close();
+            }
+            return retorno;
+        }
+        public static int updateTotalReInscripcion(string fecha, decimal Total)
+        {
+            int retorno = -1;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("update Ganancias set Reinscripcion = '{0}' where Fecha_Ganancias = '{1}'", Total, fecha), con);
+                retorno = comand.ExecuteNonQuery();
+                con.Close();
+            }
+            return retorno;
+        }
+        public static int updateTotalDetallesGastos(string fecha, string detalles)
+        {
+            int retorno = -1;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("update Ganancias set DetallesGastos = '{0}' where Fecha_Ganancias = '{1}'", detalles, fecha), con);
+                retorno = comand.ExecuteNonQuery();
+                con.Close();
+            }
+            return retorno;
+        }
+        public static int updateTotalDerechoExamen(string fecha, decimal Total)
+        {
+            int retorno = -1;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("update Ganancias set DerechoExamen = '{0}' where Fecha_Ganancias = '{1}'", Total, fecha), con);
+                retorno = comand.ExecuteNonQuery();
+                con.Close();
+            }
+            return retorno;
+        }
+        public static int getAndUpdateGanancias(string tipoPago, string fecha, decimal total)
+        {
+            int retorno = -1;
+            if (tipoPago == "Inscripcion")
+            {
+                string Ins = getTotalInscripcion(fecha);
+                decimal ins = 0;
+                if (Ins == null || string.Empty == Ins)
+                {
+                    ins = total;
+                }
+                else
+                {
+                    ins = decimal.Parse(Ins);
+                    ins += total;
+                }
+                retorno = updateTotalInscripcion(fecha, ins);
+            }
+            else if (tipoPago == "Reinscripcion")
+            {
+                string ReIns = getTotalReInscripcion(fecha);
+                decimal reIns = 0;
+                if (ReIns == null || string.Empty == ReIns)
+                {
+                    reIns = total;
+                }
+                else
+                {
+                    reIns = decimal.Parse(ReIns);
+                    ReIns += total;
+                }
+                retorno = updateTotalReInscripcion(fecha, total);
+            }
+            else if (tipoPago == "Libros")
+            {
+                string Libr = getTotalLibros(fecha);
+                decimal libr = 0;
+                if (string.Empty == Libr || Libr == null)
+                {
+                    libr = total;
+                }
+                else
+                {
+                    libr = decimal.Parse(Libr);
+                    libr += total;
+                }
+                retorno = updateTotalLibros(fecha, libr);
+            }
+            else if (tipoPago == "Derecho a Examen")
+            {
+                string Der = getTotalDerechoExamen(fecha);
+                decimal der = 0;
+                if(Der == null || string.Empty == Der)
+                {
+                    der = total;
+                }
+                else
+                {
+                    der = decimal.Parse(Der);
+                    der += total;
+                }
+                retorno = updateTotalDerechoExamen(fecha, der);
+            }
+            else
+            {
+                retorno = -1;
+            }
+            return retorno;
+        }
     }
 }

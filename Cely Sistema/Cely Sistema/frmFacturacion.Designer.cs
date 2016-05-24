@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFacturacion));
             this.txtMatricula = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -68,6 +69,8 @@
             this.rbPago = new System.Windows.Forms.RadioButton();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.cbTipodePago = new System.Windows.Forms.ComboBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvtabla)).BeginInit();
             this.gbUltimosPagos.SuspendLayout();
             this.gbInformacionEstudiante.SuspendLayout();
@@ -337,6 +340,7 @@
             // gbFactura
             // 
             this.gbFactura.BackColor = System.Drawing.Color.White;
+            this.gbFactura.Controls.Add(this.cbTipodePago);
             this.gbFactura.Controls.Add(this.lblMesesoSemanas);
             this.gbFactura.Controls.Add(this.nCantPagar);
             this.gbFactura.Controls.Add(this.lblCantMesesPagar);
@@ -471,6 +475,25 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // cbTipodePago
+            // 
+            this.cbTipodePago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipodePago.FormattingEnabled = true;
+            this.cbTipodePago.Items.AddRange(new object[] {
+            "Inscripcion",
+            "Reinscripcion",
+            "Libros",
+            "Derecho a Examen"});
+            this.cbTipodePago.Location = new System.Drawing.Point(134, 31);
+            this.cbTipodePago.Name = "cbTipodePago";
+            this.cbTipodePago.Size = new System.Drawing.Size(159, 24);
+            this.cbTipodePago.TabIndex = 33;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // frmFacturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -549,5 +572,7 @@
         private System.Windows.Forms.NumericUpDown nCantPagar;
         private System.Windows.Forms.Label lblCantMesesPagar;
         private System.Windows.Forms.Label lblMesesoSemanas;
+        private System.Windows.Forms.ComboBox cbTipodePago;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

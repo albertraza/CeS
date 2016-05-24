@@ -229,33 +229,7 @@ namespace Cely_Sistema
             }
             else
             {
-                Limpiar();
-                lblFechaPago.Visible = false;
-                lblMora.Visible = false;
-                lblPagoMensual.Visible = false;
-                lblPagoMensual.Text = "Cantidad a Pagar:";
-                lblProximoPago.Visible = false;
-                lblUltimoPAgo.Visible = false;
-                txtTotalaPagar.Visible = true;
-                lblPendientes.Visible = false;
-                lblMesesoSemanas.Visible = false;
-                lblCantMesesPagar.Visible = false;
-                lblCantidadaPagar.Visible = false;
-                nCantPagar.Visible = false;
-                txtCantPagar.Visible = false;
-                string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
-                string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
-                if (nombre != null)
-                {
-                    txtNombre.Text = nombre;
-                    txtApellido.Text = apellido;
-                }
-                else
-                {
-                    MessageBox.Show("No Existe el Estudiante, Ingrese una matricula Valida", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtMatricula.Clear();
-                    txtMatricula.Focus();
-                }
+                OtrosPayment();
             }
         }
         private void LimpiarActu()
@@ -293,6 +267,7 @@ namespace Cely_Sistema
                         if (txtMatricula.Text == string.Empty)
                         {
                             txtMatricula.Focus();
+                            dgvtabla.DataSource = FacturacionDB.TodasLasFacturas(DateTime.Today.Date.ToString("yyyy-MM-dd"));
                         }
                         else
                         {
@@ -301,33 +276,7 @@ namespace Cely_Sistema
                     }
                     else
                     {
-                        Limpiar();
-                        lblFechaPago.Visible = false;
-                        lblMora.Visible = false;
-                        lblPagoMensual.Visible = false;
-                        lblPagoMensual.Text = "Cantidad a Pagar:";
-                        lblProximoPago.Visible = false;
-                        lblUltimoPAgo.Visible = false;
-                        txtTotalaPagar.Visible = true;
-                        lblPendientes.Visible = false;
-                        lblMesesoSemanas.Visible = false;
-                        lblCantMesesPagar.Visible = false;
-                        lblCantidadaPagar.Visible = false;
-                        nCantPagar.Visible = false;
-                        txtCantPagar.Visible = false;
-                        string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
-                        string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
-                        if (nombre != null)
-                        {
-                            txtNombre.Text = nombre;
-                            txtApellido.Text = apellido;
-                        }
-                        else
-                        {
-                            MessageBox.Show("No Existe el Estudiante, Ingrese una matricula Valida", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            txtMatricula.Clear();
-                            txtMatricula.Focus();
-                        }
+                        OtrosPayment();
                     }
                 }
                 catch (Exception ex)
@@ -351,7 +300,7 @@ namespace Cely_Sistema
                 txtMatricula.Focus();
                 try
                 {
-                    dgvtabla.DataSource = FacturacionDB.TodasLasFacturasND();
+                    dgvtabla.DataSource = FacturacionDB.TodasLasFacturas(DateTime.Today.Date.ToString("yyyy-MM-dd"));
                 }
                 catch (Exception ex)
                 {
@@ -389,7 +338,42 @@ namespace Cely_Sistema
             lblMesesoSemanas.Visible = true;
             txtCantPagar.Visible = true;
             txtTotalaPagar.Visible = false;
+            cbTipodePago.Visible = false;
+            lblCantMesesPagar.Visible = true;
+            lblCantMesesPagar.Text = "Cant. pagar:";
             gbFactura.BackColor = Color.White;
+        }
+        private void OtrosPayment()
+        {
+            Limpiar();
+            lblFechaPago.Visible = false;
+            lblMora.Visible = false;
+            lblPagoMensual.Visible = false;
+            lblPagoMensual.Text = "Cantidad a Pagar:";
+            lblProximoPago.Visible = false;
+            lblUltimoPAgo.Visible = false;
+            txtTotalaPagar.Visible = true;
+            lblPendientes.Visible = false;
+            lblMesesoSemanas.Visible = false;
+            lblCantidadaPagar.Visible = false;
+            nCantPagar.Visible = false;
+            txtCantPagar.Visible = false;
+            lblCantMesesPagar.Visible = true;
+            lblCantMesesPagar.Text = "Tipo de Pago:";
+            cbTipodePago.Visible = true;
+            string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
+            string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
+            if (nombre != null)
+            {
+                txtNombre.Text = nombre;
+                txtApellido.Text = apellido;
+            }
+            else
+            {
+                MessageBox.Show("No Existe el Estudiante, Ingrese una matricula Valida", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtMatricula.Clear();
+                txtMatricula.Focus();
+            }
         }
         private void LimpiarM()
         {
@@ -678,7 +662,7 @@ namespace Cely_Sistema
                         pF.Razon_Pago = txtMotivodePago.Text;
                         pF.Fecha_Factura = DateTime.Now.Date.ToString("yyyy-MM-dd");
                         pF.Cancelacion_Pago = "0";
-                        int R = FacturacionDB.CrearFactura(pF, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                        int R = FacturacionDB.CrearFactura(pF, 0, 0, 0, 0, double.Parse(txtTotalaPagar.Text), double.Parse(txtTotalaPagar.Text), 0, 0, 0, 0);
                         if (R > 0)
                         {
                             string G = GananciasDB.ObtenerCantidad(DateTime.Today.Date.Date.ToString("yyyy-MM-dd"));
@@ -692,6 +676,7 @@ namespace Cely_Sistema
                                 int R1 = GananciasDB.ActualizarGananciasF(FechaA.Date.ToString("yyyy-MM-dd"), GT);
                                 if (R1 > 0)
                                 {
+                                    GananciasDB.getAndUpdateGanancias(cbTipodePago.Text, DateTime.Now.Date.ToString("yyyy-MM-dd"), decimal.Parse(txtTotalaPagar.Text));
                                 }
                                 else
                                 {
@@ -743,12 +728,12 @@ namespace Cely_Sistema
                             MessageBox.Show("Error al crear la factura, Intentelo Nuevamnete", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
             }
+                catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         }
 
         private void btnVerFacturas_Click(object sender, EventArgs e)
@@ -1248,33 +1233,7 @@ namespace Cely_Sistema
                     }
                     else
                     {
-                        Limpiar();
-                        lblFechaPago.Visible = false;
-                        lblMora.Visible = false;
-                        lblPagoMensual.Visible = false;
-                        lblPagoMensual.Text = "Cantidad a Pagar:";
-                        lblProximoPago.Visible = false;
-                        lblUltimoPAgo.Visible = false;
-                        txtTotalaPagar.Visible = true;
-                        lblPendientes.Visible = false;
-                        lblMesesoSemanas.Visible = false;
-                        lblCantMesesPagar.Visible = false;
-                        lblCantidadaPagar.Visible = false;
-                        nCantPagar.Visible = false;
-                        txtCantPagar.Visible = false;
-                        string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
-                        string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
-                        if (nombre != null)
-                        {
-                            txtNombre.Text = nombre;
-                            txtApellido.Text = apellido;
-                        }
-                        else
-                        {
-                            MessageBox.Show("No Existe el Estudiante, Ingrese una matricula Valida", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            txtMatricula.Clear();
-                            txtMatricula.Focus();
-                        }
+                        OtrosPayment();
                     }
                 }
                 catch (Exception ex)

@@ -60,6 +60,10 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.gbEstudiante = new System.Windows.Forms.GroupBox();
+            this.txtRespuesta2 = new System.Windows.Forms.TextBox();
+            this.lblPregunta2 = new System.Windows.Forms.Label();
+            this.txtRespuesta1 = new System.Windows.Forms.TextBox();
+            this.lblPregunta1 = new System.Windows.Forms.Label();
             this.txtCelular = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.lblCelular = new System.Windows.Forms.Label();
@@ -80,10 +84,6 @@
             this.celyDBDataSet = new Cely_Sistema.CelyDBDataSet();
             this.verGruposwHorarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.verGruposwHorarioTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter();
-            this.lblPregunta1 = new System.Windows.Forms.Label();
-            this.txtRespuesta1 = new System.Windows.Forms.TextBox();
-            this.txtRespuesta2 = new System.Windows.Forms.TextBox();
-            this.lblPregunta2 = new System.Windows.Forms.Label();
             this.gbEstudiante.SuspendLayout();
             this.gbVIP.SuspendLayout();
             this.pModoPago.SuspendLayout();
@@ -392,6 +392,40 @@
             this.gbEstudiante.Text = "Estudiante";
             this.gbEstudiante.Enter += new System.EventHandler(this.gbEstudiante_Enter);
             // 
+            // txtRespuesta2
+            // 
+            this.txtRespuesta2.Location = new System.Drawing.Point(32, 377);
+            this.txtRespuesta2.Name = "txtRespuesta2";
+            this.txtRespuesta2.Size = new System.Drawing.Size(337, 20);
+            this.txtRespuesta2.TabIndex = 14;
+            this.txtRespuesta2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRespuesta2_KeyPress);
+            // 
+            // lblPregunta2
+            // 
+            this.lblPregunta2.AutoSize = true;
+            this.lblPregunta2.Location = new System.Drawing.Point(114, 361);
+            this.lblPregunta2.Name = "lblPregunta2";
+            this.lblPregunta2.Size = new System.Drawing.Size(115, 13);
+            this.lblPregunta2.TabIndex = 53;
+            this.lblPregunta2.Text = "¿Donde ha estudiado?";
+            // 
+            // txtRespuesta1
+            // 
+            this.txtRespuesta1.Location = new System.Drawing.Point(32, 333);
+            this.txtRespuesta1.Name = "txtRespuesta1";
+            this.txtRespuesta1.Size = new System.Drawing.Size(337, 20);
+            this.txtRespuesta1.TabIndex = 13;
+            this.txtRespuesta1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRespuesta1_KeyPress);
+            // 
+            // lblPregunta1
+            // 
+            this.lblPregunta1.AutoSize = true;
+            this.lblPregunta1.Location = new System.Drawing.Point(111, 317);
+            this.lblPregunta1.Name = "lblPregunta1";
+            this.lblPregunta1.Size = new System.Drawing.Size(141, 13);
+            this.lblPregunta1.TabIndex = 51;
+            this.lblPregunta1.Text = "¿Ha estudiado ingles antes?";
+            // 
             // txtCelular
             // 
             this.txtCelular.Location = new System.Drawing.Point(231, 204);
@@ -441,6 +475,7 @@
             // 
             // cbN_Academico
             // 
+            this.cbN_Academico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbN_Academico.FormattingEnabled = true;
             this.cbN_Academico.Items.AddRange(new object[] {
             "Estudiante",
@@ -455,6 +490,7 @@
             // 
             // cbD_Idioma
             // 
+            this.cbD_Idioma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbD_Idioma.FormattingEnabled = true;
             this.cbD_Idioma.Items.AddRange(new object[] {
             "Basico",
@@ -585,40 +621,6 @@
             // verGruposwHorarioTableAdapter
             // 
             this.verGruposwHorarioTableAdapter.ClearBeforeFill = true;
-            // 
-            // lblPregunta1
-            // 
-            this.lblPregunta1.AutoSize = true;
-            this.lblPregunta1.Location = new System.Drawing.Point(111, 317);
-            this.lblPregunta1.Name = "lblPregunta1";
-            this.lblPregunta1.Size = new System.Drawing.Size(141, 13);
-            this.lblPregunta1.TabIndex = 51;
-            this.lblPregunta1.Text = "¿Ha estudiado ingles antes?";
-            // 
-            // txtRespuesta1
-            // 
-            this.txtRespuesta1.Location = new System.Drawing.Point(32, 333);
-            this.txtRespuesta1.Name = "txtRespuesta1";
-            this.txtRespuesta1.Size = new System.Drawing.Size(337, 20);
-            this.txtRespuesta1.TabIndex = 13;
-            this.txtRespuesta1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRespuesta1_KeyPress);
-            // 
-            // txtRespuesta2
-            // 
-            this.txtRespuesta2.Location = new System.Drawing.Point(32, 377);
-            this.txtRespuesta2.Name = "txtRespuesta2";
-            this.txtRespuesta2.Size = new System.Drawing.Size(337, 20);
-            this.txtRespuesta2.TabIndex = 14;
-            this.txtRespuesta2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRespuesta2_KeyPress);
-            // 
-            // lblPregunta2
-            // 
-            this.lblPregunta2.AutoSize = true;
-            this.lblPregunta2.Location = new System.Drawing.Point(114, 361);
-            this.lblPregunta2.Name = "lblPregunta2";
-            this.lblPregunta2.Size = new System.Drawing.Size(115, 13);
-            this.lblPregunta2.TabIndex = 53;
-            this.lblPregunta2.Text = "¿Donde ha estudiado?";
             // 
             // frmRegistro
             // 
