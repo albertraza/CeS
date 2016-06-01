@@ -89,118 +89,196 @@ namespace Cely_Sistema
                             dgvtabla.DataSource = FacturacionDB.BuscarFacturas(Int32.Parse(txtMatricula.Text));
                             btnAceptar.Focus();
                             int CompF = DateTime.Compare(pPago0, fechaActual);
-
-                            // VIP method execution
-
-                            if (EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == "NO" ||
-                                    EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == "No" ||
-                                    EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == null)
+                            // validation to verify if student is already retired.
+                            if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) == 0)
                             {
-                                if (MP == "M" || MP == "Mensual")
+                                // VIP method execution
+                                if (EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == "NO" ||
+                                        EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == "No" ||
+                                        EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == null)
                                 {
-                                    if (CompF < 0)
+                                    if (MP == "M" || MP == "Mensual")
                                     {
-                                        MesesP = (DateTime.Today.Date - pPago).TotalDays / 30;
-                                        lblPendientes.ForeColor = Color.Red;
-                                        lblPendientes.Text = "Meses Pendientes: " + (MesesP + 1).ToString("f0");
-                                        lblMesesoSemanas.Text = "Meses";
-                                        nCantPagar.Value = Convert.ToInt32(MesesP + 1);
-                                        rbPago.Text = "Pago Mensual";
-                                        txtMotivodePago.Text = "Pago Mes";
-                                        PagoMensualSemanal = PagosDB.ObtenerPagoMensual();
-                                        MoraEs = double.Parse(MoraDB.ObtenerMoraMensual());
-                                        pMora = true;
+                                        if (CompF < 0)
+                                        {
+                                            MesesP = (DateTime.Today.Date - pPago).TotalDays / 30;
+                                            lblPendientes.ForeColor = Color.Red;
+                                            lblPendientes.Text = "Meses Pendientes: " + (MesesP + 1).ToString("f0");
+                                            lblMesesoSemanas.Text = "Meses";
+                                            nCantPagar.Value = Convert.ToInt32(MesesP + 1);
+                                            rbPago.Text = "Pago Mensual";
+                                            txtMotivodePago.Text = "Pago Mes";
+                                            PagoMensualSemanal = PagosDB.ObtenerPagoMensual();
+                                            MoraEs = double.Parse(MoraDB.ObtenerMoraMensual());
+                                            pMora = true;
+                                        }
+                                        else
+                                        {
+                                            MesesP = 0;
+                                            lblPendientes.ForeColor = Color.Black;
+                                            lblPendientes.Text = "Meses Pendientes: 0";
+                                            lblMesesoSemanas.Text = "Meses";
+                                            nCantPagar.Value = 1;
+                                            rbPago.Text = "Pago Mensual";
+                                            txtMotivodePago.Text = "Pago Mes";
+                                            PagoMensualSemanal = PagosDB.ObtenerPagoMensual();
+                                            MoraEs = 0;
+                                            pMora = false;
+                                        }
                                     }
                                     else
                                     {
-                                        MesesP = 0;
-                                        lblPendientes.ForeColor = Color.Black;
-                                        lblPendientes.Text = "Meses Pendientes: 0";
-                                        lblMesesoSemanas.Text = "Meses";
-                                        nCantPagar.Value = 1;
-                                        rbPago.Text = "Pago Mensual";
-                                        txtMotivodePago.Text = "Pago Mes";
-                                        PagoMensualSemanal = PagosDB.ObtenerPagoMensual();
-                                        MoraEs = 0;
-                                        pMora = false;
+                                        if (CompF < 0)
+                                        {
+                                            semanasP = (DateTime.Today.Date - pPago).TotalDays / 7;
+                                            lblPendientes.ForeColor = Color.Red;
+                                            lblPendientes.Text = "Semanas Pendientes: " + (semanasP).ToString("f0");
+                                            lblMesesoSemanas.Text = "Semanas";
+                                            nCantPagar.Value = Convert.ToInt32(semanasP + 1);
+                                            rbPago.Text = "Pago Semanal";
+                                            txtMotivodePago.Text = "Pago Semanal";
+                                            PagoMensualSemanal = PagosDB.ObtenerPagoSemanal();
+                                            MoraEs = double.Parse(MoraDB.ObtenerMoraSemanal());
+                                            pMora = true;
+                                        }
+                                        else
+                                        {
+                                            lblPendientes.ForeColor = Color.Black;
+                                            semanasP = 0;
+                                            lblPendientes.Text = "Semanas Pendientes: 0";
+                                            nCantPagar.Value = Convert.ToInt32(semanasP + 1);
+                                            lblMesesoSemanas.Text = "Semanas";
+                                            rbPago.Text = "Pago Semanal";
+                                            PagoMensualSemanal = PagosDB.ObtenerPagoSemanal();
+                                            MoraEs = 0;
+                                            txtMotivodePago.Text = "Pago Semanal";
+                                            pMora = false;
+                                        }
                                     }
                                 }
                                 else
                                 {
-                                    if (CompF < 0)
+                                    // If false means that the student is a VIP
+                                    gbFactura.BackColor = Color.Yellow;
+                                    if (MP == "M" || MP == "Mensual")
                                     {
-                                        semanasP = (DateTime.Today.Date - pPago).TotalDays / 7;
-                                        lblPendientes.ForeColor = Color.Red;
-                                        lblPendientes.Text = "Semanas Pendientes: " + (semanasP).ToString("f0");
-                                        lblMesesoSemanas.Text = "Semanas";
-                                        nCantPagar.Value = Convert.ToInt32(semanasP + 1);
-                                        rbPago.Text = "Pago Semanal";
-                                        txtMotivodePago.Text = "Pago Semanal";
-                                        PagoMensualSemanal = PagosDB.ObtenerPagoSemanal();
-                                        MoraEs = double.Parse(MoraDB.ObtenerMoraSemanal());
-                                        pMora = true;
+                                        if (CompF < 0)
+                                        {
+                                            MesesP = (DateTime.Today.Date - pPago).TotalDays / 30;
+                                            lblPendientes.ForeColor = Color.Red;
+                                            lblPendientes.Text = "Meses Pendientes: " + MesesP.ToString("f0");
+                                            lblMesesoSemanas.Text = "Meses";
+                                            nCantPagar.Value = Convert.ToInt32(MesesP + 1);
+                                            rbPago.Text = "Pago Mensual";
+                                            txtMotivodePago.Text = "Pago Mes";
+                                            PagoMensualSemanal = double.Parse(MoraDB.GetVIPpayments().Pago_Mensual);
+                                            MoraEs = double.Parse(MoraDB.GetVIPpayments().Mora_Mensual);
+                                            pMora = true;
+                                        }
+                                        else
+                                        {
+                                            lblPendientes.ForeColor = Color.Black;
+                                            MesesP = 0;
+                                            lblPendientes.Text = "Meses Pendientes: 0";
+                                            lblMesesoSemanas.Text = "Meses";
+                                            nCantPagar.Value = 1;
+                                            rbPago.Text = "Pago Mensual";
+                                            txtMotivodePago.Text = "Pago Mes";
+                                            PagoMensualSemanal = double.Parse(MoraDB.GetVIPpayments().Pago_Mensual);
+                                            MoraEs = 0;
+                                            pMora = false;
+                                        }
                                     }
                                     else
                                     {
-                                        lblPendientes.ForeColor = Color.Black;
-                                        semanasP = 0;
-                                        lblPendientes.Text = "Semanas Pendientes: 0";
-                                        nCantPagar.Value = Convert.ToInt32(semanasP + 1);
-                                        lblMesesoSemanas.Text = "Semanas";
-                                        rbPago.Text = "Pago Semanal";
-                                        PagoMensualSemanal = PagosDB.ObtenerPagoSemanal();
-                                        MoraEs = 0;
-                                        txtMotivodePago.Text = "Pago Semanal";
-                                        pMora = false;
+                                        if (CompF < 0)
+                                        {
+                                            semanasP = (DateTime.Today.Date - pPago).TotalDays / 7;
+                                            lblPendientes.ForeColor = Color.Red;
+                                            lblPendientes.Text = "Semanas Pendientes: " + semanasP.ToString("f0");
+                                            lblMesesoSemanas.Text = "Semanas";
+                                            nCantPagar.Value = Convert.ToInt32(semanasP + 1);
+                                            rbPago.Text = "Pago Semanal";
+                                            txtMotivodePago.Text = "Pago Semanal";
+                                            PagoMensualSemanal = double.Parse(MoraDB.GetVIPpayments().Pago_Semanal);
+                                            MoraEs = double.Parse(MoraDB.GetVIPpayments().Mora_Semanal);
+                                            pMora = true;
+                                        }
+                                        else
+                                        {
+                                            lblPendientes.ForeColor = Color.Black;
+                                            semanasP = 0;
+                                            lblPendientes.Text = "Semanas Pendientes: 0";
+                                            lblMesesoSemanas.Text = "Semanas";
+                                            nCantPagar.Value = 1;
+                                            rbPago.Text = "Pago Semanal";
+                                            txtMotivodePago.Text = "Pago Semanal";
+                                            PagoMensualSemanal = double.Parse(MoraDB.GetVIPpayments().Pago_Semanal);
+                                            MoraEs = 0;
+                                            pMora = false;
+                                        }
                                     }
                                 }
                             }
                             else
                             {
-                                // If false means that the student is a VIP
-                                gbFactura.BackColor = Color.Yellow;
-                                if (MP == "M" || MP == "Mensual")
+                                // when the student is already retired
+
+                                rbOtros.Enabled = false;
+                                if (EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP != "NO" ||
+                                        EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP != "No")
                                 {
-                                    if (CompF < 0)
+                                    gbFactura.BackColor = Color.Yellow;
+                                }
+                                DateTime Fr = EstudianteDB.getFechaRetiro(int.Parse(txtMatricula.Text));
+                                DateTime fp = EstudianteDB.ObtenerFechaProximoPago(int.Parse(txtMatricula.Text));
+                                int Conf = DateTime.Compare(fp, Fr);
+                                pagoM = double.Parse(EstudianteDB.getRetiradoPayment(int.Parse(txtMatricula.Text)).ToString());
+                                MoraEs = double.Parse(EstudianteDB.getRetiradoMora(int.Parse(txtMatricula.Text)).ToString());
+                                pagoS = double.Parse(EstudianteDB.getRetiradoPayment(int.Parse(txtMatricula.Text)).ToString());
+                                PagoMensualSemanal = double.Parse(EstudianteDB.getRetiradoPayment(int.Parse(txtMatricula.Text)).ToString());
+                                if (EstudianteDB.ObtenerModoPago(int.Parse(txtMatricula.Text)) == "Mensual")
+                                {
+                                    if (Conf < 0)
                                     {
-                                        MesesP = (DateTime.Today.Date - pPago).TotalDays / 30;
+                                        MesesP = (Fr - fp).TotalDays / 30;
                                         lblPendientes.ForeColor = Color.Red;
-                                        lblPendientes.Text = "Meses Pendientes: " + MesesP.ToString("f0");
+                                        lblPendientes.Text = "Meses Pendientes: " + (MesesP).ToString("f0");
                                         lblMesesoSemanas.Text = "Meses";
-                                        nCantPagar.Value = Convert.ToInt32(MesesP + 1);                                                                                                                                                                
+                                        nCantPagar.Value = Convert.ToInt32(MesesP);
                                         rbPago.Text = "Pago Mensual";
                                         txtMotivodePago.Text = "Pago Mes";
-                                        PagoMensualSemanal = double.Parse(MoraDB.GetVIPpayments().Pago_Mensual);
-                                        MoraEs = double.Parse(MoraDB.GetVIPpayments().Mora_Mensual);
+                                        PagoMensualSemanal = pagoM;
                                         pMora = true;
                                     }
                                     else
                                     {
-                                        lblPendientes.ForeColor = Color.Black;
                                         MesesP = 0;
+                                        lblPendientes.ForeColor = Color.Black;
                                         lblPendientes.Text = "Meses Pendientes: 0";
                                         lblMesesoSemanas.Text = "Meses";
                                         nCantPagar.Value = 1;
+                                        nCantPagar.Value = 0;
+                                        nCantPagar.Enabled = false;
+                                        btnAceptar.Enabled = false;
                                         rbPago.Text = "Pago Mensual";
                                         txtMotivodePago.Text = "Pago Mes";
-                                        PagoMensualSemanal = double.Parse(MoraDB.GetVIPpayments().Pago_Mensual);
+                                        PagoMensualSemanal = PagosDB.ObtenerPagoMensual();
                                         MoraEs = 0;
                                         pMora = false;
                                     }
                                 }
                                 else
                                 {
-                                    if (CompF < 0)
+                                    if (Conf < 0)
                                     {
-                                        semanasP = (DateTime.Today.Date - pPago).TotalDays / 7;
+                                        semanasP = (Fr - fp).TotalDays / 7;
                                         lblPendientes.ForeColor = Color.Red;
-                                        lblPendientes.Text = "Semanas Pendientes: " + semanasP.ToString("f0");
+                                        lblPendientes.Text = "Semanas Pendientes: " + (semanasP).ToString("f0");
                                         lblMesesoSemanas.Text = "Semanas";
-                                        nCantPagar.Value = Convert.ToInt32(semanasP + 1);
+                                        nCantPagar.Value = Convert.ToInt32(semanasP);
                                         rbPago.Text = "Pago Semanal";
                                         txtMotivodePago.Text = "Pago Semanal";
-                                        PagoMensualSemanal = double.Parse(MoraDB.GetVIPpayments().Pago_Semanal);
-                                        MoraEs = double.Parse(MoraDB.GetVIPpayments().Mora_Semanal);
                                         pMora = true;
                                     }
                                     else
@@ -210,15 +288,16 @@ namespace Cely_Sistema
                                         lblPendientes.Text = "Semanas Pendientes: 0";
                                         lblMesesoSemanas.Text = "Semanas";
                                         nCantPagar.Value = 1;
+                                        nCantPagar.Value = 0;
+                                        nCantPagar.Enabled = false;
+                                        btnAceptar.Enabled = false;
                                         rbPago.Text = "Pago Semanal";
                                         txtMotivodePago.Text = "Pago Semanal";
-                                        PagoMensualSemanal = double.Parse(MoraDB.GetVIPpayments().Pago_Semanal);
-                                        MoraEs = 0;
                                         pMora = false;
                                     }
                                 }
+                                MessageBox.Show("El Estudiante ya fue retirado", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
-
                         }
                         else
                         {
@@ -246,7 +325,6 @@ namespace Cely_Sistema
             txtMatricula.Text = ID;
             if (lblMatricula.Text != null)
             {
-                rbPago.Checked = true;
                 txtFechaPago.Visible = false;
                 txtProximoPAgo.Visible = false;
                 txtTotalaPagar.Visible = false;
@@ -274,9 +352,15 @@ namespace Cely_Sistema
                             populateStudent();
                         }
                     }
-                    else
+                    else if(rbOtros.Checked == true)
                     {
                         OtrosPayment();
+                    }
+                    else
+                    {
+                        txtMatricula.Focus();
+                        dgvtabla.DataSource = FacturacionDB.TodasLasFacturas(DateTime.Today.Date.ToString("yyyy-MM-dd"));
+                        populateStudent();
                     }
                 }
                 catch (Exception ex)
@@ -286,25 +370,13 @@ namespace Cely_Sistema
             }
             else
             {
-                Limpiar();
-                rbPago.Checked = true;
-                txtFechaPago.Visible = false;
-                txtProximoPAgo.Visible = false;
-                txtTotalaPagar.Visible = false;
-                lblMensaje.Visible = false;
-                txtProximoPAgo.Visible = false;
-                ControlBox = false;
-                txtNombre.Enabled = false;
-                txtApellido.Enabled = false;
-                txtUltimoPago.Visible = false;
-                txtMatricula.Focus();
                 try
                 {
-                    dgvtabla.DataSource = FacturacionDB.TodasLasFacturas(DateTime.Today.Date.ToString("yyyy-MM-dd"));
+                    OtrosPayment();
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -378,6 +450,9 @@ namespace Cely_Sistema
         }
         private void LimpiarM()
         {
+            btnAceptar.Enabled = true;
+            nCantPagar.Enabled = true;
+            rbOtros.Enabled = true;
             txtCantPagar.Clear();
             cantMora = 0;
             TotalPagoMensualSemanal = 0;
@@ -582,7 +657,16 @@ namespace Cely_Sistema
                                 MessageBox.Show("Factura Creada con Exito", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 string codigo = FacturacionDB.ObtenerCodigo(pFactura);
                                 int ultimop = EstudianteDB.UltimoPago(pFactura.Fecha_Factura, pFactura.Matricula_Estudiante);
-                                int PP = EstudianteDB.ActualizarProximoPago(Convert.ToInt32(txtMatricula.Text), Convert.ToDateTime(txtProximoPAgo.Text).ToString("yyyy-MM-dd"));
+                                // method for evaliating if the student is retired \
+                                int PP;
+                                if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) > 0)
+                                {
+                                    PP = EstudianteDB.ActualizarProximoPago(int.Parse(txtMatricula.Text), EstudianteDB.getFechaRetiro(int.Parse(txtMatricula.Text)).ToString("yyyy-MM-dd"));
+                                }
+                                else
+                                {
+                                    PP = EstudianteDB.ActualizarProximoPago(Convert.ToInt32(txtMatricula.Text), Convert.ToDateTime(txtProximoPAgo.Text).ToString("yyyy-MM-dd"));
+                                }
                                 int retorno1 = FacturacionDB.ActualizarFechaPAgoAnterior(int.Parse(codigo), pPagoA.Date.ToString("yyyy-MM-dd"));
 
                                 if (codigo != null & ultimop > 0 & PP > 0 & retorno1 > 0)
@@ -943,7 +1027,14 @@ namespace Cely_Sistema
         {
             Limpiar();
             try {
-                populateStudent();
+                if (rbOtros.Checked)
+                {
+                    OtrosPayment();
+                }
+                else
+                {
+                    populateStudent();
+                }
             }
             catch (Exception)
             {
@@ -1263,7 +1354,14 @@ namespace Cely_Sistema
             Limpiar();
             try
             {
-                populateStudent();
+                if (rbOtros.Checked)
+                {
+                    OtrosPayment();
+                }
+                else
+                {
+                    populateStudent();
+                }
             }
             catch (Exception)
             {
@@ -1286,11 +1384,11 @@ namespace Cely_Sistema
                 {
                     populateStudent();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
+        }
         }
     }
 }

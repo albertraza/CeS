@@ -32,6 +32,9 @@ namespace Cely_Sistema
             cbVIP.Checked = false;
             rbMensual.Checked = false;
             rbSemanal.Checked = false;
+            btnRegistrar.Enabled = false;
+            btnModificar.Visible = false;
+            btnEliminar.Visible = false;
         }
         public frmRegistro()
         {
@@ -283,7 +286,7 @@ namespace Cely_Sistema
                                 }
                                 else
                                 {
-                                    frmContratoMensual pcontrato = new frmContratoMensual();
+                                    frmContratoSemanal pcontrato = new frmContratoSemanal();
                                     pcontrato.matricula = int.Parse(matricula);
                                     pcontrato.ShowDialog();
                                 }
@@ -863,6 +866,45 @@ namespace Cely_Sistema
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 btnRegistrar.Focus();
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Limpiar();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnRetirar_Click(object sender, EventArgs e)
+        {
+            if(EstudianteSeleccionado != null)
+            {
+                try
+                {
+                    if(EstudianteDB.updateRetiradoStatus(Convert.ToInt32(EstudianteSeleccionado.ID)) > 0)
+                    {
+                        MessageBox.Show("Estudiante Retirado", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        Limpiar();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo retirar el Estudiante, Intentelo Nuevamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se ha cargado un estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

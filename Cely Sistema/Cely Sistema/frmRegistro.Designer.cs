@@ -84,6 +84,8 @@
             this.celyDBDataSet = new Cely_Sistema.CelyDBDataSet();
             this.verGruposwHorarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.verGruposwHorarioTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter();
+            this.btnRetirar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.gbEstudiante.SuspendLayout();
             this.gbVIP.SuspendLayout();
             this.pModoPago.SuspendLayout();
@@ -210,7 +212,7 @@
             // 
             this.txtDireccion.Location = new System.Drawing.Point(240, 133);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(100, 20);
+            this.txtDireccion.Size = new System.Drawing.Size(138, 20);
             this.txtDireccion.TabIndex = 5;
             this.txtDireccion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDireccion_KeyPress);
             // 
@@ -268,7 +270,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(417, 467);
+            this.btnCancelar.Location = new System.Drawing.Point(560, 467);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 3;
@@ -322,7 +324,7 @@
             // lblBuscarAlumno
             // 
             this.lblBuscarAlumno.AutoSize = true;
-            this.lblBuscarAlumno.Location = new System.Drawing.Point(517, 472);
+            this.lblBuscarAlumno.Location = new System.Drawing.Point(660, 472);
             this.lblBuscarAlumno.Name = "lblBuscarAlumno";
             this.lblBuscarAlumno.Size = new System.Drawing.Size(78, 13);
             this.lblBuscarAlumno.TabIndex = 4;
@@ -332,7 +334,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(152, 467);
+            this.btnModificar.Location = new System.Drawing.Point(108, 467);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 1;
@@ -342,7 +344,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(293, 467);
+            this.btnEliminar.Location = new System.Drawing.Point(209, 467);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 2;
@@ -622,11 +624,33 @@
             // 
             this.verGruposwHorarioTableAdapter.ClearBeforeFill = true;
             // 
+            // btnRetirar
+            // 
+            this.btnRetirar.Location = new System.Drawing.Point(314, 467);
+            this.btnRetirar.Name = "btnRetirar";
+            this.btnRetirar.Size = new System.Drawing.Size(120, 23);
+            this.btnRetirar.TabIndex = 5;
+            this.btnRetirar.Text = "Retirar Estudiante";
+            this.btnRetirar.UseVisualStyleBackColor = true;
+            this.btnRetirar.Click += new System.EventHandler(this.btnRetirar_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(457, 467);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 6;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // frmRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(990, 502);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnRetirar);
             this.Controls.Add(this.gbNiveles);
             this.Controls.Add(this.gbEstudiante);
             this.Controls.Add(this.btnEliminar);
@@ -713,5 +737,7 @@
         private System.Windows.Forms.Label lblPregunta2;
         private System.Windows.Forms.TextBox txtRespuesta1;
         private System.Windows.Forms.Label lblPregunta1;
+        private System.Windows.Forms.Button btnRetirar;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

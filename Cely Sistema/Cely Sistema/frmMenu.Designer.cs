@@ -68,6 +68,7 @@
             this.dgvEstudiantes = new System.Windows.Forms.DataGridView();
             this.btnRegistrarAsistencia = new System.Windows.Forms.Button();
             this.gbAsistencia = new System.Windows.Forms.GroupBox();
+            this.lblCantidadEstudiantesRegistrados = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscarEstudiante = new System.Windows.Forms.Button();
@@ -82,6 +83,7 @@
             this.tcMenuP = new System.Windows.Forms.TabControl();
             this.tpAsistencia = new System.Windows.Forms.TabPage();
             this.tbConsulta = new System.Windows.Forms.TabPage();
+            this.btnRetirarEstudiante = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.gbInformacionPagos = new System.Windows.Forms.GroupBox();
@@ -129,7 +131,6 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblCantidadEstudiantesRegistrados = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
@@ -478,6 +479,16 @@
             this.gbAsistencia.Text = "Asistencia";
             this.gbAsistencia.Enter += new System.EventHandler(this.gbAsistencia_Enter);
             // 
+            // lblCantidadEstudiantesRegistrados
+            // 
+            this.lblCantidadEstudiantesRegistrados.AutoSize = true;
+            this.lblCantidadEstudiantesRegistrados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadEstudiantesRegistrados.Location = new System.Drawing.Point(463, 307);
+            this.lblCantidadEstudiantesRegistrados.Name = "lblCantidadEstudiantesRegistrados";
+            this.lblCantidadEstudiantesRegistrados.Size = new System.Drawing.Size(248, 16);
+            this.lblCantidadEstudiantesRegistrados.TabIndex = 5;
+            this.lblCantidadEstudiantesRegistrados.Text = "Cantidad Estudiantes Registrados:";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -586,6 +597,7 @@
             // 
             // tbConsulta
             // 
+            this.tbConsulta.Controls.Add(this.btnRetirarEstudiante);
             this.tbConsulta.Controls.Add(this.btnEliminar);
             this.tbConsulta.Controls.Add(this.btnModificar);
             this.tbConsulta.Controls.Add(this.gbInformacionPagos);
@@ -598,9 +610,19 @@
             this.tbConsulta.Text = "Consulta";
             this.tbConsulta.UseVisualStyleBackColor = true;
             // 
+            // btnRetirarEstudiante
+            // 
+            this.btnRetirarEstudiante.Location = new System.Drawing.Point(318, 423);
+            this.btnRetirarEstudiante.Name = "btnRetirarEstudiante";
+            this.btnRetirarEstudiante.Size = new System.Drawing.Size(124, 23);
+            this.btnRetirarEstudiante.TabIndex = 10;
+            this.btnRetirarEstudiante.Text = "Retirar Estudiante";
+            this.btnRetirarEstudiante.UseVisualStyleBackColor = true;
+            this.btnRetirarEstudiante.Click += new System.EventHandler(this.btnRetirarEstudiante_Click);
+            // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(249, 423);
+            this.btnEliminar.Location = new System.Drawing.Point(183, 423);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(124, 23);
             this.btnEliminar.TabIndex = 9;
@@ -610,7 +632,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(78, 423);
+            this.btnModificar.Location = new System.Drawing.Point(46, 423);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(124, 23);
             this.btnModificar.TabIndex = 8;
@@ -1077,16 +1099,6 @@
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "Nombre:";
             // 
-            // lblCantidadEstudiantesRegistrados
-            // 
-            this.lblCantidadEstudiantesRegistrados.AutoSize = true;
-            this.lblCantidadEstudiantesRegistrados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadEstudiantesRegistrados.Location = new System.Drawing.Point(463, 307);
-            this.lblCantidadEstudiantesRegistrados.Name = "lblCantidadEstudiantesRegistrados";
-            this.lblCantidadEstudiantesRegistrados.Size = new System.Drawing.Size(248, 16);
-            this.lblCantidadEstudiantesRegistrados.TabIndex = 5;
-            this.lblCantidadEstudiantesRegistrados.Text = "Cantidad Estudiantes Registrados:";
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1229,5 +1241,6 @@
         private System.Windows.Forms.Label lblProximoPago;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Label lblCantidadEstudiantesRegistrados;
+        private System.Windows.Forms.Button btnRetirarEstudiante;
     }
 }

@@ -23,7 +23,6 @@ namespace Cely_Sistema
             }
             return retorno;
         }
-
         public static List<Estudiante> BuscarEstudiante(string nombre, string apellido, string matricula)
         {
             List<Estudiante> lista = new List<Estudiante>();
@@ -117,7 +116,6 @@ namespace Cely_Sistema
             }
             return retorno;
         }
-
         public static int EliminarEstudiante(EstudianteBase pEstudiante)
         {
             int retorno = -1;
@@ -132,7 +130,6 @@ namespace Cely_Sistema
 
             return retorno;
         }
-
         public static string ObtenerMatricula(EstudianteBase pEstudiante)
         {
             string matricula = null;
@@ -166,7 +163,6 @@ namespace Cely_Sistema
             }
             return Nombre;
         }
-
         public static string ObtenerApellido(Int32 ID)
         {
             string Apelldo = null;
@@ -349,6 +345,95 @@ namespace Cely_Sistema
                 con.Close();
             }
             return r;
+        }
+        public static int updateRetiradoStatus(int matricula)
+        {
+            int r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("update Estudiantes set Retirado = '1', fechaRetiro = '{0}' where ID = '{1}'", DateTime.Today.Date.ToString("yyyy-MM-dd"), matricula), con);
+                r = comand.ExecuteNonQuery();
+                if (EstudianteDB.SeleccionarEstudiante(matricula).VIP == "Si" || EstudianteDB.SeleccionarEstudiante(matricula).VIP == "SI")
+                {
+                    if (EstudianteDB.ObtenerModoPago(matricula) == "Mensual")
+                    {
+                        string pagoMVIP = MoraDB.GetVIPpayments().Pago_Mensual;
+                        string MoraMVIP = MoraDB.GetVIPpayments().Mora_Mensual;
+                        SqlCommand comand0 = new SqlCommand(string.Format("update Estudiantes set PagoRetirado = '{0}', moraRetirado = '{1}' where ID = '{2}'", pagoMVIP, MoraMVIP, matricula), con);
+                        r = comand0.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        string pagoSVIP = MoraDB.GetVIPpayments().Pago_Semanal;
+                        string MoraSVIP = MoraDB.GetVIPpayments().Mora_Semanal;
+                        SqlCommand comand1 = new SqlCommand(string.Format("update Estudiantes set PagoRetirado = '{0}', moraRetirado = '{1}' where ID = '{2}'", pagoSVIP, MoraSVIP, matricula), con);
+                        r = comand1.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    if (EstudianteDB.ObtenerModoPago(matricula) == "Mensual")
+                    {
+                        string pagoM = PagosDB.ObtenerPagoMensual().ToString();
+                        string MoraM = MoraDB.ObtenerMoraMensual().ToString();
+                        SqlCommand comand0 = new SqlCommand(string.Format("update Estudiantes set PagoRetirado = '{0}', moraRetirado = '{1}' where ID = '{2}'", pagoM, MoraM, matricula), con);
+                        r = comand0.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        string pagoS = PagosDB.ObtenerPagoSemanal().ToString();
+                        string MoraS = MoraDB.ObtenerMoraSemanal().ToString();
+                        SqlCommand comand1 = new SqlCommand(string.Format("update Estudiantes set PagoRetirado = '{0}', moraRetirado = '{1}' where ID = '{2}'", pagoS, MoraS, matricula), con);
+                        r = comand1.ExecuteNonQuery();
+                    }
+                }
+                con.Close();
+            }
+            return r;
+        }
+        public static int getRetirado(int matricula)
+        {
+            int r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select Retirado from Estudiantes where ID = '{0}'", matricula), con);
+                r = int.Parse(comand.ExecuteScalar().ToString());
+                con.Close();
+            }
+            return r;
+        }
+        public static decimal getRetiradoPayment(int matricula)
+        {
+            decimal r = 0;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select PagoRetirado from Estudiantes where ID = '{0}'", matricula), con);
+                r = decimal.Parse(comand.ExecuteScalar().ToString());
+                con.Close();
+            }
+            return r;
+        }
+        public static decimal getRetiradoMora(int matricula)
+        {
+            decimal r = 0;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select moraRetirado from Estudiantes where ID = '{0}'", matricula), con);
+                r = decimal.Parse(comand.ExecuteScalar().ToString());
+                con.Close();
+            }
+            return r;
+        }
+        public static DateTime getFechaRetiro(int matricula)
+        {
+            DateTime dt;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select fechaRetiro from Estudiantes where ID = '{0}'", matricula), con);
+                dt = Convert.ToDateTime(comand.ExecuteScalar());
+                con.Close();
+            }
+            return dt;
         }
     }
 }

@@ -47,6 +47,11 @@ namespace Cely_Sistema
 
                 if (EstudianteDB.ObtenerNombre(int.Parse(txtMatriculaCon.Text)) != null)
                 {
+                    if (EstudianteDB.getRetirado(Convert.ToInt32(txtMatriculaCon.Text)) > 0)
+                    {
+                        MessageBox.Show("El Estudiante fue retirado", "Estudiante Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnRetirarEstudiante.Enabled = false;
+                    }
                     txtApellido.Text = pEstudiante.Apellido;
                     txtCelular.Text = pEstudiante.Celular;
                     txtDireccion.Text = pEstudiante.Direccion;
@@ -193,6 +198,7 @@ namespace Cely_Sistema
             lblTotalPagar.Text = "Total a Pagar:";
             lblProximoPago.Text = "Proximo Pago:";
             lblProximoPago.ForeColor = Color.Black;
+            btnRetirarEstudiante.Enabled = true;
         }
         private Int32 Nivel = 9;
         public Int32 ObNivel
@@ -629,26 +635,26 @@ namespace Cely_Sistema
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                try {
+                //try {
                     LoadStudentData();
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                //}
+                //catch(Exception ex)
+                //{
+                //    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
             }
         }
 
         private void lblBuscar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 LoadStudentData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -720,6 +726,37 @@ namespace Cely_Sistema
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+        }
+
+        private void btnRetirarEstudiante_Click(object sender, EventArgs e)
+        {
+            if(txtMatriculaCon.Text == string.Empty)
+            {
+                MessageBox.Show("La Matricula esta vacia", "Menu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if(txtNombre.Text == string.Empty)
+            {
+                MessageBox.Show("No se ha cargado un estudiante", "Menu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if(EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatriculaCon.Text)) == null)
+            {
+                MessageBox.Show("No existe el Alunmo", "Menu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (MessageBox.Show("Esta seguro que desea retirar el Estudiante?", "Menu", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (EstudianteDB.updateRetiradoStatus(int.Parse(txtMatriculaCon.Text)) > 0)
+                    {
+                        MessageBox.Show("El Estudiante fue retirado", "Menu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadStudentData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo retirar el Estudiante", "Menu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
         }
     }
 }
