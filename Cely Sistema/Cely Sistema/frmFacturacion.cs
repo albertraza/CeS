@@ -84,6 +84,7 @@ namespace Cely_Sistema
 
                         if (nombre != null & apellido != null)
                         {
+                            rbPago.Checked = true;
                             txtNombre.Text = nombre;
                             txtApellido.Text = apellido;
                             dgvtabla.DataSource = FacturacionDB.BuscarFacturas(Int32.Parse(txtMatricula.Text));
@@ -321,9 +322,10 @@ namespace Cely_Sistema
         }
         private void frmFacturacion_Load(object sender, EventArgs e)
         {
+            nCantPagar.Value = 0;
             int cantPAgar = Convert.ToInt32(nCantPagar.Value);
             txtMatricula.Text = ID;
-            if (lblMatricula.Text != null)
+            if (txtMatricula.Text != null || txtMatricula.Text != string.Empty)
             {
                 txtFechaPago.Visible = false;
                 txtProximoPAgo.Visible = false;
@@ -372,6 +374,7 @@ namespace Cely_Sistema
             {
                 try
                 {
+                    rbOtros.Checked = true;
                     OtrosPayment();
                 }
                 catch(Exception ex)
@@ -433,23 +436,29 @@ namespace Cely_Sistema
             lblCantMesesPagar.Visible = true;
             lblCantMesesPagar.Text = "Tipo de Pago:";
             cbTipodePago.Visible = true;
-            string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
-            string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
-            if (nombre != null)
+
+            // validate the matricula input
+            if (txtMatricula.Text != string.Empty)
             {
-                txtNombre.Text = nombre;
-                txtApellido.Text = apellido;
-                dgvtabla.DataSource = FacturacionDB.BuscarFacturas(Int32.Parse(txtMatricula.Text));
-            }
-            else
-            {
-                MessageBox.Show("No Existe el Estudiante, Ingrese una matricula Valida", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtMatricula.Clear();
-                txtMatricula.Focus();
+                string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
+                string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
+                if (nombre != null)
+                {
+                    txtNombre.Text = nombre;
+                    txtApellido.Text = apellido;
+                    dgvtabla.DataSource = FacturacionDB.BuscarFacturas(Int32.Parse(txtMatricula.Text));
+                }
+                else
+                {
+                    MessageBox.Show("No Existe el Estudiante, Ingrese una matricula Valida", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtMatricula.Clear();
+                    txtMatricula.Focus();
+                }
             }
         }
         private void LimpiarM()
         {
+            rbPago.Checked = true;
             btnAceptar.Enabled = true;
             nCantPagar.Enabled = true;
             rbOtros.Enabled = true;
