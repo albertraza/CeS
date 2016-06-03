@@ -11,6 +11,26 @@ namespace Cely_Sistema
 {
     public partial class frmMantenimientoGanancias : Form
     {
+        private void LoadData()
+        {
+            GananciasDB Ganancias = GananciasDB.getGanancias(dtpFecha.Value.Date.ToString("yyyy-MM-dd"));
+            if (Ganancias != null)
+            {
+                txtCuota.Text = Ganancias.Cuota.ToString("f2");
+                txtDerechoExamen.Text = Ganancias.Derecho_Examen.ToString("f2");
+                txtDetallesGastos.Text = Ganancias.Detalles_Gastos;
+                txtGastos.Text = "0.00";
+                txtInscripcion.Text = Ganancias.Inscripcion.ToString("f2");
+                txtLibros.Text = Ganancias.Libros.ToString("f2");
+                txtReinscripcion.Text = Ganancias.Reinscripcion.ToString("f2");
+                txtTotalGanancias.Text = Ganancias.Total_Ganancias.ToString("f2");
+                txtTotalIngresos.Text = Ganancias.Total_Ingresos.ToString("f2");
+            }
+            else
+            {
+                MessageBox.Show("No se ha registrado una ganacia en ese dia", "Ganancias", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         public frmMantenimientoGanancias()
         {
             InitializeComponent();
@@ -20,33 +40,13 @@ namespace Cely_Sistema
         {
             try
             {
-                string R = GananciasDB.ObtenerTotalIngresos(dtpFecha.Value.ToString("yyyy-MM-dd"));
-                if (R != null & R != string.Empty)
-                {
-                    string R1 = GananciasDB.ObtenerCantidad(dtpFecha.Value.ToString("yyyy-MM-dd"));
-                    double T1 = double.Parse(R1);
-                    txtTotalIngresos.Text = T1.ToString("f2");
-                    txtTotalIngresos.Enabled = false;
-                    double T = double.Parse(R);
-                    txtTotalGanancias.Text = T.ToString("f2");
-                    txtTotalGanancias.Enabled = false;
-                    string R0 = GananciasDB.ObtenerDescuentos(dtpFecha.Value.ToString("yyyy-MM-dd"));
-                    double T0 = double.Parse(R0);
-                    txtDescuentos.Text = T0.ToString("f2");
-                }
-                else
-                {
-                    DateTime fecha = dtpFecha.Value;
-                    double G = Double.Parse(GananciasDB.ObtenerCantidad(fecha.Date.ToString("yyyy-MM-dd")));
-                    txtTotalIngresos.Text = G.ToString("f2");
-                    txtTotalIngresos.Enabled = false;
-                }
+                LoadData();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("No se Registraron Ingresos en Ese dia", "Informacion Ingresos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
+}
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
@@ -57,17 +57,18 @@ namespace Cely_Sistema
                     MessageBox.Show("No se han Registrado ingresos", "Informacion Ingresos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtTotalIngresos.Focus();
                 }
-                else if (txtDescuentos.Text == string.Empty)
+                else if (txtGastos.Text == string.Empty)
                 {
                     MessageBox.Show("No se han detectado descuentos, Digite una cantidad valida", "Informacion Ingresos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtDescuentos.Focus();
+                    txtGastos.Focus();
                 }
                 else
                 {
-                    double TI, D, TG;
+                    double TI, TG, TD;
+                    TD = double.Parse(GananciasDB.ObtenerDescuentos(dtpFecha.Value.Date.ToString("yyyy-MM-dd")));
                     TI = double.Parse(txtTotalIngresos.Text);
-                    D = double.Parse(txtDescuentos.Text);
-                    TG = TI - D;
+                    TD += double.Parse(txtGastos.Text);
+                    TG = TI - TD;
                     txtTotalGanancias.Text = TG.ToString("f2");
                 }
             }
@@ -81,10 +82,18 @@ namespace Cely_Sistema
         {
             try
             {
+                GananciasDB.fillNullValues();
+                GananciasDB.updateDescuentos();
+                GananciasDB.updateTotalGanancias();
+                txtCuota.Enabled = false;
+                txtDerechoExamen.Enabled = false;
+                txtInscripcion.Enabled = false;
+                txtLibros.Enabled = false;
+                txtReinscripcion.Enabled = false;
                 txtTotalIngresos.Enabled = false;
                 txtTotalGanancias.Enabled = false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -95,19 +104,19 @@ namespace Cely_Sistema
             try
             {
                 DateTime FechaA = dtpFecha.Value;
-                string R0 = GananciasDB.ObtenerDescuentos(FechaA.Date.ToString("yyyy-MM-dd"));
+                string R0 = GananciasDB.ObtenerDescuentos(dtpFecha.Value.Date.ToString("yyyy-MM-dd"));
                 if (R0 != null & R0 != string.Empty)
                 {
                     double pTotalDescuentos, pTotalGanancias, pTotalIngresos, Descuentos;
                     pTotalDescuentos = Double.Parse(R0);
-                    Descuentos = double.Parse(txtDescuentos.Text);
+                    Descuentos = double.Parse(txtGastos.Text);
                     pTotalDescuentos = Descuentos + pTotalDescuentos;
-                    txtDescuentos.Text = pTotalDescuentos.ToString("f2");
+                    txtGastos.Text = pTotalDescuentos.ToString("f2");
                     pTotalIngresos = double.Parse(txtTotalIngresos.Text);
                     pTotalGanancias = pTotalIngresos - pTotalDescuentos;
                     txtTotalGanancias.Text = pTotalGanancias.ToString("f2");
                     int R = GananciasDB.RegistrarIngresos(pTotalDescuentos, pTotalGanancias, FechaA.Date.ToString("yyyy-MM-dd"));
-                    if (R > 0)
+                    if (R > 0 && GananciasDB.updateTotalDetallesGastos(dtpFecha.Value.Date.ToString("yyyy-MM-dd"), txtDetallesGastos.Text) > 0)
                     {
                         MessageBox.Show("Registro Exitoso!", "Ganancias", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -120,7 +129,7 @@ namespace Cely_Sistema
                 {
                     double pTD, pTG, pTI;
                     pTI = double.Parse(txtTotalIngresos.Text);
-                    pTD = double.Parse(txtDescuentos.Text);
+                    pTD = double.Parse(txtGastos.Text);
                     pTG = pTI - pTD;
                     int R = GananciasDB.RegistrarIngresos(pTD, pTG, FechaA.Date.ToString("yyyy-MM-dd"));
                     if (R > 0)
@@ -146,7 +155,7 @@ namespace Cely_Sistema
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            txtDescuentos.Clear();
+            txtGastos.Clear();
             txtTotalGanancias.Clear();
             dtpFecha.Value = DateTime.Today;
         }
@@ -155,7 +164,7 @@ namespace Cely_Sistema
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                txtDescuentos.Focus();
+                txtGastos.Focus();
             }
         }
 
@@ -170,16 +179,16 @@ namespace Cely_Sistema
                         MessageBox.Show("No se han Registrado ingresos", "Informacion Ingresos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         txtTotalIngresos.Focus();
                     }
-                    else if (txtDescuentos.Text == string.Empty)
+                    else if (txtGastos.Text == string.Empty)
                     {
                         MessageBox.Show("No se han detectado descuentos, Digite una cantidad valida", "Informacion Ingresos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        txtDescuentos.Focus();
+                        txtGastos.Focus();
                     }
                     else
                     {
                         double TI, D, TG;
                         TI = double.Parse(txtTotalIngresos.Text);
-                        D = double.Parse(txtDescuentos.Text);
+                        D = double.Parse(txtGastos.Text);
                         TG = TI - D;
                         txtTotalGanancias.Text = TG.ToString("f2");
                     }
@@ -189,6 +198,11 @@ namespace Cely_Sistema
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

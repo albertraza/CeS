@@ -8,6 +8,39 @@ namespace Cely_Sistema
 {
     public class GananciasDB
     {
+        // Object Base for ganancias
+        public int ID { get; set; }
+        public string Fecha_Ganancias { get; set; }
+        public decimal Total_Ingresos { get; set; }
+        public decimal Libros { get; set; }
+        public decimal Inscripcion { get; set; }
+        public decimal Reinscripcion { get; set; }
+        public decimal Derecho_Examen { get; set; }
+        public decimal Cuota { get; set; }
+        public decimal Gastos { get; set; }
+        public string Detalles_Gastos { get; set; }
+        public decimal Total_Ganancias { get; set; }
+        // end object building //
+
+        // constructs
+        public GananciasDB() { }
+        public GananciasDB(int id, string fecha, decimal totalin, decimal libros, decimal ins, decimal reins, decimal derec,
+            decimal cuota, decimal gastos, string detalles, decimal totalga)
+        {
+            this.ID = id;
+            this.Fecha_Ganancias = fecha;
+            this.Total_Ingresos = totalin;
+            this.Libros = libros;
+            this.Inscripcion = ins;
+            this.Reinscripcion = reins;
+            this.Derecho_Examen = derec;
+            this.Cuota = cuota;
+            this.Gastos = gastos;
+            this.Detalles_Gastos = detalles;
+            this.Total_Ganancias = totalga;
+        }
+        // end cosuntrucst biulding //
+
         public static int RegistrarGanancias(Ganancias pGanancias)
         {
             int Retorno = -1;
@@ -152,6 +185,7 @@ namespace Cely_Sistema
             }
             return r;
         }
+
         public static string getTotalLibros(string fecha)
         {
             string retorno = null;
@@ -421,6 +455,60 @@ namespace Cely_Sistema
                 retorno = -1;
             }
             return retorno;
+        }
+
+        public static GananciasDB getGanancias(string fecha)
+        {
+            GananciasDB pG = new GananciasDB();
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("select * from Ganancias where Fecha_Ganancias = '" + fecha + "'", con);
+                SqlDataReader re = comand.ExecuteReader();
+                if (re.HasRows)
+                {
+                    while (re.Read())
+                    {
+                        pG.ID = int.Parse(re["ID"].ToString());
+                        pG.Fecha_Ganancias = Convert.ToDateTime(re["Fecha_Ganancias"]).ToString("dd-MM-yyyy");
+                        pG.Libros = Convert.ToDecimal(re["Libros"]);
+                        pG.Inscripcion = Convert.ToDecimal(re["Inscripcion"]);
+                        pG.Reinscripcion = Convert.ToDecimal(re["Reinscripcion"]);
+                        pG.Derecho_Examen = Convert.ToDecimal(re["DerechoExamen"]);
+                        pG.Cuota = Convert.ToDecimal(re["Cuota"]);
+                        pG.Gastos = Convert.ToDecimal(re["Total_Descuentos"]);
+                        pG.Detalles_Gastos = re["DetallesGastos"].ToString();
+                        pG.Total_Ganancias = Convert.ToDecimal(re["Total_Ganancias"]);
+                        pG.Total_Ingresos = Convert.ToDecimal(re["Ingresos"]);
+                    }
+                }
+                else
+                {
+                    pG = null;
+                }
+                con.Close();
+            }
+            return pG;
+        }
+        public static int fillNullValues()
+        {
+            int r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand1 = new SqlCommand("update Ganancias set Libros = 0 where Libros is null", con);
+                SqlCommand comand2 = new SqlCommand("update Ganancias set Inscripcion = 0 where Inscripcion is null", con);
+                SqlCommand comand3 = new SqlCommand("update Ganancias set Reinscripcion = 0 where Reinscripcion is null", con);
+                SqlCommand comand4 = new SqlCommand("update Ganancias set DetallesGastos = 'none' where DetallesGastos is null", con);
+                SqlCommand comand5 = new SqlCommand("update Ganancias set Cuota = 0 where Cuota is null", con);
+                SqlCommand comand6 = new SqlCommand("update Ganancias set DerechoExamen = 0 where DerechoExamen is null", con);
+                r = comand1.ExecuteNonQuery();
+                r = comand2.ExecuteNonQuery();
+                r = comand3.ExecuteNonQuery();
+                r = comand4.ExecuteNonQuery();
+                r = comand5.ExecuteNonQuery();
+                r = comand6.ExecuteNonQuery();
+                con.Close();
+            }
+            return r;
         }
     }
 }

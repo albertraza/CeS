@@ -623,7 +623,6 @@ namespace Cely_Sistema
                 lblFecha.Text = "Fecha: " + DateTime.Now.ToLongDateString() + " Hora: " + DateTime.Now.ToLongTimeString();
                 lblCantidadEstudiantesRegistrados.Text = "Cantidad de Estudiantes Registrados: ";
                 lblCantidadEstudiantesRegistrados.Text = "Cantidad de Estudiantes Registrados: " + EstudianteDB.getTotalStudentsRegistered().ToString();
-
             }
             catch(Exception ex)
             {
