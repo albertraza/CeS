@@ -85,6 +85,7 @@ namespace Cely_Sistema
                 GananciasDB.fillNullValues();
                 GananciasDB.updateDescuentos();
                 GananciasDB.updateTotalGanancias();
+                GananciasDB.fixMathIssue();
                 txtCuota.Enabled = false;
                 txtDerechoExamen.Enabled = false;
                 txtInscripcion.Enabled = false;
@@ -203,6 +204,21 @@ namespace Cely_Sistema
         private void button1_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GananciasDB.fixMathIssue();
+                frmReporteGananciasJustOne pReporte = new frmReporteGananciasJustOne();
+                pReporte.fechaReporte = Convert.ToDateTime(dtpFecha.Value.Date.ToString("yyyy-MM-dd"));
+                pReporte.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ganancias", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -24,13 +24,15 @@ namespace Cely_Sistema
             SqlConnection con = new SqlConnection(Cely_Sistema.Properties.Settings.Default.CelyDBConnectionString);
             try
             {
-                con.Open(); c += 30;
+                con.Open(); c +=20;
                 progressBar1.Value = c;
                 GananciasDB.updateDescuentos();
-                c += 30;
+                c += 20;
                 progressBar1.Value = c;
                 GananciasDB.updateTotalGanancias();
-                c += 40;
+                c += 30;
+                GananciasDB.fixMathIssue();
+                c += 30;
                 progressBar1.Value = c;
             }
             catch (Exception ex)
@@ -50,7 +52,7 @@ namespace Cely_Sistema
             a++;
             if(c == 100)
             {
-                if (a == 5)
+                if (a == 7)
                 {
                     frmLogin lg = new frmLogin();
                     lg.Show();

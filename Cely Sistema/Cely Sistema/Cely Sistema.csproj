@@ -331,6 +331,12 @@
     <Compile Include="frmReportedeNotas.Designer.cs">
       <DependentUpon>frmReportedeNotas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteGananciasJustOne.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteGananciasJustOne.Designer.cs">
+      <DependentUpon>frmReporteGananciasJustOne.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReporteNotasEstudiantes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -489,12 +495,16 @@
     <EmbeddedResource Include="frmReportedeNotas.resx">
       <DependentUpon>frmReportedeNotas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteGananciasJustOne.resx">
+      <DependentUpon>frmReporteGananciasJustOne.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmReporteNotasEstudiantes.resx">
       <DependentUpon>frmReporteNotasEstudiantes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GananciasJustOne.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

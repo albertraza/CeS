@@ -37,7 +37,7 @@ namespace Cely_Sistema
             this.Cuota = cuota;
             this.Gastos = gastos;
             this.Detalles_Gastos = detalles;
-            this.Total_Ganancias = totalga;
+            Total_Ganancias = totalga;
         }
         // end cosuntrucst biulding //
 
@@ -184,6 +184,17 @@ namespace Cely_Sistema
                 con.Close();
             }
             return r;
+        }
+        public static int fixMathIssue()
+        {
+            int retu = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("update Ganancias set Total_Ganancias = Ingresos - Total_Descuentos", con);
+                retu = comand.ExecuteNonQuery();
+                con.Close();
+            }
+            return retu;
         }
 
         public static string getTotalLibros(string fecha)

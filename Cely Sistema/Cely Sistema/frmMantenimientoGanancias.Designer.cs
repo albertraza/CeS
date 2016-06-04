@@ -55,6 +55,7 @@
             this.txtDetallesGastos = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.gbIngresos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -160,6 +161,7 @@
             // 
             // gbIngresos
             // 
+            this.gbIngresos.Controls.Add(this.btnImprimir);
             this.gbIngresos.Controls.Add(this.txtCuota);
             this.gbIngresos.Controls.Add(this.lblCuota);
             this.gbIngresos.Controls.Add(this.txtDerechoExamen);
@@ -307,6 +309,16 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(375, 259);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(119, 23);
+            this.btnImprimir.TabIndex = 4;
+            this.btnImprimir.Text = "Imprimir Ganancias";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // frmMantenimientoGanancias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -357,5 +369,6 @@
         private System.Windows.Forms.Label lblLibros;
         private System.Windows.Forms.Label lblDetallesGastos;
         private System.Windows.Forms.TextBox txtDetallesGastos;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }
