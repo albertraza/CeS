@@ -207,7 +207,7 @@ namespace Cely_Sistema
             {
                 try
                 {
-                    if (txtCodigoFactura.Text != null)
+                    if (txtCodigoFactura.Text != null || txtCodigoFactura.Text != string.Empty)
                     {
                         Int32 ID = int.Parse(dgvFactura.CurrentRow.Cells[0].Value.ToString());
                         nCant.Value = FacturacionDB.ObtenerCantSemanasMesesPagos(ID);
@@ -220,7 +220,7 @@ namespace Cely_Sistema
                     }
                     else
                     {
-                        Int32 ID = int.Parse(dgvFactura.CurrentRow.Cells[6].Value.ToString());
+                        Int32 ID = Convert.ToInt32(dgvFactura.CurrentRow.Cells[6].Value);
                         nCant.Value = FacturacionDB.ObtenerCantSemanasMesesPagos(ID);
                         double CantPagada = FacturacionDB.ObtenerCantidadPagada(ID);
                         double pagoMensualSemanal = CantPagada / (FacturacionDB.ObtenerCantSemanasMesesPagos(ID));

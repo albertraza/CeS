@@ -31,7 +31,6 @@ namespace Cely_Sistema
             try
             {
                 btnAñadirEstudiante.Visible = false;
-                btnCambiardeNivel.Visible = false;
                 dgvTabla.DataSource = GruposDB.EstudiantePorGrupo(ID);  
             }
             catch(Exception ex)
@@ -42,7 +41,16 @@ namespace Cely_Sistema
 
         private void btnCambiardeNivel_Click(object sender, EventArgs e)
         {
-
+            if(dgvTabla.SelectedRows.Count == 1)
+            {
+                frmRegistro pRegistro = new frmRegistro();
+                pRegistro.GetIDestudiante = EstudianteDB.SeleccionarEstudiante(Convert.ToInt32(dgvTabla.CurrentRow.Cells[12].Value));
+                pRegistro.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un estudiante de la tabla", "Grupos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

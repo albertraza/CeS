@@ -41,9 +41,9 @@
             // 
             this.dgvTabla.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTabla.Location = new System.Drawing.Point(21, 19);
+            this.dgvTabla.Location = new System.Drawing.Point(6, 19);
             this.dgvTabla.Name = "dgvTabla";
-            this.dgvTabla.Size = new System.Drawing.Size(507, 350);
+            this.dgvTabla.Size = new System.Drawing.Size(946, 438);
             this.dgvTabla.TabIndex = 0;
             // 
             // gbEstudiantesporNivel
@@ -51,14 +51,14 @@
             this.gbEstudiantesporNivel.Controls.Add(this.dgvTabla);
             this.gbEstudiantesporNivel.Location = new System.Drawing.Point(12, 12);
             this.gbEstudiantesporNivel.Name = "gbEstudiantesporNivel";
-            this.gbEstudiantesporNivel.Size = new System.Drawing.Size(548, 382);
+            this.gbEstudiantesporNivel.Size = new System.Drawing.Size(958, 463);
             this.gbEstudiantesporNivel.TabIndex = 3;
             this.gbEstudiantesporNivel.TabStop = false;
             this.gbEstudiantesporNivel.Text = "Estudiantes Por Nivel";
             // 
             // btnAñadirEstudiante
             // 
-            this.btnAñadirEstudiante.Location = new System.Drawing.Point(33, 404);
+            this.btnAñadirEstudiante.Location = new System.Drawing.Point(198, 481);
             this.btnAñadirEstudiante.Name = "btnAñadirEstudiante";
             this.btnAñadirEstudiante.Size = new System.Drawing.Size(157, 23);
             this.btnAñadirEstudiante.TabIndex = 5;
@@ -67,7 +67,7 @@
             // 
             // btnCambiardeNivel
             // 
-            this.btnCambiardeNivel.Location = new System.Drawing.Point(225, 404);
+            this.btnCambiardeNivel.Location = new System.Drawing.Point(18, 481);
             this.btnCambiardeNivel.Name = "btnCambiardeNivel";
             this.btnCambiardeNivel.Size = new System.Drawing.Size(154, 23);
             this.btnCambiardeNivel.TabIndex = 6;
@@ -79,7 +79,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(577, 439);
+            this.ClientSize = new System.Drawing.Size(982, 516);
             this.Controls.Add(this.btnCambiardeNivel);
             this.Controls.Add(this.btnAñadirEstudiante);
             this.Controls.Add(this.gbEstudiantesporNivel);
