@@ -41,6 +41,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.gbIngresos = new System.Windows.Forms.GroupBox();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.txtCuota = new System.Windows.Forms.TextBox();
             this.lblCuota = new System.Windows.Forms.Label();
             this.txtDerechoExamen = new System.Windows.Forms.TextBox();
@@ -55,9 +56,18 @@
             this.txtDetallesGastos = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.btnImprimir = new System.Windows.Forms.Button();
+            this.gbReporteGanancias = new System.Windows.Forms.GroupBox();
+            this.btnImprimirReporte = new System.Windows.Forms.Button();
+            this.btnGeneralReporte = new System.Windows.Forms.Button();
+            this.lblFechaHasta = new System.Windows.Forms.Label();
+            this.lblFechaDesde = new System.Windows.Forms.Label();
+            this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
+            this.dgvTabla = new System.Windows.Forms.DataGridView();
             this.gbIngresos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.gbReporteGanancias.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).BeginInit();
             this.SuspendLayout();
             // 
             // dtpFecha
@@ -191,6 +201,16 @@
             this.gbIngresos.TabStop = false;
             this.gbIngresos.Text = "Mantenimiento Ingresos";
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(375, 259);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(119, 23);
+            this.btnImprimir.TabIndex = 4;
+            this.btnImprimir.Text = "Imprimir Ganancias";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // txtCuota
             // 
             this.txtCuota.Location = new System.Drawing.Point(102, 60);
@@ -309,21 +329,88 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // btnImprimir
+            // gbReporteGanancias
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(375, 259);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(119, 23);
-            this.btnImprimir.TabIndex = 4;
-            this.btnImprimir.Text = "Imprimir Ganancias";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            this.gbReporteGanancias.Controls.Add(this.btnImprimirReporte);
+            this.gbReporteGanancias.Controls.Add(this.btnGeneralReporte);
+            this.gbReporteGanancias.Controls.Add(this.lblFechaHasta);
+            this.gbReporteGanancias.Controls.Add(this.lblFechaDesde);
+            this.gbReporteGanancias.Controls.Add(this.dtpFechaHasta);
+            this.gbReporteGanancias.Controls.Add(this.dtpFechaDesde);
+            this.gbReporteGanancias.Controls.Add(this.dgvTabla);
+            this.gbReporteGanancias.Location = new System.Drawing.Point(539, 12);
+            this.gbReporteGanancias.Name = "gbReporteGanancias";
+            this.gbReporteGanancias.Size = new System.Drawing.Size(601, 389);
+            this.gbReporteGanancias.TabIndex = 4;
+            this.gbReporteGanancias.TabStop = false;
+            this.gbReporteGanancias.Text = "Reporte Ganancias";
+            // 
+            // btnImprimirReporte
+            // 
+            this.btnImprimirReporte.Location = new System.Drawing.Point(387, 76);
+            this.btnImprimirReporte.Name = "btnImprimirReporte";
+            this.btnImprimirReporte.Size = new System.Drawing.Size(174, 23);
+            this.btnImprimirReporte.TabIndex = 6;
+            this.btnImprimirReporte.Text = "Imprimir Reporte";
+            this.btnImprimirReporte.UseVisualStyleBackColor = true;
+            this.btnImprimirReporte.Click += new System.EventHandler(this.btnImprimirReporte_Click);
+            // 
+            // btnGeneralReporte
+            // 
+            this.btnGeneralReporte.Location = new System.Drawing.Point(387, 33);
+            this.btnGeneralReporte.Name = "btnGeneralReporte";
+            this.btnGeneralReporte.Size = new System.Drawing.Size(174, 23);
+            this.btnGeneralReporte.TabIndex = 5;
+            this.btnGeneralReporte.Text = "Ver Reporte de Ganancias";
+            this.btnGeneralReporte.UseVisualStyleBackColor = true;
+            this.btnGeneralReporte.Click += new System.EventHandler(this.btnGeneralReporte_Click);
+            // 
+            // lblFechaHasta
+            // 
+            this.lblFechaHasta.AutoSize = true;
+            this.lblFechaHasta.Location = new System.Drawing.Point(39, 82);
+            this.lblFechaHasta.Name = "lblFechaHasta";
+            this.lblFechaHasta.Size = new System.Drawing.Size(65, 13);
+            this.lblFechaHasta.TabIndex = 4;
+            this.lblFechaHasta.Text = "Fecha Final:";
+            // 
+            // lblFechaDesde
+            // 
+            this.lblFechaDesde.AutoSize = true;
+            this.lblFechaDesde.Location = new System.Drawing.Point(39, 38);
+            this.lblFechaDesde.Name = "lblFechaDesde";
+            this.lblFechaDesde.Size = new System.Drawing.Size(68, 13);
+            this.lblFechaDesde.TabIndex = 3;
+            this.lblFechaDesde.Text = "Fecha Inicio:";
+            // 
+            // dtpFechaHasta
+            // 
+            this.dtpFechaHasta.Location = new System.Drawing.Point(113, 76);
+            this.dtpFechaHasta.Name = "dtpFechaHasta";
+            this.dtpFechaHasta.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaHasta.TabIndex = 2;
+            // 
+            // dtpFechaDesde
+            // 
+            this.dtpFechaDesde.Location = new System.Drawing.Point(113, 32);
+            this.dtpFechaDesde.Name = "dtpFechaDesde";
+            this.dtpFechaDesde.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaDesde.TabIndex = 1;
+            // 
+            // dgvTabla
+            // 
+            this.dgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTabla.Location = new System.Drawing.Point(6, 141);
+            this.dgvTabla.Name = "dgvTabla";
+            this.dgvTabla.Size = new System.Drawing.Size(589, 242);
+            this.dgvTabla.TabIndex = 0;
             // 
             // frmMantenimientoGanancias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 441);
+            this.ClientSize = new System.Drawing.Size(1152, 447);
+            this.Controls.Add(this.gbReporteGanancias);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.gbIngresos);
             this.Controls.Add(this.btnCancelar);
@@ -337,6 +424,9 @@
             this.gbIngresos.ResumeLayout(false);
             this.gbIngresos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.gbReporteGanancias.ResumeLayout(false);
+            this.gbReporteGanancias.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -370,5 +460,13 @@
         private System.Windows.Forms.Label lblDetallesGastos;
         private System.Windows.Forms.TextBox txtDetallesGastos;
         private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.GroupBox gbReporteGanancias;
+        private System.Windows.Forms.Button btnImprimirReporte;
+        private System.Windows.Forms.Button btnGeneralReporte;
+        private System.Windows.Forms.Label lblFechaHasta;
+        private System.Windows.Forms.Label lblFechaDesde;
+        private System.Windows.Forms.DateTimePicker dtpFechaHasta;
+        private System.Windows.Forms.DateTimePicker dtpFechaDesde;
+        private System.Windows.Forms.DataGridView dgvTabla;
     }
 }

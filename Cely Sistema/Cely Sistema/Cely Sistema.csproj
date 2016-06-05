@@ -331,6 +331,12 @@
     <Compile Include="frmReportedeNotas.Designer.cs">
       <DependentUpon>frmReportedeNotas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteGanancias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteGanancias.Designer.cs">
+      <DependentUpon>frmReporteGanancias.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReporteGananciasJustOne.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -495,6 +501,9 @@
     <EmbeddedResource Include="frmReportedeNotas.resx">
       <DependentUpon>frmReportedeNotas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteGanancias.resx">
+      <DependentUpon>frmReporteGanancias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmReporteGananciasJustOne.resx">
       <DependentUpon>frmReporteGananciasJustOne.cs</DependentUpon>
     </EmbeddedResource>
@@ -514,6 +523,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ReporteGanancias.rdlc" />
     <EmbeddedResource Include="rpCalificaciones.rdlc" />
     <EmbeddedResource Include="rpCalificacionesEstudiantiles.rdlc" />
     <EmbeddedResource Include="rpContratoMensual.rdlc" />

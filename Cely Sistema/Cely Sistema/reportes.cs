@@ -71,5 +71,19 @@ namespace Cely_Sistema
             }
             return r;
         }
+
+        // *************** report for ganancias *************** //
+
+        public static DataTable Ganancias(string fechaDesde, string fechaHasta)
+        {
+            DataTable r = new DataTable();
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlDataAdapter da = new SqlDataAdapter(string.Format("select * from Ganancias where Fecha_Ganancias between '{0}' and '{1}'", fechaDesde, fechaHasta), con);
+                da.Fill(r);
+                con.Close();
+            }
+            return r;
+        }
     }
 }

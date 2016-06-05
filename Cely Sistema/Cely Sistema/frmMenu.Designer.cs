@@ -55,9 +55,7 @@
             this.nivelesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gananciasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.estudiantesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.calificacionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.empleadosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.facturasToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirDelSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -340,11 +338,8 @@
             // 
             this.acercaDeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gananciasToolStripMenuItem1,
-            this.estudiantesToolStripMenuItem2,
             this.calificacionesToolStripMenuItem1,
-            this.empleadosToolStripMenuItem2,
             this.facturasToolStripMenuItem2});
-            this.acercaDeToolStripMenuItem.Enabled = false;
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.acercaDeToolStripMenuItem.Text = "Reportes";
@@ -352,32 +347,22 @@
             // gananciasToolStripMenuItem1
             // 
             this.gananciasToolStripMenuItem1.Name = "gananciasToolStripMenuItem1";
-            this.gananciasToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.gananciasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.gananciasToolStripMenuItem1.Text = "Ganancias";
-            // 
-            // estudiantesToolStripMenuItem2
-            // 
-            this.estudiantesToolStripMenuItem2.Name = "estudiantesToolStripMenuItem2";
-            this.estudiantesToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
-            this.estudiantesToolStripMenuItem2.Text = "Estudiantes";
             // 
             // calificacionesToolStripMenuItem1
             // 
+            this.calificacionesToolStripMenuItem1.Enabled = false;
             this.calificacionesToolStripMenuItem1.Name = "calificacionesToolStripMenuItem1";
-            this.calificacionesToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.calificacionesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.calificacionesToolStripMenuItem1.Text = "Calificaciones";
             this.calificacionesToolStripMenuItem1.Click += new System.EventHandler(this.calificacionesToolStripMenuItem1_Click);
             // 
-            // empleadosToolStripMenuItem2
-            // 
-            this.empleadosToolStripMenuItem2.Name = "empleadosToolStripMenuItem2";
-            this.empleadosToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
-            this.empleadosToolStripMenuItem2.Text = "Empleados";
-            // 
             // facturasToolStripMenuItem2
             // 
+            this.facturasToolStripMenuItem2.Enabled = false;
             this.facturasToolStripMenuItem2.Name = "facturasToolStripMenuItem2";
-            this.facturasToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
+            this.facturasToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.facturasToolStripMenuItem2.Text = "Facturas";
             // 
             // salirToolStripMenuItem
@@ -1159,9 +1144,7 @@
         private System.Windows.Forms.ToolStripMenuItem gananciasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem gananciasToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem estudiantesToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem calificacionesToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem cancelacionDeCobrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registroDeGruposToolStripMenuItem;

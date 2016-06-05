@@ -220,5 +220,39 @@ namespace Cely_Sistema
                 MessageBox.Show(ex.Message, "Ganancias", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnGeneralReporte_Click(object sender, EventArgs e)
+        {
+            if(dtpFechaDesde.Value.Date == dtpFechaHasta.Value.Date)
+            {
+                MessageBox.Show("Seleccione la fecha desde y hasta para poder general el reporte", "Ganancias", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                try
+                {
+                    dgvTabla.DataSource = reportes.Ganancias(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd"));
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ganancias", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnImprimirReporte_Click(object sender, EventArgs e)
+        {
+            if (dtpFechaDesde.Value.Date == dtpFechaHasta.Value.Date)
+            {
+                MessageBox.Show("Seleccione la fecha desde y hasta para poder general el reporte", "Ganancias", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                frmReporteGanancias pReporte = new frmReporteGanancias();
+                pReporte.fechaDesde = Convert.ToDateTime(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"));
+                pReporte.fechaHasta = Convert.ToDateTime(dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd"));
+                pReporte.ShowDialog();
+            }
+        }
     }
 }
