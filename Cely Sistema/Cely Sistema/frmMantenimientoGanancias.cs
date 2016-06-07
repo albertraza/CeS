@@ -11,6 +11,14 @@ namespace Cely_Sistema
 {
     public partial class frmMantenimientoGanancias : Form
     {
+        private void LoadDefault()
+        {
+            lblTotalDescuentos.Text = lblTotalDescuentos.Text + "-$" + GananciasDB.getTotalGastos().ToString("f2");
+            lblTotalIngresosRep.Text = lblTotalIngresosRep.Text + "$" + GananciasDB.getTotalIngresos().ToString("f2");
+            lblTotalGananciasRep.Text = lblTotalGananciasRep.Text + "$" + GananciasDB.getTotalGanancias().ToString("f2");
+            lblTotalFacturas.Text = lblTotalFacturas.Text + FacturacionDB.getTotalFacturas().ToString();
+            lblTotalDias.Text = lblTotalDias.Text + (GananciasDB.getLastDayganancias() - GananciasDB.getFirstDateGanancia()).TotalDays.ToString();
+        }
         private void LoadData()
         {
             GananciasDB Ganancias = GananciasDB.getGanancias(dtpFecha.Value.Date.ToString("yyyy-MM-dd"));
@@ -38,21 +46,25 @@ namespace Cely_Sistema
             lblTotalIngresosRep.Text = "Total Ingresos: ";
             lblTotalGananciasRep.Text = "Total Ganancias: ";
             lblTotalFacturas.Text = "Total Facturas: ";
-            if (dtpFechaDesde.Value.Date == dtpFechaHasta.Value.Date)
+            if (dtpFechaDesde.Value.Date == dtpFechaHasta.Value.Date || (dtpFechaHasta.Value.Date - dtpFechaDesde.Value.Date).TotalDays == 0)
             {
-                lblTotalDescuentos.Text = lblTotalDescuentos.Text + "-$" + GananciasDB.getTotalGastos().ToString("f2");
-                lblTotalIngresosRep.Text = lblTotalIngresosRep.Text + "$" + GananciasDB.getTotalIngresos().ToString("f2");
-                lblTotalGananciasRep.Text = lblTotalGananciasRep.Text + "$" + GananciasDB.getTotalGanancias().ToString("f2");
-                lblTotalFacturas.Text = lblTotalFacturas.Text + FacturacionDB.getTotalFacturas().ToString();
-                lblTotalDias.Text = lblTotalDias.Text + (GananciasDB.getLastDayganancias() - GananciasDB.getFirstDateGanancia()).TotalDays.ToString();
+                LoadDefault();
             }
-            else
+            else if ((dtpFechaHasta.Value.Date - dtpFechaDesde.Value.Date).TotalDays > 0)
             {
-                lblTotalDescuentos.Text = lblTotalDescuentos.Text + "-$" + GananciasDB.getParcialGastos(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd")).ToString("f2");
-                lblTotalIngresosRep.Text = lblTotalIngresosRep.Text + "$" + GananciasDB.getParcialIngresos(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd")).ToString("f2");
-                lblTotalGananciasRep.Text = lblTotalGananciasRep.Text + "$" + GananciasDB.getParcialGanancias(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd")).ToString("f2");
-                lblTotalFacturas.Text = lblTotalFacturas.Text + FacturacionDB.getParcialFacturas(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd")).ToString();
-                lblTotalDias.Text = lblTotalDias.Text + (dtpFechaHasta.Value.Date - dtpFechaDesde.Value.Date).TotalDays.ToString();
+                if (GananciasDB.getParcialGastos(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd")) != 0)
+                {
+                    lblTotalDescuentos.Text = lblTotalDescuentos.Text + "-$" + GananciasDB.getParcialGastos(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd")).ToString("f2");
+                    lblTotalIngresosRep.Text = lblTotalIngresosRep.Text + "$" + GananciasDB.getParcialIngresos(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd")).ToString("f2");
+                    lblTotalGananciasRep.Text = lblTotalGananciasRep.Text + "$" + GananciasDB.getParcialGanancias(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd")).ToString("f2");
+                    lblTotalFacturas.Text = lblTotalFacturas.Text + FacturacionDB.getParcialFacturas(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd")).ToString();
+                    lblTotalDias.Text = lblTotalDias.Text + (dtpFechaHasta.Value.Date - dtpFechaDesde.Value.Date).TotalDays.ToString();
+                }
+            }
+            else if ((dtpFechaHasta.Value.Date - dtpFechaDesde.Value.Date).TotalDays < 0)
+            {
+                LoadDefault();
+                MessageBox.Show("Selecciona otro periodo de tiempo", "Ganancias", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -302,6 +314,20 @@ namespace Cely_Sistema
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ganancias", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadDefault();
+                dtpFechaHasta.Value = DateTime.Today;
+                dtpFechaDesde.Value = DateTime.Today;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

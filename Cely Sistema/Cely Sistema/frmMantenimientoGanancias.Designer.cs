@@ -57,6 +57,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.gbReporteGanancias = new System.Windows.Forms.GroupBox();
+            this.lblTotalDias = new System.Windows.Forms.Label();
+            this.lblTotalFacturas = new System.Windows.Forms.Label();
+            this.lblTotalGananciasRep = new System.Windows.Forms.Label();
+            this.lblTotalDescuentos = new System.Windows.Forms.Label();
+            this.lblTotalIngresosRep = new System.Windows.Forms.Label();
             this.btnImprimirReporte = new System.Windows.Forms.Button();
             this.btnGeneralReporte = new System.Windows.Forms.Button();
             this.lblFechaHasta = new System.Windows.Forms.Label();
@@ -64,11 +69,7 @@
             this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.dgvTabla = new System.Windows.Forms.DataGridView();
-            this.lblTotalIngresosRep = new System.Windows.Forms.Label();
-            this.lblTotalDescuentos = new System.Windows.Forms.Label();
-            this.lblTotalGananciasRep = new System.Windows.Forms.Label();
-            this.lblTotalFacturas = new System.Windows.Forms.Label();
-            this.lblTotalDias = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             this.gbIngresos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbReporteGanancias.SuspendLayout();
@@ -336,6 +337,7 @@
             // 
             // gbReporteGanancias
             // 
+            this.gbReporteGanancias.Controls.Add(this.btnClear);
             this.gbReporteGanancias.Controls.Add(this.lblTotalDias);
             this.gbReporteGanancias.Controls.Add(this.lblTotalFacturas);
             this.gbReporteGanancias.Controls.Add(this.lblTotalGananciasRep);
@@ -355,9 +357,60 @@
             this.gbReporteGanancias.TabStop = false;
             this.gbReporteGanancias.Text = "Reporte Ganancias";
             // 
+            // lblTotalDias
+            // 
+            this.lblTotalDias.AutoSize = true;
+            this.lblTotalDias.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalDias.Location = new System.Drawing.Point(288, 139);
+            this.lblTotalDias.Name = "lblTotalDias";
+            this.lblTotalDias.Size = new System.Drawing.Size(90, 18);
+            this.lblTotalDias.TabIndex = 11;
+            this.lblTotalDias.Text = "Total Dias:";
+            // 
+            // lblTotalFacturas
+            // 
+            this.lblTotalFacturas.AutoSize = true;
+            this.lblTotalFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalFacturas.Location = new System.Drawing.Point(256, 121);
+            this.lblTotalFacturas.Name = "lblTotalFacturas";
+            this.lblTotalFacturas.Size = new System.Drawing.Size(122, 18);
+            this.lblTotalFacturas.TabIndex = 10;
+            this.lblTotalFacturas.Text = "Total Facturas:";
+            // 
+            // lblTotalGananciasRep
+            // 
+            this.lblTotalGananciasRep.AutoSize = true;
+            this.lblTotalGananciasRep.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalGananciasRep.Location = new System.Drawing.Point(9, 157);
+            this.lblTotalGananciasRep.Name = "lblTotalGananciasRep";
+            this.lblTotalGananciasRep.Size = new System.Drawing.Size(136, 18);
+            this.lblTotalGananciasRep.TabIndex = 9;
+            this.lblTotalGananciasRep.Text = "Total Ganancias:";
+            // 
+            // lblTotalDescuentos
+            // 
+            this.lblTotalDescuentos.AutoSize = true;
+            this.lblTotalDescuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalDescuentos.ForeColor = System.Drawing.Color.Red;
+            this.lblTotalDescuentos.Location = new System.Drawing.Point(34, 139);
+            this.lblTotalDescuentos.Name = "lblTotalDescuentos";
+            this.lblTotalDescuentos.Size = new System.Drawing.Size(111, 18);
+            this.lblTotalDescuentos.TabIndex = 8;
+            this.lblTotalDescuentos.Text = "Total Gastos:";
+            // 
+            // lblTotalIngresosRep
+            // 
+            this.lblTotalIngresosRep.AutoSize = true;
+            this.lblTotalIngresosRep.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalIngresosRep.Location = new System.Drawing.Point(24, 121);
+            this.lblTotalIngresosRep.Name = "lblTotalIngresosRep";
+            this.lblTotalIngresosRep.Size = new System.Drawing.Size(121, 18);
+            this.lblTotalIngresosRep.TabIndex = 7;
+            this.lblTotalIngresosRep.Text = "Total Ingresos:";
+            // 
             // btnImprimirReporte
             // 
-            this.btnImprimirReporte.Location = new System.Drawing.Point(387, 76);
+            this.btnImprimirReporte.Location = new System.Drawing.Point(387, 60);
             this.btnImprimirReporte.Name = "btnImprimirReporte";
             this.btnImprimirReporte.Size = new System.Drawing.Size(174, 23);
             this.btnImprimirReporte.TabIndex = 6;
@@ -417,56 +470,15 @@
             this.dgvTabla.Size = new System.Drawing.Size(589, 189);
             this.dgvTabla.TabIndex = 0;
             // 
-            // lblTotalIngresosRep
+            // btnClear
             // 
-            this.lblTotalIngresosRep.AutoSize = true;
-            this.lblTotalIngresosRep.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalIngresosRep.Location = new System.Drawing.Point(24, 121);
-            this.lblTotalIngresosRep.Name = "lblTotalIngresosRep";
-            this.lblTotalIngresosRep.Size = new System.Drawing.Size(121, 18);
-            this.lblTotalIngresosRep.TabIndex = 7;
-            this.lblTotalIngresosRep.Text = "Total Ingresos:";
-            // 
-            // lblTotalDescuentos
-            // 
-            this.lblTotalDescuentos.AutoSize = true;
-            this.lblTotalDescuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalDescuentos.ForeColor = System.Drawing.Color.Red;
-            this.lblTotalDescuentos.Location = new System.Drawing.Point(34, 139);
-            this.lblTotalDescuentos.Name = "lblTotalDescuentos";
-            this.lblTotalDescuentos.Size = new System.Drawing.Size(111, 18);
-            this.lblTotalDescuentos.TabIndex = 8;
-            this.lblTotalDescuentos.Text = "Total Gastos:";
-            // 
-            // lblTotalGananciasRep
-            // 
-            this.lblTotalGananciasRep.AutoSize = true;
-            this.lblTotalGananciasRep.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalGananciasRep.Location = new System.Drawing.Point(9, 157);
-            this.lblTotalGananciasRep.Name = "lblTotalGananciasRep";
-            this.lblTotalGananciasRep.Size = new System.Drawing.Size(136, 18);
-            this.lblTotalGananciasRep.TabIndex = 9;
-            this.lblTotalGananciasRep.Text = "Total Ganancias:";
-            // 
-            // lblTotalFacturas
-            // 
-            this.lblTotalFacturas.AutoSize = true;
-            this.lblTotalFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalFacturas.Location = new System.Drawing.Point(256, 121);
-            this.lblTotalFacturas.Name = "lblTotalFacturas";
-            this.lblTotalFacturas.Size = new System.Drawing.Size(122, 18);
-            this.lblTotalFacturas.TabIndex = 10;
-            this.lblTotalFacturas.Text = "Total Facturas:";
-            // 
-            // lblTotalDias
-            // 
-            this.lblTotalDias.AutoSize = true;
-            this.lblTotalDias.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalDias.Location = new System.Drawing.Point(288, 139);
-            this.lblTotalDias.Name = "lblTotalDias";
-            this.lblTotalDias.Size = new System.Drawing.Size(90, 18);
-            this.lblTotalDias.TabIndex = 11;
-            this.lblTotalDias.Text = "Total Dias:";
+            this.btnClear.Location = new System.Drawing.Point(387, 88);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(174, 23);
+            this.btnClear.TabIndex = 12;
+            this.btnClear.Text = "Limpiar";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // frmMantenimientoGanancias
             // 
@@ -536,5 +548,6 @@
         private System.Windows.Forms.Label lblTotalGananciasRep;
         private System.Windows.Forms.Label lblTotalDescuentos;
         private System.Windows.Forms.Label lblTotalIngresosRep;
+        private System.Windows.Forms.Button btnClear;
     }
 }
