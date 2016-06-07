@@ -521,5 +521,93 @@ namespace Cely_Sistema
             }
             return r;
         }
+        public static decimal getTotalIngresos()
+        {
+            decimal r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("Select SUM(Ingresos) as TotalIngresos from Ganancias", con);
+                r = Convert.ToDecimal(comand.ExecuteScalar());
+                con.Close();
+            }
+            return r;
+        }
+        public static decimal getParcialIngresos(string fechaDesde, string fechaHasta)
+        {
+            decimal r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("Select SUM(Ingresos) as TotalIngresos from Ganancias where Fecha_Ganancias between '{0}' and '{1}'", fechaDesde, fechaHasta), con);
+                r = Convert.ToDecimal(comand.ExecuteScalar());
+                con.Close();
+            }
+            return r;
+        }
+        public static decimal getTotalGastos()
+        {
+            decimal retu = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("Select SUM(Total_Descuentos) as TotalGastos from Ganancias", con);
+                retu = Convert.ToDecimal(comand.ExecuteScalar());
+                con.Close();
+            }
+            return retu;
+        }
+        public static decimal getParcialGastos(string fechaDesde, string fechaHasta)
+        {
+            decimal r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("Select SUM(Total_Descuentos) as TotalGastos from Ganancias where Fecha_Ganancias between '{0}' and '{1}'", fechaDesde, fechaHasta), con);
+                r = Convert.ToDecimal(comand.ExecuteScalar());
+                con.Close();
+            }
+            return r;
+        }
+        public static decimal getTotalGanancias()
+        {
+            decimal r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("Select SUM(Total_Ganancias) as TotalGastos from Ganancias", con);
+                r = Convert.ToDecimal(comand.ExecuteScalar());
+                con.Close();
+            }
+            return r;
+        }
+        public static decimal getParcialGanancias(string fechaDesde, string fechaHasta)
+        {
+            decimal r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("Select SUM(Total_Ganancias) as TotalGastos from Ganancias where Fecha_Ganancias between '{0}' and '{1}'", fechaDesde, fechaHasta), con);
+                r = Convert.ToDecimal(comand.ExecuteScalar());
+                con.Close();
+            }
+            return r;
+        }
+        public static DateTime getFirstDateGanancia()
+        {
+            DateTime r;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("select Fecha_Ganancias from Ganancias order by Fecha_Ganancias asc", con);
+                r = Convert.ToDateTime(comand.ExecuteScalar());
+                con.Close();
+            }
+            return r;
+        }
+        public static DateTime getLastDayganancias()
+        {
+            DateTime retu;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("select Fecha_Ganancias from Ganancias order by Fecha_Ganancias desc", con);
+                retu = Convert.ToDateTime(comand.ExecuteScalar());
+                con.Close();
+            }
+            return retu;
+        }
     }
 }

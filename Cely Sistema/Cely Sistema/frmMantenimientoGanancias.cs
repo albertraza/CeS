@@ -31,6 +31,31 @@ namespace Cely_Sistema
                 MessageBox.Show("No se ha registrado una ganacia en ese dia", "Ganancias", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        private void LoadReportData()
+        {
+            lblTotalDescuentos.Text = "Total Gastos: ";
+            lblTotalDias.Text = "Total Dias: ";
+            lblTotalIngresosRep.Text = "Total Ingresos: ";
+            lblTotalGananciasRep.Text = "Total Ganancias: ";
+            lblTotalFacturas.Text = "Total Facturas: ";
+            if (dtpFechaDesde.Value.Date == dtpFechaHasta.Value.Date)
+            {
+                lblTotalDescuentos.Text = lblTotalDescuentos.Text + "-$" + GananciasDB.getTotalGastos().ToString("f2");
+                lblTotalIngresosRep.Text = lblTotalIngresosRep.Text + "$" + GananciasDB.getTotalIngresos().ToString("f2");
+                lblTotalGananciasRep.Text = lblTotalGananciasRep.Text + "$" + GananciasDB.getTotalGanancias().ToString("f2");
+                lblTotalFacturas.Text = lblTotalFacturas.Text + FacturacionDB.getTotalFacturas().ToString();
+                lblTotalDias.Text = lblTotalDias.Text + (GananciasDB.getLastDayganancias() - GananciasDB.getFirstDateGanancia()).TotalDays.ToString();
+            }
+            else
+            {
+                lblTotalDescuentos.Text = lblTotalDescuentos.Text + "-$" + GananciasDB.getParcialGastos(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd")).ToString("f2");
+                lblTotalIngresosRep.Text = lblTotalIngresosRep.Text + "$" + GananciasDB.getParcialIngresos(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd")).ToString("f2");
+                lblTotalGananciasRep.Text = lblTotalGananciasRep.Text + "$" + GananciasDB.getParcialGanancias(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd")).ToString("f2");
+                lblTotalFacturas.Text = lblTotalFacturas.Text + FacturacionDB.getParcialFacturas(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"), dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd")).ToString();
+                lblTotalDias.Text = lblTotalDias.Text + (dtpFechaHasta.Value.Date - dtpFechaDesde.Value.Date).TotalDays.ToString();
+            }
+        }
+
         public frmMantenimientoGanancias()
         {
             InitializeComponent();
@@ -86,6 +111,7 @@ namespace Cely_Sistema
                 GananciasDB.updateDescuentos();
                 GananciasDB.updateTotalGanancias();
                 GananciasDB.fixMathIssue();
+                LoadReportData();
                 txtCuota.Enabled = false;
                 txtDerechoExamen.Enabled = false;
                 txtInscripcion.Enabled = false;
@@ -252,6 +278,30 @@ namespace Cely_Sistema
                 pReporte.fechaDesde = Convert.ToDateTime(dtpFechaDesde.Value.Date.ToString("yyyy-MM-dd"));
                 pReporte.fechaHasta = Convert.ToDateTime(dtpFechaHasta.Value.Date.ToString("yyyy-MM-dd"));
                 pReporte.ShowDialog();
+            }
+        }
+
+        private void dtpFechaDesde_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadReportData();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ganancias", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dtpFechaHasta_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadReportData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ganancias", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

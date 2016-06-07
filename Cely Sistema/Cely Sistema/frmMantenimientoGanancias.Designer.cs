@@ -64,6 +64,11 @@
             this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.dgvTabla = new System.Windows.Forms.DataGridView();
+            this.lblTotalIngresosRep = new System.Windows.Forms.Label();
+            this.lblTotalDescuentos = new System.Windows.Forms.Label();
+            this.lblTotalGananciasRep = new System.Windows.Forms.Label();
+            this.lblTotalFacturas = new System.Windows.Forms.Label();
+            this.lblTotalDias = new System.Windows.Forms.Label();
             this.gbIngresos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbReporteGanancias.SuspendLayout();
@@ -331,6 +336,11 @@
             // 
             // gbReporteGanancias
             // 
+            this.gbReporteGanancias.Controls.Add(this.lblTotalDias);
+            this.gbReporteGanancias.Controls.Add(this.lblTotalFacturas);
+            this.gbReporteGanancias.Controls.Add(this.lblTotalGananciasRep);
+            this.gbReporteGanancias.Controls.Add(this.lblTotalDescuentos);
+            this.gbReporteGanancias.Controls.Add(this.lblTotalIngresosRep);
             this.gbReporteGanancias.Controls.Add(this.btnImprimirReporte);
             this.gbReporteGanancias.Controls.Add(this.btnGeneralReporte);
             this.gbReporteGanancias.Controls.Add(this.lblFechaHasta);
@@ -389,6 +399,7 @@
             this.dtpFechaHasta.Name = "dtpFechaHasta";
             this.dtpFechaHasta.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaHasta.TabIndex = 2;
+            this.dtpFechaHasta.ValueChanged += new System.EventHandler(this.dtpFechaHasta_ValueChanged);
             // 
             // dtpFechaDesde
             // 
@@ -396,14 +407,66 @@
             this.dtpFechaDesde.Name = "dtpFechaDesde";
             this.dtpFechaDesde.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaDesde.TabIndex = 1;
+            this.dtpFechaDesde.ValueChanged += new System.EventHandler(this.dtpFechaDesde_ValueChanged);
             // 
             // dgvTabla
             // 
             this.dgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTabla.Location = new System.Drawing.Point(6, 141);
+            this.dgvTabla.Location = new System.Drawing.Point(6, 194);
             this.dgvTabla.Name = "dgvTabla";
-            this.dgvTabla.Size = new System.Drawing.Size(589, 242);
+            this.dgvTabla.Size = new System.Drawing.Size(589, 189);
             this.dgvTabla.TabIndex = 0;
+            // 
+            // lblTotalIngresosRep
+            // 
+            this.lblTotalIngresosRep.AutoSize = true;
+            this.lblTotalIngresosRep.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalIngresosRep.Location = new System.Drawing.Point(24, 121);
+            this.lblTotalIngresosRep.Name = "lblTotalIngresosRep";
+            this.lblTotalIngresosRep.Size = new System.Drawing.Size(121, 18);
+            this.lblTotalIngresosRep.TabIndex = 7;
+            this.lblTotalIngresosRep.Text = "Total Ingresos:";
+            // 
+            // lblTotalDescuentos
+            // 
+            this.lblTotalDescuentos.AutoSize = true;
+            this.lblTotalDescuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalDescuentos.ForeColor = System.Drawing.Color.Red;
+            this.lblTotalDescuentos.Location = new System.Drawing.Point(34, 139);
+            this.lblTotalDescuentos.Name = "lblTotalDescuentos";
+            this.lblTotalDescuentos.Size = new System.Drawing.Size(111, 18);
+            this.lblTotalDescuentos.TabIndex = 8;
+            this.lblTotalDescuentos.Text = "Total Gastos:";
+            // 
+            // lblTotalGananciasRep
+            // 
+            this.lblTotalGananciasRep.AutoSize = true;
+            this.lblTotalGananciasRep.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalGananciasRep.Location = new System.Drawing.Point(9, 157);
+            this.lblTotalGananciasRep.Name = "lblTotalGananciasRep";
+            this.lblTotalGananciasRep.Size = new System.Drawing.Size(136, 18);
+            this.lblTotalGananciasRep.TabIndex = 9;
+            this.lblTotalGananciasRep.Text = "Total Ganancias:";
+            // 
+            // lblTotalFacturas
+            // 
+            this.lblTotalFacturas.AutoSize = true;
+            this.lblTotalFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalFacturas.Location = new System.Drawing.Point(256, 121);
+            this.lblTotalFacturas.Name = "lblTotalFacturas";
+            this.lblTotalFacturas.Size = new System.Drawing.Size(122, 18);
+            this.lblTotalFacturas.TabIndex = 10;
+            this.lblTotalFacturas.Text = "Total Facturas:";
+            // 
+            // lblTotalDias
+            // 
+            this.lblTotalDias.AutoSize = true;
+            this.lblTotalDias.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalDias.Location = new System.Drawing.Point(288, 139);
+            this.lblTotalDias.Name = "lblTotalDias";
+            this.lblTotalDias.Size = new System.Drawing.Size(90, 18);
+            this.lblTotalDias.TabIndex = 11;
+            this.lblTotalDias.Text = "Total Dias:";
             // 
             // frmMantenimientoGanancias
             // 
@@ -468,5 +531,10 @@
         private System.Windows.Forms.DateTimePicker dtpFechaHasta;
         private System.Windows.Forms.DateTimePicker dtpFechaDesde;
         private System.Windows.Forms.DataGridView dgvTabla;
+        private System.Windows.Forms.Label lblTotalDias;
+        private System.Windows.Forms.Label lblTotalFacturas;
+        private System.Windows.Forms.Label lblTotalGananciasRep;
+        private System.Windows.Forms.Label lblTotalDescuentos;
+        private System.Windows.Forms.Label lblTotalIngresosRep;
     }
 }

@@ -249,5 +249,27 @@ namespace Cely_Sistema
             }
             return codigo;
         }
+        public static int getTotalFacturas()
+        {
+            int r = -1;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("select COUNT(*) as Total_Facturas from Facturacion", con);
+                r = Convert.ToInt32(comand.ExecuteScalar());
+                con.Close();
+            }
+            return r;
+        }
+        public static int getParcialFacturas(string fechaDesde, string fechaHasta)
+        {
+            int r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select COUNT(*) as Total_Facturas from Facturacion where FechaFactura between '{0}' and '{1}'", fechaDesde, fechaHasta), con);
+                r = Convert.ToInt32(comand.ExecuteScalar());
+                con.Close();
+            }
+            return r;
+        }
     }
 }
