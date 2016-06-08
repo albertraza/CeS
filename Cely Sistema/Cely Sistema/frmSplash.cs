@@ -59,11 +59,6 @@ namespace Cely_Sistema
                     this.Hide();
                 }
             }
-            else
-            {
-
-            }
-            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
