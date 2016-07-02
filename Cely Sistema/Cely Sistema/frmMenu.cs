@@ -622,7 +622,12 @@ namespace Cely_Sistema
                 lblFecha.Text = "Fecha: ";
                 lblFecha.Text = "Fecha: " + DateTime.Now.ToLongDateString() + " Hora: " + DateTime.Now.ToLongTimeString();
                 lblCantidadEstudiantesRegistrados.Text = "Cantidad de Estudiantes Registrados: ";
-                lblCantidadEstudiantesRegistrados.Text = "Cantidad de Estudiantes Registrados: " + EstudianteDB.getTotalStudentsRegistered().ToString();
+                lblCantidadEstudiantesRegistrados.Text += EstudianteDB.getTotalStudentsRegistered().ToString();
+                lblEstudiantesRetirados.Text = "Cantidad Estudiantes Retirados: ";
+                lblEstudiantesRetirados.Text += EstudianteDB.getTotalRetired().ToString();
+                lblEstudiantesActivos.Text = "Cantidad Estudiantes Activos: ";
+                lblEstudiantesActivos.Text += EstudianteDB.getTotalStudentsActive().ToString();
+                EstudianteDB.updateRetiradoStatusWhenStudentIsRegistered();
             }
             catch(Exception ex)
             {

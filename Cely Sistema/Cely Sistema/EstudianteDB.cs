@@ -397,7 +397,7 @@ namespace Cely_Sistema
             using(SqlConnection con = DBcomun.ObetenerConexion())
             {
                 SqlCommand comand = new SqlCommand(string.Format("select Retirado from Estudiantes where ID = '{0}'", matricula), con);
-                r = int.Parse(comand.ExecuteScalar().ToString());
+                r = Convert.ToInt32(comand.ExecuteScalar());
                 con.Close();
             }
             return r;
@@ -434,6 +434,39 @@ namespace Cely_Sistema
                 con.Close();
             }
             return dt;
+        }
+        public static int getTotalRetired()
+        {
+            int r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("select count(*) as CantidadRetirado from Estudiantes where Retirado = 1", con);
+                r = Convert.ToInt32(comand.ExecuteScalar());
+                con.Close();
+            }
+            return r;
+        }
+        public static int getTotalStudentsActive()
+        {
+            int r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("select count(*) as CantidadNoRetirado from Estudiantes where Retirado != 1", con);
+                r = Convert.ToInt32(comand.ExecuteScalar());
+                con.Close();
+            }
+            return r;
+        }
+        public static int updateRetiradoStatusWhenStudentIsRegistered()
+        {
+            int r = -1;
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("update Estudiantes set Retirado = 0 where Retirado is null", con);
+                r = comand.ExecuteNonQuery();
+                con.Close();
+            }
+            return r;
         }
     }
 }

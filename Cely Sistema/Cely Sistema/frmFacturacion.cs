@@ -24,6 +24,7 @@ namespace Cely_Sistema
         }
         private void populateStudent()
         {
+            rbPago.Checked = true;
             int cantPAgar = Convert.ToInt32(nCantPagar.Value);
             if (rbPago.Checked == true)
             {
@@ -91,7 +92,7 @@ namespace Cely_Sistema
                             btnAceptar.Focus();
                             int CompF = DateTime.Compare(pPago0, fechaActual);
                             // validation to verify if student is already retired.
-                            if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) == 0)
+                            if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
                             {
                                 // VIP method execution
                                 if (EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == "NO" ||
@@ -106,6 +107,7 @@ namespace Cely_Sistema
                                             lblPendientes.ForeColor = Color.Red;
                                             lblPendientes.Text = "Meses Pendientes: " + (MesesP + 1).ToString("f0");
                                             lblMesesoSemanas.Text = "Meses";
+                                            nCantPagar.Value = 0;
                                             nCantPagar.Value = Convert.ToInt32(MesesP + 1);
                                             rbPago.Text = "Pago Mensual";
                                             txtMotivodePago.Text = "Pago Mes";
@@ -119,6 +121,7 @@ namespace Cely_Sistema
                                             lblPendientes.ForeColor = Color.Black;
                                             lblPendientes.Text = "Meses Pendientes: 0";
                                             lblMesesoSemanas.Text = "Meses";
+                                            nCantPagar.Value = 0;
                                             nCantPagar.Value = 1;
                                             rbPago.Text = "Pago Mensual";
                                             txtMotivodePago.Text = "Pago Mes";
@@ -135,6 +138,7 @@ namespace Cely_Sistema
                                             lblPendientes.ForeColor = Color.Red;
                                             lblPendientes.Text = "Semanas Pendientes: " + (semanasP).ToString("f0");
                                             lblMesesoSemanas.Text = "Semanas";
+                                            nCantPagar.Value = 0;
                                             nCantPagar.Value = Convert.ToInt32(semanasP + 1);
                                             rbPago.Text = "Pago Semanal";
                                             txtMotivodePago.Text = "Pago Semanal";
@@ -147,6 +151,7 @@ namespace Cely_Sistema
                                             lblPendientes.ForeColor = Color.Black;
                                             semanasP = 0;
                                             lblPendientes.Text = "Semanas Pendientes: 0";
+                                            nCantPagar.Value = 0;
                                             nCantPagar.Value = Convert.ToInt32(semanasP + 1);
                                             lblMesesoSemanas.Text = "Semanas";
                                             rbPago.Text = "Pago Semanal";
@@ -169,6 +174,7 @@ namespace Cely_Sistema
                                             lblPendientes.ForeColor = Color.Red;
                                             lblPendientes.Text = "Meses Pendientes: " + MesesP.ToString("f0");
                                             lblMesesoSemanas.Text = "Meses";
+                                            nCantPagar.Value = 0;
                                             nCantPagar.Value = Convert.ToInt32(MesesP + 1);
                                             rbPago.Text = "Pago Mensual";
                                             txtMotivodePago.Text = "Pago Mes";
@@ -182,6 +188,7 @@ namespace Cely_Sistema
                                             MesesP = 0;
                                             lblPendientes.Text = "Meses Pendientes: 0";
                                             lblMesesoSemanas.Text = "Meses";
+                                            nCantPagar.Value = 0;
                                             nCantPagar.Value = 1;
                                             rbPago.Text = "Pago Mensual";
                                             txtMotivodePago.Text = "Pago Mes";
@@ -198,6 +205,7 @@ namespace Cely_Sistema
                                             lblPendientes.ForeColor = Color.Red;
                                             lblPendientes.Text = "Semanas Pendientes: " + semanasP.ToString("f0");
                                             lblMesesoSemanas.Text = "Semanas";
+                                            nCantPagar.Value = 0;
                                             nCantPagar.Value = Convert.ToInt32(semanasP + 1);
                                             rbPago.Text = "Pago Semanal";
                                             txtMotivodePago.Text = "Pago Semanal";
@@ -211,6 +219,7 @@ namespace Cely_Sistema
                                             semanasP = 0;
                                             lblPendientes.Text = "Semanas Pendientes: 0";
                                             lblMesesoSemanas.Text = "Semanas";
+                                            nCantPagar.Value = 0;
                                             nCantPagar.Value = 1;
                                             rbPago.Text = "Pago Semanal";
                                             txtMotivodePago.Text = "Pago Semanal";
@@ -246,6 +255,7 @@ namespace Cely_Sistema
                                         lblPendientes.ForeColor = Color.Red;
                                         lblPendientes.Text = "Meses Pendientes: " + (MesesP).ToString("f0");
                                         lblMesesoSemanas.Text = "Meses";
+                                        nCantPagar.Value = 0;
                                         nCantPagar.Value = Convert.ToInt32(MesesP);
                                         rbPago.Text = "Pago Mensual";
                                         txtMotivodePago.Text = "Pago Mes";
@@ -277,6 +287,7 @@ namespace Cely_Sistema
                                         lblPendientes.ForeColor = Color.Red;
                                         lblPendientes.Text = "Semanas Pendientes: " + (semanasP).ToString("f0");
                                         lblMesesoSemanas.Text = "Semanas";
+                                        nCantPagar.Value = 0;
                                         nCantPagar.Value = Convert.ToInt32(semanasP);
                                         rbPago.Text = "Pago Semanal";
                                         txtMotivodePago.Text = "Pago Semanal";
@@ -517,10 +528,11 @@ namespace Cely_Sistema
         private bool pMora { get; set; }
         private void lblCargarEstudiante_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            try {
+            try
+            {
                 populateStudent();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -1397,7 +1409,7 @@ namespace Cely_Sistema
                 {
                     MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-        }
+            }
         }
     }
 }

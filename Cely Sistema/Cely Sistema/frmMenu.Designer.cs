@@ -129,6 +129,8 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.lblEstudiantesActivos = new System.Windows.Forms.Label();
+            this.lblEstudiantesRetirados = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
@@ -347,14 +349,14 @@
             // gananciasToolStripMenuItem1
             // 
             this.gananciasToolStripMenuItem1.Name = "gananciasToolStripMenuItem1";
-            this.gananciasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.gananciasToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
             this.gananciasToolStripMenuItem1.Text = "Ganancias";
             // 
             // calificacionesToolStripMenuItem1
             // 
             this.calificacionesToolStripMenuItem1.Enabled = false;
             this.calificacionesToolStripMenuItem1.Name = "calificacionesToolStripMenuItem1";
-            this.calificacionesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.calificacionesToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
             this.calificacionesToolStripMenuItem1.Text = "Calificaciones";
             this.calificacionesToolStripMenuItem1.Click += new System.EventHandler(this.calificacionesToolStripMenuItem1_Click);
             // 
@@ -362,7 +364,7 @@
             // 
             this.facturasToolStripMenuItem2.Enabled = false;
             this.facturasToolStripMenuItem2.Name = "facturasToolStripMenuItem2";
-            this.facturasToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.facturasToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
             this.facturasToolStripMenuItem2.Text = "Facturas";
             // 
             // salirToolStripMenuItem
@@ -445,6 +447,8 @@
             // 
             // gbAsistencia
             // 
+            this.gbAsistencia.Controls.Add(this.lblEstudiantesRetirados);
+            this.gbAsistencia.Controls.Add(this.lblEstudiantesActivos);
             this.gbAsistencia.Controls.Add(this.lblCantidadEstudiantesRegistrados);
             this.gbAsistencia.Controls.Add(this.pictureBox1);
             this.gbAsistencia.Controls.Add(this.label1);
@@ -1084,6 +1088,26 @@
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "Nombre:";
             // 
+            // lblEstudiantesActivos
+            // 
+            this.lblEstudiantesActivos.AutoSize = true;
+            this.lblEstudiantesActivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstudiantesActivos.Location = new System.Drawing.Point(463, 334);
+            this.lblEstudiantesActivos.Name = "lblEstudiantesActivos";
+            this.lblEstudiantesActivos.Size = new System.Drawing.Size(214, 16);
+            this.lblEstudiantesActivos.TabIndex = 14;
+            this.lblEstudiantesActivos.Text = "Cantidad Estudiantes Activos:";
+            // 
+            // lblEstudiantesRetirados
+            // 
+            this.lblEstudiantesRetirados.AutoSize = true;
+            this.lblEstudiantesRetirados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstudiantesRetirados.Location = new System.Drawing.Point(463, 359);
+            this.lblEstudiantesRetirados.Name = "lblEstudiantesRetirados";
+            this.lblEstudiantesRetirados.Size = new System.Drawing.Size(231, 16);
+            this.lblEstudiantesRetirados.TabIndex = 15;
+            this.lblEstudiantesRetirados.Text = "Cantidad Estudiantes Retirados:";
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1225,5 +1249,7 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Label lblCantidadEstudiantesRegistrados;
         private System.Windows.Forms.Button btnRetirarEstudiante;
+        private System.Windows.Forms.Label lblEstudiantesRetirados;
+        private System.Windows.Forms.Label lblEstudiantesActivos;
     }
 }
