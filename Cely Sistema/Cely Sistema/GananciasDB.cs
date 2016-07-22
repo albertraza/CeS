@@ -317,7 +317,7 @@ namespace Cely_Sistema
             }
             return retorno;
         }
-        public static int updateTotalLibros(string fecha, decimal Total)
+        public static int updateTotalLibros(string fecha, double Total)
         {
             int retorno = -1;
             using (SqlConnection con = DBcomun.ObetenerConexion())
@@ -328,7 +328,7 @@ namespace Cely_Sistema
             }
             return retorno;
         }
-        public static int updateTotalInscripcion(string fecha, decimal Total)
+        public static int updateTotalInscripcion(string fecha, double Total)
         {
             int retorno = -1;
             using (SqlConnection con = DBcomun.ObetenerConexion())
@@ -339,7 +339,7 @@ namespace Cely_Sistema
             }
             return retorno;
         }
-        public static int updateTotalReInscripcion(string fecha, decimal Total)
+        public static int updateTotalReInscripcion(string fecha, double Total)
         {
             int retorno = -1;
             using (SqlConnection con = DBcomun.ObetenerConexion())
@@ -361,7 +361,7 @@ namespace Cely_Sistema
             }
             return retorno;
         }
-        public static int updateTotalDerechoExamen(string fecha, decimal Total)
+        public static int updateTotalDerechoExamen(string fecha, double Total)
         {
             int retorno = -1;
             using (SqlConnection con = DBcomun.ObetenerConexion())
@@ -372,7 +372,7 @@ namespace Cely_Sistema
             }
             return retorno;
         }
-        public static int updateTotalCuota(string fecha, decimal total)
+        public static int updateTotalCuota(string fecha, double total)
         {
             int r = -1;
             using (SqlConnection con = DBcomun.ObetenerConexion())
@@ -383,20 +383,20 @@ namespace Cely_Sistema
             }
                 return r;
         }
-        public static int getAndUpdateGanancias(string tipoPago, string fecha, decimal total)
+        public static int getAndUpdateGanancias(string tipoPago, string fecha, double total)
         {
             int retorno = -1;
             if (tipoPago == "Inscripcion")
             {
                 string Ins = getTotalInscripcion(fecha);
-                decimal ins;
+                double ins;
                 if (Ins == null || string.Empty == Ins)
                 {
                     ins = total;
                 }
                 else
                 {
-                    ins = decimal.Parse(Ins);
+                    ins = double.Parse(Ins);
                     ins += total;
                 }
                 retorno = updateTotalInscripcion(fecha, ins);
@@ -404,14 +404,14 @@ namespace Cely_Sistema
             else if (tipoPago == "Reinscripcion")
             {
                 string ReIns = getTotalReInscripcion(fecha);
-                decimal reIns;
+                double reIns;
                 if (ReIns == null || string.Empty == ReIns || decimal.Parse(ReIns) == 0)
                 {
                     reIns = total;
                 }
                 else
                 {
-                    reIns = decimal.Parse(ReIns);
+                    reIns = double.Parse(ReIns);
                     reIns += total;
                 }
                 retorno = updateTotalReInscripcion(fecha, reIns);
@@ -419,14 +419,14 @@ namespace Cely_Sistema
             else if (tipoPago == "Libros")
             {
                 string Libr = getTotalLibros(fecha);
-                decimal libr;
+                double libr;
                 if (string.Empty == Libr || Libr == null)
                 {
                     libr = total;
                 }
                 else
                 {
-                    libr = decimal.Parse(Libr);
+                    libr = double.Parse(Libr);
                     libr += total;
                 }
                 retorno = updateTotalLibros(fecha, libr);
@@ -434,14 +434,14 @@ namespace Cely_Sistema
             else if (tipoPago == "Derecho a Examen")
             {
                 string Der = getTotalDerechoExamen(fecha);
-                decimal der;
+                double der;
                 if(Der == null || string.Empty == Der)
                 {
                     der = total;
                 }
                 else
                 {
-                    der = decimal.Parse(Der);
+                    der = double.Parse(Der);
                     der += total;
                 }
                 retorno = updateTotalDerechoExamen(fecha, der);
@@ -449,14 +449,14 @@ namespace Cely_Sistema
             else if(tipoPago == "Cuota")
             {
                 string cuo = getTotalCuotas(fecha);
-                decimal Cuo;
+                double Cuo;
                 if(cuo == string.Empty || cuo == null)
                 {
                     Cuo = total;
                 }
                 else
                 {
-                    Cuo = decimal.Parse(cuo);
+                    Cuo = double.Parse(cuo);
                     Cuo += total;
                 }
                 retorno = updateTotalCuota(fecha, Cuo);
