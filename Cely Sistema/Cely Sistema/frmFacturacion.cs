@@ -647,7 +647,7 @@ namespace Cely_Sistema
 
                                     if (Retorno > 0)
                                     {
-                                        if(GananciasDB.getAndUpdateGanancias("Cuota", DateTime.Today.Date.ToString("yyyy-MM-dd"), decimal.Parse(txtTotalaPagar.Text)) < 0)
+                                        if(GananciasDB.getAndUpdateGanancias("Cuota", DateTime.Today.Date.ToString("yyyy-MM-dd"), double.Parse(txtTotalaPagar.Text)) < 0)
                                             MessageBox.Show("No se pudo Registrar Los detalles de los ingresos", "Ingresos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     }
                                     else
@@ -666,7 +666,7 @@ namespace Cely_Sistema
 
                                     if (R > 0)
                                     {
-                                        if (GananciasDB.getAndUpdateGanancias("Cuota", DateTime.Today.Date.ToString("yyyy-MM-dd"), decimal.Parse(txtTotalaPagar.Text)) < 0)
+                                        if (GananciasDB.getAndUpdateGanancias("Cuota", DateTime.Today.Date.ToString("yyyy-MM-dd"), double.Parse(txtTotalaPagar.Text)) < 0)
                                             MessageBox.Show("No se pudo Registrar Los detalles de los ingresos", "Ingresos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     }
                                     else
@@ -786,7 +786,7 @@ namespace Cely_Sistema
                                 int R1 = GananciasDB.ActualizarGananciasF(FechaA.Date.ToString("yyyy-MM-dd"), GT);
                                 if (R1 > 0)
                                 {
-                                    if(GananciasDB.getAndUpdateGanancias(cbTipodePago.Text, DateTime.Now.Date.ToString("yyyy-MM-dd"), decimal.Parse(txtTotalaPagar.Text)) < 0)
+                                    if(GananciasDB.getAndUpdateGanancias(cbTipodePago.Text, DateTime.Now.Date.ToString("yyyy-MM-dd"), double.Parse(txtTotalaPagar.Text)) < 0)
                                         MessageBox.Show("No se pudo Registrar los detalles de los ingresos", "Ingresos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                                 else
@@ -806,7 +806,7 @@ namespace Cely_Sistema
                                 int R1 = GananciasDB.RegistrarGanancias(pG);
                                 if (R1 > 0)
                                 {
-                                    if (GananciasDB.getAndUpdateGanancias(cbTipodePago.Text, DateTime.Now.Date.ToString("yyyy-MM-dd"), decimal.Parse(txtTotalaPagar.Text)) < 0)
+                                    if (GananciasDB.getAndUpdateGanancias(cbTipodePago.Text, DateTime.Now.Date.ToString("yyyy-MM-dd"), double.Parse(txtTotalaPagar.Text)) < 0)
                                         MessageBox.Show("No se pudo Registrar los detalles de los ingresos", "Ingresos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                                 else
