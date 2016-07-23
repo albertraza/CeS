@@ -639,27 +639,28 @@ namespace Cely_Sistema
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                //try {
+                try
+                {
                     LoadStudentData();
-                //}
-                //catch(Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
-            }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+        }
         }
 
         private void lblBuscar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 LoadStudentData();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-        }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+}
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
