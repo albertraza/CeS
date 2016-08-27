@@ -23,7 +23,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>es-DO</TargetCulture>
-    <ApplicationRevision>58</ApplicationRevision>
+    <ApplicationRevision>59</ApplicationRevision>
     <ApplicationVersion>3.2.52.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
