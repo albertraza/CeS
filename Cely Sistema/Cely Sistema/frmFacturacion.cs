@@ -521,6 +521,7 @@ namespace Cely_Sistema
             txtApellido.Clear();
             txtNombre.Clear();
             gbFactura.BackColor = Color.White;
+            cbTipodePago.SelectedIndex = -1;
         }
         private string MP0;
         private DateTime fechaactualpp, fechaactualup, pPago0, pProximoPago;
@@ -813,25 +814,12 @@ namespace Cely_Sistema
                                 {
                                     MessageBox.Show("Error al Registrar los Ingresos1", "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 }
-                            }
+                            }          
                             string R0 = FacturacionDB.ObtenerCodigo(pF);
                             if (R0 != null)
                             {
                                 MessageBox.Show("Codigo factura: " + R0, "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                if (MessageBox.Show("Desea Imprimir la factura?", "Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-                                {
-                                    frmImpresionFactura pI = new frmImpresionFactura();
-                                    pI.Fecha = DateTime.Today.Date;
-                                    pI.Matricula = int.Parse(txtMatricula.Text);
-                                    pI.ShowDialog();
-                                    LimpiarM();
-                                    rbPago.Checked = true;
-                                }
-                                else
-                                {
-                                    LimpiarM();
-                                    rbPago.Checked = true;
-                                }
+                                LimpiarM();
                             }
                             else
                             {
