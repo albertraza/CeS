@@ -118,18 +118,7 @@ namespace Cely_Sistema
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 1)
-            {
-                Int64 ID = Convert.ToInt64(dataGridView1.CurrentRow.Cells[13].Value);
-                EstudianteSeleccionado = EstudianteDB.SeleccionarEstudiante(ID);
-                this.Close();
-                frmCargaEstudiante pEstudiante = new frmCargaEstudiante();
-                pEstudiante.Show();
-            }
-            else
-            {
-                MessageBox.Show("Error, No se ha seleccionado ningun Estudiante, Seleccione otra vez", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

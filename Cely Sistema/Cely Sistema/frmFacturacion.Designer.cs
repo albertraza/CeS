@@ -213,6 +213,7 @@
             this.dgvtabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvtabla.Location = new System.Drawing.Point(6, 19);
             this.dgvtabla.Name = "dgvtabla";
+            this.dgvtabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvtabla.Size = new System.Drawing.Size(666, 431);
             this.dgvtabla.TabIndex = 16;
             // 

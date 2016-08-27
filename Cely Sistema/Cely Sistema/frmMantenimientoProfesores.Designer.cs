@@ -77,6 +77,7 @@
             this.dgvProfesores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProfesores.Location = new System.Drawing.Point(252, 31);
             this.dgvProfesores.Name = "dgvProfesores";
+            this.dgvProfesores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProfesores.Size = new System.Drawing.Size(337, 170);
             this.dgvProfesores.TabIndex = 3;
             // 

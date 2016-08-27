@@ -50,6 +50,7 @@
             this.dgvNiveles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNiveles.Location = new System.Drawing.Point(19, 108);
             this.dgvNiveles.Name = "dgvNiveles";
+            this.dgvNiveles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNiveles.Size = new System.Drawing.Size(688, 249);
             this.dgvNiveles.TabIndex = 0;
             // 

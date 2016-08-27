@@ -209,6 +209,7 @@
             this.dgvUltimasCalificaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUltimasCalificaciones.Location = new System.Drawing.Point(6, 16);
             this.dgvUltimasCalificaciones.Name = "dgvUltimasCalificaciones";
+            this.dgvUltimasCalificaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUltimasCalificaciones.Size = new System.Drawing.Size(663, 209);
             this.dgvUltimasCalificaciones.TabIndex = 7;
             // 
@@ -542,6 +543,7 @@
             this.dgvNotaAsistencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNotaAsistencia.Location = new System.Drawing.Point(24, 131);
             this.dgvNotaAsistencia.Name = "dgvNotaAsistencia";
+            this.dgvNotaAsistencia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNotaAsistencia.Size = new System.Drawing.Size(344, 106);
             this.dgvNotaAsistencia.TabIndex = 15;
             // 
@@ -561,6 +563,7 @@
             this.dgvAsistencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAsistencia.Location = new System.Drawing.Point(24, 17);
             this.dgvAsistencia.Name = "dgvAsistencia";
+            this.dgvAsistencia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAsistencia.Size = new System.Drawing.Size(645, 106);
             this.dgvAsistencia.TabIndex = 14;
             // 

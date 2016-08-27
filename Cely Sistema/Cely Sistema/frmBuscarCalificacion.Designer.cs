@@ -49,6 +49,7 @@
             this.dgvListaExamenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaExamenes.Location = new System.Drawing.Point(12, 178);
             this.dgvListaExamenes.Name = "dgvListaExamenes";
+            this.dgvListaExamenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaExamenes.Size = new System.Drawing.Size(666, 355);
             this.dgvListaExamenes.TabIndex = 0;
             // 

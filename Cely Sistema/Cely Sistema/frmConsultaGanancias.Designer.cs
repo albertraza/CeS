@@ -41,6 +41,7 @@
             this.dgvGanancias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGanancias.Location = new System.Drawing.Point(12, 110);
             this.dgvGanancias.Name = "dgvGanancias";
+            this.dgvGanancias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGanancias.Size = new System.Drawing.Size(584, 311);
             this.dgvGanancias.TabIndex = 0;
             // 
