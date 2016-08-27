@@ -66,6 +66,8 @@
             this.dgvEstudiantes = new System.Windows.Forms.DataGridView();
             this.btnRegistrarAsistencia = new System.Windows.Forms.Button();
             this.gbAsistencia = new System.Windows.Forms.GroupBox();
+            this.lblEstudiantesRetirados = new System.Windows.Forms.Label();
+            this.lblEstudiantesActivos = new System.Windows.Forms.Label();
             this.lblCantidadEstudiantesRegistrados = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -129,8 +131,6 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblEstudiantesActivos = new System.Windows.Forms.Label();
-            this.lblEstudiantesRetirados = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
@@ -467,6 +467,26 @@
             this.gbAsistencia.TabStop = false;
             this.gbAsistencia.Text = "Asistencia";
             this.gbAsistencia.Enter += new System.EventHandler(this.gbAsistencia_Enter);
+            // 
+            // lblEstudiantesRetirados
+            // 
+            this.lblEstudiantesRetirados.AutoSize = true;
+            this.lblEstudiantesRetirados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstudiantesRetirados.Location = new System.Drawing.Point(463, 359);
+            this.lblEstudiantesRetirados.Name = "lblEstudiantesRetirados";
+            this.lblEstudiantesRetirados.Size = new System.Drawing.Size(231, 16);
+            this.lblEstudiantesRetirados.TabIndex = 15;
+            this.lblEstudiantesRetirados.Text = "Cantidad Estudiantes Retirados:";
+            // 
+            // lblEstudiantesActivos
+            // 
+            this.lblEstudiantesActivos.AutoSize = true;
+            this.lblEstudiantesActivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstudiantesActivos.Location = new System.Drawing.Point(463, 334);
+            this.lblEstudiantesActivos.Name = "lblEstudiantesActivos";
+            this.lblEstudiantesActivos.Size = new System.Drawing.Size(214, 16);
+            this.lblEstudiantesActivos.TabIndex = 14;
+            this.lblEstudiantesActivos.Text = "Cantidad Estudiantes Activos:";
             // 
             // lblCantidadEstudiantesRegistrados
             // 
@@ -1088,26 +1108,6 @@
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "Nombre:";
             // 
-            // lblEstudiantesActivos
-            // 
-            this.lblEstudiantesActivos.AutoSize = true;
-            this.lblEstudiantesActivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstudiantesActivos.Location = new System.Drawing.Point(463, 334);
-            this.lblEstudiantesActivos.Name = "lblEstudiantesActivos";
-            this.lblEstudiantesActivos.Size = new System.Drawing.Size(214, 16);
-            this.lblEstudiantesActivos.TabIndex = 14;
-            this.lblEstudiantesActivos.Text = "Cantidad Estudiantes Activos:";
-            // 
-            // lblEstudiantesRetirados
-            // 
-            this.lblEstudiantesRetirados.AutoSize = true;
-            this.lblEstudiantesRetirados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstudiantesRetirados.Location = new System.Drawing.Point(463, 359);
-            this.lblEstudiantesRetirados.Name = "lblEstudiantesRetirados";
-            this.lblEstudiantesRetirados.Size = new System.Drawing.Size(231, 16);
-            this.lblEstudiantesRetirados.TabIndex = 15;
-            this.lblEstudiantesRetirados.Text = "Cantidad Estudiantes Retirados:";
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1121,7 +1121,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " CELY SISTEMA";
+            this.Text = " CELI SISTEMA";
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
