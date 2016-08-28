@@ -839,6 +839,16 @@ namespace Cely_Sistema
         }
         }
 
+        // evento para validar la entrada que haga el usuario
+        private void txtCantPagar_TextChanged(object sender, EventArgs e)
+        {
+            double comparacion;
+            if(!double.TryParse(txtCantPagar.Text, out comparacion))
+            {
+                txtCantPagar.Clear();
+            }
+        }
+
         private void btnVerFacturas_Click(object sender, EventArgs e)
         {
             try

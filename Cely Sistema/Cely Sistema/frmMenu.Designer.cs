@@ -831,6 +831,7 @@
             // lblBuscar
             // 
             this.lblBuscar.AutoSize = true;
+            this.lblBuscar.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lblBuscar.Location = new System.Drawing.Point(177, 41);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(46, 13);
