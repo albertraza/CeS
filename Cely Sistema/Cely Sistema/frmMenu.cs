@@ -11,6 +11,27 @@ namespace Cely_Sistema
 {
     public partial class frmMenu : Form
     {
+        // metodo para cargar los estudiantes inscritos en cada nivel
+        private void loadEstudiantesEnNivel()
+        {
+            try
+            {
+                if (dgvNiveles.SelectedRows.Count == -1)
+                {
+                    MessageBox.Show("No se ha seleccionado un estudiante", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    Int32 ID;
+                    ID = Convert.ToInt32(dgvNiveles.CurrentRow.Cells[0].Value);
+                    dgvEstudiantes.DataSource = GruposDB.EstudiantePorGrupo(ID);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         public frmMenu()
         {
             InitializeComponent();
@@ -387,28 +408,12 @@ namespace Cely_Sistema
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            loadEstudiantesEnNivel();
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (dgvNiveles.SelectedRows.Count == -1)
-                {
-                    MessageBox.Show("No se ha seleccionado un estudiante", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                else
-                {
-                    Int32 ID;
-                    ID = Convert.ToInt32(dgvNiveles.CurrentRow.Cells[0].Value);
-                    dgvEstudiantes.DataSource = GruposDB.EstudiantePorGrupo(ID);
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            loadEstudiantesEnNivel();
         }
 
         private void btnBuscarEstudiante_Click(object sender, EventArgs e)
