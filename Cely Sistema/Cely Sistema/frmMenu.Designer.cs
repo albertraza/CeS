@@ -629,6 +629,7 @@
             this.btnRetirarEstudiante.TabIndex = 10;
             this.btnRetirarEstudiante.Text = "Retirar Estudiante";
             this.btnRetirarEstudiante.UseVisualStyleBackColor = true;
+            this.btnRetirarEstudiante.Visible = false;
             this.btnRetirarEstudiante.Click += new System.EventHandler(this.btnRetirarEstudiante_Click);
             // 
             // btnEliminar
@@ -639,6 +640,7 @@
             this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Visible = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
@@ -649,6 +651,7 @@
             this.btnModificar.TabIndex = 8;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Visible = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // gbInformacionPagos
@@ -677,6 +680,7 @@
             this.btnHacerFactura.TabIndex = 7;
             this.btnHacerFactura.Text = "Hacer Factura";
             this.btnHacerFactura.UseVisualStyleBackColor = true;
+            this.btnHacerFactura.Visible = false;
             this.btnHacerFactura.Click += new System.EventHandler(this.btnHacerFactura_Click);
             // 
             // groupBox1

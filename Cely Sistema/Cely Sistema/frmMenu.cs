@@ -68,6 +68,11 @@ namespace Cely_Sistema
 
                 if (EstudianteDB.ObtenerNombre(int.Parse(txtMatriculaCon.Text)) != null)
                 {
+                    btnEliminar.Visible = true;
+                    btnHacerFactura.Visible = true;
+                    btnModificar.Visible = true;
+                    btnRetirarEstudiante.Visible = true;
+
                     if (EstudianteDB.getRetirado(Convert.ToInt32(txtMatriculaCon.Text)) > 0)
                     {
                         MessageBox.Show("El Estudiante fue retirado", "Estudiante Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -220,6 +225,10 @@ namespace Cely_Sistema
             lblProximoPago.Text = "Proximo Pago:";
             lblProximoPago.ForeColor = Color.Black;
             btnRetirarEstudiante.Enabled = true;
+            btnRetirarEstudiante.Visible = false;
+            btnModificar.Visible = false;
+            btnHacerFactura.Visible = false;
+            btnEliminar.Visible = false;
         }
         private Int32 Nivel = 9;
         public Int32 ObNivel
