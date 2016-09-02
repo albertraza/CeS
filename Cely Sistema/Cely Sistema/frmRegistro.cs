@@ -35,6 +35,10 @@ namespace Cely_Sistema
             btnRegistrar.Enabled = false;
             btnModificar.Visible = false;
             btnEliminar.Visible = false;
+            cbD_Idioma.SelectedIndex = -1;
+            cbN_Academico.SelectedIndex = -1;
+            pGS = null;
+            EstudianteSeleccionado = null;
         }
         public frmRegistro()
         {
