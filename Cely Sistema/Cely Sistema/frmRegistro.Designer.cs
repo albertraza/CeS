@@ -557,6 +557,7 @@
             this.dgvNiveles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNiveles.Size = new System.Drawing.Size(544, 351);
             this.dgvNiveles.TabIndex = 4;
+            this.dgvNiveles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNiveles_CellContentClick);
             // 
             // gbNiveles
             // 

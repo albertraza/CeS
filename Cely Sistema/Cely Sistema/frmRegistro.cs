@@ -11,9 +11,76 @@ namespace Cely_Sistema
 {
     public partial class frmRegistro : Form
     {
+        private void getNivel()
+        {
+            try
+            {
+                if (dgvNiveles.SelectedRows.Count == 1)
+                {
+                    Int32 ID;
+                    ID = Convert.ToInt32(dgvNiveles.CurrentRow.Cells[0].Value);
+                    pID = ID;
+                    codigoNuevoGrupo = ID;
+                    pGS = GruposDB.ObtenerGrupos(ID);
+                    // obetner el nuevo grupo para modificar el estudiante
+                    getNuevoGrupo();
+                    // Obtener cantidad Inscritos
+                    CantidadInscritos = GruposDB.ObtenerTotalInscritos(ID);
+
+
+                    DateTime FechaI, FechaA;
+
+                    FechaI = GruposDB.ObtenerFechaInicio(ID);
+                    FI = FechaI;
+
+                    FechaA = DateTime.Today;
+
+                    double comp;
+
+                    if (rbMensual.Checked == true)
+                    {
+                        comp = (FechaA - FechaI).TotalDays / 30;
+                        if (comp <= 0)
+                        {
+                            FechaPP = FechaI.AddMonths(1);
+                        }
+                        else
+                        {
+                            FechaPP = FechaA.AddMonths(1);
+                        }
+                    }
+                    else if (rbSemanal.Checked)
+                    {
+                        comp = (FechaA - FechaI).TotalDays / 7;
+                        if (comp <= 0)
+                        {
+                            FechaPP = FechaI.AddDays(7);
+                        }
+                        else
+                        {
+                            FechaPP = FechaA.AddDays(7);
+                        }
+                    }
+                    if (pGS != null)
+                    {
+                        txtNivel.Text = pGS.Nivel;
+                        txtNivel.Enabled = false;
+                        btnRegistrar.Enabled = true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un Nivel de la Lista", "Registro de Estudiantes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Registro de Estudiantes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         public EstudianteBase EstudianteSeleccionado { get; set; }
         public Grupos pGS { get; set; }
-        public void Limpiar()
+        private void Limpiar()
         {
             txtCelular.Clear();
             txtRespuesta1.Clear();
@@ -39,6 +106,9 @@ namespace Cely_Sistema
             cbN_Academico.SelectedIndex = -1;
             pGS = null;
             EstudianteSeleccionado = null;
+            dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
+            lblBuscarAlumno.Visible = true;
+            btnRegistrar.Visible = true;
         }
         public frmRegistro()
         {
@@ -623,70 +693,7 @@ namespace Cely_Sistema
         private DateTime FI { get; set; }
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (dgvNiveles.SelectedRows.Count == 1)
-                {
-                    Int32 ID;
-                    ID = Convert.ToInt32(dgvNiveles.CurrentRow.Cells[0].Value);
-                    pID = ID;
-                    codigoNuevoGrupo = ID;
-                    pGS = GruposDB.ObtenerGrupos(ID);
-                    // obetner el nuevo grupo para modificar el estudiante
-                    getNuevoGrupo();
-                    // Obtener cantidad Inscritos
-                    CantidadInscritos = GruposDB.ObtenerTotalInscritos(ID);
-
-
-                    DateTime FechaI, FechaA;
-
-                    FechaI = GruposDB.ObtenerFechaInicio(ID);
-                    FI = FechaI;
-
-                    FechaA = DateTime.Today;
-
-                    double comp;
-                    
-                    if (rbMensual.Checked == true)
-                    {
-                        comp = (FechaA - FechaI).TotalDays / 30;
-                        if (comp <= 0)
-                        {
-                            FechaPP = FechaI.AddMonths(1);
-                        }
-                        else
-                        {
-                            FechaPP = FechaA.AddMonths(1);
-                        }
-                    }
-                    else if (rbSemanal.Checked)
-                    {
-                        comp = (FechaA - FechaI).TotalDays / 7;
-                        if (comp <= 0)
-                        {
-                            FechaPP = FechaI.AddDays(7);
-                        }
-                        else
-                        {
-                            FechaPP = FechaA.AddDays(7);
-                        }
-                    }
-                    if (pGS != null)
-                    {
-                        txtNivel.Text = pGS.Nivel;
-                        txtNivel.Enabled = false;
-                        btnRegistrar.Enabled = true;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Seleccione un Nivel de la Lista", "Registro de Estudiantes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Registro de Estudiantes", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            getNivel();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -910,6 +917,11 @@ namespace Cely_Sistema
             {
                 MessageBox.Show("No se ha cargado un estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void dgvNiveles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            getNivel();
         }
     }
 }

@@ -12,6 +12,26 @@ namespace Cely_Sistema
     public partial class frmBusquedaDeAlumnos : Form
     {
         public EstudianteBase EstudianteSeleccionado { get; set; }
+        private void getEstudiante()
+        {
+            try
+            {
+                if (dataGridView1.SelectedRows.Count == 1)
+                {
+                    Int64 ID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[12].Value);
+                    EstudianteSeleccionado = EstudianteDB.SeleccionarEstudiante(ID);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Error, No se ha seleccionado ningun Estudiante, Seleccione otra vez", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         public frmBusquedaDeAlumnos()
         {
             InitializeComponent();
@@ -97,28 +117,15 @@ namespace Cely_Sistema
 
         private void btnSeleccionarAlumno_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (dataGridView1.SelectedRows.Count == 1)
-                {
-                    Int64 ID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[12].Value);
-                    EstudianteSeleccionado = EstudianteDB.SeleccionarEstudiante(ID);
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Error, No se ha seleccionado ningun Estudiante, Seleccione otra vez", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            getEstudiante();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if (!getState)
+            {
+                getEstudiante();
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
