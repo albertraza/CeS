@@ -78,6 +78,22 @@ namespace Cely_Sistema
                 MessageBox.Show("Error: " + ex.Message, "Registro de Estudiantes", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void selectNivel(int codigoNivel)
+        {
+            // para seleccionar el nivel el cual se encuentra el estudiante
+            int rowIndex = 0;
+            foreach (DataGridViewRow row in dgvNiveles.Rows)
+            {
+                if (row.Cells[1].Value.ToString().Equals(codigoNivel.ToString()))
+                {
+                    rowIndex = row.Index;
+                    break;
+                }
+            }
+            dgvNiveles.ClearSelection();
+            dgvNiveles.Rows[rowIndex].Selected = true;
+            // final codigo para seleccionar el nivel donde se encuentra el estudiante
+        }
         public EstudianteBase EstudianteSeleccionado { get; set; }
         public Grupos pGS { get; set; }
         private void Limpiar()
@@ -156,7 +172,7 @@ namespace Cely_Sistema
                     {
                         rbSemanal.Checked = true;
                     }
-                    if(EstudianteSeleccionado.VIP == "Si")
+                    if (EstudianteSeleccionado.VIP == "Si")
                     {
                         cbVIP.Checked = true;
                     }
@@ -170,6 +186,10 @@ namespace Cely_Sistema
                     lblTitulo.Text = "Estudiante";
                     btnModificar.Visible = true;
                     btnEliminar.Visible = true;
+
+                    // para seleccionar el nivel el cual se encuentra el estudiante
+                    selectNivel(EstudianteSeleccionado.Codigo_Grupo);
+                    // final codigo para seleccionar el nivel donde se encuentra el estudiante
                 }
                 catch (Exception ex)
                 {
@@ -446,6 +466,10 @@ namespace Cely_Sistema
                     lblTitulo.Text = "Estudiante";
                     btnModificar.Visible = true;
                     btnEliminar.Visible = true;
+
+                    // para seleccionar el nivel el cual se encuentra el estudiante
+                    selectNivel(pBusqueda.EstudianteSeleccionado.Codigo_Grupo);
+                    // final codigo para seleccionar el nivel donde se encuentra el estudiante
                 }
             }
             catch(Exception ex)
