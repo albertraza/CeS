@@ -26,7 +26,10 @@ namespace Cely_Sistema
             txtProfesor.Clear();
             pHs = null;
             dtpFechaInicio.Value = DateTime.Now;
-            cbAula.Text = "";
+            dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
+            p1 = false;
+            p2 = false;
+            cbAula.SelectedIndex = -1;
         }
         private void lblBuscarHorario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -45,10 +48,6 @@ namespace Cely_Sistema
                     {
                         btnGuardar.Enabled = true;
                     }
-                }
-                else
-                {
-                    MessageBox.Show("No se Pudo cargar el Horario, Intentelo Nuevamente", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch(Exception ex)
@@ -120,10 +119,6 @@ namespace Cely_Sistema
                         btnGuardar.Enabled = true;
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Se Produjo un Error, Intentelo Nuevamente", "Registro de Grupos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
             catch(Exception ex)
             {
@@ -134,44 +129,67 @@ namespace Cely_Sistema
         {
             try
             {
-                if (p1 == true & p2 == true)
+                if (txtHorario.Text == string.Empty)
                 {
-                    Grupos pG = new Grupos();
-
-                    pG.Nivel = txtNivel.Text;
-                    pG.Profesor = txtProfesor.Text;
-                    pG.Total_Inscritos = 0;
-                    pG.Horario = pHs.ID.ToString();
-
-                    if (cbAula.SelectedIndex == -1)
-                    {
-                        MessageBox.Show("No se Ha Seleccionado una Aula, Seleccione uno de la lista", "Registro de Niveles", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                    else
-                    {
-                        object obt = cbAula.SelectedItem;
-                        pG.Aula = obt.ToString();
-                    }
-                    pG.Fecha_Inicio = dtpFechaInicio.Value.Date.ToString("yyyy-MM-dd");
-
-                    int G = GruposDB.AgregarGrupo(pG);
-
-                    if (G > 0)
-                    {
-                        MessageBox.Show("Grupo Registrado con Exito", "Registro de Grupos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        p1 = false;
-                        p2 = false;
-                        btnGuardar.Enabled = false;
-                        Limpiar();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se Pudo Registrar el Grupo, Intentelo Nuevamnete", "Registro de Grupos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    MessageBox.Show("No se ha seleccionado un horario", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    lblBuscarHorario.Focus();
+                }
+                else if (txtNivel.Text == string.Empty)
+                {
+                    MessageBox.Show("No se ha digitado el nivel que sera", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtNivel.Focus();
+                }
+                else if (txtProfesor.Text == string.Empty)
+                {
+                    MessageBox.Show("No se ha seleccionado un profesor", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    lblBuscarProfesor.Focus();
+                }
+                else if (cbAula.Text == string.Empty)
+                {
+                    MessageBox.Show("No se ha seleccionado una aula", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cbAula.Select();
                 }
                 else
                 {
-                    MessageBox.Show("Complete el Horario y el Profesor, Elija uno valido", "Registro de Grupos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (p1 == true & p2 == true)
+                    {
+                        Grupos pG = new Grupos();
+
+                        pG.Nivel = txtNivel.Text;
+                        pG.Profesor = txtProfesor.Text;
+                        pG.Total_Inscritos = 0;
+                        pG.Horario = pHs.ID.ToString();
+
+                        if (cbAula.SelectedIndex == -1)
+                        {
+                            MessageBox.Show("No se Ha Seleccionado una Aula, Seleccione uno de la lista", "Registro de Niveles", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            object obt = cbAula.SelectedItem;
+                            pG.Aula = obt.ToString();
+                        }
+                        pG.Fecha_Inicio = dtpFechaInicio.Value.Date.ToString("yyyy-MM-dd");
+
+                        int G = GruposDB.AgregarGrupo(pG);
+
+                        if (G > 0)
+                        {
+                            MessageBox.Show("Grupo Registrado con Exito", "Registro de Grupos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            p1 = false;
+                            p2 = false;
+                            btnGuardar.Enabled = false;
+                            Limpiar();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se Pudo Registrar el Grupo, Intentelo Nuevamnete", "Registro de Grupos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Complete el Horario y el Profesor, Elija uno valido", "Registro de Grupos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
             }
             catch(Exception ex)

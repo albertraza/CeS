@@ -48,6 +48,7 @@
             this.dgvTabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTabla.Size = new System.Drawing.Size(329, 166);
             this.dgvTabla.TabIndex = 0;
+            this.dgvTabla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTabla_CellContentClick);
             // 
             // txtDias
             // 

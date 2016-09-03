@@ -16,6 +16,28 @@ namespace Cely_Sistema
             InitializeComponent();
         }
 
+        private void getProfesor()
+        {
+            try
+            {
+                if (dgvTabla.SelectedRows.Count == 1)
+                {
+                    Int32 ID;
+                    ID = Convert.ToInt32(dgvTabla.CurrentRow.Cells[0].Value);
+                    pPS = ProfesoresDB.ObtenerProfesor(ID);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("No se ha Seleccionado un Profesor, Elija uno de la Tabla", "Profesores", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void frmProfesoresA_Load(object sender, EventArgs e)
         {
             try
@@ -60,24 +82,7 @@ namespace Cely_Sistema
         public Profesores pPS { get; set; }
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (dgvTabla.SelectedRows.Count == 1)
-                {
-                    Int32 ID;
-                    ID = Convert.ToInt32(dgvTabla.CurrentRow.Cells[0].Value);
-                    pPS = ProfesoresDB.ObtenerProfesor(ID);
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("No se ha Seleccionado un Profesor, Elija uno de la Tabla", "Profesores", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            getProfesor();
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -142,6 +147,11 @@ namespace Cely_Sistema
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void dgvTabla_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            getProfesor();
         }
     }
 }

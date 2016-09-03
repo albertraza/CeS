@@ -16,6 +16,27 @@ namespace Cely_Sistema
             InitializeComponent();
         }
 
+        private void getHorario()
+        {
+            try
+            {
+                if (dgvTabla.SelectedRows.Count == 1)
+                {
+                    Int32 ID;
+                    ID = Convert.ToInt32(dgvTabla.CurrentRow.Cells[0].Value);
+                    pHS = HorariosDB.ObtenerHorario(ID);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("No Ha Seleccionado un Horario, Seleccione uno de la tabla", "Registro de Horario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void frmHorarioA_Load(object sender, EventArgs e)
         {
             dgvTabla.DataSource = HorariosDB.TodosLosHorarios();
@@ -54,24 +75,7 @@ namespace Cely_Sistema
         public Horarios pHS { get; set; }
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (dgvTabla.SelectedRows.Count == 1)
-                {
-                    Int32 ID;
-                    ID = Convert.ToInt32(dgvTabla.CurrentRow.Cells[0].Value);
-                    pHS = HorariosDB.ObtenerHorario(ID);
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("No Ha Seleccionado un Horario, Seleccione uno de la tabla", "Registro de Horario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            getHorario();
         }
 
         private void txtDias_KeyPress(object sender, KeyPressEventArgs e)
@@ -136,6 +140,11 @@ namespace Cely_Sistema
                     MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void dgvTabla_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            getHorario();
         }
     }
 }

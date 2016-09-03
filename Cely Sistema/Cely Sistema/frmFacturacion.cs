@@ -331,6 +331,7 @@ namespace Cely_Sistema
             lblPagoMensual.Text = "Pago Mensual:";
             txtProximoPAgo.Clear();
         }
+
         private void frmFacturacion_Load(object sender, EventArgs e)
         {
             nCantPagar.Value = 0;
@@ -394,6 +395,7 @@ namespace Cely_Sistema
                 }
             }
         }
+
         private void Limpiar()
         {
             nCantPagar.Value = 0;
@@ -527,6 +529,7 @@ namespace Cely_Sistema
         private DateTime fechaactualpp, fechaactualup, pPago0, pProximoPago;
         private DateTime pPagoA {get; set;}
         private bool pMora { get; set; }
+
         private void lblCargarEstudiante_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
