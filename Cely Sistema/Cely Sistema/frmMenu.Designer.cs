@@ -61,6 +61,11 @@
             this.salirDelSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvNiveles = new System.Windows.Forms.DataGridView();
             this.gbNiveles = new System.Windows.Forms.GroupBox();
+            this.btnLimpiarNivelesBusqueda = new System.Windows.Forms.Button();
+            this.lblDigiteSuBusqueda = new System.Windows.Forms.Label();
+            this.txtBusqueda = new System.Windows.Forms.ComboBox();
+            this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.lblFiltrarPor = new System.Windows.Forms.Label();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.gbEstudiante = new System.Windows.Forms.GroupBox();
             this.dgvEstudiantes = new System.Windows.Forms.DataGridView();
@@ -160,7 +165,7 @@
             this.salirToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(813, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1052, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -386,28 +391,89 @@
             // 
             this.dgvNiveles.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvNiveles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNiveles.Location = new System.Drawing.Point(6, 19);
+            this.dgvNiveles.Location = new System.Drawing.Point(6, 74);
             this.dgvNiveles.Name = "dgvNiveles";
             this.dgvNiveles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNiveles.Size = new System.Drawing.Size(439, 193);
+            this.dgvNiveles.Size = new System.Drawing.Size(736, 193);
             this.dgvNiveles.TabIndex = 2;
             this.dgvNiveles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // gbNiveles
             // 
+            this.gbNiveles.Controls.Add(this.btnLimpiarNivelesBusqueda);
+            this.gbNiveles.Controls.Add(this.lblDigiteSuBusqueda);
+            this.gbNiveles.Controls.Add(this.txtBusqueda);
+            this.gbNiveles.Controls.Add(this.cbFiltro);
+            this.gbNiveles.Controls.Add(this.lblFiltrarPor);
             this.gbNiveles.Controls.Add(this.dgvNiveles);
             this.gbNiveles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbNiveles.Location = new System.Drawing.Point(6, 25);
             this.gbNiveles.Name = "gbNiveles";
-            this.gbNiveles.Size = new System.Drawing.Size(451, 224);
+            this.gbNiveles.Size = new System.Drawing.Size(748, 273);
             this.gbNiveles.TabIndex = 3;
             this.gbNiveles.TabStop = false;
             this.gbNiveles.Text = "Niveles";
             // 
+            // btnLimpiarNivelesBusqueda
+            // 
+            this.btnLimpiarNivelesBusqueda.Location = new System.Drawing.Point(642, 43);
+            this.btnLimpiarNivelesBusqueda.Name = "btnLimpiarNivelesBusqueda";
+            this.btnLimpiarNivelesBusqueda.Size = new System.Drawing.Size(81, 23);
+            this.btnLimpiarNivelesBusqueda.TabIndex = 7;
+            this.btnLimpiarNivelesBusqueda.Text = "Limpiar";
+            this.btnLimpiarNivelesBusqueda.UseVisualStyleBackColor = true;
+            this.btnLimpiarNivelesBusqueda.Click += new System.EventHandler(this.btnLimpiarNivelesBusqueda_Click);
+            // 
+            // lblDigiteSuBusqueda
+            // 
+            this.lblDigiteSuBusqueda.AutoSize = true;
+            this.lblDigiteSuBusqueda.Location = new System.Drawing.Point(309, 29);
+            this.lblDigiteSuBusqueda.Name = "lblDigiteSuBusqueda";
+            this.lblDigiteSuBusqueda.Size = new System.Drawing.Size(121, 13);
+            this.lblDigiteSuBusqueda.TabIndex = 6;
+            this.lblDigiteSuBusqueda.Text = "Digite su Busqueda:";
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.txtBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusqueda.FormattingEnabled = true;
+            this.txtBusqueda.Location = new System.Drawing.Point(312, 45);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(311, 21);
+            this.txtBusqueda.TabIndex = 5;
+            this.txtBusqueda.SelectedIndexChanged += new System.EventHandler(this.txtBusqueda_SelectedIndexChanged);
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            // 
+            // cbFiltro
+            // 
+            this.cbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFiltro.FormattingEnabled = true;
+            this.cbFiltro.Items.AddRange(new object[] {
+            "Nivel",
+            "Horario",
+            "Profesor",
+            "Aula"});
+            this.cbFiltro.Location = new System.Drawing.Point(21, 45);
+            this.cbFiltro.Name = "cbFiltro";
+            this.cbFiltro.Size = new System.Drawing.Size(268, 21);
+            this.cbFiltro.TabIndex = 4;
+            this.cbFiltro.SelectedIndexChanged += new System.EventHandler(this.cbFiltro_SelectedIndexChanged);
+            // 
+            // lblFiltrarPor
+            // 
+            this.lblFiltrarPor.AutoSize = true;
+            this.lblFiltrarPor.Location = new System.Drawing.Point(18, 29);
+            this.lblFiltrarPor.Name = "lblFiltrarPor";
+            this.lblFiltrarPor.Size = new System.Drawing.Size(65, 13);
+            this.lblFiltrarPor.TabIndex = 3;
+            this.lblFiltrarPor.Text = "Filtrar por:";
+            // 
             // btnSeleccionar
             // 
             this.btnSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeleccionar.Location = new System.Drawing.Point(18, 256);
+            this.btnSeleccionar.Location = new System.Drawing.Point(12, 304);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(104, 23);
             this.btnSeleccionar.TabIndex = 2;
@@ -419,9 +485,9 @@
             // 
             this.gbEstudiante.Controls.Add(this.dgvEstudiantes);
             this.gbEstudiante.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbEstudiante.Location = new System.Drawing.Point(12, 285);
+            this.gbEstudiante.Location = new System.Drawing.Point(6, 333);
             this.gbEstudiante.Name = "gbEstudiante";
-            this.gbEstudiante.Size = new System.Drawing.Size(445, 161);
+            this.gbEstudiante.Size = new System.Drawing.Size(723, 221);
             this.gbEstudiante.TabIndex = 5;
             this.gbEstudiante.TabStop = false;
             this.gbEstudiante.Text = "Estudiantes";
@@ -433,13 +499,13 @@
             this.dgvEstudiantes.Location = new System.Drawing.Point(6, 22);
             this.dgvEstudiantes.Name = "dgvEstudiantes";
             this.dgvEstudiantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEstudiantes.Size = new System.Drawing.Size(433, 127);
+            this.dgvEstudiantes.Size = new System.Drawing.Size(711, 193);
             this.dgvEstudiantes.TabIndex = 2;
             // 
             // btnRegistrarAsistencia
             // 
             this.btnRegistrarAsistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrarAsistencia.Location = new System.Drawing.Point(570, 239);
+            this.btnRegistrarAsistencia.Location = new System.Drawing.Point(848, 231);
             this.btnRegistrarAsistencia.Name = "btnRegistrarAsistencia";
             this.btnRegistrarAsistencia.Size = new System.Drawing.Size(117, 23);
             this.btnRegistrarAsistencia.TabIndex = 2;
@@ -464,7 +530,7 @@
             this.gbAsistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAsistencia.Location = new System.Drawing.Point(6, 20);
             this.gbAsistencia.Name = "gbAsistencia";
-            this.gbAsistencia.Size = new System.Drawing.Size(775, 452);
+            this.gbAsistencia.Size = new System.Drawing.Size(1030, 560);
             this.gbAsistencia.TabIndex = 1;
             this.gbAsistencia.TabStop = false;
             this.gbAsistencia.Text = "Asistencia";
@@ -474,7 +540,7 @@
             // 
             this.lblEstudiantesRetirados.AutoSize = true;
             this.lblEstudiantesRetirados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstudiantesRetirados.Location = new System.Drawing.Point(463, 359);
+            this.lblEstudiantesRetirados.Location = new System.Drawing.Point(758, 520);
             this.lblEstudiantesRetirados.Name = "lblEstudiantesRetirados";
             this.lblEstudiantesRetirados.Size = new System.Drawing.Size(231, 16);
             this.lblEstudiantesRetirados.TabIndex = 15;
@@ -484,7 +550,7 @@
             // 
             this.lblEstudiantesActivos.AutoSize = true;
             this.lblEstudiantesActivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstudiantesActivos.Location = new System.Drawing.Point(463, 334);
+            this.lblEstudiantesActivos.Location = new System.Drawing.Point(775, 536);
             this.lblEstudiantesActivos.Name = "lblEstudiantesActivos";
             this.lblEstudiantesActivos.Size = new System.Drawing.Size(214, 16);
             this.lblEstudiantesActivos.TabIndex = 14;
@@ -494,7 +560,7 @@
             // 
             this.lblCantidadEstudiantesRegistrados.AutoSize = true;
             this.lblCantidadEstudiantesRegistrados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadEstudiantesRegistrados.Location = new System.Drawing.Point(463, 307);
+            this.lblCantidadEstudiantesRegistrados.Location = new System.Drawing.Point(741, 504);
             this.lblCantidadEstudiantesRegistrados.Name = "lblCantidadEstudiantesRegistrados";
             this.lblCantidadEstudiantesRegistrados.Size = new System.Drawing.Size(248, 16);
             this.lblCantidadEstudiantesRegistrados.TabIndex = 5;
@@ -503,7 +569,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(514, 62);
+            this.pictureBox1.Location = new System.Drawing.Point(792, 54);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(197, 88);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -514,7 +580,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(511, 193);
+            this.label1.Location = new System.Drawing.Point(789, 185);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 13;
@@ -523,7 +589,7 @@
             // btnBuscarEstudiante
             // 
             this.btnBuscarEstudiante.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarEstudiante.Location = new System.Drawing.Point(145, 256);
+            this.btnBuscarEstudiante.Location = new System.Drawing.Point(122, 304);
             this.btnBuscarEstudiante.Name = "btnBuscarEstudiante";
             this.btnBuscarEstudiante.Size = new System.Drawing.Size(117, 23);
             this.btnBuscarEstudiante.TabIndex = 3;
@@ -534,7 +600,7 @@
             // txtMatricula
             // 
             this.txtMatricula.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMatricula.Location = new System.Drawing.Point(570, 190);
+            this.txtMatricula.Location = new System.Drawing.Point(848, 182);
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.Size = new System.Drawing.Size(94, 20);
             this.txtMatricula.TabIndex = 0;
@@ -543,7 +609,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(670, 188);
+            this.btnBuscar.Location = new System.Drawing.Point(948, 180);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(69, 23);
             this.btnBuscar.TabIndex = 1;
@@ -555,7 +621,7 @@
             // 
             this.lblFecha.AutoSize = true;
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(7, 544);
+            this.lblFecha.Location = new System.Drawing.Point(1, 638);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(40, 13);
             this.lblFecha.TabIndex = 4;
@@ -592,7 +658,7 @@
             this.tcMenuP.Location = new System.Drawing.Point(0, 27);
             this.tcMenuP.Name = "tcMenuP";
             this.tcMenuP.SelectedIndex = 0;
-            this.tcMenuP.Size = new System.Drawing.Size(816, 518);
+            this.tcMenuP.Size = new System.Drawing.Size(1052, 612);
             this.tcMenuP.TabIndex = 2;
             // 
             // tpAsistencia
@@ -601,7 +667,7 @@
             this.tpAsistencia.Location = new System.Drawing.Point(4, 22);
             this.tpAsistencia.Name = "tpAsistencia";
             this.tpAsistencia.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAsistencia.Size = new System.Drawing.Size(808, 492);
+            this.tpAsistencia.Size = new System.Drawing.Size(1044, 586);
             this.tpAsistencia.TabIndex = 0;
             this.tpAsistencia.Text = "Asistencia";
             this.tpAsistencia.UseVisualStyleBackColor = true;
@@ -616,7 +682,7 @@
             this.tbConsulta.Location = new System.Drawing.Point(4, 22);
             this.tbConsulta.Name = "tbConsulta";
             this.tbConsulta.Padding = new System.Windows.Forms.Padding(3);
-            this.tbConsulta.Size = new System.Drawing.Size(808, 492);
+            this.tbConsulta.Size = new System.Drawing.Size(1044, 586);
             this.tbConsulta.TabIndex = 1;
             this.tbConsulta.Text = "Consulta";
             this.tbConsulta.UseVisualStyleBackColor = true;
@@ -667,14 +733,14 @@
             this.gbInformacionPagos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbInformacionPagos.Location = new System.Drawing.Point(497, 17);
             this.gbInformacionPagos.Name = "gbInformacionPagos";
-            this.gbInformacionPagos.Size = new System.Drawing.Size(300, 383);
+            this.gbInformacionPagos.Size = new System.Drawing.Size(353, 383);
             this.gbInformacionPagos.TabIndex = 1;
             this.gbInformacionPagos.TabStop = false;
             this.gbInformacionPagos.Text = "Informacion pagos";
             // 
             // btnHacerFactura
             // 
-            this.btnHacerFactura.Location = new System.Drawing.Point(95, 304);
+            this.btnHacerFactura.Location = new System.Drawing.Point(119, 304);
             this.btnHacerFactura.Name = "btnHacerFactura";
             this.btnHacerFactura.Size = new System.Drawing.Size(114, 58);
             this.btnHacerFactura.TabIndex = 7;
@@ -691,7 +757,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(23, 124);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(252, 174);
+            this.groupBox1.Size = new System.Drawing.Size(305, 174);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estatus del Estudiante";
@@ -726,7 +792,7 @@
             // txtMora
             // 
             this.txtMora.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMora.Location = new System.Drawing.Point(215, 80);
+            this.txtMora.Location = new System.Drawing.Point(247, 81);
             this.txtMora.Name = "txtMora";
             this.txtMora.Size = new System.Drawing.Size(60, 20);
             this.txtMora.TabIndex = 5;
@@ -735,7 +801,7 @@
             // 
             this.lblMora.AutoSize = true;
             this.lblMora.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMora.Location = new System.Drawing.Point(175, 83);
+            this.lblMora.Location = new System.Drawing.Point(207, 84);
             this.lblMora.Name = "lblMora";
             this.lblMora.Size = new System.Drawing.Size(34, 13);
             this.lblMora.TabIndex = 4;
@@ -744,16 +810,16 @@
             // txtPagoMensual
             // 
             this.txtPagoMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPagoMensual.Location = new System.Drawing.Point(100, 80);
+            this.txtPagoMensual.Location = new System.Drawing.Point(114, 81);
             this.txtPagoMensual.Name = "txtPagoMensual";
-            this.txtPagoMensual.Size = new System.Drawing.Size(60, 20);
+            this.txtPagoMensual.Size = new System.Drawing.Size(76, 20);
             this.txtPagoMensual.TabIndex = 3;
             // 
             // lblPagoMensual
             // 
             this.lblPagoMensual.AutoSize = true;
             this.lblPagoMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPagoMensual.Location = new System.Drawing.Point(16, 83);
+            this.lblPagoMensual.Location = new System.Drawing.Point(30, 84);
             this.lblPagoMensual.Name = "lblPagoMensual";
             this.lblPagoMensual.Size = new System.Drawing.Size(78, 13);
             this.lblPagoMensual.TabIndex = 2;
@@ -763,7 +829,7 @@
             // 
             this.lblVIP.AutoSize = true;
             this.lblVIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVIP.Location = new System.Drawing.Point(164, 38);
+            this.lblVIP.Location = new System.Drawing.Point(220, 38);
             this.lblVIP.Name = "lblVIP";
             this.lblVIP.Size = new System.Drawing.Size(31, 13);
             this.lblVIP.TabIndex = 1;
@@ -773,7 +839,7 @@
             // 
             this.lblTipodePago.AutoSize = true;
             this.lblTipodePago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipodePago.Location = new System.Drawing.Point(20, 38);
+            this.lblTipodePago.Location = new System.Drawing.Point(76, 38);
             this.lblTipodePago.Name = "lblTipodePago";
             this.lblTipodePago.Size = new System.Drawing.Size(74, 13);
             this.lblTipodePago.TabIndex = 0;
@@ -1119,7 +1185,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 557);
+            this.ClientSize = new System.Drawing.Size(1052, 651);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.tcMenuP);
             this.Controls.Add(this.menuStrip1);
@@ -1134,6 +1200,7 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).EndInit();
             this.gbNiveles.ResumeLayout(false);
+            this.gbNiveles.PerformLayout();
             this.gbEstudiante.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstudiantes)).EndInit();
             this.gbAsistencia.ResumeLayout(false);
@@ -1258,5 +1325,10 @@
         private System.Windows.Forms.Button btnRetirarEstudiante;
         private System.Windows.Forms.Label lblEstudiantesRetirados;
         private System.Windows.Forms.Label lblEstudiantesActivos;
+        private System.Windows.Forms.Button btnLimpiarNivelesBusqueda;
+        private System.Windows.Forms.Label lblDigiteSuBusqueda;
+        private System.Windows.Forms.ComboBox txtBusqueda;
+        private System.Windows.Forms.ComboBox cbFiltro;
+        private System.Windows.Forms.Label lblFiltrarPor;
     }
 }
