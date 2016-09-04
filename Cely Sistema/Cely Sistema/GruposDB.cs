@@ -86,12 +86,12 @@ namespace Cely_Sistema
             }
             return List;
         }
-        public static List<Grupos> BuscarGrupos(string nivel, string profesor, string fechaInicio, string aula)
+        public static List<Grupos> BuscarGrupos(string nivel, string profesor, string fechaInicio, string aula, string Horario)
         {
             List<Grupos> List = new List<Grupos>();
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("Select Grupos.ID as CodigoGrupo, Nivel, Profesor, Aula, Fecha_Inicio, Total_Inscritos, Horarios.Dias + ' ' + Horarios.Hora as Horario from Grupos inner join Horarios on Horarios.ID = Grupos.Codigo_Horario where Nivel like '{0}%' and Profesor like '{1}%' and Fecha_Inicio like '{2}%' and Aula like '{3}%'", nivel, profesor, fechaInicio, aula), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("Select Grupos.ID as CodigoGrupo, Nivel, Profesor, Aula, Fecha_Inicio, Total_Inscritos, Horarios.Dias + ' ' + Horarios.Hora as Horario from Grupos inner join Horarios on Horarios.ID = Grupos.Codigo_Horario where Nivel like '{0}%' and Profesor like '{1}%' and Fecha_Inicio like '{2}%' and Aula like '{3}%' and Horarios.Dias + ' ' + Horarios.Hora like '{4}%'", nivel, profesor, fechaInicio, aula, Horario), conexion);
                 SqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
