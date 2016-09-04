@@ -86,6 +86,11 @@
             this.verGruposwHorarioTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter();
             this.btnRetirar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.lblFiltroPor = new System.Windows.Forms.Label();
+            this.lblDigiteSuBusqueda = new System.Windows.Forms.Label();
+            this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.txtBusqueda = new System.Windows.Forms.ComboBox();
+            this.btnLimpiarFiltroNiveles = new System.Windows.Forms.Button();
             this.gbEstudiante.SuspendLayout();
             this.gbVIP.SuspendLayout();
             this.pModoPago.SuspendLayout();
@@ -552,15 +557,20 @@
             // 
             this.dgvNiveles.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvNiveles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNiveles.Location = new System.Drawing.Point(6, 76);
+            this.dgvNiveles.Location = new System.Drawing.Point(6, 105);
             this.dgvNiveles.Name = "dgvNiveles";
             this.dgvNiveles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNiveles.Size = new System.Drawing.Size(544, 351);
+            this.dgvNiveles.Size = new System.Drawing.Size(544, 322);
             this.dgvNiveles.TabIndex = 4;
             this.dgvNiveles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNiveles_CellContentClick);
             // 
             // gbNiveles
             // 
+            this.gbNiveles.Controls.Add(this.btnLimpiarFiltroNiveles);
+            this.gbNiveles.Controls.Add(this.txtBusqueda);
+            this.gbNiveles.Controls.Add(this.cbFiltro);
+            this.gbNiveles.Controls.Add(this.lblDigiteSuBusqueda);
+            this.gbNiveles.Controls.Add(this.lblFiltroPor);
             this.gbNiveles.Controls.Add(this.btnSeleccionar);
             this.gbNiveles.Controls.Add(this.dtpFechadeInicio);
             this.gbNiveles.Controls.Add(this.lblFechadeInicio);
@@ -577,9 +587,9 @@
             // 
             // btnSeleccionar
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(237, 47);
+            this.btnSeleccionar.Location = new System.Drawing.Point(475, 76);
             this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(93, 23);
+            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
             this.btnSeleccionar.TabIndex = 2;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
@@ -587,7 +597,7 @@
             // 
             // dtpFechadeInicio
             // 
-            this.dtpFechadeInicio.Location = new System.Drawing.Point(306, 18);
+            this.dtpFechadeInicio.Location = new System.Drawing.Point(290, 19);
             this.dtpFechadeInicio.Name = "dtpFechadeInicio";
             this.dtpFechadeInicio.Size = new System.Drawing.Size(200, 20);
             this.dtpFechadeInicio.TabIndex = 1;
@@ -596,7 +606,7 @@
             // lblFechadeInicio
             // 
             this.lblFechadeInicio.AutoSize = true;
-            this.lblFechadeInicio.Location = new System.Drawing.Point(217, 24);
+            this.lblFechadeInicio.Location = new System.Drawing.Point(201, 25);
             this.lblFechadeInicio.Name = "lblFechadeInicio";
             this.lblFechadeInicio.Size = new System.Drawing.Size(83, 13);
             this.lblFechadeInicio.TabIndex = 45;
@@ -604,9 +614,9 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(373, 47);
+            this.btnBuscar.Location = new System.Drawing.Point(500, 18);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(51, 23);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -645,6 +655,60 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // lblFiltroPor
+            // 
+            this.lblFiltroPor.AutoSize = true;
+            this.lblFiltroPor.Location = new System.Drawing.Point(20, 60);
+            this.lblFiltroPor.Name = "lblFiltroPor";
+            this.lblFiltroPor.Size = new System.Drawing.Size(54, 13);
+            this.lblFiltroPor.TabIndex = 46;
+            this.lblFiltroPor.Text = "Filtrar Por:";
+            // 
+            // lblDigiteSuBusqueda
+            // 
+            this.lblDigiteSuBusqueda.AutoSize = true;
+            this.lblDigiteSuBusqueda.Location = new System.Drawing.Point(155, 60);
+            this.lblDigiteSuBusqueda.Name = "lblDigiteSuBusqueda";
+            this.lblDigiteSuBusqueda.Size = new System.Drawing.Size(102, 13);
+            this.lblDigiteSuBusqueda.TabIndex = 47;
+            this.lblDigiteSuBusqueda.Text = "Digite su Busqueda:";
+            // 
+            // cbFiltro
+            // 
+            this.cbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFiltro.FormattingEnabled = true;
+            this.cbFiltro.Items.AddRange(new object[] {
+            "Nivel",
+            "Aula",
+            "Horario",
+            "Profesor"});
+            this.cbFiltro.Location = new System.Drawing.Point(23, 78);
+            this.cbFiltro.Name = "cbFiltro";
+            this.cbFiltro.Size = new System.Drawing.Size(121, 21);
+            this.cbFiltro.TabIndex = 48;
+            this.cbFiltro.SelectedIndexChanged += new System.EventHandler(this.cbFiltro_SelectedIndexChanged);
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.txtBusqueda.FormattingEnabled = true;
+            this.txtBusqueda.Location = new System.Drawing.Point(158, 78);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(238, 20);
+            this.txtBusqueda.TabIndex = 49;
+            this.txtBusqueda.SelectedIndexChanged += new System.EventHandler(this.txtBusqueda_SelectedIndexChanged);
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            // 
+            // btnLimpiarFiltroNiveles
+            // 
+            this.btnLimpiarFiltroNiveles.Location = new System.Drawing.Point(407, 76);
+            this.btnLimpiarFiltroNiveles.Name = "btnLimpiarFiltroNiveles";
+            this.btnLimpiarFiltroNiveles.Size = new System.Drawing.Size(55, 23);
+            this.btnLimpiarFiltroNiveles.TabIndex = 50;
+            this.btnLimpiarFiltroNiveles.Text = "Limpiar";
+            this.btnLimpiarFiltroNiveles.UseVisualStyleBackColor = true;
+            this.btnLimpiarFiltroNiveles.Click += new System.EventHandler(this.btnLimpiarFiltroNiveles_Click);
             // 
             // frmRegistro
             // 
@@ -741,5 +805,10 @@
         private System.Windows.Forms.Label lblPregunta1;
         private System.Windows.Forms.Button btnRetirar;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnLimpiarFiltroNiveles;
+        private System.Windows.Forms.ComboBox txtBusqueda;
+        private System.Windows.Forms.ComboBox cbFiltro;
+        private System.Windows.Forms.Label lblDigiteSuBusqueda;
+        private System.Windows.Forms.Label lblFiltroPor;
     }
 }
