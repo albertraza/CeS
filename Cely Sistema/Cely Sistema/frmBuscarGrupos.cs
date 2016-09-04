@@ -100,7 +100,7 @@ namespace Cely_Sistema
             }
             try
             {
-                dgvNiveles.DataSource = GruposDB.BuscarGrupos(nivel, profesor, fechaInicio, aula);
+                dgvNiveles.DataSource = GruposDB.BuscarGrupos(nivel, profesor, fechaInicio, aula, "");
             }
             catch(Exception ex)
             {
@@ -166,7 +166,7 @@ namespace Cely_Sistema
                 }
                 try
                 {
-                    dgvNiveles.DataSource = GruposDB.BuscarGrupos(nivel, profesor, fechaInicio, aula);
+                    dgvNiveles.DataSource = GruposDB.BuscarGrupos(nivel, profesor, fechaInicio, aula, "");
                 }
                 catch (Exception ex)
                 {
@@ -214,7 +214,7 @@ namespace Cely_Sistema
                 }
                 try
                 {
-                    dgvNiveles.DataSource = GruposDB.BuscarGrupos(nivel, profesor, fechaInicio, aula);
+                    dgvNiveles.DataSource = GruposDB.BuscarGrupos(nivel, profesor, fechaInicio, aula, "");
                 }
                 catch (Exception ex)
                 {
@@ -262,7 +262,7 @@ namespace Cely_Sistema
                 }
                 try
                 {
-                    dgvNiveles.DataSource = GruposDB.BuscarGrupos(nivel, profesor, fechaInicio, aula);
+                    dgvNiveles.DataSource = GruposDB.BuscarGrupos(nivel, profesor, fechaInicio, aula, "");
                 }
                 catch (Exception ex)
                 {
@@ -310,7 +310,7 @@ namespace Cely_Sistema
                 }
                 try
                 {
-                    dgvNiveles.DataSource = GruposDB.BuscarGrupos(nivel, profesor, fechaInicio, aula);
+                    dgvNiveles.DataSource = GruposDB.BuscarGrupos(nivel, profesor, fechaInicio, aula, "");
                 }
                 catch (Exception ex)
                 {
