@@ -30,7 +30,6 @@ namespace Cely_Sistema
         {
             try
             {
-                btnAñadirEstudiante.Visible = false;
                 dgvTabla.DataSource = GruposDB.EstudiantePorGrupo(ID);  
             }
             catch(Exception ex)
@@ -50,6 +49,27 @@ namespace Cely_Sistema
             else
             {
                 MessageBox.Show("Seleccione un estudiante de la tabla", "Grupos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnImprimirListado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmReporteEstudiantePorNivel pLista = new frmReporteEstudiantePorNivel();
+                if (ID != 0)
+                {
+                    pLista.NoNivel = ID;
+                    pLista.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No hay nivel para hacer un listado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

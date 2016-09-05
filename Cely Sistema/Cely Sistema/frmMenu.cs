@@ -295,22 +295,15 @@ namespace Cely_Sistema
         {
             try
             {
+
                 // TODO: esta línea de código carga datos en la tabla 'celyDBDataSet.VerGruposwHorario' Puede moverla o quitarla según sea necesario.
                 this.verGruposwHorarioTableAdapter.Fill(this.celyDBDataSet.VerGruposwHorario);
                 tContador.Start();
                 tReloj.Start();
                 dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
-                Console.Write("Digite su nombre: ");
-                string nombre = Console.ReadLine();
-                Console.WriteLine();
-                Console.Write("Digite la contraseña: ");
-                string contraseña = Console.ReadLine();
-                Console.WriteLine();
-                Console.WriteLine("Presione una tecla para salir");
                 ControlBox = false;
                 MinimizeBox = false;
                 MaximizeBox = false;
-                btnBuscarEstudiante.Visible = false;
                 DisabledConsultaItens();
             }
             catch(Exception ex)
@@ -930,6 +923,10 @@ namespace Cely_Sistema
             {
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void resizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
         }
     }
 }

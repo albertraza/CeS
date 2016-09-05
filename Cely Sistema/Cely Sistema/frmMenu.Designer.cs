@@ -76,7 +76,6 @@
             this.lblCantidadEstudiantesRegistrados = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnBuscarEstudiante = new System.Windows.Forms.Button();
             this.txtMatricula = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.lblFecha = new System.Windows.Forms.Label();
@@ -487,7 +486,7 @@
             this.gbEstudiante.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbEstudiante.Location = new System.Drawing.Point(6, 333);
             this.gbEstudiante.Name = "gbEstudiante";
-            this.gbEstudiante.Size = new System.Drawing.Size(723, 221);
+            this.gbEstudiante.Size = new System.Drawing.Size(1018, 221);
             this.gbEstudiante.TabIndex = 5;
             this.gbEstudiante.TabStop = false;
             this.gbEstudiante.Text = "Estudiantes";
@@ -499,7 +498,7 @@
             this.dgvEstudiantes.Location = new System.Drawing.Point(6, 22);
             this.dgvEstudiantes.Name = "dgvEstudiantes";
             this.dgvEstudiantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEstudiantes.Size = new System.Drawing.Size(711, 193);
+            this.dgvEstudiantes.Size = new System.Drawing.Size(1005, 193);
             this.dgvEstudiantes.TabIndex = 2;
             // 
             // btnRegistrarAsistencia
@@ -520,7 +519,6 @@
             this.gbAsistencia.Controls.Add(this.lblCantidadEstudiantesRegistrados);
             this.gbAsistencia.Controls.Add(this.pictureBox1);
             this.gbAsistencia.Controls.Add(this.label1);
-            this.gbAsistencia.Controls.Add(this.btnBuscarEstudiante);
             this.gbAsistencia.Controls.Add(this.txtMatricula);
             this.gbAsistencia.Controls.Add(this.btnSeleccionar);
             this.gbAsistencia.Controls.Add(this.btnBuscar);
@@ -540,7 +538,7 @@
             // 
             this.lblEstudiantesRetirados.AutoSize = true;
             this.lblEstudiantesRetirados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstudiantesRetirados.Location = new System.Drawing.Point(758, 520);
+            this.lblEstudiantesRetirados.Location = new System.Drawing.Point(711, 307);
             this.lblEstudiantesRetirados.Name = "lblEstudiantesRetirados";
             this.lblEstudiantesRetirados.Size = new System.Drawing.Size(231, 16);
             this.lblEstudiantesRetirados.TabIndex = 15;
@@ -550,7 +548,7 @@
             // 
             this.lblEstudiantesActivos.AutoSize = true;
             this.lblEstudiantesActivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstudiantesActivos.Location = new System.Drawing.Point(775, 536);
+            this.lblEstudiantesActivos.Location = new System.Drawing.Point(446, 307);
             this.lblEstudiantesActivos.Name = "lblEstudiantesActivos";
             this.lblEstudiantesActivos.Size = new System.Drawing.Size(214, 16);
             this.lblEstudiantesActivos.TabIndex = 14;
@@ -560,7 +558,7 @@
             // 
             this.lblCantidadEstudiantesRegistrados.AutoSize = true;
             this.lblCantidadEstudiantesRegistrados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadEstudiantesRegistrados.Location = new System.Drawing.Point(741, 504);
+            this.lblCantidadEstudiantesRegistrados.Location = new System.Drawing.Point(142, 307);
             this.lblCantidadEstudiantesRegistrados.Name = "lblCantidadEstudiantesRegistrados";
             this.lblCantidadEstudiantesRegistrados.Size = new System.Drawing.Size(248, 16);
             this.lblCantidadEstudiantesRegistrados.TabIndex = 5;
@@ -585,17 +583,6 @@
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 13;
             this.label1.Text = "Matricula:";
-            // 
-            // btnBuscarEstudiante
-            // 
-            this.btnBuscarEstudiante.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarEstudiante.Location = new System.Drawing.Point(122, 304);
-            this.btnBuscarEstudiante.Name = "btnBuscarEstudiante";
-            this.btnBuscarEstudiante.Size = new System.Drawing.Size(117, 23);
-            this.btnBuscarEstudiante.TabIndex = 3;
-            this.btnBuscarEstudiante.Text = "Buscar Estudiante";
-            this.btnBuscarEstudiante.UseVisualStyleBackColor = true;
-            this.btnBuscarEstudiante.Click += new System.EventHandler(this.btnBuscarEstudiante_Click);
             // 
             // txtMatricula
             // 
@@ -1259,7 +1246,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtMatricula;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Button btnBuscarEstudiante;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeUsuariosToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem ingresosToolStripMenuItem;

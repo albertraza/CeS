@@ -331,6 +331,12 @@
     <Compile Include="frmReportedeNotas.Designer.cs">
       <DependentUpon>frmReportedeNotas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteEstudiantePorNivel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteEstudiantePorNivel.Designer.cs">
+      <DependentUpon>frmReporteEstudiantePorNivel.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReporteGanancias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -501,6 +507,9 @@
     <EmbeddedResource Include="frmReportedeNotas.resx">
       <DependentUpon>frmReportedeNotas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteEstudiantePorNivel.resx">
+      <DependentUpon>frmReporteEstudiantePorNivel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmReporteGanancias.resx">
       <DependentUpon>frmReporteGanancias.cs</DependentUpon>
     </EmbeddedResource>
@@ -530,6 +539,7 @@
     <EmbeddedResource Include="rpContratoSemanal.rdlc" />
     <EmbeddedResource Include="rpContratoVIPMensual.rdlc" />
     <EmbeddedResource Include="rpContratoVIPSemanal.rdlc" />
+    <EmbeddedResource Include="rpEstudiantePorNivel.rdlc" />
     <EmbeddedResource Include="rpTodasCalificaciones.rdlc" />
     <None Include="app.config">
       <SubType>Designer</SubType>
