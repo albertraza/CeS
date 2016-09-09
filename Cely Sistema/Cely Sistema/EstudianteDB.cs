@@ -402,24 +402,24 @@ namespace Cely_Sistema
             }
             return r;
         }
-        public static decimal getRetiradoPayment(int matricula)
+        public static double getRetiradoPayment(int matricula)
         {
-            decimal r = 0;
+            double r = 0;
             using(SqlConnection con = DBcomun.ObetenerConexion())
             {
                 SqlCommand comand = new SqlCommand(string.Format("select PagoRetirado from Estudiantes where ID = '{0}'", matricula), con);
-                r = decimal.Parse(comand.ExecuteScalar().ToString());
+                r = double.Parse(comand.ExecuteScalar().ToString());
                 con.Close();
             }
             return r;
         }
-        public static decimal getRetiradoMora(int matricula)
+        public static double getRetiradoMora(int matricula)
         {
-            decimal r = 0;
+            double r = 0;
             using (SqlConnection con = DBcomun.ObetenerConexion())
             {
                 SqlCommand comand = new SqlCommand(string.Format("select moraRetirado from Estudiantes where ID = '{0}'", matricula), con);
-                r = decimal.Parse(comand.ExecuteScalar().ToString());
+                r = double.Parse(comand.ExecuteScalar().ToString());
                 con.Close();
             }
             return r;
