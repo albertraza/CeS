@@ -86,6 +86,34 @@ namespace Cely_Sistema
             dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
         }
 
+        // metodo para filtrar los niveles
+        private void filtrarNiveles()
+        {
+            try
+            {
+                if (cbFiltro.Text == "Horario")
+                {
+                    dgvNiveles.DataSource = GruposDB.BuscarGrupos("", "", "", "", txtBusqueda.Text);
+                }
+                else if (cbFiltro.Text == "Profesor")
+                {
+                    dgvNiveles.DataSource = GruposDB.BuscarGrupos("", txtBusqueda.Text, "", "", "");
+                }
+                else if (cbFiltro.Text == "Aula")
+                {
+                    dgvNiveles.DataSource = GruposDB.BuscarGrupos("", "", "", txtBusqueda.Text, "");
+                }
+                else if (cbFiltro.Text == "")
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public frmMenu()
         {
             InitializeComponent();
@@ -126,12 +154,6 @@ namespace Cely_Sistema
                     btnHacerFactura.Visible = true;
                     btnModificar.Visible = true;
                     btnRetirarEstudiante.Visible = true;
-
-                    if (EstudianteDB.getRetirado(Convert.ToInt32(txtMatriculaCon.Text)) > 0)
-                    {
-                        MessageBox.Show("El Estudiante fue retirado", "Estudiante Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        btnRetirarEstudiante.Enabled = false;
-                    }
                     txtApellido.Text = pEstudiante.Apellido;
                     txtCelular.Text = pEstudiante.Celular;
                     txtDireccion.Text = pEstudiante.Direccion;
@@ -149,99 +171,202 @@ namespace Cely_Sistema
                     txtTelefono.Text = pEstudiante.Telefono;
 
                     // getting payments info
-
-                    if (pEstudiante.VIP == "NO" || pEstudiante.VIP == "No")
+                    if (EstudianteDB.getRetirado(Convert.ToInt32(txtMatriculaCon.Text)) != 1)
                     {
-                        lblVIP.ForeColor = Color.Black;
-                        lblVIP.Text = "VIP: " + pEstudiante.VIP;
 
-                        if (pEstudiante.Modo_Pago == "Mensual")
+
+                        if (pEstudiante.VIP == "NO" || pEstudiante.VIP == "No")
                         {
-                            txtPagoMensual.Text = PagosDB.ObtenerPagoMensual().ToString("f2");
-                            txtMora.Text = MoraDB.ObtenerMoraMensual();
+                            lblVIP.ForeColor = Color.Black;
+                            lblVIP.Text = "VIP: " + pEstudiante.VIP;
+
+                            if (pEstudiante.Modo_Pago == "Mensual")
+                            {
+                                txtPagoMensual.Text = PagosDB.ObtenerPagoMensual().ToString("f2");
+                                txtMora.Text = MoraDB.ObtenerMoraMensual();
+                            }
+                            else
+                            {
+                                txtPagoMensual.Text = PagosDB.ObtenerPagoSemanal().ToString("f2");
+                                txtMora.Text = MoraDB.ObtenerMoraSemanal();
+                            }
                         }
                         else
                         {
-                            txtPagoMensual.Text = PagosDB.ObtenerPagoSemanal().ToString("f2");
-                            txtMora.Text = MoraDB.ObtenerMoraSemanal();
+                            lblVIP.ForeColor = Color.Red;
+                            lblVIP.Text = "VIP: " + pEstudiante.VIP;
+
+                            if (pEstudiante.Modo_Pago == "Mensual")
+                            {
+                                txtPagoMensual.Text = double.Parse(MoraDB.GetVIPpayments().Pago_Mensual).ToString("f2");
+                                txtMora.Text = double.Parse(MoraDB.GetVIPpayments().Mora_Mensual).ToString("f2");
+                            }
+                            else
+                            {
+                                txtPagoMensual.Text = double.Parse(MoraDB.GetVIPpayments().Pago_Semanal).ToString("f2");
+                                txtMora.Text = double.Parse(MoraDB.GetVIPpayments().Mora_Semanal).ToString("f2");
+                            }
+                        }
+
+                        DateTime fp = EstudianteDB.ObtenerFechaProximoPago(int.Parse(txtMatriculaCon.Text));
+                        DateTime fa = DateTime.Today.Date;
+
+                        int Comp = DateTime.Compare(fp, fa);
+
+                        if (Comp < 0)
+                        {
+                            if (pEstudiante.Modo_Pago == "Mensual")
+                            {
+                                lblProximoPago.ForeColor = Color.Red;
+                                lblProximoPago.Text = "Proximo Pago: " + fp.ToLongDateString();
+                                double P = (DateTime.Today.Date - fp).TotalDays / 30;
+                                if (P < 0)
+                                {
+                                    P *= -1;
+                                }
+                                int raw = Convert.ToInt32(P);
+                                lblPendientes.ForeColor = Color.Red;
+                                lblPendientes.Text = "Meses Pendientes: " + raw.ToString();
+                                double totalMora = double.Parse(txtMora.Text) * (raw);
+                                double totalpagar = (double.Parse(txtPagoMensual.Text) * (raw + 1)) + totalMora;
+                                lblTotalPagar.Text = "Total Pagar: " + totalpagar.ToString("f2");
+                            }
+                            else
+                            {
+                                lblProximoPago.ForeColor = Color.Red;
+                                lblProximoPago.Text = "Proximo Pago: " + fp.ToLongDateString();
+                                double P = (DateTime.Today.Date - fp).TotalDays / 7;
+                                if (P < 0)
+                                {
+                                    P *= -1;
+                                }
+                                int raw = Convert.ToInt32(P);
+                                lblPendientes.ForeColor = Color.Red;
+                                lblPendientes.Text = "Semanas Pendientes: " + raw.ToString();
+                                double totalMora = double.Parse(txtMora.Text) * (raw);
+                                double totalpagar = (double.Parse(txtPagoMensual.Text) * (raw + 1)) + totalMora;
+                                lblTotalPagar.Text = "Total Pagar: " + totalpagar.ToString("f2");
+                            }
+                        }
+                        else
+                        {
+                            lblProximoPago.ForeColor = Color.Black;
+                            lblProximoPago.Text = "Proximo Pago: " + fp.ToLongDateString();
+
+                            if (pEstudiante.Modo_Pago == "Mensual")
+                            {
+                                lblPendientes.ForeColor = Color.Black;
+                                lblPendientes.Text = "Meses Pendientes: 0";
+                                lblTotalPagar.Text = "Total Pagar: " + txtPagoMensual.Text;
+                            }
+                            else
+                            {
+                                lblPendientes.ForeColor = Color.Black;
+                                lblPendientes.Text = "Semanas Pendientes: 0";
+                                lblTotalPagar.Text = "Total Pagar: " + txtPagoMensual.Text;
+                            }
                         }
                     }
                     else
                     {
-                        lblVIP.ForeColor = Color.Red;
-                        lblVIP.Text = "VIP: " + pEstudiante.VIP;
 
-                        if (pEstudiante.Modo_Pago == "Mensual")
+                        // codigo cuando el estudiante esta retirado
+
+                        MessageBox.Show("El Estudiante fue retirado", "Estudiante Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnRetirarEstudiante.Enabled = false;
+
+                        if (pEstudiante.VIP == "NO" || pEstudiante.VIP == "No")
                         {
-                            txtPagoMensual.Text = double.Parse(MoraDB.GetVIPpayments().Pago_Mensual).ToString("f2");
-                            txtMora.Text = double.Parse(MoraDB.GetVIPpayments().Mora_Mensual).ToString("f2");
-                        }
-                        else
-                        {
-                            txtPagoMensual.Text = double.Parse(MoraDB.GetVIPpayments().Pago_Semanal).ToString("f2");
-                            txtMora.Text = double.Parse(MoraDB.GetVIPpayments().Mora_Semanal).ToString("f2");
-                        }
-                    }
+                            lblVIP.ForeColor = Color.Black;
+                            lblVIP.Text = "VIP: " + pEstudiante.VIP;
 
-                    DateTime fp = EstudianteDB.ObtenerFechaProximoPago(int.Parse(txtMatriculaCon.Text));
-                    DateTime fa = DateTime.Today.Date;
-
-                    int Comp = DateTime.Compare(fp, fa);
-
-                    if (Comp < 0)
-                    {
-                        if (pEstudiante.Modo_Pago == "Mensual")
-                        {
-                            lblProximoPago.ForeColor = Color.Red;
-                            lblProximoPago.Text = "Proximo Pago: " + fp.ToLongDateString();
-                            double P = (DateTime.Today.Date - fp).TotalDays / 30;
-                            if (P < 0)
+                            if (pEstudiante.Modo_Pago == "Mensual")
                             {
-                                P *= -1;
+                                txtPagoMensual.Text = EstudianteDB.getRetiradoPayment(Convert.ToInt32(pEstudiante.ID)).ToString("f2");
+                                txtMora.Text = EstudianteDB.getRetiradoMora(Convert.ToInt32(pEstudiante.ID)).ToString("f2");
                             }
-                            int raw = Convert.ToInt32(P);
-                            lblPendientes.ForeColor = Color.Red;
-                            lblPendientes.Text = "Meses Pendientes: " + raw.ToString();
-                            double totalMora = double.Parse(txtMora.Text) * (raw);
-                            double totalpagar = (double.Parse(txtPagoMensual.Text) * (raw + 1)) + totalMora;
-                            lblTotalPagar.Text = "Total Pagar: " + totalpagar.ToString("f2");
-                        }
-                        else
-                        {
-                            lblProximoPago.ForeColor = Color.Red;
-                            lblProximoPago.Text = "Proximo Pago: " + fp.ToLongDateString();
-                            double P = (DateTime.Today.Date - fp).TotalDays / 7;
-                            if (P < 0)
+                            else
                             {
-                                P *= -1;
+                                txtPagoMensual.Text = EstudianteDB.getRetiradoPayment(Convert.ToInt32(pEstudiante.ID)).ToString("f2");
+                                txtMora.Text = EstudianteDB.getRetiradoMora(Convert.ToInt32(pEstudiante.ID)).ToString("f2");
                             }
-                            int raw = Convert.ToInt32(P);
-                            lblPendientes.ForeColor = Color.Red;
-                            lblPendientes.Text = "Semanas Pendientes: " + raw.ToString();
-                            double totalMora = double.Parse(txtMora.Text) * (raw);
-                            double totalpagar = (double.Parse(txtPagoMensual.Text) * (raw + 1)) + totalMora;
-                            lblTotalPagar.Text = "Total Pagar: " + totalpagar.ToString("f2");
-                        }
-                    }
-                    else
-                    {
-                        lblProximoPago.ForeColor = Color.Black;
-                        lblProximoPago.Text = "Proximo Pago: " + fp.ToLongDateString();
-
-                        if (pEstudiante.Modo_Pago == "Mensual")
-                        {
-                            lblPendientes.ForeColor = Color.Black;
-                            lblPendientes.Text = "Meses Pendientes: 0";
-                            lblTotalPagar.Text = "Total Pagar: " + txtPagoMensual.Text;
                         }
                         else
                         {
-                            lblPendientes.ForeColor = Color.Black;
-                            lblPendientes.Text = "Semanas Pendientes: 0";
-                            lblTotalPagar.Text = "Total Pagar: " + txtPagoMensual.Text;
+                            lblVIP.ForeColor = Color.Red;
+                            lblVIP.Text = "VIP: " + pEstudiante.VIP;
+
+                            if (pEstudiante.Modo_Pago == "Mensual")
+                            {
+                                txtPagoMensual.Text = EstudianteDB.getRetiradoPayment(Convert.ToInt32(pEstudiante.ID)).ToString("f2");
+                                txtMora.Text = EstudianteDB.getRetiradoMora(Convert.ToInt32(pEstudiante.ID)).ToString("f2");
+                            }
+                            else
+                            {
+                                txtPagoMensual.Text = EstudianteDB.getRetiradoPayment(Convert.ToInt32(pEstudiante.ID)).ToString("f2");
+                                txtMora.Text = EstudianteDB.getRetiradoMora(Convert.ToInt32(pEstudiante.ID)).ToString("f2");
+                            }
+                        }
+
+                        DateTime fp = EstudianteDB.ObtenerFechaProximoPago(int.Parse(txtMatriculaCon.Text));
+                        DateTime fr = EstudianteDB.getFechaRetiro(Convert.ToInt32(pEstudiante.ID));
+
+                        int Comp = DateTime.Compare(fp, fr);
+
+                        if (Comp < 0)
+                        {
+                            if (pEstudiante.Modo_Pago == "Mensual")
+                            {
+                                lblProximoPago.ForeColor = Color.Red;
+                                lblProximoPago.Text = "Proximo Pago: " + fp.ToLongDateString();
+                                double P = (fr - fp).TotalDays / 30;
+                                if (P < 0)
+                                {
+                                    P *= -1;
+                                }
+                                int raw = Convert.ToInt32(P);
+                                lblPendientes.ForeColor = Color.Red;
+                                lblPendientes.Text = "Meses Pendientes: " + raw.ToString();
+                                double totalMora = double.Parse(txtMora.Text) * (raw);
+                                double totalpagar = (double.Parse(txtPagoMensual.Text) * (raw)) + totalMora;
+                                lblTotalPagar.Text = "Total Pagar: " + totalpagar.ToString("f2");
+                            }
+                            else
+                            {
+                                lblProximoPago.ForeColor = Color.Red;
+                                lblProximoPago.Text = "Proximo Pago: " + fp.ToLongDateString();
+                                double P = (fr - fp).TotalDays / 7;
+                                if (P < 0)
+                                {
+                                    P *= -1;
+                                }
+                                int raw = Convert.ToInt32(P);
+                                lblPendientes.ForeColor = Color.Red;
+                                lblPendientes.Text = "Semanas Pendientes: " + raw.ToString();
+                                double totalMora = double.Parse(txtMora.Text) * (raw);
+                                double totalpagar = (double.Parse(txtPagoMensual.Text) * (raw)) + totalMora;
+                                lblTotalPagar.Text = "Total Pagar: " + totalpagar.ToString("f2");
+                            }
+                        }
+                        else
+                        {
+                            lblProximoPago.ForeColor = Color.Black;
+                            lblProximoPago.Text = "Proximo Pago: " + fp.ToLongDateString();
+
+                            if (pEstudiante.Modo_Pago == "Mensual")
+                            {
+                                lblPendientes.ForeColor = Color.Black;
+                                lblPendientes.Text = "Meses Pendientes: 0";
+                                lblTotalPagar.Text = "Total Pagar: " + txtPagoMensual.Text;
+                            }
+                            else
+                            {
+                                lblPendientes.ForeColor = Color.Black;
+                                lblPendientes.Text = "Semanas Pendientes: 0";
+                                lblTotalPagar.Text = "Total Pagar: " + txtPagoMensual.Text;
+                            }
                         }
                     }
-
                 }
                 else
                 {
@@ -666,14 +791,6 @@ namespace Cely_Sistema
         }
         private void tContador_Tick(object sender, EventArgs e)
         {
-            try
-            {
-                dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void tReloj_Tick(object sender, EventArgs e)
@@ -856,6 +973,7 @@ namespace Cely_Sistema
                 else if (cbFiltro.Text == "")
                 {
                     txtBusqueda.DropDownStyle = ComboBoxStyle.Simple;
+                    tContador.Start();
                 }
                 else
                 {
@@ -870,29 +988,7 @@ namespace Cely_Sistema
 
         private void txtBusqueda_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (cbFiltro.Text == "Horario")
-                {
-                    dgvNiveles.DataSource = GruposDB.BuscarGrupos("", "", "", "", txtBusqueda.Text);
-                }
-                else if (cbFiltro.Text == "Profesor")
-                {
-                    dgvNiveles.DataSource = GruposDB.BuscarGrupos("", txtBusqueda.Text, "", "", "");
-                }
-                else if (cbFiltro.Text == "Aula")
-                {
-                    dgvNiveles.DataSource = GruposDB.BuscarGrupos("", "", "", txtBusqueda.Text, "");
-                }
-                else if (cbFiltro.Text == "")
-                {
-                    
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            filtrarNiveles();
         }
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)
@@ -927,6 +1023,25 @@ namespace Cely_Sistema
 
         private void resizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        }
+
+        private void pbRecargar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbFiltro.Text == string.Empty)
+                {
+                    dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
+                }
+                else
+                {
+                    filtrarNiveles();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

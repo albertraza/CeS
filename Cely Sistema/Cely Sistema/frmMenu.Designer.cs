@@ -135,6 +135,7 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.pbRecargar = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
@@ -150,6 +151,7 @@
             this.gbInformacionPagos.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbDatosPersonales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRecargar)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -393,12 +395,13 @@
             this.dgvNiveles.Location = new System.Drawing.Point(6, 74);
             this.dgvNiveles.Name = "dgvNiveles";
             this.dgvNiveles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNiveles.Size = new System.Drawing.Size(736, 193);
+            this.dgvNiveles.Size = new System.Drawing.Size(765, 193);
             this.dgvNiveles.TabIndex = 2;
             this.dgvNiveles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // gbNiveles
             // 
+            this.gbNiveles.Controls.Add(this.pbRecargar);
             this.gbNiveles.Controls.Add(this.btnLimpiarNivelesBusqueda);
             this.gbNiveles.Controls.Add(this.lblDigiteSuBusqueda);
             this.gbNiveles.Controls.Add(this.txtBusqueda);
@@ -408,14 +411,14 @@
             this.gbNiveles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbNiveles.Location = new System.Drawing.Point(6, 25);
             this.gbNiveles.Name = "gbNiveles";
-            this.gbNiveles.Size = new System.Drawing.Size(748, 273);
+            this.gbNiveles.Size = new System.Drawing.Size(777, 273);
             this.gbNiveles.TabIndex = 3;
             this.gbNiveles.TabStop = false;
             this.gbNiveles.Text = "Niveles";
             // 
             // btnLimpiarNivelesBusqueda
             // 
-            this.btnLimpiarNivelesBusqueda.Location = new System.Drawing.Point(642, 43);
+            this.btnLimpiarNivelesBusqueda.Location = new System.Drawing.Point(629, 43);
             this.btnLimpiarNivelesBusqueda.Name = "btnLimpiarNivelesBusqueda";
             this.btnLimpiarNivelesBusqueda.Size = new System.Drawing.Size(81, 23);
             this.btnLimpiarNivelesBusqueda.TabIndex = 7;
@@ -630,7 +633,7 @@
             // 
             // tContador
             // 
-            this.tContador.Interval = 60000;
+            this.tContador.Interval = 1000;
             this.tContador.Tick += new System.EventHandler(this.tContador_Tick);
             // 
             // tReloj
@@ -1168,6 +1171,16 @@
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "Nombre:";
             // 
+            // pbRecargar
+            // 
+            this.pbRecargar.Image = ((System.Drawing.Image)(resources.GetObject("pbRecargar.Image")));
+            this.pbRecargar.Location = new System.Drawing.Point(751, 45);
+            this.pbRecargar.Name = "pbRecargar";
+            this.pbRecargar.Size = new System.Drawing.Size(20, 23);
+            this.pbRecargar.TabIndex = 8;
+            this.pbRecargar.TabStop = false;
+            this.pbRecargar.Click += new System.EventHandler(this.pbRecargar_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1204,6 +1217,7 @@
             this.groupBox1.PerformLayout();
             this.gbDatosPersonales.ResumeLayout(false);
             this.gbDatosPersonales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRecargar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1316,5 +1330,6 @@
         private System.Windows.Forms.ComboBox txtBusqueda;
         private System.Windows.Forms.ComboBox cbFiltro;
         private System.Windows.Forms.Label lblFiltrarPor;
+        private System.Windows.Forms.PictureBox pbRecargar;
     }
 }

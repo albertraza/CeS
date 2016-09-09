@@ -274,7 +274,7 @@ namespace Cely_Sistema
                                         btnAceptar.Enabled = false;
                                         rbPago.Text = "Pago Mensual";
                                         txtMotivodePago.Text = "Pago Mes";
-                                        PagoMensualSemanal = PagosDB.ObtenerPagoMensual();
+                                        PagoMensualSemanal = pagoS;
                                         MoraEs = 0;
                                         pMora = false;
                                     }
@@ -1121,12 +1121,23 @@ namespace Cely_Sistema
                                             if (CompF < 0)
                                             {
                                                 // pago mensual no VIP MORA
-                                                double mora = Convert.ToDouble(MoraDB.ObtenerMoraMensual());
-                                                pagoM = PagosDB.ObtenerPagoMensual();
+                                                double mora;
+                                                if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
+                                                {
+                                                    pagoM = PagosDB.ObtenerPagoMensual();
+                                                    mora = Convert.ToDouble(MoraDB.ObtenerMoraMensual());
+                                                }
+                                                else
+                                                {
+                                                    pagoM = Convert.ToDouble(EstudianteDB.getRetiradoPayment(int.Parse(txtMatricula.Text)));
+                                                    mora = EstudianteDB.getRetiradoMora(int.Parse(txtMatricula.Text));
+                                                }
+
                                                 TotalPagoMensualSemanal = pagoM * (Convert.ToInt32(cantPagar));
                                                 pagoM -= desc;
                                                 lblPagoMensual.Text = lblPagoMensual.Text + " " + pagoM.ToString("f2");
                                                 lblMora.ForeColor = Color.Red;
+
                                                 if (Convert.ToInt32(cantPagar) > Convert.ToInt32(MesesP))
                                                 {
                                                     mora = (mora - (descM)) * (Convert.ToInt32(MesesP));
@@ -1137,6 +1148,7 @@ namespace Cely_Sistema
                                                     mora = (mora - (descM)) * (Convert.ToInt32(cantPagar));
                                                     cantMora = Convert.ToInt32(cantPagar);
                                                 }
+
                                                 lblMora.Text = lblMora.Text + " " + mora.ToString("f2");
                                                 pagoM = pagoM * (Convert.ToInt32(cantPagar));
                                                 TotalMora = mora;
@@ -1153,7 +1165,15 @@ namespace Cely_Sistema
                                                 // pago mensual no VIP no MORA
                                                 lblPendientes.ForeColor = Color.Black;
                                                 lblMora.ForeColor = Color.Black;
-                                                pagoM = PagosDB.ObtenerPagoMensual();
+                                                if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
+                                                {
+                                                    pagoM = PagosDB.ObtenerPagoMensual();
+                                                }
+                                                else
+                                                {
+                                                    pagoM = Convert.ToDouble(EstudianteDB.getRetiradoPayment(int.Parse(txtMatricula.Text)));
+                                                }
+
                                                 TotalPagoMensualSemanal = pagoM * (Convert.ToInt32(cantPagar));
                                                 pagoM -= desc;
                                                 lblPagoMensual.Text = lblPagoMensual.Text + " " + pagoM.ToString("f2");
@@ -1176,8 +1196,18 @@ namespace Cely_Sistema
                                             if (CompF < 0)
                                             {
                                                 // pago semanal no VIP mora
-                                                double mora = Convert.ToDouble(MoraDB.ObtenerMoraSemanal());
-                                                pagoS = PagosDB.ObtenerPagoSemanal();
+                                                double mora;
+                                                if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
+                                                {
+                                                    pagoS = PagosDB.ObtenerPagoSemanal();
+                                                    mora = Convert.ToDouble(MoraDB.ObtenerMoraSemanal());
+                                                }
+                                                else
+                                                {
+                                                    pagoS = Convert.ToDouble(EstudianteDB.getRetiradoPayment(int.Parse(txtMatricula.Text)));
+                                                    mora = EstudianteDB.getRetiradoMora(int.Parse(txtMatricula.Text));
+                                                }
+
                                                 TotalPagoMensualSemanal = pagoS * (Convert.ToInt32(cantPagar));
                                                 pagoS -= desc;
                                                 lblPagoMensual.Text = "Pago Semanal:" + " " + pagoS.ToString("f2");
@@ -1209,7 +1239,14 @@ namespace Cely_Sistema
                                                 // pago semanal no VIP no MORA
                                                 lblPendientes.ForeColor = Color.Black;
                                                 lblMora.ForeColor = Color.Black;
-                                                pagoS = PagosDB.ObtenerPagoSemanal();
+                                                if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
+                                                {
+                                                    pagoS = PagosDB.ObtenerPagoMensual();
+                                                }
+                                                else
+                                                {
+                                                    pagoS = Convert.ToDouble(EstudianteDB.getRetiradoPayment(int.Parse(txtMatricula.Text)));
+                                                }
                                                 TotalPagoMensualSemanal = pagoS * (Convert.ToInt32(cantPagar));
                                                 pagoS -= desc;
                                                 lblPagoMensual.Text = "Pago Semanal:" + " " + pagoS.ToString("f2");
@@ -1238,8 +1275,17 @@ namespace Cely_Sistema
                                             if (CompF < 0)
                                             {
                                                 // pago mensual VIP MORa
-                                                double mora = Convert.ToDouble(MoraDB.GetVIPpayments().Mora_Mensual);
-                                                pagoM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);
+                                                double mora;
+                                                if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
+                                                {
+                                                    pagoM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);
+                                                    mora = Convert.ToDouble(MoraDB.GetVIPpayments().Mora_Mensual);
+                                                }
+                                                else
+                                                {
+                                                    pagoM = Convert.ToDouble(EstudianteDB.getRetiradoPayment(int.Parse(txtMatricula.Text)));
+                                                    mora = EstudianteDB.getRetiradoMora(int.Parse(txtMatricula.Text));
+                                                }
                                                 TotalPagoMensualSemanal = pagoM * (Convert.ToInt32(cantPagar));
                                                 pagoM -= desc;
                                                 lblPagoMensual.Text = lblPagoMensual.Text + " " + pagoM.ToString("f2");
@@ -1270,7 +1316,14 @@ namespace Cely_Sistema
                                                 // pago mensual VIP No mora
                                                 lblPendientes.ForeColor = Color.Black;
                                                 lblMora.ForeColor = Color.Black;
-                                                pagoM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);
+                                                if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
+                                                {
+                                                    pagoM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);
+                                                }
+                                                else
+                                                {
+                                                    pagoM = Convert.ToDouble(EstudianteDB.getRetiradoPayment(int.Parse(txtMatricula.Text)));
+                                                }
                                                 TotalPagoMensualSemanal = pagoM * (Convert.ToInt32(cantPagar));
                                                 pagoM -= desc;
                                                 lblPagoMensual.Text = lblPagoMensual.Text + " " + pagoM.ToString("f2");
@@ -1293,8 +1346,18 @@ namespace Cely_Sistema
                                             if (CompF < 0)
                                             {
                                                 // mora pago semanal VIP student
-                                                double mora = Convert.ToDouble(MoraDB.GetVIPpayments().Mora_Semanal);
-                                                pagoS = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal);
+                                                double mora;
+                                                if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
+                                                {
+                                                    pagoS = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal);
+                                                    mora = Convert.ToDouble(MoraDB.GetVIPpayments().Mora_Semanal);
+                                                }
+                                                else
+                                                {
+                                                    pagoS = Convert.ToDouble(EstudianteDB.getRetiradoPayment(int.Parse(txtMatricula.Text)));
+                                                    mora = EstudianteDB.getRetiradoMora(int.Parse(txtMatricula.Text));
+                                                }
+
                                                 TotalPagoMensualSemanal = pagoS * (Convert.ToInt32(cantPagar));
                                                 pagoS -= desc;
                                                 lblPagoMensual.Text = "Pago Semanal:" + " " + pagoS.ToString("f2");
@@ -1326,7 +1389,14 @@ namespace Cely_Sistema
                                                 // sin mora pago semanal VIP student
                                                 lblPendientes.ForeColor = Color.Black;
                                                 lblMora.ForeColor = Color.Black;
-                                                pagoS = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal);
+                                                if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
+                                                {
+                                                    pagoS = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal);
+                                                }
+                                                else
+                                                {
+                                                    pagoS = Convert.ToDouble(EstudianteDB.getRetiradoPayment(int.Parse(txtMatricula.Text)));
+                                                }
                                                 TotalPagoMensualSemanal = pagoS * (Convert.ToInt32(cantPagar));
                                                 pagoS -= desc;
                                                 lblPagoMensual.Text = "Pago Semanal:" + " " + pagoS.ToString("f2");
