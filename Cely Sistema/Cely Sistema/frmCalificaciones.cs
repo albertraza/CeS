@@ -55,7 +55,7 @@ namespace Cely_Sistema
                     {
                         txtNombre.Text = nombre;
                         txtApellido.Text = apellido;
-                        dgvAsistencia.DataSource = AsistenciaDB.BuscarAsistencia(int.Parse(txtMatricula.Text));
+                        dgvAsistencia.DataSource = AsistenciaDB.BuscarAsistencia(txtMatricula.Text, "", "", "");
                         dgvNotaAsistencia.DataSource = NotaAsistenciaDB.BuscarCalificaciones(int.Parse(txtMatricula.Text));
                         btnCargarCalificacion.Enabled = true;
                         btnGuardar.Enabled = true;
@@ -872,31 +872,7 @@ namespace Cely_Sistema
         private Asistencia pAS { get; set; }
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (dgvAsistencia.SelectedRows.Count == 1)
-                {
-                    int Matricula = Convert.ToInt32(dgvAsistencia.CurrentRow.Cells[1].Value);
-                    Asistencia pA = AsistenciaDB.ObtenerDatosAsistencia(Matricula);
-                    if (pA != null)
-                    {
-                        txtDiasAsistidos.Text = pA.CAsistencia.ToString();
-                        pAS = pA;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al Tomar los Datos, Intentelo Nuevamente", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No se ha seleccionado un Estudiante", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            // boton para obtener el total de las asistencias
         }
 
         private void btnCalcularAsitencia_Click(object sender, EventArgs e)
@@ -1014,7 +990,7 @@ namespace Cely_Sistema
                         {
                             txtNombre.Text = nombre;
                             txtApellido.Text = apellido;
-                            dgvAsistencia.DataSource = AsistenciaDB.BuscarAsistencia(int.Parse(txtMatricula.Text));
+                            dgvAsistencia.DataSource = AsistenciaDB.BuscarAsistencia(txtMatricula.Text, "", "", "");
                             dgvNotaAsistencia.DataSource = NotaAsistenciaDB.BuscarCalificaciones(int.Parse(txtMatricula.Text));
                             btnCargarCalificacion.Enabled = true;
                             btnGuardar.Enabled = true;

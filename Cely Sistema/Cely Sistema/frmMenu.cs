@@ -613,7 +613,7 @@ namespace Cely_Sistema
         {
             try
             {
-                dgvEstudiantes.DataSource = AsistenciaDB.BuscarAsistencia(Convert.ToInt32(txtMatricula.Text));
+                dgvEstudiantes.DataSource = AsistenciaDB.BuscarAsistencia(txtMatricula.Text, "", "", "");
             }
             catch(Exception ex)
             {
@@ -623,47 +623,47 @@ namespace Cely_Sistema
 
         private void btnRegistrarAsistencia_Click(object sender, EventArgs e)
         {
-            try
-            {
-                /// Matematica Asistencia (Añadir) ///
-                if (dgvEstudiantes.SelectedRows.Count == 1)
-                {
-                    int matricula = Convert.ToInt32(dgvEstudiantes.CurrentRow.Cells[12].Value);
-                    int Ca;
-                    Ca = Convert.ToInt32(AsistenciaDB.ObtenerTotalAsistencia(matricula));
-                    Ca = Ca + 1;
-                    /// Guardar la Asistencia ///
-                    int R = AsistenciaDB.ActualizarCAsistencia(matricula, Ca);
-                    if (R > 0)
-                    {
-                        MessageBox.Show("Asistencia Registrada!", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo registrar la Asistencia", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                else
-                {
-                    int Ca;
-                    Ca = Convert.ToInt32(AsistenciaDB.ObtenerTotalAsistencia(Convert.ToInt32(txtMatricula.Text)));
-                    Ca = Ca + 1;
-                    /// Guardar la Asistencia ////////
-                    int R = AsistenciaDB.ActualizarCAsistencia(int.Parse(txtMatricula.Text), Ca);
-                    if (R > 0)
-                    {
-                        MessageBox.Show("Asistencia Registrada!", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo registrar la Asistencia", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //try
+            //{
+                
+            //    if (dgvEstudiantes.SelectedRows.Count == 1)
+            //    {
+            //        int matricula = Convert.ToInt32(dgvEstudiantes.CurrentRow.Cells[12].Value);
+            //        int Ca;
+            //        Ca = Convert.ToInt32(AsistenciaDB.ObtenerTotalAsistencia(matricula));
+            //        Ca = Ca + 1;
+                   
+            //        int R = AsistenciaDB.ActualizarCAsistencia(matricula, Ca);
+            //        if (R > 0)
+            //        {
+            //            MessageBox.Show("Asistencia Registrada!", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("No se pudo registrar la Asistencia", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        int Ca;
+            //        Ca = Convert.ToInt32(AsistenciaDB.ObtenerTotalAsistencia(Convert.ToInt32(txtMatricula.Text)));
+            //        Ca = Ca + 1;
+                    
+            //        int R = AsistenciaDB.ActualizarCAsistencia(int.Parse(txtMatricula.Text), Ca);
+            //        if (R > 0)
+            //        {
+            //            MessageBox.Show("Asistencia Registrada!", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("No se pudo registrar la Asistencia", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         private void gbAsistencia_Enter(object sender, EventArgs e)
@@ -768,7 +768,7 @@ namespace Cely_Sistema
             {
                 try
                 {
-                    dgvEstudiantes.DataSource = AsistenciaDB.BuscarAsistencia(Convert.ToInt32(txtMatricula.Text));
+                    dgvEstudiantes.DataSource = AsistenciaDB.BuscarAsistencia(txtMatricula.Text, "", "", "");
                 }
                 catch (Exception ex)
                 {

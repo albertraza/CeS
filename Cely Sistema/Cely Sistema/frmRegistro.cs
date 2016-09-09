@@ -442,17 +442,10 @@ namespace Cely_Sistema
                             // Analizis de la fecha de pago para el Estudiante
                             string FechaProximoP = FechaPP.ToString("yyyy-MM-dd");
                             EstudianteDB.ActualizarProximoPago(int.Parse(matricula), FechaProximoP);
-                            /* Datos para registrar Asistencia */
-                            pA.Nombre = txtNombre.Text + " " + txtApellido.Text;
-                            pA.Matricula = int.Parse(matricula);
-                            pA.Fecha_Inicio = DateTime.Today.Date.ToString("yyyy-MM-dd");
-                            pA.CAsistencia = 0;
-                            pA.Ultima_Asistencia = DateTime.Today.Date.ToString("yyyy-MM-dd");
-                            AsistenciaDB.RegistrarAsistencia(pA);
-                            Limpiar();
                             int NTotalInscritos = GruposDB.ObtenerTotalInscritos(pID);
                             int NuevaCant = NTotalInscritos + 1;
                             GruposDB.ActualizarCantidadEstudiantes(pID, NuevaCant);
+                            Limpiar();
                         }
                     }
                     else
