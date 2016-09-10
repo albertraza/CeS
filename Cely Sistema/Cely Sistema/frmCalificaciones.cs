@@ -29,7 +29,6 @@ namespace Cely_Sistema
             {
                 txtNombre.Enabled = false;
                 txtApellido.Enabled = false;
-                dgvAsistencia.DataSource = AsistenciaDB.MostrarTodasLasAsistencias();
             }
             catch (Exception ex)
             {
