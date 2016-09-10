@@ -18,13 +18,13 @@ namespace Cely_Sistema
                 comando.Connection = conexion;
                 comando.CommandText = "registerAsistencia";
 
-                comando.Parameters.Add(new SqlParameter("", System.Data.SqlDbType.Int));
+                comando.Parameters.Add(new SqlParameter("@Matricula", System.Data.SqlDbType.Int));
                 comando.Parameters["@Matricula"].Value = pA.Matricula;
 
-                comando.Parameters.Add(new SqlParameter("", System.Data.SqlDbType.Int));
+                comando.Parameters.Add(new SqlParameter("@CodigoGrupo", System.Data.SqlDbType.Int));
                 comando.Parameters["@CodigoGrupo"].Value = codigoGrupo;
 
-                comando.Parameters.Add(new SqlParameter("", System.Data.SqlDbType.Date));
+                comando.Parameters.Add(new SqlParameter("@fecha", System.Data.SqlDbType.Date));
                 comando.Parameters["@fecha"].Value = pA.Fecha;
 
                 retorno = comando.ExecuteNonQuery();
