@@ -103,9 +103,13 @@ namespace Cely_Sistema
                 {
                     dgvNiveles.DataSource = GruposDB.BuscarGrupos("", "", "", txtBusqueda.Text, "");
                 }
-                else if (cbFiltro.Text == "")
+                else if (cbFiltro.Text == "Nivel")
                 {
-
+                    dgvNiveles.DataSource = GruposDB.BuscarGrupos(txtBusqueda.Text, "", "", "", "");
+                }
+                else if(cbFiltro.Text == "")
+                {
+                    dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
                 }
             }
             catch (Exception ex)
@@ -623,47 +627,63 @@ namespace Cely_Sistema
 
         private void btnRegistrarAsistencia_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-                
-            //    if (dgvEstudiantes.SelectedRows.Count == 1)
-            //    {
-            //        int matricula = Convert.ToInt32(dgvEstudiantes.CurrentRow.Cells[12].Value);
-            //        int Ca;
-            //        Ca = Convert.ToInt32(AsistenciaDB.ObtenerTotalAsistencia(matricula));
-            //        Ca = Ca + 1;
-                   
-            //        int R = AsistenciaDB.ActualizarCAsistencia(matricula, Ca);
-            //        if (R > 0)
-            //        {
-            //            MessageBox.Show("Asistencia Registrada!", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("No se pudo registrar la Asistencia", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        int Ca;
-            //        Ca = Convert.ToInt32(AsistenciaDB.ObtenerTotalAsistencia(Convert.ToInt32(txtMatricula.Text)));
-            //        Ca = Ca + 1;
-                    
-            //        int R = AsistenciaDB.ActualizarCAsistencia(int.Parse(txtMatricula.Text), Ca);
-            //        if (R > 0)
-            //        {
-            //            MessageBox.Show("Asistencia Registrada!", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("No se pudo registrar la Asistencia", "Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            try
+            {
+                Asistencia pA = new Asistencia();
+                int codigoGrupo = 0;
+                if (txtMatricula.Text == string.Empty)
+                {
+                    if(dgvEstudiantes.SelectedRows.Count == 1)
+                    {
+                        EstudianteBase pE = new EstudianteBase();
+                        pE = EstudianteDB.SeleccionarEstudiante(Convert.ToInt32(dgvEstudiantes.CurrentRow.Cells[12].Value));
+                        codigoGrupo = pE.Codigo_Grupo;
+
+                        pA.Fecha = DateTime.Parse(DateTime.Today.Date.ToString("MM/dd/yyyy"));
+                        pA.Matricula = Convert.ToInt32(pE.ID);
+                        AsistenciaDB.RegistrarAsistencia(pA, codigoGrupo);
+                        MessageBox.Show("Asistencia Registrada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    if(dgvEstudiantes.SelectedRows.Count == 1)
+                    {
+                        EstudianteBase pE = new EstudianteBase();
+                        pE = EstudianteDB.SeleccionarEstudiante(Convert.ToInt32(dgvEstudiantes.CurrentRow.Cells[1].Value));
+                        codigoGrupo = pE.Codigo_Grupo;
+
+                        pA.Fecha = DateTime.Parse(DateTime.Today.Date.ToString("MM/dd/yyyy"));
+                        pA.Matricula = Convert.ToInt32(pE.ID);
+                        AsistenciaDB.RegistrarAsistencia(pA, codigoGrupo);
+
+                        MessageBox.Show("Asistencia Registrada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        EstudianteBase pE = new EstudianteBase();
+                        if (EstudianteDB.SeleccionarEstudiante(Convert.ToInt32(txtMatricula.Text)) != null)
+                        {
+                            pE = EstudianteDB.SeleccionarEstudiante(Convert.ToInt32(txtMatricula.Text));
+                            codigoGrupo = pE.Codigo_Grupo;
+
+                            pA.Fecha = DateTime.Parse(DateTime.Today.Date.ToString("MM/dd/yyyy"));
+                            pA.Matricula = Convert.ToInt32(pE.ID);
+                            AsistenciaDB.RegistrarAsistencia(pA, codigoGrupo);
+
+                            MessageBox.Show("Asistencia Registrada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No existe el estudiante, digite una matricula diferente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void gbAsistencia_Enter(object sender, EventArgs e)
