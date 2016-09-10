@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+    </configSections>
+    <connectionStrings>
+        <add name="Cely_Sistema.Properties.Settings.CelyDBConnectionString"
+            connectionString="Data Source=.\SQLEXPRESS2012;Initial Catalog=CelyDB;Integrated Security=True"
+            providerName="System.Data.SqlClient" />
+        <add name="Cely_Sistema.Properties.Settings.CelyDBConnectionString1"
+            connectionString="Data Source=.\SQLEXPRESS2012;Initial Catalog=CelyDB;Integrated Security=True"
+            providerName="System.Data.SqlClient" />
+    </connectionStrings>
+</configuration>
