@@ -468,5 +468,16 @@ namespace Cely_Sistema
             }
             return r;
         }
+        public static int updateNivel(int codigoGrupo, string nivel)
+        {
+            int r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("update Estudiantes set Nivel = '{0}' where Codigo_Grupo = '{1}'", nivel, codigoGrupo), con);
+                r = comand.ExecuteNonQuery();
+                con.Close();
+            }
+            return r;
+        }
     }
 }
