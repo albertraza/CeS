@@ -101,7 +101,7 @@ namespace Cely_Sistema
                             FechaPP = FechaA.AddMonths(1);
                         }
                     }
-                    else if (rbSemanal.Checked)
+                    else
                     {
                         comp = (FechaA - FechaI).TotalDays / 7;
                         if (comp <= 0)
