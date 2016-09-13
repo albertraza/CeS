@@ -269,6 +269,7 @@ namespace Cely_Sistema
 
                         if (G > 0)
                         {
+                            EstudianteDB.updateNivel(pG.ID, pG.Nivel);
                             MessageBox.Show("Grupo Modificado con Exito", "Registro de Grupos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Limpiar();
                         }
