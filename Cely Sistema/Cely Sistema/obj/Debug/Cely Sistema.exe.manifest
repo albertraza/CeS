@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cely Sistema.exe" size="2012672">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cely Sistema.exe" size="2013184">
       <assemblyIdentity name="Cely Sistema" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>OJlzIxMvz2dNzuf76hIVFq0O69I=</dsig:DigestValue>
+        <dsig:DigestValue>zaB4y0o5AHlO5OCmdqwiRLlAM7w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

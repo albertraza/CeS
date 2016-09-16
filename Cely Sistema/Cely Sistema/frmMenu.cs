@@ -84,6 +84,9 @@ namespace Cely_Sistema
             txtBusqueda.Items.Clear();
             txtBusqueda.Text = "";
             dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
+            dgvNiveles.ClearSelection();
+
+            dgvEstudiantes.DataSource = "";
         }
 
         // metodo para filtrar los niveles
@@ -434,6 +437,7 @@ namespace Cely_Sistema
                 MinimizeBox = false;
                 MaximizeBox = false;
                 DisabledConsultaItens();
+                dgvNiveles.ClearSelection();
             }
             catch(Exception ex)
             {
@@ -1052,6 +1056,8 @@ namespace Cely_Sistema
                 if (cbFiltro.Text == string.Empty)
                 {
                     dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
+                    dgvNiveles.ClearSelection();
+                    dgvEstudiantes.DataSource = "";
                 }
                 else
                 {
