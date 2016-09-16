@@ -62,6 +62,7 @@ namespace Cely_Sistema
             txtBusqueda.Items.Clear();
             txtBusqueda.Text = "";
             dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
+            dgvNiveles.ClearSelection();
         }
         private void getNivel()
         {
@@ -178,6 +179,8 @@ namespace Cely_Sistema
             lblBuscarAlumno.Visible = true;
             btnRegistrar.Visible = true;
             limpiarFiltroNiveles();
+            dgvNiveles.ClearSelection();
+            dgvNiveles.Enabled = false;
         }
         public frmRegistro()
         {
@@ -217,6 +220,7 @@ namespace Cely_Sistema
                     dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
                     btnRegistrar.Enabled = false;
                     txtNivel.Enabled = false;
+                    dgvNiveles.Enabled = true;
                     if (EstudianteSeleccionado.Modo_Pago == "Mensual")
                     {
                         rbMensual.Checked = true;
@@ -265,6 +269,8 @@ namespace Cely_Sistema
                     lblBuscarAlumno.Visible = true;
                     dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
                     btnRegistrar.Enabled = false;
+                    dgvNiveles.ClearSelection();
+                    dgvNiveles.Enabled = false;
                 }
                 catch (Exception ex)
                 {
@@ -326,6 +332,10 @@ namespace Cely_Sistema
                 {
                     MessageBox.Show("Ocupacion Vacia, Complete El Campo Ocupacion", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtOcupacion.Focus();
+                }
+                else if(!rbMensual.Enabled && !rbSemanal.Enabled)
+                {
+                    MessageBox.Show("No se ha seleccionado el modo de pago!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else if(cbN_Academico.Text == string.Empty)
                 {
@@ -1079,6 +1089,30 @@ namespace Cely_Sistema
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void rbMensual_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbMensual.Enabled || rbSemanal.Enabled)
+            {
+                dgvNiveles.Enabled = true;
+            }
+            else
+            {
+                dgvNiveles.Enabled = false;
+            }
+        }
+
+        private void rbSemanal_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbMensual.Enabled || rbSemanal.Enabled)
+            {
+                dgvNiveles.Enabled = true;
+            }
+            else
+            {
+                dgvNiveles.Enabled = false;
             }
         }
     }

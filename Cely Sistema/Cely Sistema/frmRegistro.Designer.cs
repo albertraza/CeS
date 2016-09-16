@@ -77,6 +77,11 @@
             this.rbSemanal = new System.Windows.Forms.RadioButton();
             this.dgvNiveles = new System.Windows.Forms.DataGridView();
             this.gbNiveles = new System.Windows.Forms.GroupBox();
+            this.btnLimpiarFiltroNiveles = new System.Windows.Forms.Button();
+            this.txtBusqueda = new System.Windows.Forms.ComboBox();
+            this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.lblDigiteSuBusqueda = new System.Windows.Forms.Label();
+            this.lblFiltroPor = new System.Windows.Forms.Label();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.dtpFechadeInicio = new System.Windows.Forms.DateTimePicker();
             this.lblFechadeInicio = new System.Windows.Forms.Label();
@@ -86,11 +91,6 @@
             this.verGruposwHorarioTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter();
             this.btnRetirar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.lblFiltroPor = new System.Windows.Forms.Label();
-            this.lblDigiteSuBusqueda = new System.Windows.Forms.Label();
-            this.cbFiltro = new System.Windows.Forms.ComboBox();
-            this.txtBusqueda = new System.Windows.Forms.ComboBox();
-            this.btnLimpiarFiltroNiveles = new System.Windows.Forms.Button();
             this.gbEstudiante.SuspendLayout();
             this.gbVIP.SuspendLayout();
             this.pModoPago.SuspendLayout();
@@ -539,6 +539,7 @@
             this.rbMensual.TabStop = true;
             this.rbMensual.Text = "Mensual";
             this.rbMensual.UseVisualStyleBackColor = true;
+            this.rbMensual.CheckedChanged += new System.EventHandler(this.rbMensual_CheckedChanged);
             this.rbMensual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rbMensual_KeyPress);
             // 
             // rbSemanal
@@ -551,6 +552,7 @@
             this.rbSemanal.TabStop = true;
             this.rbSemanal.Text = "Semanal";
             this.rbSemanal.UseVisualStyleBackColor = true;
+            this.rbSemanal.CheckedChanged += new System.EventHandler(this.rbSemanal_CheckedChanged);
             this.rbSemanal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rbSemanal_KeyPress);
             // 
             // dgvNiveles
@@ -584,6 +586,60 @@
             this.gbNiveles.TabIndex = 1;
             this.gbNiveles.TabStop = false;
             this.gbNiveles.Text = "Niveles";
+            // 
+            // btnLimpiarFiltroNiveles
+            // 
+            this.btnLimpiarFiltroNiveles.Location = new System.Drawing.Point(407, 76);
+            this.btnLimpiarFiltroNiveles.Name = "btnLimpiarFiltroNiveles";
+            this.btnLimpiarFiltroNiveles.Size = new System.Drawing.Size(55, 23);
+            this.btnLimpiarFiltroNiveles.TabIndex = 50;
+            this.btnLimpiarFiltroNiveles.Text = "Limpiar";
+            this.btnLimpiarFiltroNiveles.UseVisualStyleBackColor = true;
+            this.btnLimpiarFiltroNiveles.Click += new System.EventHandler(this.btnLimpiarFiltroNiveles_Click);
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.txtBusqueda.FormattingEnabled = true;
+            this.txtBusqueda.Location = new System.Drawing.Point(158, 78);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(238, 20);
+            this.txtBusqueda.TabIndex = 49;
+            this.txtBusqueda.SelectedIndexChanged += new System.EventHandler(this.txtBusqueda_SelectedIndexChanged);
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            // 
+            // cbFiltro
+            // 
+            this.cbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFiltro.FormattingEnabled = true;
+            this.cbFiltro.Items.AddRange(new object[] {
+            "Nivel",
+            "Aula",
+            "Horario",
+            "Profesor"});
+            this.cbFiltro.Location = new System.Drawing.Point(23, 78);
+            this.cbFiltro.Name = "cbFiltro";
+            this.cbFiltro.Size = new System.Drawing.Size(121, 21);
+            this.cbFiltro.TabIndex = 48;
+            this.cbFiltro.SelectedIndexChanged += new System.EventHandler(this.cbFiltro_SelectedIndexChanged);
+            // 
+            // lblDigiteSuBusqueda
+            // 
+            this.lblDigiteSuBusqueda.AutoSize = true;
+            this.lblDigiteSuBusqueda.Location = new System.Drawing.Point(155, 60);
+            this.lblDigiteSuBusqueda.Name = "lblDigiteSuBusqueda";
+            this.lblDigiteSuBusqueda.Size = new System.Drawing.Size(102, 13);
+            this.lblDigiteSuBusqueda.TabIndex = 47;
+            this.lblDigiteSuBusqueda.Text = "Digite su Busqueda:";
+            // 
+            // lblFiltroPor
+            // 
+            this.lblFiltroPor.AutoSize = true;
+            this.lblFiltroPor.Location = new System.Drawing.Point(20, 60);
+            this.lblFiltroPor.Name = "lblFiltroPor";
+            this.lblFiltroPor.Size = new System.Drawing.Size(54, 13);
+            this.lblFiltroPor.TabIndex = 46;
+            this.lblFiltroPor.Text = "Filtrar Por:";
             // 
             // btnSeleccionar
             // 
@@ -655,60 +711,6 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
-            // 
-            // lblFiltroPor
-            // 
-            this.lblFiltroPor.AutoSize = true;
-            this.lblFiltroPor.Location = new System.Drawing.Point(20, 60);
-            this.lblFiltroPor.Name = "lblFiltroPor";
-            this.lblFiltroPor.Size = new System.Drawing.Size(54, 13);
-            this.lblFiltroPor.TabIndex = 46;
-            this.lblFiltroPor.Text = "Filtrar Por:";
-            // 
-            // lblDigiteSuBusqueda
-            // 
-            this.lblDigiteSuBusqueda.AutoSize = true;
-            this.lblDigiteSuBusqueda.Location = new System.Drawing.Point(155, 60);
-            this.lblDigiteSuBusqueda.Name = "lblDigiteSuBusqueda";
-            this.lblDigiteSuBusqueda.Size = new System.Drawing.Size(102, 13);
-            this.lblDigiteSuBusqueda.TabIndex = 47;
-            this.lblDigiteSuBusqueda.Text = "Digite su Busqueda:";
-            // 
-            // cbFiltro
-            // 
-            this.cbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFiltro.FormattingEnabled = true;
-            this.cbFiltro.Items.AddRange(new object[] {
-            "Nivel",
-            "Aula",
-            "Horario",
-            "Profesor"});
-            this.cbFiltro.Location = new System.Drawing.Point(23, 78);
-            this.cbFiltro.Name = "cbFiltro";
-            this.cbFiltro.Size = new System.Drawing.Size(121, 21);
-            this.cbFiltro.TabIndex = 48;
-            this.cbFiltro.SelectedIndexChanged += new System.EventHandler(this.cbFiltro_SelectedIndexChanged);
-            // 
-            // txtBusqueda
-            // 
-            this.txtBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.txtBusqueda.FormattingEnabled = true;
-            this.txtBusqueda.Location = new System.Drawing.Point(158, 78);
-            this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(238, 20);
-            this.txtBusqueda.TabIndex = 49;
-            this.txtBusqueda.SelectedIndexChanged += new System.EventHandler(this.txtBusqueda_SelectedIndexChanged);
-            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
-            // 
-            // btnLimpiarFiltroNiveles
-            // 
-            this.btnLimpiarFiltroNiveles.Location = new System.Drawing.Point(407, 76);
-            this.btnLimpiarFiltroNiveles.Name = "btnLimpiarFiltroNiveles";
-            this.btnLimpiarFiltroNiveles.Size = new System.Drawing.Size(55, 23);
-            this.btnLimpiarFiltroNiveles.TabIndex = 50;
-            this.btnLimpiarFiltroNiveles.Text = "Limpiar";
-            this.btnLimpiarFiltroNiveles.UseVisualStyleBackColor = true;
-            this.btnLimpiarFiltroNiveles.Click += new System.EventHandler(this.btnLimpiarFiltroNiveles_Click);
             // 
             // frmRegistro
             // 
