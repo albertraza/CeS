@@ -50,6 +50,11 @@
             this.lblBuscarProfesor = new System.Windows.Forms.LinkLabel();
             this.txtProfesor = new System.Windows.Forms.TextBox();
             this.lblProfesor = new System.Windows.Forms.Label();
+            this.lblFiltrarPor = new System.Windows.Forms.Label();
+            this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.txtBusqueda = new System.Windows.Forms.ComboBox();
+            this.lblDigiteSuBusqueda = new System.Windows.Forms.Label();
+            this.btnLimpiarFiltro = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbRegistrodeNiveles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -76,7 +81,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(37, 355);
+            this.btnGuardar.Location = new System.Drawing.Point(32, 412);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 1;
@@ -142,7 +147,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(132, 355);
+            this.btnModificar.Location = new System.Drawing.Point(127, 412);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 2;
@@ -152,7 +157,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(222, 355);
+            this.btnEliminar.Location = new System.Drawing.Point(217, 412);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 3;
@@ -162,7 +167,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(323, 355);
+            this.btnLimpiar.Location = new System.Drawing.Point(318, 412);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpiar.TabIndex = 4;
@@ -174,7 +179,7 @@
             // 
             this.dgvNiveles.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvNiveles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNiveles.Location = new System.Drawing.Point(280, 19);
+            this.dgvNiveles.Location = new System.Drawing.Point(276, 76);
             this.dgvNiveles.Name = "dgvNiveles";
             this.dgvNiveles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNiveles.Size = new System.Drawing.Size(590, 277);
@@ -182,6 +187,11 @@
             // 
             // gbRegistrodeNiveles
             // 
+            this.gbRegistrodeNiveles.Controls.Add(this.btnLimpiarFiltro);
+            this.gbRegistrodeNiveles.Controls.Add(this.txtBusqueda);
+            this.gbRegistrodeNiveles.Controls.Add(this.lblDigiteSuBusqueda);
+            this.gbRegistrodeNiveles.Controls.Add(this.cbFiltro);
+            this.gbRegistrodeNiveles.Controls.Add(this.lblFiltrarPor);
             this.gbRegistrodeNiveles.Controls.Add(this.pictureBox1);
             this.gbRegistrodeNiveles.Controls.Add(this.btnVerEstudiantesR);
             this.gbRegistrodeNiveles.Controls.Add(this.btnSeleccionarGrupos);
@@ -201,7 +211,7 @@
             this.gbRegistrodeNiveles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbRegistrodeNiveles.Location = new System.Drawing.Point(26, 18);
             this.gbRegistrodeNiveles.Name = "gbRegistrodeNiveles";
-            this.gbRegistrodeNiveles.Size = new System.Drawing.Size(887, 331);
+            this.gbRegistrodeNiveles.Size = new System.Drawing.Size(887, 388);
             this.gbRegistrodeNiveles.TabIndex = 0;
             this.gbRegistrodeNiveles.TabStop = false;
             this.gbRegistrodeNiveles.Text = "Registro de Niveles";
@@ -209,9 +219,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(6, 185);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 203);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(264, 140);
+            this.pictureBox1.Size = new System.Drawing.Size(264, 179);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
@@ -219,7 +229,7 @@
             // btnVerEstudiantesR
             // 
             this.btnVerEstudiantesR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerEstudiantesR.Location = new System.Drawing.Point(525, 302);
+            this.btnVerEstudiantesR.Location = new System.Drawing.Point(552, 359);
             this.btnVerEstudiantesR.Name = "btnVerEstudiantesR";
             this.btnVerEstudiantesR.Size = new System.Drawing.Size(211, 23);
             this.btnVerEstudiantesR.TabIndex = 8;
@@ -230,7 +240,7 @@
             // btnSeleccionarGrupos
             // 
             this.btnSeleccionarGrupos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeleccionarGrupos.Location = new System.Drawing.Point(377, 302);
+            this.btnSeleccionarGrupos.Location = new System.Drawing.Point(404, 359);
             this.btnSeleccionarGrupos.Name = "btnSeleccionarGrupos";
             this.btnSeleccionarGrupos.Size = new System.Drawing.Size(119, 23);
             this.btnSeleccionarGrupos.TabIndex = 7;
@@ -287,11 +297,67 @@
             this.lblProfesor.TabIndex = 13;
             this.lblProfesor.Text = "Profesor:";
             // 
+            // lblFiltrarPor
+            // 
+            this.lblFiltrarPor.AutoSize = true;
+            this.lblFiltrarPor.Location = new System.Drawing.Point(273, 22);
+            this.lblFiltrarPor.Name = "lblFiltrarPor";
+            this.lblFiltrarPor.Size = new System.Drawing.Size(65, 13);
+            this.lblFiltrarPor.TabIndex = 17;
+            this.lblFiltrarPor.Text = "Filtrar por:";
+            // 
+            // cbFiltro
+            // 
+            this.cbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFiltro.FormattingEnabled = true;
+            this.cbFiltro.Items.AddRange(new object[] {
+            "Nivel",
+            "Horario",
+            "Profesor",
+            "Aula"});
+            this.cbFiltro.Location = new System.Drawing.Point(276, 42);
+            this.cbFiltro.Name = "cbFiltro";
+            this.cbFiltro.Size = new System.Drawing.Size(200, 21);
+            this.cbFiltro.TabIndex = 18;
+            this.cbFiltro.SelectedIndexChanged += new System.EventHandler(this.cbFiltro_SelectedIndexChanged);
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.txtBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusqueda.FormattingEnabled = true;
+            this.txtBusqueda.Location = new System.Drawing.Point(505, 42);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(269, 21);
+            this.txtBusqueda.TabIndex = 20;
+            this.txtBusqueda.SelectedIndexChanged += new System.EventHandler(this.txtBusqueda_SelectedIndexChanged);
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            // 
+            // lblDigiteSuBusqueda
+            // 
+            this.lblDigiteSuBusqueda.AutoSize = true;
+            this.lblDigiteSuBusqueda.Location = new System.Drawing.Point(502, 22);
+            this.lblDigiteSuBusqueda.Name = "lblDigiteSuBusqueda";
+            this.lblDigiteSuBusqueda.Size = new System.Drawing.Size(121, 13);
+            this.lblDigiteSuBusqueda.TabIndex = 19;
+            this.lblDigiteSuBusqueda.Text = "Digite su Busqueda:";
+            // 
+            // btnLimpiarFiltro
+            // 
+            this.btnLimpiarFiltro.Location = new System.Drawing.Point(791, 40);
+            this.btnLimpiarFiltro.Name = "btnLimpiarFiltro";
+            this.btnLimpiarFiltro.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiarFiltro.TabIndex = 21;
+            this.btnLimpiarFiltro.Text = "Limpiar";
+            this.btnLimpiarFiltro.UseVisualStyleBackColor = true;
+            this.btnLimpiarFiltro.Click += new System.EventHandler(this.btnLimpiarFiltro_Click);
+            // 
             // frmRegistrodeGruposyNiveles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(937, 397);
+            this.ClientSize = new System.Drawing.Size(937, 447);
             this.Controls.Add(this.gbRegistrodeNiveles);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnEliminar);
@@ -334,5 +400,10 @@
         private System.Windows.Forms.Button btnSeleccionarGrupos;
         private System.Windows.Forms.Button btnVerEstudiantesR;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox cbFiltro;
+        private System.Windows.Forms.Label lblFiltrarPor;
+        private System.Windows.Forms.ComboBox txtBusqueda;
+        private System.Windows.Forms.Label lblDigiteSuBusqueda;
+        private System.Windows.Forms.Button btnLimpiarFiltro;
     }
 }

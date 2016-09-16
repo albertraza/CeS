@@ -61,6 +61,7 @@
             this.salirDelSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvNiveles = new System.Windows.Forms.DataGridView();
             this.gbNiveles = new System.Windows.Forms.GroupBox();
+            this.pbRecargar = new System.Windows.Forms.PictureBox();
             this.btnLimpiarNivelesBusqueda = new System.Windows.Forms.Button();
             this.lblDigiteSuBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.ComboBox();
@@ -135,10 +136,10 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.pbRecargar = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRecargar)).BeginInit();
             this.gbEstudiante.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstudiantes)).BeginInit();
             this.gbAsistencia.SuspendLayout();
@@ -151,7 +152,6 @@
             this.gbInformacionPagos.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbDatosPersonales.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbRecargar)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -207,14 +207,14 @@
             // 
             this.registroDeMoraYCToolStripMenuItem.Name = "registroDeMoraYCToolStripMenuItem";
             this.registroDeMoraYCToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.registroDeMoraYCToolStripMenuItem.Text = "Registro de Pagos";
+            this.registroDeMoraYCToolStripMenuItem.Text = "Precios";
             this.registroDeMoraYCToolStripMenuItem.Click += new System.EventHandler(this.registroDeMoraYCToolStripMenuItem_Click);
             // 
             // ingresosVIPToolStripMenuItem
             // 
             this.ingresosVIPToolStripMenuItem.Name = "ingresosVIPToolStripMenuItem";
             this.ingresosVIPToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.ingresosVIPToolStripMenuItem.Text = "Ingresos VIP";
+            this.ingresosVIPToolStripMenuItem.Text = "Precios VIP";
             this.ingresosVIPToolStripMenuItem.Click += new System.EventHandler(this.ingresosVIPToolStripMenuItem_Click);
             // 
             // estudiantesToolStripMenuItem
@@ -415,6 +415,16 @@
             this.gbNiveles.TabIndex = 3;
             this.gbNiveles.TabStop = false;
             this.gbNiveles.Text = "Niveles";
+            // 
+            // pbRecargar
+            // 
+            this.pbRecargar.Image = ((System.Drawing.Image)(resources.GetObject("pbRecargar.Image")));
+            this.pbRecargar.Location = new System.Drawing.Point(751, 45);
+            this.pbRecargar.Name = "pbRecargar";
+            this.pbRecargar.Size = new System.Drawing.Size(20, 23);
+            this.pbRecargar.TabIndex = 8;
+            this.pbRecargar.TabStop = false;
+            this.pbRecargar.Click += new System.EventHandler(this.pbRecargar_Click);
             // 
             // btnLimpiarNivelesBusqueda
             // 
@@ -1171,16 +1181,6 @@
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "Nombre:";
             // 
-            // pbRecargar
-            // 
-            this.pbRecargar.Image = ((System.Drawing.Image)(resources.GetObject("pbRecargar.Image")));
-            this.pbRecargar.Location = new System.Drawing.Point(751, 45);
-            this.pbRecargar.Name = "pbRecargar";
-            this.pbRecargar.Size = new System.Drawing.Size(20, 23);
-            this.pbRecargar.TabIndex = 8;
-            this.pbRecargar.TabStop = false;
-            this.pbRecargar.Click += new System.EventHandler(this.pbRecargar_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1201,6 +1201,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).EndInit();
             this.gbNiveles.ResumeLayout(false);
             this.gbNiveles.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRecargar)).EndInit();
             this.gbEstudiante.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstudiantes)).EndInit();
             this.gbAsistencia.ResumeLayout(false);
@@ -1217,7 +1218,6 @@
             this.groupBox1.PerformLayout();
             this.gbDatosPersonales.ResumeLayout(false);
             this.gbDatosPersonales.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbRecargar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

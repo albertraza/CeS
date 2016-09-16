@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Cely_Sistema
 {
@@ -14,6 +15,89 @@ namespace Cely_Sistema
         public frmRegistrodeGruposyNiveles()
         {
             InitializeComponent();
+        }
+        // metodo para cargar los horarios
+        private void loadHorarios()
+        {
+            txtBusqueda.Items.Clear();
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("select ID, Dias + ' ' + Hora as Horario from Horarios", con);
+                SqlDataReader reader = comand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    txtBusqueda.Items.Add(reader["Horario"]);
+                }
+            }
+        }
+
+        // metodo para cargar los profesores
+        private void loadProfesores()
+        {
+            txtBusqueda.Items.Clear();
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand("Select ID, Nombre + ' ' + Apellido as Profesor from Profesores", con);
+                SqlDataReader reader = comand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    txtBusqueda.Items.Add(reader["Profesor"]);
+                }
+
+            }
+        }
+
+        // metodo para cargar las Aulas
+        private void loadAulas()
+        {
+            txtBusqueda.Items.Clear();
+
+            txtBusqueda.Items.Add("A");
+            txtBusqueda.Items.Add("B");
+            txtBusqueda.Items.Add("C");
+        }
+
+        // metodo para limpiar el fitro de niveles
+        private void limpiarFiltroNiveles()
+        {
+            cbFiltro.SelectedIndex = -1;
+            txtBusqueda.Items.Clear();
+            txtBusqueda.Text = "";
+            dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
+        }
+
+        // metodo para filtrar los niveles
+        private void filtrarNiveles()
+        {
+            try
+            {
+                if (cbFiltro.Text == "Horario")
+                {
+                    dgvNiveles.DataSource = GruposDB.BuscarGrupos("", "", "", "", txtBusqueda.Text);
+                }
+                else if (cbFiltro.Text == "Profesor")
+                {
+                    dgvNiveles.DataSource = GruposDB.BuscarGrupos("", txtBusqueda.Text, "", "", "");
+                }
+                else if (cbFiltro.Text == "Aula")
+                {
+                    dgvNiveles.DataSource = GruposDB.BuscarGrupos("", "", "", txtBusqueda.Text, "");
+                }
+                else if (cbFiltro.Text == "Nivel")
+                {
+                    dgvNiveles.DataSource = GruposDB.BuscarGrupos(txtBusqueda.Text, "", "", "", "");
+                }
+                else if (cbFiltro.Text == "")
+                {
+                    dgvNiveles.DataSource = GruposDB.TodosLosGrupos();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         bool p1 = false, p2 = false;
@@ -368,6 +452,64 @@ namespace Cely_Sistema
             {
                 dtpFechaInicio.Focus();
             }
+        }
+
+        private void cbFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (cbFiltro.Text == "Nivel")
+                {
+                    txtBusqueda.DropDownStyle = ComboBoxStyle.Simple;
+                    txtBusqueda.Select();
+                }
+                else if (cbFiltro.Text == "Horario")
+                {
+                    txtBusqueda.DropDownStyle = ComboBoxStyle.DropDownList;
+                    loadHorarios();
+                    txtBusqueda.Select();
+                }
+                else if (cbFiltro.Text == "Profesor")
+                {
+                    txtBusqueda.DropDownStyle = ComboBoxStyle.DropDownList;
+                    loadProfesores();
+                    txtBusqueda.Select();
+                }
+                else if (cbFiltro.Text == "Aula")
+                {
+                    txtBusqueda.DropDownStyle = ComboBoxStyle.DropDownList;
+                    loadAulas();
+                    txtBusqueda.Select();
+                }
+                else if (cbFiltro.Text == "")
+                {
+                    txtBusqueda.DropDownStyle = ComboBoxStyle.Simple;
+                }
+                else
+                {
+                    MessageBox.Show("El Filtro no ha sido registrado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtrarNiveles();
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            filtrarNiveles();
+        }
+
+        private void btnLimpiarFiltro_Click(object sender, EventArgs e)
+        {
+            limpiarFiltroNiveles();
         }
 
         private void dtpFechaInicio_KeyPress(object sender, KeyPressEventArgs e)
