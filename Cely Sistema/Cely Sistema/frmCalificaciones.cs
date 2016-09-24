@@ -23,20 +23,8 @@ namespace Cely_Sistema
             dtpFechaParcial.Value = DateTime.Now;
         }
 
-        private void frmCalificaciones_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                txtNombre.Enabled = false;
-                txtApellido.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnCargraEstudiante_Click(object sender, EventArgs e)
+        //metodo para llenar los campos
+        private void populateEstudiante()
         {
             try
             {
@@ -70,10 +58,92 @@ namespace Cely_Sistema
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        // metodo para cambiar the layout
+        private void changeLayout()
+        {
+            try
+            {
+                if (rbExamenEscrito.Checked == true)
+                {
+                    if (txtMatricula.Text == string.Empty)
+                    {
+                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        int Matricula = int.Parse(txtMatricula.Text);
+                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExmenEscrM(Matricula, "");
+                        gbNotas.Text = "Notas Examen Escrito";
+                    }
+                }
+                else if (rbExamenLectura.Checked == true)
+                {
+                    if (txtMatricula.Text == string.Empty)
+                    {
+                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        int Matricula = int.Parse(txtMatricula.Text);
+                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenLecM(Matricula, "");
+                        gbNotas.Text = "Notas Examen Lectura";
+                    }
+                }
+                else if (rbExamenOral.Checked == true)
+                {
+                    if (txtMatricula.Text == string.Empty)
+                    {
+                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        int Matricula = int.Parse(txtMatricula.Text);
+                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenOralM(Matricula, "");
+                        gbNotas.Text = "Notas Examen Oral";
+                    }
+                }
+                else
+                {
+                    if (txtMatricula.Text == string.Empty)
+                    {
+                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        int Matricula = int.Parse(txtMatricula.Text);
+                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExpM(Matricula, "");
+                        gbNotas.Text = "Notas Exposicion";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void frmCalificaciones_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                txtNombre.Enabled = false;
+                txtApellido.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCargraEstudiante_Click(object sender, EventArgs e)
+        {
+            populateEstudiante();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -618,254 +688,22 @@ namespace Cely_Sistema
 
         private void rbExamenEscrito_CheckedChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (rbExamenEscrito.Checked == true)
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExmenEscrM(Matricula, "");
-                        gbNotas.Text = "Notas Examen Escrito";
-                    }
-                }
-                else if (rbExamenLectura.Checked == true)
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenLecM(Matricula, "");
-                        gbNotas.Text = "Notas Examen Lectura";
-                    }
-                }
-                else if (rbExamenOral.Checked == true)
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenOralM(Matricula, "");
-                        gbNotas.Text = "Notas Examen Oral";
-                    }
-                }
-                else
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExpM(Matricula, "");
-                        gbNotas.Text = "Notas Exposicion";
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            changeLayout();
         }
 
         private void rbExamenOral_CheckedChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (rbExamenEscrito.Checked == true)
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExmenEscrM(Matricula, "");
-                        gbNotas.Text = "Notas Examen Escrito";
-                    }
-                }
-                else if (rbExamenLectura.Checked == true)
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenLecM(Matricula, "");
-                        gbNotas.Text = "Notas Examen Lectura";
-                    }
-                }
-                else if (rbExamenOral.Checked == true)
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenOralM(Matricula, "");
-                        gbNotas.Text = "Notas Examen Oral";
-                    }
-                }
-                else
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExpM(Matricula, "");
-                        gbNotas.Text = "Notas Exposicion";
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            changeLayout();
         }
 
         private void rbExamenLectura_CheckedChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (rbExamenEscrito.Checked == true)
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExmenEscrM(Matricula, "");
-                        gbNotas.Text = "Notas Examen Escrito";
-                    }
-                }
-                else if (rbExamenLectura.Checked == true)
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenLecM(Matricula, "");
-                        gbNotas.Text = "Notas Examen Lectura";
-                    }
-                }
-                else if (rbExamenOral.Checked == true)
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenOralM(Matricula, "");
-                        gbNotas.Text = "Notas Examen Oral";
-                    }
-                }
-                else
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExpM(Matricula, "");
-                        gbNotas.Text = "Notas Exposicion";
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            changeLayout();
         }
 
         private void rbExposicion_CheckedChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (rbExamenEscrito.Checked == true)
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExmenEscrM(Matricula, "");
-                        gbNotas.Text = "Notas Examen Escrito";
-                    }
-                }
-                else if (rbExamenLectura.Checked == true)
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenLecM(Matricula, "");
-                        gbNotas.Text = "Notas Examen Lectura";
-                    }
-                }
-                else if (rbExamenOral.Checked == true)
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExamenOralM(Matricula, "");
-                        gbNotas.Text = "Notas Examen Oral";
-                    }
-                }
-                else
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Completa el Campo Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        int Matricula = int.Parse(txtMatricula.Text);
-                        dgvUltimasCalificaciones.DataSource = NotasDB.TodasLasNotasExpM(Matricula, "");
-                        gbNotas.Text = "Notas Exposicion";
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            changeLayout();
         }
 
         private Asistencia pAS { get; set; }
@@ -973,42 +811,7 @@ namespace Cely_Sistema
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                try
-                {
-                    if (txtMatricula.Text == string.Empty)
-                    {
-                        MessageBox.Show("Matricula Vacia, Complete la Matricula", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtMatricula.Focus();
-                    }
-                    else
-                    {
-                        string nombre = EstudianteDB.ObtenerNombre(Convert.ToInt32(txtMatricula.Text));
-                        string apellido = EstudianteDB.ObtenerApellido(Convert.ToInt32(txtMatricula.Text));
-
-                        if (nombre != null & apellido != null)
-                        {
-                            txtNombre.Text = nombre;
-                            txtApellido.Text = apellido;
-                            dgvAsistencia.DataSource = AsistenciaDB.BuscarAsistencia(txtMatricula.Text, "", "", "");
-                            dgvNotaAsistencia.DataSource = NotaAsistenciaDB.BuscarCalificaciones(int.Parse(txtMatricula.Text));
-                            btnCargarCalificacion.Enabled = true;
-                            btnGuardar.Enabled = true;
-                            btnModificar.Enabled = false;
-                            btnEliminar.Enabled = false;
-                            rbExamenEscrito.Checked = true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("El estudiante No existe, Digite una Matricula Valida", "Calificaciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtMatricula.Clear();
-                            txtMatricula.Focus();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                populateEstudiante();
             }
         }
 
