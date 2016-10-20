@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dgvTabla = new System.Windows.Forms.DataGridView();
             this.txtPagoMensual = new System.Windows.Forms.TextBox();
             this.lblPagoMensual = new System.Windows.Forms.Label();
             this.lblPagoSemanal = new System.Windows.Forms.Label();
@@ -43,21 +42,11 @@
             this.celyDBDataSet = new Cely_Sistema.CelyDBDataSet();
             this.verMoraPagosTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.VerMoraPagosTableAdapter();
             this.btnModificar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).BeginInit();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.gbTarifario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.verMoraPagosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.celyDBDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvTabla
-            // 
-            this.dgvTabla.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTabla.Location = new System.Drawing.Point(234, 25);
-            this.dgvTabla.Name = "dgvTabla";
-            this.dgvTabla.Size = new System.Drawing.Size(443, 111);
-            this.dgvTabla.TabIndex = 0;
-            this.dgvTabla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTabla_CellContentClick);
             // 
             // txtPagoMensual
             // 
@@ -129,9 +118,9 @@
             // 
             // gbTarifario
             // 
+            this.gbTarifario.Controls.Add(this.checkBox1);
             this.gbTarifario.Controls.Add(this.lblPagoMensual);
             this.gbTarifario.Controls.Add(this.lblMoraPagoMensual);
-            this.gbTarifario.Controls.Add(this.dgvTabla);
             this.gbTarifario.Controls.Add(this.txtMoraPagoMensual);
             this.gbTarifario.Controls.Add(this.txtPagoMensual);
             this.gbTarifario.Controls.Add(this.lblMorPagoSemanal);
@@ -140,10 +129,10 @@
             this.gbTarifario.Controls.Add(this.lblPagoSemanal);
             this.gbTarifario.Location = new System.Drawing.Point(12, 12);
             this.gbTarifario.Name = "gbTarifario";
-            this.gbTarifario.Size = new System.Drawing.Size(696, 158);
+            this.gbTarifario.Size = new System.Drawing.Size(382, 158);
             this.gbTarifario.TabIndex = 0;
             this.gbTarifario.TabStop = false;
-            this.gbTarifario.Text = "Tarifa";
+            this.gbTarifario.Text = "Tarifario Estudiante";
             // 
             // verMoraPagosBindingSource
             // 
@@ -161,7 +150,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(32, 178);
+            this.btnModificar.Location = new System.Drawing.Point(12, 353);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 1;
@@ -169,11 +158,20 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(215, 24);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // frmMontoPagosyMora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(725, 213);
+            this.ClientSize = new System.Drawing.Size(438, 388);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.gbTarifario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -181,7 +179,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pagos Y Mora";
             this.Load += new System.EventHandler(this.frmMontoPagosyMora_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).EndInit();
             this.gbTarifario.ResumeLayout(false);
             this.gbTarifario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.verMoraPagosBindingSource)).EndInit();
@@ -191,8 +188,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvTabla;
         private System.Windows.Forms.TextBox txtPagoMensual;
         private System.Windows.Forms.Label lblPagoMensual;
         private System.Windows.Forms.Label lblPagoSemanal;
@@ -206,5 +201,6 @@
         private CelyDBDataSet celyDBDataSet;
         private CelyDBDataSetTableAdapters.VerMoraPagosTableAdapter verMoraPagosTableAdapter;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
