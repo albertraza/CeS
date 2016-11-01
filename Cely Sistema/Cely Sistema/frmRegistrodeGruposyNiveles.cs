@@ -404,7 +404,15 @@ namespace Cely_Sistema
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            Limpiar();
+            try
+            {
+                Limpiar();
+                limpiarFiltroNiveles();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public Int32 ID { get; set; }
