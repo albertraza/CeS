@@ -140,9 +140,16 @@ namespace Cely_Sistema
             {
                 try
                 {
-                    int ID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[12].Value);
-                    re.GetIDestudiante = EstudianteDB.SeleccionarEstudiante(ID);
-                    re.ShowDialog();
+                    if (!re.IsDisposed)
+                    {
+                        int ID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[12].Value);
+                        re.GetIDestudiante = EstudianteDB.SeleccionarEstudiante(ID);
+                        re.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya estaabierta una ventana con este dialogo!");
+                    }
                 }
                 catch (Exception ex)
                 {

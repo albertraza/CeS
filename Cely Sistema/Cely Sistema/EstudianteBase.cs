@@ -27,11 +27,16 @@ namespace Cely_Sistema
         public string Celular { get; set; }
         public string Respuesta1 { get; set; }
         public string Respuesta2 { get; set; }
+        public int pagoGrupal { get; set; }
+        public int codigoGrupal { get; set; }
 
         public EstudianteBase() { }
 
-        public EstudianteBase(string pNombre, string pApellido, string pFecha_N, string pFecha_Ins, string pDireccion, string pOcupacion,
-            string pE_Mail, string pD_Idioma, string pN_Academico, string pNivelA, string pTelefono, string pEdad, Int64 pID, string pSector, Int32 CG, string MP, string vip, string celular, string respu1, string respu2)
+        public EstudianteBase(string pNombre, string pApellido, string pFecha_N, string pFecha_Ins,
+            string pDireccion, string pOcupacion,
+            string pE_Mail, string pD_Idioma, string pN_Academico, string pNivelA, string pTelefono,
+            string pEdad, Int64 pID, string pSector, Int32 CG, string MP, 
+            string vip, string celular, string respu1, string respu2, int pg, int cg)
         {
             this.Nombre = pNombre;
             this.Apellido = pApellido;
@@ -53,6 +58,22 @@ namespace Cely_Sistema
             this.Respuesta1 = respu1;
             this.Respuesta2 = respu2;
             this.Celular = celular;
+            this.pagoGrupal = pg;
+            this.codigoGrupal = cg;
+        }
+    }
+    public class Pagos
+    {
+        public int Matricula { get; set; }
+        public double PagoMensualSemanal { get; set; }
+        public double MoraMensualSemanal { get; set; }
+
+        public Pagos() { }
+        public Pagos(int ma, double pms, double mms)
+        {
+            Matricula = ma;
+            PagoMensualSemanal = pms;
+            MoraMensualSemanal = mms;
         }
     }
 }

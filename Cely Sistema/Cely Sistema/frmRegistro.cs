@@ -12,6 +12,118 @@ namespace Cely_Sistema
 {
     public partial class frmRegistro : Form
     {
+        // metodo para validar si sera VIP
+        private void validateVIP()
+        {
+            if (MessageBox.Show("El Estudiante sera VIP?", "Registro Estudiantil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                cbVIP.Checked = true;
+                if (rbMensual.Checked)
+                {
+                    if (cbVIP.Checked)
+                    {
+                        txtPagoMensualSemanal.Text = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual).ToString("f2");
+                        txtMoraMensualSemanal.Text = Convert.ToDouble(MoraDB.GetVIPpayments().Mora_Mensual).ToString("f2");
+                    }
+                    else
+                    {
+                        txtPagoMensualSemanal.Text = Convert.ToDouble(PagosDB.ObtenerPagoMensual()).ToString("f2");
+                        txtMoraMensualSemanal.Text = Convert.ToDouble(MoraDB.ObtenerMoraMensual()).ToString("f2");
+                    }
+                }
+                else
+                {
+                    if (cbVIP.Checked)
+                    {
+                        txtPagoMensualSemanal.Text = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal).ToString("f2");
+                        txtMoraMensualSemanal.Text = Convert.ToDouble(MoraDB.GetVIPpayments().Mora_Semanal).ToString("f2");
+                    }
+                    else
+                    {
+                        txtPagoMensualSemanal.Text = Convert.ToDouble(PagosDB.ObtenerPagoSemanal()).ToString("f2");
+                        txtMoraMensualSemanal.Text = Convert.ToDouble(MoraDB.ObtenerMoraSemanal()).ToString("f2");
+                    }
+                }
+            }
+            else
+            {
+                if (rbMensual.Checked)
+                {
+                    if (cbVIP.Checked)
+                    {
+                        txtPagoMensualSemanal.Text = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual).ToString("f2");
+                        txtMoraMensualSemanal.Text = Convert.ToDouble(MoraDB.GetVIPpayments().Mora_Mensual).ToString("f2");
+                    }
+                    else
+                    {
+                        txtPagoMensualSemanal.Text = Convert.ToDouble(PagosDB.ObtenerPagoMensual()).ToString("f2");
+                        txtMoraMensualSemanal.Text = Convert.ToDouble(MoraDB.ObtenerMoraMensual()).ToString("f2");
+                    }
+                }
+                else
+                {
+                    if (cbVIP.Checked)
+                    {
+                        txtPagoMensualSemanal.Text = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal).ToString("f2");
+                        txtMoraMensualSemanal.Text = Convert.ToDouble(MoraDB.GetVIPpayments().Mora_Semanal).ToString("f2");
+                    }
+                    else
+                    {
+                        txtPagoMensualSemanal.Text = Convert.ToDouble(PagosDB.ObtenerPagoSemanal()).ToString("f2");
+                        txtMoraMensualSemanal.Text = Convert.ToDouble(MoraDB.ObtenerMoraSemanal()).ToString("f2");
+                    }
+                }
+            }
+        }
+
+        // metodo para enable o disable texbox para recios
+        private void enabledisablePrecios(bool validateLoad)
+        {
+            if (!validateLoad)
+            {
+                if (rbSI.Checked)
+                {
+                    txtPagoMensualSemanal.Enabled = false;
+                    txtMoraMensualSemanal.Enabled = false;
+                    lblAutoCompletar.Enabled = false;
+                    lblCrearGrupo.Enabled = true;
+                    cleanPrecios();
+                    txtPagoMensualSemanal.Text = "0.00";
+                    txtMoraMensualSemanal.Text = "0.00";
+                }
+                else
+                {
+                    txtPagoMensualSemanal.Enabled = true;
+                    txtMoraMensualSemanal.Enabled = true;
+                    lblAutoCompletar.Enabled = true;
+                    lblCrearGrupo.Enabled = false;
+                    cleanPrecios();
+                }
+            }
+            else
+            {
+                if (rbSI.Checked)
+                {
+                    txtPagoMensualSemanal.Enabled = false;
+                    txtMoraMensualSemanal.Enabled = false;
+                    lblAutoCompletar.Enabled = false;
+                    lblCrearGrupo.Enabled = true;
+                }
+                else
+                {
+                    txtPagoMensualSemanal.Enabled = true;
+                    txtMoraMensualSemanal.Enabled = true;
+                    lblAutoCompletar.Enabled = true;
+                    lblCrearGrupo.Enabled = false;
+                }
+            }
+        }
+        // metodo para limpiar los texbox del precio
+        private void cleanPrecios()
+        {
+            txtPagoMensualSemanal.Clear();
+            txtMoraMensualSemanal.Clear();
+        }
         // metodo para cargar los horarios
         private void loadHorarios()
         {
@@ -131,6 +243,7 @@ namespace Cely_Sistema
                 MessageBox.Show("Error: " + ex.Message, "Registro de Estudiantes", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void selectNivel(int codigoNivel)
         {
             // para seleccionar el nivel el cual se encuentra el estudiante
@@ -147,6 +260,7 @@ namespace Cely_Sistema
             dgvNiveles.Rows[rowIndex].Selected = true;
             // final codigo para seleccionar el nivel donde se encuentra el estudiante
         }
+
         public EstudianteBase EstudianteSeleccionado { get; set; }
         public Grupos pGS { get; set; }
         private void Limpiar()
@@ -181,6 +295,10 @@ namespace Cely_Sistema
             limpiarFiltroNiveles();
             dgvNiveles.ClearSelection();
             dgvNiveles.Enabled = false;
+            txtMoraMensualSemanal.Clear();
+            txtPagoMensualSemanal.Clear();
+            rbSI.Checked = false;
+            rbNo.Checked = false;
         }
         public frmRegistro()
         {
@@ -198,6 +316,9 @@ namespace Cely_Sistema
             {
                 try
                 {
+                    rbSI.Checked = false;
+                    rbNo.Checked = false;
+                    lblCrearGrupo.Enabled = false;
                     EstudianteSeleccionado = IDEstudiante;
                     txtNombre.Text = EstudianteSeleccionado.Nombre;
                     txtApellido.Text = EstudianteSeleccionado.Apellido;
@@ -367,6 +488,20 @@ namespace Cely_Sistema
                     MessageBox.Show("La respuesta a la pregunta numero 2 esta vacia", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtRespuesta2.Focus();
                 }
+                else if(!rbSI.Checked && !rbNo.Checked)
+                {
+                    MessageBox.Show("Falta indicar si el estudiante va a estar en un pago grupal", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if(txtMoraMensualSemanal.Text == string.Empty)
+                {
+                    MessageBox.Show("La mora esta vacia, Digite una mora", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtMoraMensualSemanal.Focus();
+                }
+                else if(txtPagoMensualSemanal.Text == string.Empty)
+                {
+                    MessageBox.Show("El pago esta vacio, Digite la cantidad que va a pagar", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtPagoMensualSemanal.Focus();
+                }
                 else
                 {
                     EstudianteBase pE = new EstudianteBase();
@@ -383,6 +518,7 @@ namespace Cely_Sistema
                     pE.Sector = txtSector.Text;
                     pE.Telefono = txtTelefono.Text;
                     pE.NivelA = txtNivel.Text;
+
                     /* Struct Utilizado para rellenar la Asistencia */
                     Asistencia pA = new Asistencia();
                     if(rbMensual.Checked == true)
@@ -395,7 +531,18 @@ namespace Cely_Sistema
                     }
                     pE.Codigo_Grupo = pGS.ID;
 
-                    int r = EstudianteDB.RegistrarEstudiante(pE, txtCelular.Text, txtRespuesta1.Text, txtRespuesta2.Text);
+                    int pagoGrupal;
+
+                    if (rbSI.Checked)
+                    {
+                        pagoGrupal = 1;
+                    }
+                    else
+                    {
+                        pagoGrupal = 0;
+                    }
+
+                    int r = EstudianteDB.RegistrarEstudiante(pE, txtCelular.Text, txtRespuesta1.Text, txtRespuesta2.Text, pagoGrupal, 0);
                     if (r > 0)
                     {
                         MessageBox.Show("Estudiante Registrado con exito!", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -455,6 +602,10 @@ namespace Cely_Sistema
                             int NTotalInscritos = GruposDB.ObtenerTotalInscritos(pID);
                             int NuevaCant = NTotalInscritos + 1;
                             GruposDB.ActualizarCantidadEstudiantes(pID, NuevaCant);
+
+                            // for Pagos
+                            PagosDB.registerPrecio(int.Parse(matricula), double.Parse(txtPagoMensualSemanal.Text), double.Parse(txtMoraMensualSemanal.Text));
+
                             Limpiar();
                         }
                     }
@@ -508,6 +659,7 @@ namespace Cely_Sistema
                     {
                         rbSemanal.Checked = true;
                     }
+
                     // VIP estudiante
                     if (pBusqueda.EstudianteSeleccionado.VIP == "Si")
                     {
@@ -517,6 +669,25 @@ namespace Cely_Sistema
                     {
                         cbVIP.Checked = false;
                     }
+
+                    // validate pago grupal selection
+                    if(pBusqueda.EstudianteSeleccionado.pagoGrupal == 1)
+                    {
+                        rbSI.Checked = true;
+                    }
+                    else if(pBusqueda.EstudianteSeleccionado.pagoGrupal == 0)
+                    {
+                        rbNo.Checked = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pago grupal no identificado", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    // cargar precios
+                    txtPagoMensualSemanal.Text = PagosDB.getPrecio(int.Parse(pBusqueda.EstudianteSeleccionado.ID.ToString())).precio.ToString("f2");
+                    txtMoraMensualSemanal.Text = PagosDB.getPrecio(int.Parse(pBusqueda.EstudianteSeleccionado.ID.ToString())).mora.ToString("f2");
+
                     btnRegistrar.Visible = false;
                     lblBuscarAlumno.Visible = false;
                     lblTitulo.Text = "Estudiante";
@@ -1113,6 +1284,55 @@ namespace Cely_Sistema
             else
             {
                 dgvNiveles.Enabled = false;
+            }
+        }
+
+        private void rbSI_CheckedChanged(object sender, EventArgs e)
+        {
+            if (pGS != null)
+            {
+                enabledisablePrecios(true);
+            }
+            else
+            {
+                enabledisablePrecios(false);
+            }
+        }
+
+        private void rbNo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (pGS != null)
+            {
+                enabledisablePrecios(true);
+            }
+            else
+            {
+                enabledisablePrecios(false);
+            }
+        }
+
+        private void lblAutoCompletar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try {
+                if (!rbMensual.Checked && !rbSemanal.Checked)
+                {
+                    MessageBox.Show("Seleccione un modo de pago(mensual o semanal)", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    if (cbVIP.Checked)
+                    {
+                        validateVIP();
+                    }
+                    else
+                    {
+                        validateVIP();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

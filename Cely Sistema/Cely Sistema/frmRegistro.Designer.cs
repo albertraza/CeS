@@ -60,6 +60,22 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.gbEstudiante = new System.Windows.Forms.GroupBox();
+            this.gbConfModoPago = new System.Windows.Forms.GroupBox();
+            this.lblAutoCompletar = new System.Windows.Forms.LinkLabel();
+            this.lblCrearGrupo = new System.Windows.Forms.LinkLabel();
+            this.txtMoraMensualSemanal = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblPagoMensualSemanal = new System.Windows.Forms.Label();
+            this.txtPagoMensualSemanal = new System.Windows.Forms.TextBox();
+            this.rbSI = new System.Windows.Forms.RadioButton();
+            this.rbNo = new System.Windows.Forms.RadioButton();
+            this.lblPregunta3 = new System.Windows.Forms.Label();
+            this.pModoPago = new System.Windows.Forms.Panel();
+            this.lblMododePago = new System.Windows.Forms.Label();
+            this.rbMensual = new System.Windows.Forms.RadioButton();
+            this.rbSemanal = new System.Windows.Forms.RadioButton();
+            this.gbVIP = new System.Windows.Forms.GroupBox();
+            this.cbVIP = new System.Windows.Forms.CheckBox();
             this.txtRespuesta2 = new System.Windows.Forms.TextBox();
             this.lblPregunta2 = new System.Windows.Forms.Label();
             this.txtRespuesta1 = new System.Windows.Forms.TextBox();
@@ -67,14 +83,8 @@
             this.txtCelular = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.lblCelular = new System.Windows.Forms.Label();
-            this.gbVIP = new System.Windows.Forms.GroupBox();
-            this.cbVIP = new System.Windows.Forms.CheckBox();
             this.cbN_Academico = new System.Windows.Forms.ComboBox();
             this.cbD_Idioma = new System.Windows.Forms.ComboBox();
-            this.pModoPago = new System.Windows.Forms.Panel();
-            this.lblMododePago = new System.Windows.Forms.Label();
-            this.rbMensual = new System.Windows.Forms.RadioButton();
-            this.rbSemanal = new System.Windows.Forms.RadioButton();
             this.dgvNiveles = new System.Windows.Forms.DataGridView();
             this.gbNiveles = new System.Windows.Forms.GroupBox();
             this.btnLimpiarFiltroNiveles = new System.Windows.Forms.Button();
@@ -92,8 +102,9 @@
             this.btnRetirar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.gbEstudiante.SuspendLayout();
-            this.gbVIP.SuspendLayout();
+            this.gbConfModoPago.SuspendLayout();
             this.pModoPago.SuspendLayout();
+            this.gbVIP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.celyDBDataSet)).BeginInit();
@@ -265,20 +276,20 @@
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(18, 467);
+            this.btnRegistrar.Location = new System.Drawing.Point(18, 570);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(75, 23);
-            this.btnRegistrar.TabIndex = 0;
+            this.btnRegistrar.TabIndex = 2;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = true;
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(560, 467);
+            this.btnCancelar.Location = new System.Drawing.Point(560, 570);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -295,7 +306,7 @@
             // lblNivelAcademico
             // 
             this.lblNivelAcademico.AutoSize = true;
-            this.lblNivelAcademico.Location = new System.Drawing.Point(23, 283);
+            this.lblNivelAcademico.Location = new System.Drawing.Point(31, 283);
             this.lblNivelAcademico.Name = "lblNivelAcademico";
             this.lblNivelAcademico.Size = new System.Drawing.Size(90, 13);
             this.lblNivelAcademico.TabIndex = 38;
@@ -329,36 +340,37 @@
             // lblBuscarAlumno
             // 
             this.lblBuscarAlumno.AutoSize = true;
-            this.lblBuscarAlumno.Location = new System.Drawing.Point(660, 472);
+            this.lblBuscarAlumno.Location = new System.Drawing.Point(660, 575);
             this.lblBuscarAlumno.Name = "lblBuscarAlumno";
             this.lblBuscarAlumno.Size = new System.Drawing.Size(78, 13);
-            this.lblBuscarAlumno.TabIndex = 4;
+            this.lblBuscarAlumno.TabIndex = 8;
             this.lblBuscarAlumno.TabStop = true;
             this.lblBuscarAlumno.Text = "Buscar Alumno";
             this.lblBuscarAlumno.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblBuscarAlumno_LinkClicked);
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(108, 467);
+            this.btnModificar.Location = new System.Drawing.Point(108, 570);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
-            this.btnModificar.TabIndex = 1;
+            this.btnModificar.TabIndex = 3;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(209, 467);
+            this.btnEliminar.Location = new System.Drawing.Point(209, 570);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // gbEstudiante
             // 
+            this.gbEstudiante.Controls.Add(this.gbConfModoPago);
             this.gbEstudiante.Controls.Add(this.txtRespuesta2);
             this.gbEstudiante.Controls.Add(this.lblPregunta2);
             this.gbEstudiante.Controls.Add(this.txtRespuesta1);
@@ -366,10 +378,8 @@
             this.gbEstudiante.Controls.Add(this.txtCelular);
             this.gbEstudiante.Controls.Add(this.txtTelefono);
             this.gbEstudiante.Controls.Add(this.lblCelular);
-            this.gbEstudiante.Controls.Add(this.gbVIP);
             this.gbEstudiante.Controls.Add(this.cbN_Academico);
             this.gbEstudiante.Controls.Add(this.cbD_Idioma);
-            this.gbEstudiante.Controls.Add(this.pModoPago);
             this.gbEstudiante.Controls.Add(this.lblFechaActual);
             this.gbEstudiante.Controls.Add(this.txtNombre);
             this.gbEstudiante.Controls.Add(this.lblNombre);
@@ -393,11 +403,182 @@
             this.gbEstudiante.Controls.Add(this.lblSector);
             this.gbEstudiante.Location = new System.Drawing.Point(13, 28);
             this.gbEstudiante.Name = "gbEstudiante";
-            this.gbEstudiante.Size = new System.Drawing.Size(384, 433);
+            this.gbEstudiante.Size = new System.Drawing.Size(384, 530);
             this.gbEstudiante.TabIndex = 0;
             this.gbEstudiante.TabStop = false;
             this.gbEstudiante.Text = "Estudiante";
             this.gbEstudiante.Enter += new System.EventHandler(this.gbEstudiante_Enter);
+            // 
+            // gbConfModoPago
+            // 
+            this.gbConfModoPago.Controls.Add(this.lblAutoCompletar);
+            this.gbConfModoPago.Controls.Add(this.lblCrearGrupo);
+            this.gbConfModoPago.Controls.Add(this.txtMoraMensualSemanal);
+            this.gbConfModoPago.Controls.Add(this.label1);
+            this.gbConfModoPago.Controls.Add(this.lblPagoMensualSemanal);
+            this.gbConfModoPago.Controls.Add(this.txtPagoMensualSemanal);
+            this.gbConfModoPago.Controls.Add(this.rbSI);
+            this.gbConfModoPago.Controls.Add(this.rbNo);
+            this.gbConfModoPago.Controls.Add(this.lblPregunta3);
+            this.gbConfModoPago.Controls.Add(this.pModoPago);
+            this.gbConfModoPago.Controls.Add(this.gbVIP);
+            this.gbConfModoPago.Location = new System.Drawing.Point(6, 403);
+            this.gbConfModoPago.Name = "gbConfModoPago";
+            this.gbConfModoPago.Size = new System.Drawing.Size(363, 121);
+            this.gbConfModoPago.TabIndex = 15;
+            this.gbConfModoPago.TabStop = false;
+            this.gbConfModoPago.Text = "Modo de pago";
+            // 
+            // lblAutoCompletar
+            // 
+            this.lblAutoCompletar.AutoSize = true;
+            this.lblAutoCompletar.Location = new System.Drawing.Point(274, 56);
+            this.lblAutoCompletar.Name = "lblAutoCompletar";
+            this.lblAutoCompletar.Size = new System.Drawing.Size(75, 13);
+            this.lblAutoCompletar.TabIndex = 59;
+            this.lblAutoCompletar.TabStop = true;
+            this.lblAutoCompletar.Text = "Autocompletar";
+            this.lblAutoCompletar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAutoCompletar_LinkClicked);
+            // 
+            // lblCrearGrupo
+            // 
+            this.lblCrearGrupo.AutoSize = true;
+            this.lblCrearGrupo.Location = new System.Drawing.Point(36, 63);
+            this.lblCrearGrupo.Name = "lblCrearGrupo";
+            this.lblCrearGrupo.Size = new System.Drawing.Size(64, 13);
+            this.lblCrearGrupo.TabIndex = 58;
+            this.lblCrearGrupo.TabStop = true;
+            this.lblCrearGrupo.Text = "Crear Grupo";
+            // 
+            // txtMoraMensualSemanal
+            // 
+            this.txtMoraMensualSemanal.Location = new System.Drawing.Point(272, 34);
+            this.txtMoraMensualSemanal.Name = "txtMoraMensualSemanal";
+            this.txtMoraMensualSemanal.Size = new System.Drawing.Size(75, 20);
+            this.txtMoraMensualSemanal.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(171, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.TabIndex = 57;
+            this.label1.Text = "Mora Mensual:";
+            // 
+            // lblPagoMensualSemanal
+            // 
+            this.lblPagoMensualSemanal.AutoSize = true;
+            this.lblPagoMensualSemanal.Location = new System.Drawing.Point(171, 16);
+            this.lblPagoMensualSemanal.Name = "lblPagoMensualSemanal";
+            this.lblPagoMensualSemanal.Size = new System.Drawing.Size(78, 13);
+            this.lblPagoMensualSemanal.TabIndex = 55;
+            this.lblPagoMensualSemanal.Text = "Pago Mensual:";
+            // 
+            // txtPagoMensualSemanal
+            // 
+            this.txtPagoMensualSemanal.Location = new System.Drawing.Point(272, 13);
+            this.txtPagoMensualSemanal.Name = "txtPagoMensualSemanal";
+            this.txtPagoMensualSemanal.Size = new System.Drawing.Size(75, 20);
+            this.txtPagoMensualSemanal.TabIndex = 2;
+            // 
+            // rbSI
+            // 
+            this.rbSI.AutoSize = true;
+            this.rbSI.Location = new System.Drawing.Point(35, 43);
+            this.rbSI.Name = "rbSI";
+            this.rbSI.Size = new System.Drawing.Size(34, 17);
+            this.rbSI.TabIndex = 0;
+            this.rbSI.TabStop = true;
+            this.rbSI.Text = "Si";
+            this.rbSI.UseVisualStyleBackColor = true;
+            this.rbSI.CheckedChanged += new System.EventHandler(this.rbSI_CheckedChanged);
+            // 
+            // rbNo
+            // 
+            this.rbNo.AutoSize = true;
+            this.rbNo.Location = new System.Drawing.Point(72, 43);
+            this.rbNo.Name = "rbNo";
+            this.rbNo.Size = new System.Drawing.Size(39, 17);
+            this.rbNo.TabIndex = 1;
+            this.rbNo.TabStop = true;
+            this.rbNo.Text = "No";
+            this.rbNo.UseVisualStyleBackColor = true;
+            this.rbNo.CheckedChanged += new System.EventHandler(this.rbNo_CheckedChanged);
+            // 
+            // lblPregunta3
+            // 
+            this.lblPregunta3.AutoSize = true;
+            this.lblPregunta3.Location = new System.Drawing.Point(25, 27);
+            this.lblPregunta3.Name = "lblPregunta3";
+            this.lblPregunta3.Size = new System.Drawing.Size(101, 13);
+            this.lblPregunta3.TabIndex = 52;
+            this.lblPregunta3.Text = "¿Pagara por grupo?";
+            // 
+            // pModoPago
+            // 
+            this.pModoPago.Controls.Add(this.lblMododePago);
+            this.pModoPago.Controls.Add(this.rbMensual);
+            this.pModoPago.Controls.Add(this.rbSemanal);
+            this.pModoPago.Location = new System.Drawing.Point(17, 79);
+            this.pModoPago.Name = "pModoPago";
+            this.pModoPago.Size = new System.Drawing.Size(245, 26);
+            this.pModoPago.TabIndex = 4;
+            // 
+            // lblMododePago
+            // 
+            this.lblMododePago.AutoSize = true;
+            this.lblMododePago.Location = new System.Drawing.Point(3, 6);
+            this.lblMododePago.Name = "lblMododePago";
+            this.lblMododePago.Size = new System.Drawing.Size(80, 13);
+            this.lblMododePago.TabIndex = 42;
+            this.lblMododePago.Text = "Modo de Pago:";
+            // 
+            // rbMensual
+            // 
+            this.rbMensual.AutoSize = true;
+            this.rbMensual.Location = new System.Drawing.Point(99, 5);
+            this.rbMensual.Name = "rbMensual";
+            this.rbMensual.Size = new System.Drawing.Size(65, 17);
+            this.rbMensual.TabIndex = 0;
+            this.rbMensual.TabStop = true;
+            this.rbMensual.Text = "Mensual";
+            this.rbMensual.UseVisualStyleBackColor = true;
+            this.rbMensual.CheckedChanged += new System.EventHandler(this.rbMensual_CheckedChanged);
+            this.rbMensual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rbMensual_KeyPress);
+            // 
+            // rbSemanal
+            // 
+            this.rbSemanal.AutoSize = true;
+            this.rbSemanal.Location = new System.Drawing.Point(170, 4);
+            this.rbSemanal.Name = "rbSemanal";
+            this.rbSemanal.Size = new System.Drawing.Size(66, 17);
+            this.rbSemanal.TabIndex = 1;
+            this.rbSemanal.TabStop = true;
+            this.rbSemanal.Text = "Semanal";
+            this.rbSemanal.UseVisualStyleBackColor = true;
+            this.rbSemanal.CheckedChanged += new System.EventHandler(this.rbSemanal_CheckedChanged);
+            this.rbSemanal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rbSemanal_KeyPress);
+            // 
+            // gbVIP
+            // 
+            this.gbVIP.Controls.Add(this.cbVIP);
+            this.gbVIP.Location = new System.Drawing.Point(277, 72);
+            this.gbVIP.Name = "gbVIP";
+            this.gbVIP.Size = new System.Drawing.Size(56, 33);
+            this.gbVIP.TabIndex = 5;
+            this.gbVIP.TabStop = false;
+            this.gbVIP.Text = "VIP";
+            // 
+            // cbVIP
+            // 
+            this.cbVIP.AutoSize = true;
+            this.cbVIP.Location = new System.Drawing.Point(18, 13);
+            this.cbVIP.Name = "cbVIP";
+            this.cbVIP.Size = new System.Drawing.Size(15, 14);
+            this.cbVIP.TabIndex = 0;
+            this.cbVIP.UseVisualStyleBackColor = true;
+            this.cbVIP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbVIP_KeyPress);
             // 
             // txtRespuesta2
             // 
@@ -460,26 +641,6 @@
             this.lblCelular.TabIndex = 48;
             this.lblCelular.Text = "Celular:";
             // 
-            // gbVIP
-            // 
-            this.gbVIP.Controls.Add(this.cbVIP);
-            this.gbVIP.Location = new System.Drawing.Point(283, 397);
-            this.gbVIP.Name = "gbVIP";
-            this.gbVIP.Size = new System.Drawing.Size(56, 33);
-            this.gbVIP.TabIndex = 46;
-            this.gbVIP.TabStop = false;
-            this.gbVIP.Text = "VIP";
-            // 
-            // cbVIP
-            // 
-            this.cbVIP.AutoSize = true;
-            this.cbVIP.Location = new System.Drawing.Point(18, 13);
-            this.cbVIP.Name = "cbVIP";
-            this.cbVIP.Size = new System.Drawing.Size(15, 14);
-            this.cbVIP.TabIndex = 0;
-            this.cbVIP.UseVisualStyleBackColor = true;
-            this.cbVIP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbVIP_KeyPress);
-            // 
             // cbN_Academico
             // 
             this.cbN_Academico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -489,7 +650,7 @@
             "Universitario",
             "Profesional",
             "Otros"});
-            this.cbN_Academico.Location = new System.Drawing.Point(114, 279);
+            this.cbN_Academico.Location = new System.Drawing.Point(122, 279);
             this.cbN_Academico.Name = "cbN_Academico";
             this.cbN_Academico.Size = new System.Drawing.Size(103, 21);
             this.cbN_Academico.TabIndex = 12;
@@ -510,51 +671,6 @@
             this.cbD_Idioma.TabIndex = 10;
             this.cbD_Idioma.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbD_Idioma_KeyPress);
             // 
-            // pModoPago
-            // 
-            this.pModoPago.Controls.Add(this.lblMododePago);
-            this.pModoPago.Controls.Add(this.rbMensual);
-            this.pModoPago.Controls.Add(this.rbSemanal);
-            this.pModoPago.Location = new System.Drawing.Point(26, 401);
-            this.pModoPago.Name = "pModoPago";
-            this.pModoPago.Size = new System.Drawing.Size(245, 26);
-            this.pModoPago.TabIndex = 45;
-            // 
-            // lblMododePago
-            // 
-            this.lblMododePago.AutoSize = true;
-            this.lblMododePago.Location = new System.Drawing.Point(3, 6);
-            this.lblMododePago.Name = "lblMododePago";
-            this.lblMododePago.Size = new System.Drawing.Size(80, 13);
-            this.lblMododePago.TabIndex = 42;
-            this.lblMododePago.Text = "Modo de Pago:";
-            // 
-            // rbMensual
-            // 
-            this.rbMensual.AutoSize = true;
-            this.rbMensual.Location = new System.Drawing.Point(99, 5);
-            this.rbMensual.Name = "rbMensual";
-            this.rbMensual.Size = new System.Drawing.Size(65, 17);
-            this.rbMensual.TabIndex = 0;
-            this.rbMensual.TabStop = true;
-            this.rbMensual.Text = "Mensual";
-            this.rbMensual.UseVisualStyleBackColor = true;
-            this.rbMensual.CheckedChanged += new System.EventHandler(this.rbMensual_CheckedChanged);
-            this.rbMensual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rbMensual_KeyPress);
-            // 
-            // rbSemanal
-            // 
-            this.rbSemanal.AutoSize = true;
-            this.rbSemanal.Location = new System.Drawing.Point(170, 4);
-            this.rbSemanal.Name = "rbSemanal";
-            this.rbSemanal.Size = new System.Drawing.Size(66, 17);
-            this.rbSemanal.TabIndex = 1;
-            this.rbSemanal.TabStop = true;
-            this.rbSemanal.Text = "Semanal";
-            this.rbSemanal.UseVisualStyleBackColor = true;
-            this.rbSemanal.CheckedChanged += new System.EventHandler(this.rbSemanal_CheckedChanged);
-            this.rbSemanal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rbSemanal_KeyPress);
-            // 
             // dgvNiveles
             // 
             this.dgvNiveles.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -562,7 +678,7 @@
             this.dgvNiveles.Location = new System.Drawing.Point(6, 105);
             this.dgvNiveles.Name = "dgvNiveles";
             this.dgvNiveles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNiveles.Size = new System.Drawing.Size(544, 322);
+            this.dgvNiveles.Size = new System.Drawing.Size(544, 425);
             this.dgvNiveles.TabIndex = 4;
             this.dgvNiveles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNiveles_CellContentClick);
             // 
@@ -582,7 +698,7 @@
             this.gbNiveles.Controls.Add(this.lblNivel);
             this.gbNiveles.Location = new System.Drawing.Point(412, 28);
             this.gbNiveles.Name = "gbNiveles";
-            this.gbNiveles.Size = new System.Drawing.Size(566, 433);
+            this.gbNiveles.Size = new System.Drawing.Size(566, 536);
             this.gbNiveles.TabIndex = 1;
             this.gbNiveles.TabStop = false;
             this.gbNiveles.Text = "Niveles";
@@ -592,7 +708,7 @@
             this.btnLimpiarFiltroNiveles.Location = new System.Drawing.Point(407, 76);
             this.btnLimpiarFiltroNiveles.Name = "btnLimpiarFiltroNiveles";
             this.btnLimpiarFiltroNiveles.Size = new System.Drawing.Size(55, 23);
-            this.btnLimpiarFiltroNiveles.TabIndex = 50;
+            this.btnLimpiarFiltroNiveles.TabIndex = 5;
             this.btnLimpiarFiltroNiveles.Text = "Limpiar";
             this.btnLimpiarFiltroNiveles.UseVisualStyleBackColor = true;
             this.btnLimpiarFiltroNiveles.Click += new System.EventHandler(this.btnLimpiarFiltroNiveles_Click);
@@ -604,7 +720,7 @@
             this.txtBusqueda.Location = new System.Drawing.Point(158, 78);
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(238, 20);
-            this.txtBusqueda.TabIndex = 49;
+            this.txtBusqueda.TabIndex = 4;
             this.txtBusqueda.SelectedIndexChanged += new System.EventHandler(this.txtBusqueda_SelectedIndexChanged);
             this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
@@ -620,7 +736,7 @@
             this.cbFiltro.Location = new System.Drawing.Point(23, 78);
             this.cbFiltro.Name = "cbFiltro";
             this.cbFiltro.Size = new System.Drawing.Size(121, 21);
-            this.cbFiltro.TabIndex = 48;
+            this.cbFiltro.TabIndex = 3;
             this.cbFiltro.SelectedIndexChanged += new System.EventHandler(this.cbFiltro_SelectedIndexChanged);
             // 
             // lblDigiteSuBusqueda
@@ -646,7 +762,7 @@
             this.btnSeleccionar.Location = new System.Drawing.Point(475, 76);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
-            this.btnSeleccionar.TabIndex = 2;
+            this.btnSeleccionar.TabIndex = 6;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
@@ -673,7 +789,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(500, 18);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(51, 23);
-            this.btnBuscar.TabIndex = 3;
+            this.btnBuscar.TabIndex = 2;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -694,7 +810,7 @@
             // 
             // btnRetirar
             // 
-            this.btnRetirar.Location = new System.Drawing.Point(314, 467);
+            this.btnRetirar.Location = new System.Drawing.Point(314, 570);
             this.btnRetirar.Name = "btnRetirar";
             this.btnRetirar.Size = new System.Drawing.Size(120, 23);
             this.btnRetirar.TabIndex = 5;
@@ -704,7 +820,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(457, 467);
+            this.btnLimpiar.Location = new System.Drawing.Point(457, 570);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpiar.TabIndex = 6;
@@ -716,7 +832,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 502);
+            this.ClientSize = new System.Drawing.Size(990, 605);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnRetirar);
             this.Controls.Add(this.gbNiveles);
@@ -735,10 +851,12 @@
             this.Load += new System.EventHandler(this.frmRegistro_Load);
             this.gbEstudiante.ResumeLayout(false);
             this.gbEstudiante.PerformLayout();
-            this.gbVIP.ResumeLayout(false);
-            this.gbVIP.PerformLayout();
+            this.gbConfModoPago.ResumeLayout(false);
+            this.gbConfModoPago.PerformLayout();
             this.pModoPago.ResumeLayout(false);
             this.pModoPago.PerformLayout();
+            this.gbVIP.ResumeLayout(false);
+            this.gbVIP.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).EndInit();
             this.gbNiveles.ResumeLayout(false);
             this.gbNiveles.PerformLayout();
@@ -812,5 +930,15 @@
         private System.Windows.Forms.ComboBox cbFiltro;
         private System.Windows.Forms.Label lblDigiteSuBusqueda;
         private System.Windows.Forms.Label lblFiltroPor;
+        private System.Windows.Forms.GroupBox gbConfModoPago;
+        private System.Windows.Forms.TextBox txtMoraMensualSemanal;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPagoMensualSemanal;
+        private System.Windows.Forms.TextBox txtPagoMensualSemanal;
+        private System.Windows.Forms.RadioButton rbSI;
+        private System.Windows.Forms.RadioButton rbNo;
+        private System.Windows.Forms.Label lblPregunta3;
+        private System.Windows.Forms.LinkLabel lblCrearGrupo;
+        private System.Windows.Forms.LinkLabel lblAutoCompletar;
     }
 }

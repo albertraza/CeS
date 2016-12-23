@@ -36,7 +36,6 @@
             this.cancelacionDeCobrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroDeMoraYCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ingresosVIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estudiantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarEstudianteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarEstudianteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -136,6 +135,7 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.registroDeGruposToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbNiveles.SuspendLayout();
@@ -176,8 +176,7 @@
             this.hacerFacturaToolStripMenuItem,
             this.cancelacionDeCobrosToolStripMenuItem,
             this.ingresosToolStripMenuItem,
-            this.registroDeMoraYCToolStripMenuItem,
-            this.ingresosVIPToolStripMenuItem});
+            this.registroDeMoraYCToolStripMenuItem});
             this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
             this.facturasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.facturasToolStripMenuItem.Text = "Cobros";
@@ -210,20 +209,14 @@
             this.registroDeMoraYCToolStripMenuItem.Text = "Precios";
             this.registroDeMoraYCToolStripMenuItem.Click += new System.EventHandler(this.registroDeMoraYCToolStripMenuItem_Click);
             // 
-            // ingresosVIPToolStripMenuItem
-            // 
-            this.ingresosVIPToolStripMenuItem.Name = "ingresosVIPToolStripMenuItem";
-            this.ingresosVIPToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.ingresosVIPToolStripMenuItem.Text = "Precios VIP";
-            this.ingresosVIPToolStripMenuItem.Click += new System.EventHandler(this.ingresosVIPToolStripMenuItem_Click);
-            // 
             // estudiantesToolStripMenuItem
             // 
             this.estudiantesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registrarEstudianteToolStripMenuItem,
             this.buscarEstudianteToolStripMenuItem,
             this.registroDeGruposToolStripMenuItem,
-            this.registroDeHorariosToolStripMenuItem});
+            this.registroDeHorariosToolStripMenuItem,
+            this.registroDeGruposToolStripMenuItem1});
             this.estudiantesToolStripMenuItem.Name = "estudiantesToolStripMenuItem";
             this.estudiantesToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.estudiantesToolStripMenuItem.Text = "Estudiantes";
@@ -231,28 +224,28 @@
             // registrarEstudianteToolStripMenuItem
             // 
             this.registrarEstudianteToolStripMenuItem.Name = "registrarEstudianteToolStripMenuItem";
-            this.registrarEstudianteToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
-            this.registrarEstudianteToolStripMenuItem.Text = "Control de Estudiantes";
+            this.registrarEstudianteToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.registrarEstudianteToolStripMenuItem.Text = "Registro de Estudiantes";
             this.registrarEstudianteToolStripMenuItem.Click += new System.EventHandler(this.registrarEstudianteToolStripMenuItem_Click);
             // 
             // buscarEstudianteToolStripMenuItem
             // 
             this.buscarEstudianteToolStripMenuItem.Name = "buscarEstudianteToolStripMenuItem";
-            this.buscarEstudianteToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.buscarEstudianteToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.buscarEstudianteToolStripMenuItem.Text = "Registro de Calificaciones";
             this.buscarEstudianteToolStripMenuItem.Click += new System.EventHandler(this.buscarEstudianteToolStripMenuItem_Click);
             // 
             // registroDeGruposToolStripMenuItem
             // 
             this.registroDeGruposToolStripMenuItem.Name = "registroDeGruposToolStripMenuItem";
-            this.registroDeGruposToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
-            this.registroDeGruposToolStripMenuItem.Text = "Registro de Grupos y Niveles";
+            this.registroDeGruposToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.registroDeGruposToolStripMenuItem.Text = "Registro de Niveles";
             this.registroDeGruposToolStripMenuItem.Click += new System.EventHandler(this.registroDeGruposToolStripMenuItem_Click);
             // 
             // registroDeHorariosToolStripMenuItem
             // 
             this.registroDeHorariosToolStripMenuItem.Name = "registroDeHorariosToolStripMenuItem";
-            this.registroDeHorariosToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.registroDeHorariosToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.registroDeHorariosToolStripMenuItem.Text = "Registro de Horarios";
             this.registroDeHorariosToolStripMenuItem.Click += new System.EventHandler(this.registroDeHorariosToolStripMenuItem_Click);
             // 
@@ -357,6 +350,7 @@
             this.gananciasToolStripMenuItem1.Name = "gananciasToolStripMenuItem1";
             this.gananciasToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
             this.gananciasToolStripMenuItem1.Text = "Ganancias";
+            this.gananciasToolStripMenuItem1.Click += new System.EventHandler(this.gananciasToolStripMenuItem1_Click);
             // 
             // calificacionesToolStripMenuItem1
             // 
@@ -1181,6 +1175,12 @@
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "Nombre:";
             // 
+            // registroDeGruposToolStripMenuItem1
+            // 
+            this.registroDeGruposToolStripMenuItem1.Name = "registroDeGruposToolStripMenuItem1";
+            this.registroDeGruposToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
+            this.registroDeGruposToolStripMenuItem1.Text = "Registro de Grupos";
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1267,7 +1267,6 @@
         private CelyDBDataSet celyDBDataSet;
         private System.Windows.Forms.BindingSource verGruposwHorarioBindingSource;
         private CelyDBDataSetTableAdapters.VerGruposwHorarioTableAdapter verGruposwHorarioTableAdapter;
-        private System.Windows.Forms.ToolStripMenuItem ingresosVIPToolStripMenuItem;
         private System.Windows.Forms.Timer tContador;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Timer tReloj;
@@ -1331,5 +1330,6 @@
         private System.Windows.Forms.ComboBox cbFiltro;
         private System.Windows.Forms.Label lblFiltrarPor;
         private System.Windows.Forms.PictureBox pbRecargar;
+        private System.Windows.Forms.ToolStripMenuItem registroDeGruposToolStripMenuItem1;
     }
 }

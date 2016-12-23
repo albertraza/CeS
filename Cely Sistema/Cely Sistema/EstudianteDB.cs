@@ -8,14 +8,14 @@ namespace Cely_Sistema
 {
     public class EstudianteDB
     {
-        public static int RegistrarEstudiante(EstudianteBase E, string Celular, string Respuesta1, string Respuesta2)
+        public static int RegistrarEstudiante(EstudianteBase E, string Celular, string Respuesta1, string Respuesta2, int pagoGrupal, int codigoGrupo)
         {
             int retorno = 0;
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("insert into Estudiantes (Nombre, Apellido, FechaN, Edad, Telefono, FechaA, Email, Direccion, Sector, Ocupacion, NivelA, DominioIdiomaIngles, Nivel, Codigo_Grupo, Modo_Pago, Celular, Respuesta1, Respuesta2)"
-                    + " values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', '{15}', '{16}', '{17}')",
-                    E.Nombre, E.Apellido, E.Fecha_N, E.Edad, E.Telefono, E.Fecha_Ins, E.E_Mail, E.Direccion, E.Sector, E.Ocupacion, E.N_Academico, E.D_Idioma, E.NivelA, E.Codigo_Grupo, E.Modo_Pago, Celular, Respuesta1, Respuesta2), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("insert into Estudiantes (Nombre, Apellido, FechaN, Edad, Telefono, FechaA, Email, Direccion, Sector, Ocupacion, NivelA, DominioIdiomaIngles, Nivel, Codigo_Grupo, Modo_Pago, Celular, Respuesta1, Respuesta2, pagoGrupal, codigoGrupo)"
+                    + " values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', '{15}', '{16}', '{17}', '{18}', '{19}')",
+                    E.Nombre, E.Apellido, E.Fecha_N, E.Edad, E.Telefono, E.Fecha_Ins, E.E_Mail, E.Direccion, E.Sector, E.Ocupacion, E.N_Academico, E.D_Idioma, E.NivelA, E.Codigo_Grupo, E.Modo_Pago, Celular, Respuesta1, Respuesta2, pagoGrupal, codigoGrupo), conexion);
 
                 retorno = comando.ExecuteNonQuery();
 
@@ -95,6 +95,8 @@ namespace Cely_Sistema
                     pEstudiante.Respuesta1 = reader["Respuesta1"].ToString();
                     pEstudiante.Respuesta2 = reader["Respuesta2"].ToString();
                     pEstudiante.Celular = reader["Celular"].ToString();
+                    pEstudiante.codigoGrupal = int.Parse(reader["codigoGrupo"].ToString());
+                    pEstudiante.pagoGrupal = int.Parse(reader["pagoGrupal"].ToString());
 
                 }
                 conexion.Close();
@@ -108,8 +110,8 @@ namespace Cely_Sistema
 
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("update Estudiantes set Nombre = '{0}', Apellido = '{1}', FechaN = '{2}', Edad = '{3}', Telefono = '{4}', FechaA = '{5}', Email = '{6}', Direccion = '{7}', Sector = '{8}', Ocupacion = '{9}', NivelA = '{10}', DominioIdiomaIngles = '{11}', Nivel = '{12}', Codigo_Grupo = {13}, Modo_Pago = '{14}', Celular = '{15}', Respuesta1 = '{16}', Respuesta2 = '{17}' where ID = {18}",
-                    pEstudiante.Nombre, pEstudiante.Apellido, pEstudiante.Fecha_N, pEstudiante.Edad, pEstudiante.Telefono, pEstudiante.Fecha_Ins, pEstudiante.E_Mail, pEstudiante.Direccion, pEstudiante.Sector, pEstudiante.Ocupacion, pEstudiante.N_Academico, pEstudiante.D_Idioma, pEstudiante.NivelA, pEstudiante.Codigo_Grupo, pEstudiante.Modo_Pago, pEstudiante.Celular, pEstudiante.Respuesta1, pEstudiante.Respuesta2 , pEstudiante.ID), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("update Estudiantes set Nombre = '{0}', Apellido = '{1}', FechaN = '{2}', Edad = '{3}', Telefono = '{4}', FechaA = '{5}', Email = '{6}', Direccion = '{7}', Sector = '{8}', Ocupacion = '{9}', NivelA = '{10}', DominioIdiomaIngles = '{11}', Nivel = '{12}', Codigo_Grupo = {13}, Modo_Pago = '{14}', Celular = '{15}', Respuesta1 = '{16}', Respuesta2 = '{17}', pagoGrupal = '{18}', codigoGrupo = '{19}' where ID = {20}",
+                    pEstudiante.Nombre, pEstudiante.Apellido, pEstudiante.Fecha_N, pEstudiante.Edad, pEstudiante.Telefono, pEstudiante.Fecha_Ins, pEstudiante.E_Mail, pEstudiante.Direccion, pEstudiante.Sector, pEstudiante.Ocupacion, pEstudiante.N_Academico, pEstudiante.D_Idioma, pEstudiante.NivelA, pEstudiante.Codigo_Grupo, pEstudiante.Modo_Pago, pEstudiante.Celular, pEstudiante.Respuesta1, pEstudiante.Respuesta2 , pEstudiante.pagoGrupal, pEstudiante.codigoGrupal ,pEstudiante.ID), conexion);
 
                 retorno = comando.ExecuteNonQuery();
                 conexion.Close();

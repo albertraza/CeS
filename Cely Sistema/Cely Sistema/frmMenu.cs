@@ -1069,5 +1069,17 @@ namespace Cely_Sistema
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void gananciasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if(Nivel > 2)
+            {
+                new frmMantenimientoGanancias().Show();
+            }
+            else
+            {
+                MessageBox.Show("Acceso restringido, contactese con el admimnistrador del sistema", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
