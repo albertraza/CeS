@@ -299,6 +299,7 @@ namespace Cely_Sistema
             txtPagoMensualSemanal.Clear();
             rbSI.Checked = false;
             rbNo.Checked = false;
+            btnRetirar.Visible = false;
         }
         public frmRegistro()
         {
@@ -359,11 +360,30 @@ namespace Cely_Sistema
                         cbVIP.Checked = false;
                     }
 
+                    // validate pago grupal selection
+                    if (EstudianteSeleccionado.pagoGrupal == 1)
+                    {
+                        rbSI.Checked = true;
+                    }
+                    else if (EstudianteSeleccionado.pagoGrupal == 0)
+                    {
+                        rbNo.Checked = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pago grupal no identificado", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    // cargar precios
+                    txtPagoMensualSemanal.Text = PagosDB.getPrecio(int.Parse(EstudianteSeleccionado.ID.ToString())).precio.ToString("f2");
+                    txtMoraMensualSemanal.Text = PagosDB.getPrecio(int.Parse(EstudianteSeleccionado.ID.ToString())).mora.ToString("f2");
+
                     btnRegistrar.Visible = false;
                     lblBuscarAlumno.Visible = false;
                     lblTitulo.Text = "Estudiante";
                     btnModificar.Visible = true;
                     btnEliminar.Visible = true;
+                    btnRetirar.Visible = true;
 
                     // para seleccionar el nivel el cual se encuentra el estudiante
                     selectNivel(EstudianteSeleccionado.Codigo_Grupo);
@@ -392,6 +412,7 @@ namespace Cely_Sistema
                     btnRegistrar.Enabled = false;
                     dgvNiveles.ClearSelection();
                     dgvNiveles.Enabled = false;
+                    btnRetirar.Visible = false;
                 }
                 catch (Exception ex)
                 {
@@ -693,6 +714,7 @@ namespace Cely_Sistema
                     lblTitulo.Text = "Estudiante";
                     btnModificar.Visible = true;
                     btnEliminar.Visible = true;
+                    btnRetirar.Visible = true;
 
                     // para seleccionar el nivel el cual se encuentra el estudiante
                     selectNivel(pBusqueda.EstudianteSeleccionado.Codigo_Grupo);
@@ -865,6 +887,10 @@ namespace Cely_Sistema
                                 {
                                     EstudianteDB.UpdateVIPstatus("No", pEstudiante.ID.ToString());
                                 }
+
+                                // para actualizar el  pago
+                                EstudianteDB.updatePago(Convert.ToInt32(pEstudiante.ID), double.Parse(txtPagoMensualSemanal.Text), double.Parse(txtMoraMensualSemanal.Text));
+
                                 Limpiar();
                                 btnModificar.Visible = false;
                                 btnEliminar.Visible = false;
@@ -884,6 +910,10 @@ namespace Cely_Sistema
                             {
                                 EstudianteDB.UpdateVIPstatus("No", pEstudiante.ID.ToString());
                             }
+
+                            // para actualizar el  pago
+                            EstudianteDB.updatePago(Convert.ToInt32(pEstudiante.ID), double.Parse(txtPagoMensualSemanal.Text), double.Parse(txtMoraMensualSemanal.Text));
+
                             Limpiar();
                             btnModificar.Visible = false;
                             btnEliminar.Visible = false;
@@ -1334,6 +1364,11 @@ namespace Cely_Sistema
             {
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void lblCrearGrupo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new frmFamilyConf().Show();
         }
     }
 }

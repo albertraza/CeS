@@ -1081,5 +1081,26 @@ namespace Cely_Sistema
                 MessageBox.Show("Acceso restringido, contactese con el admimnistrador del sistema", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void registroDeGruposToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if(Nivel > 2)
+            {
+                frmFamilyConf pGrupo = new frmFamilyConf();
+                pGrupo.menu = true;
+                pGrupo.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tienes Acceso, Contacta al Administrador del Sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+        }
+
+        private void pagoGrupalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBuscarGrupo pBuscarGrupo = new frmBuscarGrupo();
+            pBuscarGrupo.menu = true;
+            pBuscarGrupo.Show();
+        }
     }
 }

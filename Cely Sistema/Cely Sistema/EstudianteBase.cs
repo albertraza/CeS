@@ -76,4 +76,20 @@ namespace Cely_Sistema
             MoraMensualSemanal = mms;
         }
     }
+    public class EstudiantesPago
+    {
+        public int Matricula { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Nivel { get; set; }
+
+        public EstudiantesPago() { }
+        public EstudiantesPago(int m, string n, string a, string ni)
+        {
+            Matricula = m;
+            Nombre = n;
+            Apellido = a;
+            Nivel = ni;
+        }
+    }
 }

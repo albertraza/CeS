@@ -449,6 +449,7 @@
             this.lblCrearGrupo.TabIndex = 58;
             this.lblCrearGrupo.TabStop = true;
             this.lblCrearGrupo.Text = "Crear Grupo";
+            this.lblCrearGrupo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblCrearGrupo_LinkClicked);
             // 
             // txtMoraMensualSemanal
             // 

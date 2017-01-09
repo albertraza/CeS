@@ -121,6 +121,12 @@
     <Compile Include="frmBuscarFacturas.Designer.cs">
       <DependentUpon>frmBuscarFacturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBuscarGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarGrupo.Designer.cs">
+      <DependentUpon>frmBuscarGrupo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBuscarGrupos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -379,6 +385,7 @@
     <Compile Include="NotaAsistenciaDB.cs" />
     <Compile Include="Notas.cs" />
     <Compile Include="NotasDB.cs" />
+    <Compile Include="pagoGrupal.cs" />
     <Compile Include="PagosDB.cs" />
     <Compile Include="Profesores.cs" />
     <Compile Include="ProfesoresDB.cs" />
@@ -407,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarFacturas.resx">
       <DependentUpon>frmBuscarFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarGrupo.resx">
+      <DependentUpon>frmBuscarGrupo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarGrupos.resx">
       <DependentUpon>frmBuscarGrupos.cs</DependentUpon>

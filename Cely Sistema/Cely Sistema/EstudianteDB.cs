@@ -111,7 +111,7 @@ namespace Cely_Sistema
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
                 SqlCommand comando = new SqlCommand(string.Format("update Estudiantes set Nombre = '{0}', Apellido = '{1}', FechaN = '{2}', Edad = '{3}', Telefono = '{4}', FechaA = '{5}', Email = '{6}', Direccion = '{7}', Sector = '{8}', Ocupacion = '{9}', NivelA = '{10}', DominioIdiomaIngles = '{11}', Nivel = '{12}', Codigo_Grupo = {13}, Modo_Pago = '{14}', Celular = '{15}', Respuesta1 = '{16}', Respuesta2 = '{17}', pagoGrupal = '{18}', codigoGrupo = '{19}' where ID = {20}",
-                    pEstudiante.Nombre, pEstudiante.Apellido, pEstudiante.Fecha_N, pEstudiante.Edad, pEstudiante.Telefono, pEstudiante.Fecha_Ins, pEstudiante.E_Mail, pEstudiante.Direccion, pEstudiante.Sector, pEstudiante.Ocupacion, pEstudiante.N_Academico, pEstudiante.D_Idioma, pEstudiante.NivelA, pEstudiante.Codigo_Grupo, pEstudiante.Modo_Pago, pEstudiante.Celular, pEstudiante.Respuesta1, pEstudiante.Respuesta2 , pEstudiante.pagoGrupal, pEstudiante.codigoGrupal ,pEstudiante.ID), conexion);
+                    pEstudiante.Nombre, pEstudiante.Apellido, pEstudiante.Fecha_N, pEstudiante.Edad, pEstudiante.Telefono, pEstudiante.Fecha_Ins, pEstudiante.E_Mail, pEstudiante.Direccion, pEstudiante.Sector, pEstudiante.Ocupacion, pEstudiante.N_Academico, pEstudiante.D_Idioma, pEstudiante.NivelA, pEstudiante.Codigo_Grupo, pEstudiante.Modo_Pago, pEstudiante.Celular, pEstudiante.Respuesta1, pEstudiante.Respuesta2, pEstudiante.pagoGrupal, pEstudiante.codigoGrupal, pEstudiante.ID), conexion);
 
                 retorno = comando.ExecuteNonQuery();
                 conexion.Close();
@@ -171,10 +171,10 @@ namespace Cely_Sistema
 
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                    SqlCommand comando = new SqlCommand(string.Format("select Apellido from Estudiantes Where ID = {0}", ID), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("select Apellido from Estudiantes Where ID = {0}", ID), conexion);
 
-                    Apelldo = comando.ExecuteScalar().ToString();
-                    conexion.Close();
+                Apelldo = comando.ExecuteScalar().ToString();
+                conexion.Close();
             }
             return Apelldo;
         }
@@ -184,11 +184,11 @@ namespace Cely_Sistema
 
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                    SqlCommand comando = new SqlCommand(string.Format("Select Ultimo_Pago from Estudiantes where ID = {0}", ID), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("Select Ultimo_Pago from Estudiantes where ID = {0}", ID), conexion);
 
-                    ULtimoP = comando.ExecuteScalar().ToString();
+                ULtimoP = comando.ExecuteScalar().ToString();
 
-                    conexion.Close();
+                conexion.Close();
             }
             return ULtimoP;
         }
@@ -263,9 +263,9 @@ namespace Cely_Sistema
             string MP = null;
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                    SqlCommand comando = new SqlCommand(string.Format("Select Modo_Pago from Estudiantes where ID = {0}", pID), conexion);
-                    MP = comando.ExecuteScalar().ToString();
-                    conexion.Close();
+                SqlCommand comando = new SqlCommand(string.Format("Select Modo_Pago from Estudiantes where ID = {0}", pID), conexion);
+                MP = comando.ExecuteScalar().ToString();
+                conexion.Close();
             }
             return MP;
         }
@@ -340,7 +340,7 @@ namespace Cely_Sistema
         public static int getTotalStudentsRegistered()
         {
             int r;
-            using(SqlConnection con = DBcomun.ObetenerConexion())
+            using (SqlConnection con = DBcomun.ObetenerConexion())
             {
                 SqlCommand comand = new SqlCommand("select COUNT(*) as CantRegistrados from Estudiantes", con);
                 r = int.Parse(comand.ExecuteScalar().ToString());
@@ -351,7 +351,7 @@ namespace Cely_Sistema
         public static int updateRetiradoStatus(int matricula)
         {
             int r = -1;
-            using(SqlConnection con = DBcomun.ObetenerConexion())
+            using (SqlConnection con = DBcomun.ObetenerConexion())
             {
                 SqlCommand comand = new SqlCommand(string.Format("update Estudiantes set Retirado = '1', fechaRetiro = '{0}' where ID = '{1}'", DateTime.Today.Date.ToString("yyyy-MM-dd"), matricula), con);
                 r = comand.ExecuteNonQuery();
@@ -396,7 +396,7 @@ namespace Cely_Sistema
         public static int getRetirado(int matricula)
         {
             int r = -1;
-            using(SqlConnection con = DBcomun.ObetenerConexion())
+            using (SqlConnection con = DBcomun.ObetenerConexion())
             {
                 SqlCommand comand = new SqlCommand(string.Format("select Retirado from Estudiantes where ID = '{0}'", matricula), con);
                 r = Convert.ToInt32(comand.ExecuteScalar());
@@ -407,7 +407,7 @@ namespace Cely_Sistema
         public static double getRetiradoPayment(int matricula)
         {
             double r = 0;
-            using(SqlConnection con = DBcomun.ObetenerConexion())
+            using (SqlConnection con = DBcomun.ObetenerConexion())
             {
                 SqlCommand comand = new SqlCommand(string.Format("select PagoRetirado from Estudiantes where ID = '{0}'", matricula), con);
                 r = double.Parse(comand.ExecuteScalar().ToString());
@@ -429,7 +429,7 @@ namespace Cely_Sistema
         public static DateTime getFechaRetiro(int matricula)
         {
             DateTime dt;
-            using(SqlConnection con = DBcomun.ObetenerConexion())
+            using (SqlConnection con = DBcomun.ObetenerConexion())
             {
                 SqlCommand comand = new SqlCommand(string.Format("select fechaRetiro from Estudiantes where ID = '{0}'", matricula), con);
                 dt = Convert.ToDateTime(comand.ExecuteScalar());
@@ -440,7 +440,7 @@ namespace Cely_Sistema
         public static int getTotalRetired()
         {
             int r = -1;
-            using(SqlConnection con = DBcomun.ObetenerConexion())
+            using (SqlConnection con = DBcomun.ObetenerConexion())
             {
                 SqlCommand comand = new SqlCommand("select count(*) as CantidadRetirado from Estudiantes where Retirado = 1", con);
                 r = Convert.ToInt32(comand.ExecuteScalar());
@@ -451,7 +451,7 @@ namespace Cely_Sistema
         public static int getTotalStudentsActive()
         {
             int r = -1;
-            using(SqlConnection con = DBcomun.ObetenerConexion())
+            using (SqlConnection con = DBcomun.ObetenerConexion())
             {
                 SqlCommand comand = new SqlCommand("select count(*) as CantidadNoRetirado from Estudiantes where Retirado != 1", con);
                 r = Convert.ToInt32(comand.ExecuteScalar());
@@ -473,9 +473,61 @@ namespace Cely_Sistema
         public static int updateNivel(int codigoGrupo, string nivel)
         {
             int r = -1;
-            using(SqlConnection con = DBcomun.ObetenerConexion())
+            using (SqlConnection con = DBcomun.ObetenerConexion())
             {
                 SqlCommand comand = new SqlCommand(string.Format("update Estudiantes set Nivel = '{0}' where Codigo_Grupo = '{1}'", nivel, codigoGrupo), con);
+                r = comand.ExecuteNonQuery();
+                con.Close();
+            }
+            return r;
+        }
+        public static List<EstudiantesPago> listEstudiantesPorPagoGrupal(int codigoPagoGrupal)
+        {
+            List<EstudiantesPago> list = new List<EstudiantesPago>();
+            using (SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand();
+                comand.Connection = con;
+                comand.CommandText = "selectEstudiantesPorPagoGrupal";
+                comand.CommandType = System.Data.CommandType.StoredProcedure;
+
+                comand.Parameters.Add(new SqlParameter("@codigoPagoGrupal", System.Data.SqlDbType.Int));
+                comand.Parameters["@codigoPagoGrupal"].Value = codigoPagoGrupal;
+
+                SqlDataReader reader = comand.ExecuteReader();
+                while (reader.Read())
+                {
+                    EstudiantesPago pEstudiante = new EstudiantesPago();
+                    pEstudiante.Matricula = Convert.ToInt32(reader["Matricula"].ToString());
+                    pEstudiante.Nombre = reader["Nombre"].ToString();
+                    pEstudiante.Apellido = reader["Apellido"].ToString();
+                    pEstudiante.Nivel = reader["Nivel"].ToString();
+
+                    list.Add(pEstudiante);
+                }
+                con.Close();
+            }
+            return list;
+        }
+        public static int updatePago(int matricula, double pago, double mora)
+        {
+            int r = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand();
+                comand.Connection = con;
+                comand.CommandType = System.Data.CommandType.StoredProcedure;
+                comand.CommandText = "updatePago";
+
+                comand.Parameters.Add(new SqlParameter("@matricula", System.Data.SqlDbType.Int));
+                comand.Parameters["@matricula"].Value = matricula;
+
+                comand.Parameters.Add(new SqlParameter("@pago", System.Data.SqlDbType.Money));
+                comand.Parameters["@pago"].Value = pago;
+
+                comand.Parameters.Add(new SqlParameter("@mora", System.Data.SqlDbType.Money));
+                comand.Parameters["@mora"].Value = mora;
+
                 r = comand.ExecuteNonQuery();
                 con.Close();
             }
