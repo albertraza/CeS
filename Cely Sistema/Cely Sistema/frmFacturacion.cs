@@ -111,8 +111,8 @@ namespace Cely_Sistema
                                             nCantPagar.Value = Convert.ToInt32(MesesP + 1);
                                             rbPago.Text = "Pago Mensual";
                                             txtMotivodePago.Text = "Pago Mes";
-                                            PagoMensualSemanal = PagosDB.ObtenerPagoMensual();
-                                            MoraEs = double.Parse(MoraDB.ObtenerMoraMensual());
+                                            PagoMensualSemanal = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
+                                            MoraEs = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
                                             pMora = true;
                                         }
                                         else
@@ -125,7 +125,7 @@ namespace Cely_Sistema
                                             nCantPagar.Value = 1;
                                             rbPago.Text = "Pago Mensual";
                                             txtMotivodePago.Text = "Pago Mes";
-                                            PagoMensualSemanal = PagosDB.ObtenerPagoMensual();
+                                            PagoMensualSemanal = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
                                             MoraEs = 0;
                                             pMora = false;
                                         }
@@ -142,8 +142,8 @@ namespace Cely_Sistema
                                             nCantPagar.Value = Convert.ToInt32(semanasP + 1);
                                             rbPago.Text = "Pago Semanal";
                                             txtMotivodePago.Text = "Pago Semanal";
-                                            PagoMensualSemanal = PagosDB.ObtenerPagoSemanal();
-                                            MoraEs = double.Parse(MoraDB.ObtenerMoraSemanal());
+                                            PagoMensualSemanal = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
+                                            MoraEs = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
                                             pMora = true;
                                         }
                                         else
@@ -155,7 +155,7 @@ namespace Cely_Sistema
                                             nCantPagar.Value = Convert.ToInt32(semanasP + 1);
                                             lblMesesoSemanas.Text = "Semanas";
                                             rbPago.Text = "Pago Semanal";
-                                            PagoMensualSemanal = PagosDB.ObtenerPagoSemanal();
+                                            PagoMensualSemanal = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
                                             MoraEs = 0;
                                             txtMotivodePago.Text = "Pago Semanal";
                                             pMora = false;
@@ -178,8 +178,8 @@ namespace Cely_Sistema
                                             nCantPagar.Value = Convert.ToInt32(MesesP + 1);
                                             rbPago.Text = "Pago Mensual";
                                             txtMotivodePago.Text = "Pago Mes";
-                                            PagoMensualSemanal = double.Parse(MoraDB.GetVIPpayments().Pago_Mensual);
-                                            MoraEs = double.Parse(MoraDB.GetVIPpayments().Mora_Mensual);
+                                            PagoMensualSemanal = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
+                                            MoraEs = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
                                             pMora = true;
                                         }
                                         else
@@ -192,7 +192,7 @@ namespace Cely_Sistema
                                             nCantPagar.Value = 1;
                                             rbPago.Text = "Pago Mensual";
                                             txtMotivodePago.Text = "Pago Mes";
-                                            PagoMensualSemanal = double.Parse(MoraDB.GetVIPpayments().Pago_Mensual);
+                                            PagoMensualSemanal = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
                                             MoraEs = 0;
                                             pMora = false;
                                         }
@@ -209,8 +209,8 @@ namespace Cely_Sistema
                                             nCantPagar.Value = Convert.ToInt32(semanasP + 1);
                                             rbPago.Text = "Pago Semanal";
                                             txtMotivodePago.Text = "Pago Semanal";
-                                            PagoMensualSemanal = double.Parse(MoraDB.GetVIPpayments().Pago_Semanal);
-                                            MoraEs = double.Parse(MoraDB.GetVIPpayments().Mora_Semanal);
+                                            PagoMensualSemanal = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
+                                            MoraEs = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
                                             pMora = true;
                                         }
                                         else
@@ -223,7 +223,7 @@ namespace Cely_Sistema
                                             nCantPagar.Value = 1;
                                             rbPago.Text = "Pago Semanal";
                                             txtMotivodePago.Text = "Pago Semanal";
-                                            PagoMensualSemanal = double.Parse(MoraDB.GetVIPpayments().Pago_Semanal);
+                                            PagoMensualSemanal = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
                                             MoraEs = 0;
                                             pMora = false;
                                         }
@@ -1124,8 +1124,8 @@ namespace Cely_Sistema
                                                 double mora;
                                                 if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
                                                 {
-                                                    pagoM = PagosDB.ObtenerPagoMensual();
-                                                    mora = Convert.ToDouble(MoraDB.ObtenerMoraMensual());
+                                                    pagoM = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
+                                                    mora = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
                                                 }
                                                 else
                                                 {
@@ -1167,7 +1167,7 @@ namespace Cely_Sistema
                                                 lblMora.ForeColor = Color.Black;
                                                 if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
                                                 {
-                                                    pagoM = PagosDB.ObtenerPagoMensual();
+                                                    pagoM = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
                                                 }
                                                 else
                                                 {
@@ -1199,8 +1199,8 @@ namespace Cely_Sistema
                                                 double mora;
                                                 if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
                                                 {
-                                                    pagoS = PagosDB.ObtenerPagoSemanal();
-                                                    mora = Convert.ToDouble(MoraDB.ObtenerMoraSemanal());
+                                                    pagoS = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
+                                                    mora = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
                                                 }
                                                 else
                                                 {
@@ -1241,7 +1241,7 @@ namespace Cely_Sistema
                                                 lblMora.ForeColor = Color.Black;
                                                 if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
                                                 {
-                                                    pagoS = PagosDB.ObtenerPagoMensual();
+                                                    pagoS = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
                                                 }
                                                 else
                                                 {
@@ -1278,8 +1278,8 @@ namespace Cely_Sistema
                                                 double mora;
                                                 if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
                                                 {
-                                                    pagoM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);
-                                                    mora = Convert.ToDouble(MoraDB.GetVIPpayments().Mora_Mensual);
+                                                    pagoM = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
+                                                    mora = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
                                                 }
                                                 else
                                                 {
@@ -1318,7 +1318,7 @@ namespace Cely_Sistema
                                                 lblMora.ForeColor = Color.Black;
                                                 if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
                                                 {
-                                                    pagoM = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Mensual);
+                                                    pagoM = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
                                                 }
                                                 else
                                                 {
@@ -1349,8 +1349,8 @@ namespace Cely_Sistema
                                                 double mora;
                                                 if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
                                                 {
-                                                    pagoS = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal);
-                                                    mora = Convert.ToDouble(MoraDB.GetVIPpayments().Mora_Semanal);
+                                                    pagoS = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
+                                                    mora = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
                                                 }
                                                 else
                                                 {
@@ -1391,7 +1391,7 @@ namespace Cely_Sistema
                                                 lblMora.ForeColor = Color.Black;
                                                 if (EstudianteDB.getRetirado(int.Parse(txtMatricula.Text)) != 1)
                                                 {
-                                                    pagoS = Convert.ToDouble(MoraDB.GetVIPpayments().Pago_Semanal);
+                                                    pagoS = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).precio;
                                                 }
                                                 else
                                                 {

@@ -189,13 +189,13 @@ namespace Cely_Sistema
 
                             if (pEstudiante.Modo_Pago == "Mensual")
                             {
-                                txtPagoMensual.Text = PagosDB.ObtenerPagoMensual().ToString("f2");
-                                txtMora.Text = MoraDB.ObtenerMoraMensual();
+                                txtPagoMensual.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).precio.ToString("f2");
+                                txtMora.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).mora.ToString("f2");
                             }
                             else
                             {
-                                txtPagoMensual.Text = PagosDB.ObtenerPagoSemanal().ToString("f2");
-                                txtMora.Text = MoraDB.ObtenerMoraSemanal();
+                                txtPagoMensual.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).precio.ToString("f2");
+                                txtMora.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).mora.ToString("f2");
                             }
                         }
                         else
@@ -205,13 +205,13 @@ namespace Cely_Sistema
 
                             if (pEstudiante.Modo_Pago == "Mensual")
                             {
-                                txtPagoMensual.Text = double.Parse(MoraDB.GetVIPpayments().Pago_Mensual).ToString("f2");
-                                txtMora.Text = double.Parse(MoraDB.GetVIPpayments().Mora_Mensual).ToString("f2");
+                                txtPagoMensual.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).precio.ToString("f2");
+                                txtMora.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).mora.ToString("f2");
                             }
                             else
                             {
-                                txtPagoMensual.Text = double.Parse(MoraDB.GetVIPpayments().Pago_Semanal).ToString("f2");
-                                txtMora.Text = double.Parse(MoraDB.GetVIPpayments().Mora_Semanal).ToString("f2");
+                                txtPagoMensual.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).precio.ToString("f2");
+                                txtMora.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).mora.ToString("f2");
                             }
                         }
 
