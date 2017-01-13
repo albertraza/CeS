@@ -137,7 +137,7 @@ namespace Cely_Sistema
                         pIngoGrupos.FechaProximoPago = reader["fpp"].ToString();
                     }
 
-                    if (reader["fup"].ToString() == null || reader["fpp"].ToString() == string.Empty)
+                    if (reader["fup"].ToString() == null || reader["fup"].ToString() == string.Empty)
                     {
                         pIngoGrupos.FechaUltimoPago = "none";
                     }
@@ -189,7 +189,7 @@ namespace Cely_Sistema
                         pIngoGrupos.FechaProximoPago = reader["fpp"].ToString();
                     }
 
-                    if (reader["fup"].ToString() == null || reader["fpp"].ToString() == string.Empty)
+                    if (reader["fup"].ToString() == null || reader["fup"].ToString() == string.Empty)
                     {
                         pIngoGrupos.FechaUltimoPago = "none";
                     }
