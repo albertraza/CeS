@@ -355,40 +355,10 @@ namespace Cely_Sistema
             {
                 SqlCommand comand = new SqlCommand(string.Format("update Estudiantes set Retirado = '1', fechaRetiro = '{0}' where ID = '{1}'", DateTime.Today.Date.ToString("yyyy-MM-dd"), matricula), con);
                 r = comand.ExecuteNonQuery();
-                if (EstudianteDB.SeleccionarEstudiante(matricula).VIP == "Si" || EstudianteDB.SeleccionarEstudiante(matricula).VIP == "SI")
-                {
-                    if (EstudianteDB.ObtenerModoPago(matricula) == "Mensual")
-                    {
-                        string pagoMVIP = MoraDB.GetVIPpayments().Pago_Mensual;
-                        string MoraMVIP = MoraDB.GetVIPpayments().Mora_Mensual;
-                        SqlCommand comand0 = new SqlCommand(string.Format("update Estudiantes set PagoRetirado = '{0}', moraRetirado = '{1}' where ID = '{2}'", pagoMVIP, MoraMVIP, matricula), con);
-                        r = comand0.ExecuteNonQuery();
-                    }
-                    else
-                    {
-                        string pagoSVIP = MoraDB.GetVIPpayments().Pago_Semanal;
-                        string MoraSVIP = MoraDB.GetVIPpayments().Mora_Semanal;
-                        SqlCommand comand1 = new SqlCommand(string.Format("update Estudiantes set PagoRetirado = '{0}', moraRetirado = '{1}' where ID = '{2}'", pagoSVIP, MoraSVIP, matricula), con);
-                        r = comand1.ExecuteNonQuery();
-                    }
-                }
-                else
-                {
-                    if (EstudianteDB.ObtenerModoPago(matricula) == "Mensual")
-                    {
-                        string pagoM = PagosDB.ObtenerPagoMensual().ToString();
-                        string MoraM = MoraDB.ObtenerMoraMensual().ToString();
-                        SqlCommand comand0 = new SqlCommand(string.Format("update Estudiantes set PagoRetirado = '{0}', moraRetirado = '{1}' where ID = '{2}'", pagoM, MoraM, matricula), con);
-                        r = comand0.ExecuteNonQuery();
-                    }
-                    else
-                    {
-                        string pagoS = PagosDB.ObtenerPagoSemanal().ToString();
-                        string MoraS = MoraDB.ObtenerMoraSemanal().ToString();
-                        SqlCommand comand1 = new SqlCommand(string.Format("update Estudiantes set PagoRetirado = '{0}', moraRetirado = '{1}' where ID = '{2}'", pagoS, MoraS, matricula), con);
-                        r = comand1.ExecuteNonQuery();
-                    }
-                }
+                string pagoMVIP = PagosDB.getPrecio(matricula).precio.ToString("f2");
+                string MoraMVIP = PagosDB.getPrecio(matricula).mora.ToString("f2");
+                SqlCommand comand0 = new SqlCommand(string.Format("update Estudiantes set PagoRetirado = '{0}', moraRetirado = '{1}' where ID = '{2}'", pagoMVIP, MoraMVIP, matricula), con);
+                r = comand0.ExecuteNonQuery();
                 con.Close();
             }
             return r;

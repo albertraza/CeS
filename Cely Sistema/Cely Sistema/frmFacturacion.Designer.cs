@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFacturacion));
             this.txtMatricula = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -56,6 +57,8 @@
             this.lblTotalaPagar = new System.Windows.Forms.Label();
             this.lblPagoMensual = new System.Windows.Forms.Label();
             this.gbInformacionEstudiante = new System.Windows.Forms.GroupBox();
+            this.gbListaGrupal = new System.Windows.Forms.GroupBox();
+            this.dgvListaGrupo = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbFactura = new System.Windows.Forms.GroupBox();
             this.cbTipodePago = new System.Windows.Forms.ComboBox();
@@ -71,9 +74,12 @@
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.lblNombreGrupo = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtabla)).BeginInit();
             this.gbUltimosPagos.SuspendLayout();
             this.gbInformacionEstudiante.SuspendLayout();
+            this.gbListaGrupal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaGrupo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbFactura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nCantPagar)).BeginInit();
@@ -92,7 +98,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(12, 469);
+            this.btnAceptar.Location = new System.Drawing.Point(9, 593);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 1;
@@ -111,14 +117,14 @@
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(73, 87);
+            this.txtApellido.Location = new System.Drawing.Point(73, 77);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(114, 20);
             this.txtApellido.TabIndex = 3;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(73, 58);
+            this.txtNombre.Location = new System.Drawing.Point(73, 53);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(114, 20);
             this.txtNombre.TabIndex = 2;
@@ -126,7 +132,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(20, 61);
+            this.lblNombre.Location = new System.Drawing.Point(20, 56);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(47, 13);
             this.lblNombre.TabIndex = 6;
@@ -135,7 +141,7 @@
             // lblApellido
             // 
             this.lblApellido.AutoSize = true;
-            this.lblApellido.Location = new System.Drawing.Point(20, 90);
+            this.lblApellido.Location = new System.Drawing.Point(20, 80);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(47, 13);
             this.lblApellido.TabIndex = 7;
@@ -160,7 +166,7 @@
             // 
             // btnVerFacturas
             // 
-            this.btnVerFacturas.Location = new System.Drawing.Point(204, 469);
+            this.btnVerFacturas.Location = new System.Drawing.Point(197, 593);
             this.btnVerFacturas.Name = "btnVerFacturas";
             this.btnVerFacturas.Size = new System.Drawing.Size(75, 23);
             this.btnVerFacturas.TabIndex = 3;
@@ -170,7 +176,7 @@
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(301, 469);
+            this.btnCerrar.Location = new System.Drawing.Point(288, 593);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
             this.btnCerrar.TabIndex = 4;
@@ -214,7 +220,7 @@
             this.dgvtabla.Location = new System.Drawing.Point(6, 19);
             this.dgvtabla.Name = "dgvtabla";
             this.dgvtabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvtabla.Size = new System.Drawing.Size(666, 431);
+            this.dgvtabla.Size = new System.Drawing.Size(666, 586);
             this.dgvtabla.TabIndex = 16;
             // 
             // gbUltimosPagos
@@ -222,7 +228,7 @@
             this.gbUltimosPagos.Controls.Add(this.dgvtabla);
             this.gbUltimosPagos.Location = new System.Drawing.Point(372, 7);
             this.gbUltimosPagos.Name = "gbUltimosPagos";
-            this.gbUltimosPagos.Size = new System.Drawing.Size(683, 456);
+            this.gbUltimosPagos.Size = new System.Drawing.Size(683, 613);
             this.gbUltimosPagos.TabIndex = 17;
             this.gbUltimosPagos.TabStop = false;
             this.gbUltimosPagos.Text = "Ultimos Pagos";
@@ -311,6 +317,7 @@
             // 
             // gbInformacionEstudiante
             // 
+            this.gbInformacionEstudiante.Controls.Add(this.gbListaGrupal);
             this.gbInformacionEstudiante.Controls.Add(this.pictureBox1);
             this.gbInformacionEstudiante.Controls.Add(this.lblMatricula);
             this.gbInformacionEstudiante.Controls.Add(this.txtMatricula);
@@ -321,18 +328,47 @@
             this.gbInformacionEstudiante.Controls.Add(this.lblCargarEstudiante);
             this.gbInformacionEstudiante.Location = new System.Drawing.Point(12, 7);
             this.gbInformacionEstudiante.Name = "gbInformacionEstudiante";
-            this.gbInformacionEstudiante.Size = new System.Drawing.Size(351, 137);
+            this.gbInformacionEstudiante.Size = new System.Drawing.Size(360, 277);
             this.gbInformacionEstudiante.TabIndex = 27;
             this.gbInformacionEstudiante.TabStop = false;
             this.gbInformacionEstudiante.Text = "Informacion Estudiante";
             this.gbInformacionEstudiante.Enter += new System.EventHandler(this.gbInformacionEstudiante_Enter);
+            // 
+            // gbListaGrupal
+            // 
+            this.gbListaGrupal.Controls.Add(this.lblNombreGrupo);
+            this.gbListaGrupal.Controls.Add(this.dgvListaGrupo);
+            this.gbListaGrupal.Location = new System.Drawing.Point(6, 114);
+            this.gbListaGrupal.Name = "gbListaGrupal";
+            this.gbListaGrupal.Size = new System.Drawing.Size(338, 157);
+            this.gbListaGrupal.TabIndex = 18;
+            this.gbListaGrupal.TabStop = false;
+            this.gbListaGrupal.Text = "Pago Grupal";
+            // 
+            // dgvListaGrupo
+            // 
+            this.dgvListaGrupo.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaGrupo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvListaGrupo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaGrupo.Location = new System.Drawing.Point(6, 56);
+            this.dgvListaGrupo.Name = "dgvListaGrupo";
+            this.dgvListaGrupo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvListaGrupo.Size = new System.Drawing.Size(329, 95);
+            this.dgvListaGrupo.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(206, 19);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(117, 100);
+            this.pictureBox1.Size = new System.Drawing.Size(128, 78);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
@@ -361,7 +397,7 @@
             this.gbFactura.Controls.Add(this.lblProximoPago);
             this.gbFactura.Controls.Add(this.txtProximoPAgo);
             this.gbFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbFactura.Location = new System.Drawing.Point(0, 211);
+            this.gbFactura.Location = new System.Drawing.Point(9, 335);
             this.gbFactura.Name = "gbFactura";
             this.gbFactura.Size = new System.Drawing.Size(363, 252);
             this.gbFactura.TabIndex = 28;
@@ -440,9 +476,9 @@
             // 
             this.gbMotivoPago.Controls.Add(this.rbOtros);
             this.gbMotivoPago.Controls.Add(this.rbPago);
-            this.gbMotivoPago.Location = new System.Drawing.Point(11, 150);
+            this.gbMotivoPago.Location = new System.Drawing.Point(9, 290);
             this.gbMotivoPago.Name = "gbMotivoPago";
-            this.gbMotivoPago.Size = new System.Drawing.Size(240, 55);
+            this.gbMotivoPago.Size = new System.Drawing.Size(240, 46);
             this.gbMotivoPago.TabIndex = 27;
             this.gbMotivoPago.TabStop = false;
             this.gbMotivoPago.Text = "Motivo de Pago";
@@ -473,7 +509,7 @@
             // 
             // btnImprimir
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(111, 469);
+            this.btnImprimir.Location = new System.Drawing.Point(104, 593);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(75, 23);
             this.btnImprimir.TabIndex = 2;
@@ -483,7 +519,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(270, 182);
+            this.btnLimpiar.Location = new System.Drawing.Point(281, 313);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpiar.TabIndex = 0;
@@ -496,12 +532,27 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // lblNombreGrupo
+            // 
+            this.lblNombreGrupo.AutoSize = true;
+            this.lblNombreGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreGrupo.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.lblNombreGrupo.LinkColor = System.Drawing.Color.Black;
+            this.lblNombreGrupo.Location = new System.Drawing.Point(14, 27);
+            this.lblNombreGrupo.Name = "lblNombreGrupo";
+            this.lblNombreGrupo.Size = new System.Drawing.Size(105, 16);
+            this.lblNombreGrupo.TabIndex = 1;
+            this.lblNombreGrupo.TabStop = true;
+            this.lblNombreGrupo.Text = "NombreGrupo";
+            this.lblNombreGrupo.VisitedLinkColor = System.Drawing.Color.Black;
+            this.lblNombreGrupo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblNombreGrupo_LinkClicked);
+            // 
             // frmFacturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1068, 504);
+            this.ClientSize = new System.Drawing.Size(1068, 624);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.gbMotivoPago);
@@ -522,6 +573,9 @@
             this.gbUltimosPagos.ResumeLayout(false);
             this.gbInformacionEstudiante.ResumeLayout(false);
             this.gbInformacionEstudiante.PerformLayout();
+            this.gbListaGrupal.ResumeLayout(false);
+            this.gbListaGrupal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaGrupo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gbFactura.ResumeLayout(false);
             this.gbFactura.PerformLayout();
@@ -576,5 +630,8 @@
         private System.Windows.Forms.Label lblMesesoSemanas;
         private System.Windows.Forms.ComboBox cbTipodePago;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.GroupBox gbListaGrupal;
+        private System.Windows.Forms.DataGridView dgvListaGrupo;
+        private System.Windows.Forms.LinkLabel lblNombreGrupo;
     }
 }

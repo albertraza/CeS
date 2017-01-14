@@ -102,7 +102,17 @@ namespace Cely_Sistema
                 comand.Parameters.Add(new SqlParameter("@ID", System.Data.SqlDbType.Int));
                 comand.Parameters["@ID"].Value = ID;
 
+                SqlCommand comand0 = new SqlCommand();
+                comand0.Connection = con;
+                comand0.CommandType = System.Data.CommandType.StoredProcedure;
+                comand0.CommandText = "deletePagoGrupalStudents";
+
+                comand0.Parameters.Add(new SqlParameter("@codigoGrupo", System.Data.SqlDbType.Int));
+                comand0.Parameters["@codigoGrupo"].Value = ID;
+
+
                 r = comand.ExecuteNonQuery();
+                r = comand0.ExecuteNonQuery();
             }
             return r;
         }
