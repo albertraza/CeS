@@ -627,7 +627,7 @@ namespace Cely_Sistema
                                 pagoGrupal pInfoGrupo = pagoGrupal.getPagoGrupal(EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(txtMatricula.Text)).codigoGrupal);
 
                                 pFactura.Nombre_Estudiante = pInfoGrupo.Nombre;
-                                pFactura.Matricula_Estudiante = Convert.ToInt32(txtMatricula.Text);
+                                pFactura.Matricula_Estudiante = pInfoGrupo.Id_grupo;
                                 pFactura.Razon_Pago = txtMotivodePago.Text;
                                 pFactura.Precio = Double.Parse(txtTotalaPagar.Text);
                                 pFactura.Fecha_Factura = DateTime.Today.Date.ToString("yyyy-MM-dd");

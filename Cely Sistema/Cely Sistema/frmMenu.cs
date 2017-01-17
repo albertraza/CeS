@@ -181,37 +181,57 @@ namespace Cely_Sistema
                     if (EstudianteDB.getRetirado(Convert.ToInt32(txtMatriculaCon.Text)) != 1)
                     {
 
-
-                        if (pEstudiante.VIP == "NO" || pEstudiante.VIP == "No")
+                        if (EstudianteDB.SeleccionarEstudiante(Convert.ToInt32(txtMatriculaCon.Text)).pagoGrupal == 0)
                         {
-                            lblVIP.ForeColor = Color.Black;
-                            lblVIP.Text = "VIP: " + pEstudiante.VIP;
-
-                            if (pEstudiante.Modo_Pago == "Mensual")
+                            if (pEstudiante.VIP == "NO" || pEstudiante.VIP == "No")
                             {
-                                txtPagoMensual.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).precio.ToString("f2");
-                                txtMora.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).mora.ToString("f2");
+                                lblVIP.ForeColor = Color.Black;
+                                lblVIP.Text = "VIP: " + pEstudiante.VIP;
+
+                                if (pEstudiante.Modo_Pago == "Mensual")
+                                {
+                                    txtPagoMensual.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).precio.ToString("f2");
+                                    txtMora.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).mora.ToString("f2");
+                                }
+                                else
+                                {
+                                    txtPagoMensual.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).precio.ToString("f2");
+                                    txtMora.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).mora.ToString("f2");
+                                }
                             }
                             else
                             {
-                                txtPagoMensual.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).precio.ToString("f2");
-                                txtMora.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).mora.ToString("f2");
+                                lblVIP.ForeColor = Color.Red;
+                                lblVIP.Text = "VIP: " + pEstudiante.VIP;
+
+                                if (pEstudiante.Modo_Pago == "Mensual")
+                                {
+                                    txtPagoMensual.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).precio.ToString("f2");
+                                    txtMora.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).mora.ToString("f2");
+                                }
+                                else
+                                {
+                                    txtPagoMensual.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).precio.ToString("f2");
+                                    txtMora.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).mora.ToString("f2");
+                                }
                             }
                         }
                         else
                         {
-                            lblVIP.ForeColor = Color.Red;
-                            lblVIP.Text = "VIP: " + pEstudiante.VIP;
+                            EstudianteBase pInfoEstudiante = EstudianteDB.SeleccionarEstudiante(Convert.ToInt32(txtMatriculaCon.Text));
+                            pagoGrupal pInfoGrupo = pagoGrupal.getPagoGrupal(pInfoEstudiante.codigoGrupal);
+                            txtPagoMensual.Text = pInfoGrupo.pago.ToString("f2");
+                            txtMora.Text = pInfoGrupo.mora.ToString("f2");
 
-                            if (pEstudiante.Modo_Pago == "Mensual")
+                            if(pInfoEstudiante.VIP == "NO" || pInfoEstudiante.VIP == "No")
                             {
-                                txtPagoMensual.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).precio.ToString("f2");
-                                txtMora.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).mora.ToString("f2");
+                                lblVIP.ForeColor = Color.Black;
+                                lblVIP.Text = "VIP: " + pEstudiante.VIP;
                             }
                             else
                             {
-                                txtPagoMensual.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).precio.ToString("f2");
-                                txtMora.Text = PagosDB.getPrecio(int.Parse(txtMatriculaCon.Text)).mora.ToString("f2");
+                                lblVIP.ForeColor = Color.Red;
+                                lblVIP.Text = "VIP: " + pEstudiante.VIP;
                             }
                         }
 
