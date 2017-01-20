@@ -18,8 +18,10 @@ namespace Cely_Sistema
         public int matricula { get; set; }
         private void frmFacturaMensual_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'Reporting.FacturaEstudiantil' table. You can move, or remove it, as needed.
+            this.FacturaEstudiantilTableAdapter.Fill(this.Reporting.FacturaEstudiantil, matricula);
             // TODO: This line of code loads data into the 'Reporting.Factura' table. You can move, or remove it, as needed.
-            this.FacturaTableAdapter.Fill(this.Reporting.Factura, matricula);
+            //this.FacturaTableAdapter.Fill(this.Reporting.Factura);
 
             this.reportViewer1.RefreshReport();
         }

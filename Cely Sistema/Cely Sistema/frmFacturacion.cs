@@ -621,6 +621,7 @@ namespace Cely_Sistema
                                 pFactura.Precio = Double.Parse(txtTotalaPagar.Text);
                                 pFactura.Fecha_Factura = DateTime.Today.Date.ToString("yyyy-MM-dd");
                                 pFactura.Cancelacion_Pago = "0";
+                                pFactura.FechaProximoPago = Convert.ToDateTime(txtProximoPAgo.Text).ToString("yyyy-MM-dd");
                             }
                             else
                             {
@@ -632,6 +633,7 @@ namespace Cely_Sistema
                                 pFactura.Precio = Double.Parse(txtTotalaPagar.Text);
                                 pFactura.Fecha_Factura = DateTime.Today.Date.ToString("yyyy-MM-dd");
                                 pFactura.Cancelacion_Pago = "0";
+                                pFactura.FechaProximoPago = Convert.ToDateTime(txtProximoPAgo.Text).ToString("yyyy-MM-dd");
                             }
 
                             // calculo de la devuelta

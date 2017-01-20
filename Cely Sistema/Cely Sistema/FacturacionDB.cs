@@ -16,8 +16,8 @@ namespace Cely_Sistema
 
             using(SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("insert into Facturacion (IDCliente, NombreCliente, Precio, FechaFactura, Notas, CancelacionPago, MesesSemnasRestantes, PagoCon, devuelta, CantSemanasMesesPagos, mora, PagoMensualSemanal, TotalMensualSemanal, TotalMora, Descuento, cantMora) values ({0}, '{1}', {2}, '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', '{15}')",
-                    pFactura.Matricula_Estudiante, pFactura.Nombre_Estudiante, pFactura.Precio, pFactura.Fecha_Factura, pFactura.Razon_Pago, pFactura.Cancelacion_Pago, mesesSemanasRestantes, pagoCon, devuelta, mesesSemanasPagos, Mora, pagoMensualSemanal, TotalPagoMensualSemanal, TotalMora, TotalDescuento, cantMora), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("insert into Facturacion (IDCliente, NombreCliente, Precio, FechaFactura, Notas, CancelacionPago, MesesSemnasRestantes, PagoCon, devuelta, CantSemanasMesesPagos, mora, PagoMensualSemanal, TotalMensualSemanal, TotalMora, Descuento, cantMora, FechaProximoPago) values ({0}, '{1}', {2}, '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', '{15}', '{16}')",
+                    pFactura.Matricula_Estudiante, pFactura.Nombre_Estudiante, pFactura.Precio, pFactura.Fecha_Factura, pFactura.Razon_Pago, pFactura.Cancelacion_Pago, mesesSemanasRestantes, pagoCon, devuelta, mesesSemanasPagos, Mora, pagoMensualSemanal, TotalPagoMensualSemanal, TotalMora, TotalDescuento, cantMora, pFactura.FechaProximoPago), conexion);
 
                 Factura = comando.ExecuteNonQuery();
 

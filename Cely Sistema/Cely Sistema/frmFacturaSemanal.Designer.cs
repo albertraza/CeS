@@ -30,39 +30,51 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.Reporting = new Cely_Sistema.Reporting();
             this.FacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Reporting = new Cely_Sistema.Reporting();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.FacturaTableAdapter = new Cely_Sistema.ReportingTableAdapters.FacturaTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.Reporting)).BeginInit();
+            this.FacturaEstudiantilBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.FacturaEstudiantilTableAdapter = new Cely_Sistema.ReportingTableAdapters.FacturaEstudiantilTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.FacturaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Reporting)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FacturaEstudiantilBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "Factura";
-            reportDataSource1.Value = this.FacturaBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Cely_Sistema.bin.Debug.rpFacturaSemanal.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(922, 518);
-            this.reportViewer1.TabIndex = 0;
-            // 
-            // Reporting
-            // 
-            this.Reporting.DataSetName = "Reporting";
-            this.Reporting.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // FacturaBindingSource
             // 
             this.FacturaBindingSource.DataMember = "Factura";
             this.FacturaBindingSource.DataSource = this.Reporting;
             // 
+            // Reporting
+            // 
+            this.Reporting.DataSetName = "Reporting";
+            this.Reporting.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "Factura";
+            reportDataSource1.Value = this.FacturaEstudiantilBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Cely_Sistema.bin.Debug.rpFacturaSemanalNew.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(922, 518);
+            this.reportViewer1.TabIndex = 0;
+            // 
             // FacturaTableAdapter
             // 
             this.FacturaTableAdapter.ClearBeforeFill = true;
+            // 
+            // FacturaEstudiantilBindingSource
+            // 
+            this.FacturaEstudiantilBindingSource.DataMember = "FacturaEstudiantil";
+            this.FacturaEstudiantilBindingSource.DataSource = this.Reporting;
+            // 
+            // FacturaEstudiantilTableAdapter
+            // 
+            this.FacturaEstudiantilTableAdapter.ClearBeforeFill = true;
             // 
             // frmFacturaSemanal
             // 
@@ -75,8 +87,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Factura";
             this.Load += new System.EventHandler(this.frmFacturaSemanal_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Reporting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FacturaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Reporting)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FacturaEstudiantilBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -87,5 +100,7 @@
         private System.Windows.Forms.BindingSource FacturaBindingSource;
         private Reporting Reporting;
         private ReportingTableAdapters.FacturaTableAdapter FacturaTableAdapter;
+        private System.Windows.Forms.BindingSource FacturaEstudiantilBindingSource;
+        private ReportingTableAdapters.FacturaEstudiantilTableAdapter FacturaEstudiantilTableAdapter;
     }
 }

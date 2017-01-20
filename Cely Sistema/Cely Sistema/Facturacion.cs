@@ -14,11 +14,12 @@ namespace Cely_Sistema
         public string Razon_Pago { get; set; }
         public string Cancelacion_Pago { get; set; }
         public int Codigo_Factura { get; set; }
+        public string FechaProximoPago { get; set; }
 
         public Facturacion()
         { }
 
-        public Facturacion(Int32 ME, string NE, int P, string FF, string N, string CP, int CF)
+        public Facturacion(Int32 ME, string NE, int P, string FF, string N, string CP, int CF, string fpp)
         {
             this.Matricula_Estudiante = ME;
             this.Nombre_Estudiante = NE;
@@ -27,6 +28,7 @@ namespace Cely_Sistema
             this.Razon_Pago = N;
             this.Cancelacion_Pago = CP;
             this.Codigo_Factura = CF;
+            this.FechaProximoPago = fpp;
         }
     }
 }
