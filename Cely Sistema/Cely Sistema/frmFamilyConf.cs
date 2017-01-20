@@ -179,9 +179,12 @@ namespace Cely_Sistema
 
                     dgvListado.DataSource = EstudianteDB.listEstudiantesPorPagoGrupal(pInfoGrupoOutSide.Id_grupo);
                 }
+                else
+                {
+                    rbMensual.Checked = false;
+                    rbSemanal.Checked = false;
+                }
             }
-            rbMensual.Checked = false;
-            rbSemanal.Checked = false;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
