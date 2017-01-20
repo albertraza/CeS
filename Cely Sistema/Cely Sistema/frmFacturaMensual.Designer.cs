@@ -30,26 +30,31 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.FacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.FacturaEstudiantilBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Reporting = new Cely_Sistema.Reporting();
+            this.FacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.FacturaTableAdapter = new Cely_Sistema.ReportingTableAdapters.FacturaTableAdapter();
-            this.FacturaEstudiantilBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.FacturaEstudiantilTableAdapter = new Cely_Sistema.ReportingTableAdapters.FacturaEstudiantilTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.FacturaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Reporting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FacturaEstudiantilBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Reporting)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FacturaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // FacturaBindingSource
+            // FacturaEstudiantilBindingSource
             // 
-            this.FacturaBindingSource.DataMember = "Factura";
-            this.FacturaBindingSource.DataSource = this.Reporting;
+            this.FacturaEstudiantilBindingSource.DataMember = "FacturaEstudiantil";
+            this.FacturaEstudiantilBindingSource.DataSource = this.Reporting;
             // 
             // Reporting
             // 
             this.Reporting.DataSetName = "Reporting";
             this.Reporting.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // FacturaBindingSource
+            // 
+            this.FacturaBindingSource.DataMember = "Factura";
+            this.FacturaBindingSource.DataSource = this.Reporting;
             // 
             // reportViewer1
             // 
@@ -57,7 +62,7 @@
             reportDataSource1.Name = "Factura";
             reportDataSource1.Value = this.FacturaEstudiantilBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Cely_Sistema.rpFacturaMensualNew.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Cely_Sistema.bin.Debug.rpFacturaMensualNew.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(922, 518);
@@ -66,11 +71,6 @@
             // FacturaTableAdapter
             // 
             this.FacturaTableAdapter.ClearBeforeFill = true;
-            // 
-            // FacturaEstudiantilBindingSource
-            // 
-            this.FacturaEstudiantilBindingSource.DataMember = "FacturaEstudiantil";
-            this.FacturaEstudiantilBindingSource.DataSource = this.Reporting;
             // 
             // FacturaEstudiantilTableAdapter
             // 
@@ -87,9 +87,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Factura";
             this.Load += new System.EventHandler(this.frmFacturaMensual_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.FacturaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Reporting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FacturaEstudiantilBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Reporting)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FacturaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

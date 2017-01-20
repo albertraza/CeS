@@ -764,27 +764,51 @@ namespace Cely_Sistema
                                     if (MessageBox.Show("Desea Imprimir la Factura?", "Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                     {
                                         string codigoFactura = FacturacionDB.getFacturaID(txtMatricula.Text, txtMotivodePago.Text, DateTime.Today.Date.ToString("yyyy-MM-dd"), MesesSemanasRestan.ToString("f0"), pagoCon.ToString(), TotalDescuento.ToString());
-                                        if(MP == "Mensual")
+
+                                        if (EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(txtMatricula.Text)).pagoGrupal == 0)
                                         {
-                                            frmFacturaMensual pFacturaEst = new frmFacturaMensual();
-                                            pFacturaEst.matricula = int.Parse(codigoFactura);
-                                            pFacturaEst.ShowDialog();
-                                        }
-                                        else if(MP == "Semanal")
-                                        {
-                                            frmFacturaSemanal pFacturaSem = new frmFacturaSemanal();
-                                            pFacturaSem.matricula = int.Parse(codigoFactura);
-                                            pFacturaSem.ShowDialog();
+                                            if (MP == "Mensual")
+                                            {
+                                                frmFacturaMensual pFacturaEst = new frmFacturaMensual();
+                                                pFacturaEst.matricula = int.Parse(codigoFactura);
+                                                pFacturaEst.ShowDialog();
+                                            }
+                                            else if (MP == "Semanal")
+                                            {
+                                                frmFacturaSemanal pFacturaSem = new frmFacturaSemanal();
+                                                pFacturaSem.matricula = int.Parse(codigoFactura);
+                                                pFacturaSem.ShowDialog();
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("El modo de pago no ha sido registrado para este estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                if (MessageBox.Show("Desearia registrar un modo de pago para este estudiante?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                                {
+                                                    frmRegistro pRegistro = new frmRegistro();
+                                                    EstudianteBase pEstudiante = EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text));
+                                                    pRegistro.GetIDestudiante = pEstudiante;
+                                                    pRegistro.ShowDialog();
+                                                }
+                                            }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("El modo de pago no ha sido registrado para este estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                            if(MessageBox.Show("Desearia registrar un modo de pago para este estudiante?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                            EstudianteBase pInfoEstudiante = EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(txtMatricula.Text));
+                                            if(pagoGrupal.getPagoGrupal(pInfoEstudiante.codigoGrupal).ModoPago == "Mensual")
                                             {
-                                                frmRegistro pRegistro = new frmRegistro();
-                                                EstudianteBase pEstudiante = EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text));
-                                                pRegistro.GetIDestudiante = pEstudiante;
-                                                pRegistro.ShowDialog();
+                                                frmFacturaMensual pFacturaEst = new frmFacturaMensual();
+                                                pFacturaEst.matricula = int.Parse(codigoFactura);
+                                                pFacturaEst.ShowDialog();
+                                            }
+                                            else if(pagoGrupal.getPagoGrupal(pInfoEstudiante.codigoGrupal).ModoPago == "Semanal")
+                                            {
+                                                frmFacturaSemanal pFacturaSem = new frmFacturaSemanal();
+                                                pFacturaSem.matricula = int.Parse(codigoFactura);
+                                                pFacturaSem.ShowDialog();
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("No se pudo Identificar el modo de pago del Grupo donde esta registrado el estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             }
                                         }
                                         LimpiarM();
@@ -1042,34 +1066,79 @@ namespace Cely_Sistema
         {
             try
             {
+                string Matricula = dgvtabla.CurrentRow.Cells[0].Value.ToString();
+                string CodigoFactura = dgvtabla.CurrentRow.Cells[6].Value.ToString();
                 if (dgvtabla.SelectedRows.Count == 1)
                 {
-                    string Matricula = dgvtabla.CurrentRow.Cells[0].Value.ToString();
-                    string CodigoFactura = dgvtabla.CurrentRow.Cells[6].Value.ToString();
-                    string MP = EstudianteDB.ObtenerModoPago(int.Parse(Matricula));
-                    if(MP == "Mensual")
+                    if (EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(Matricula)) != null)
                     {
-                        frmFacturaMensual pFactura = new frmFacturaMensual();
-                        pFactura.matricula = int.Parse(CodigoFactura);
-                        pFactura.ShowDialog();
-                    }
-                    else if(MP == "Semanal")
-                    {
-                        frmFacturaSemanal pFactura = new frmFacturaSemanal();
-                        pFactura.matricula = int.Parse(CodigoFactura);
-                        pFactura.ShowDialog();
+                        string MP = EstudianteDB.ObtenerModoPago(int.Parse(Matricula));
+                        if (EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(Matricula)).pagoGrupal == 0)
+                        {
+                            if (MP == "Mensual")
+                            {
+                                frmFacturaMensual pFactura = new frmFacturaMensual();
+                                pFactura.matricula = int.Parse(CodigoFactura);
+                                pFactura.ShowDialog();
+                            }
+                            else if (MP == "Semanal")
+                            {
+                                frmFacturaSemanal pFactura = new frmFacturaSemanal();
+                                pFactura.matricula = int.Parse(CodigoFactura);
+                                pFactura.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se ha registrado un modo pago para el estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                if (MessageBox.Show("Desearia registrar un modo de pago para este estudiante?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    frmRegistro pRegistro = new frmRegistro();
+                                    EstudianteBase pEstudiante = EstudianteDB.SeleccionarEstudiante(int.Parse(Matricula));
+                                    pRegistro.GetIDestudiante = pEstudiante;
+                                    pRegistro.ShowDialog();
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            EstudianteBase pInfoEstudiante = EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(Matricula));
+                            if (pagoGrupal.getPagoGrupal(pInfoEstudiante.codigoGrupal).ModoPago == "Mensual")
+                            {
+                                frmFacturaMensual pFactura = new frmFacturaMensual();
+                                pFactura.matricula = int.Parse(CodigoFactura);
+                                pFactura.ShowDialog();
+                            }
+                            else if (pagoGrupal.getPagoGrupal(pInfoEstudiante.codigoGrupal).ModoPago == "Semanal")
+                            {
+                                frmFacturaSemanal pFactura = new frmFacturaSemanal();
+                                pFactura.matricula = int.Parse(CodigoFactura);
+                                pFactura.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo identificar el modo de pago del Grupo donde esta registrado el estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("No se ha registrado un modo pago para el estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        if (MessageBox.Show("Desearia registrar un modo de pago para este estudiante?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (pagoGrupal.getPagoGrupal(int.Parse(Matricula)).ModoPago == "Mensual")
                         {
-                            frmRegistro pRegistro = new frmRegistro();
-                            EstudianteBase pEstudiante = EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text));
-                            pRegistro.GetIDestudiante = pEstudiante;
-                            pRegistro.ShowDialog();
+                            frmFacturaMensual pFactura = new frmFacturaMensual();
+                            pFactura.matricula = int.Parse(CodigoFactura);
+                            pFactura.ShowDialog();
                         }
-
+                        else if (pagoGrupal.getPagoGrupal(int.Parse(Matricula)).ModoPago == "Semanal")
+                        {
+                            frmFacturaSemanal pFactura = new frmFacturaSemanal();
+                            pFactura.matricula = int.Parse(CodigoFactura);
+                            pFactura.ShowDialog();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo identificar el modo de pago del Grupo donde esta registrado el estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
                 else
@@ -1079,7 +1148,25 @@ namespace Cely_Sistema
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                string Matricula = dgvtabla.CurrentRow.Cells[0].Value.ToString();
+                string CodigoFactura = dgvtabla.CurrentRow.Cells[6].Value.ToString();
+
+                if (pagoGrupal.getPagoGrupal(int.Parse(Matricula)).ModoPago == "Mensual")
+                {
+                    frmFacturaMensual pFactura = new frmFacturaMensual();
+                    pFactura.matricula = int.Parse(CodigoFactura);
+                    pFactura.ShowDialog();
+                }
+                else if (pagoGrupal.getPagoGrupal(int.Parse(Matricula)).ModoPago == "Semanal")
+                {
+                    frmFacturaSemanal pFactura = new frmFacturaSemanal();
+                    pFactura.matricula = int.Parse(CodigoFactura);
+                    pFactura.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo identificar el modo de pago del Grupo donde esta registrado el estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
         private double descM;
