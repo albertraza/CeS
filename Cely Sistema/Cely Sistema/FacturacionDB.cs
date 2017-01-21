@@ -62,6 +62,15 @@ namespace Cely_Sistema
                     pFactura.Cancelacion_Pago = reader.GetString(5);
                     pFactura.Codigo_Factura = reader.GetInt32(6);
 
+                    if (reader["FechaProximoPago"].ToString() == null || reader["FechaProximoPago"].ToString() == string.Empty)
+                    {
+                        pFactura.FechaProximoPago = "none";
+                    }
+                    else
+                    {
+                        pFactura.FechaProximoPago = Convert.ToDateTime(reader["FechaProximoPago"]).ToString("dd-MM-yyyy");
+                    }
+
                     Factura.Add(pFactura);
                 }
                 conexion.Close();
@@ -89,6 +98,15 @@ namespace Cely_Sistema
                     pFactura.Razon_Pago = reader.GetString(4);
                     pFactura.Cancelacion_Pago = reader.GetString(5);
                     pFactura.Codigo_Factura = reader.GetInt32(6);
+
+                    if (reader["FechaProximoPago"].ToString() == null || reader["FechaProximoPago"].ToString() == string.Empty)
+                    {
+                        pFactura.FechaProximoPago = "none";
+                    }
+                    else
+                    {
+                        pFactura.FechaProximoPago = Convert.ToDateTime(reader["FechaProximoPago"]).ToString("dd-MM-yyyy");
+                    }
 
                     Factura.Add(pFactura);
                 }
@@ -118,6 +136,15 @@ namespace Cely_Sistema
                     pFactura.Cancelacion_Pago = reader.GetString(5);
                     pFactura.Codigo_Factura = reader.GetInt32(6);
 
+                    if (reader["FechaProximoPago"].ToString() == null || reader["FechaProximoPago"].ToString() == string.Empty)
+                    {
+                        pFactura.FechaProximoPago = "none";
+                    }
+                    else
+                    {
+                        pFactura.FechaProximoPago = Convert.ToDateTime(reader["FechaProximoPago"]).ToString("dd-MM-yyyy");
+                    }
+
                     Factura.Add(pFactura);
                 }
                 conexion.Close();
@@ -143,6 +170,15 @@ namespace Cely_Sistema
                     pFactura.Razon_Pago = reader.GetString(4);
                     pFactura.Cancelacion_Pago = reader.GetString(5);
                     pFactura.Codigo_Factura = reader.GetInt32(6);
+
+                    if (reader["FechaProximoPago"].ToString() == null || reader["FechaProximoPago"].ToString() == string.Empty)
+                    {
+                        pFactura.FechaProximoPago = "none";
+                    }
+                    else
+                    {
+                        pFactura.FechaProximoPago = Convert.ToDateTime(reader["FechaProximoPago"]).ToString("dd-MM-yyyy");
+                    }
 
                     Factura.Add(pFactura);
                 }
