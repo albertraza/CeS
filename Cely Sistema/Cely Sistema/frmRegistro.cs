@@ -864,7 +864,9 @@ namespace Cely_Sistema
                         MessageBox.Show("El codigo del nivel del estudiante es igual a cero", "Registro Estudiantil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         retorno = 0;
                     }
+                    // actualizar el pago
 
+                    EstudianteDB.updatePago(Convert.ToInt32(pEstudiante.ID), double.Parse(txtPagoMensualSemanal.Text), double.Parse(txtMoraMensualSemanal.Text));
                     if (retorno > 0)
                     {
                         if (CodigoNivelAnterior != codigoNuevoGrupo & codigoNuevoGrupo != 0 & CodigoNivelAnterior != 0)
