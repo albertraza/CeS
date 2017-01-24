@@ -88,7 +88,6 @@ namespace Cely_Sistema
                             rbPago.Checked = true;
                             txtNombre.Text = nombre;
                             txtApellido.Text = apellido;
-                            dgvtabla.DataSource = FacturacionDB.BuscarFacturas(Int32.Parse(txtMatricula.Text));
                             btnAceptar.Focus();
                             int CompF = DateTime.Compare(pPago0, fechaActual);
 
@@ -99,6 +98,9 @@ namespace Cely_Sistema
                                 // verify if el estudiante is registeres for a grupal payment
                                 if (EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(txtMatricula.Text)).pagoGrupal == 0)
                                 {
+                                    // cargar las facturas previas en la tabla
+                                    dgvtabla.DataSource = FacturacionDB.BuscarFacturas(Int32.Parse(txtMatricula.Text));
+
                                     // VIP method execution
                                     if (EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP != "NO" ||
                                             EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP != "No" ||
@@ -179,6 +181,8 @@ namespace Cely_Sistema
                                     pagoGrupal pInfoGrupo = pagoGrupal.getPagoGrupal(pEstudianteInfo.codigoGrupal);
                                     lblNombreGrupo.Text = pInfoGrupo.Nombre;
 
+                                    // cargar las facturas previas en la tabla
+                                    dgvtabla.DataSource = FacturacionDB.BuscarFacturasWithGrupo(Int32.Parse(txtMatricula.Text), pInfoGrupo.Id_grupo);
 
                                     gbListaGrupal.Visible = true;
                                     dgvListaGrupo.DataSource = EstudianteDB.listEstudiantesPorPagoGrupal(pInfoGrupo.Id_grupo);
@@ -763,9 +767,9 @@ namespace Cely_Sistema
                                     MessageBox.Show("Codigo Factura: " + codigo + "\n" + "Devuelta: " + devuelta.ToString("f2") + "\n" + "Cant Pendiente: " + MesesSemanasRestan.ToString("f0"), "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     if (MessageBox.Show("Desea Imprimir la Factura?", "Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                     {
-                                        string codigoFactura = FacturacionDB.getFacturaID(txtMatricula.Text, txtMotivodePago.Text, DateTime.Today.Date.ToString("yyyy-MM-dd"), MesesSemanasRestan.ToString("f0"), pagoCon.ToString(), TotalDescuento.ToString());
+                                        string codigoFactura = FacturacionDB.getFacturaID(pFactura.Matricula_Estudiante.ToString(), txtMotivodePago.Text, DateTime.Today.Date.ToString("yyyy-MM-dd"), MesesSemanasRestan.ToString("f0"), pagoCon.ToString(), TotalDescuento.ToString());
 
-                                        if (EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(txtMatricula.Text)).pagoGrupal == 0)
+                                        if (EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(txtMatricula.Text)).codigoGrupal == 0)
                                         {
                                             if (MP == "Mensual")
                                             {
@@ -970,6 +974,28 @@ namespace Cely_Sistema
                 else
                 {
                     MessageBox.Show("Matricula vacia, digite una matricula valida", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnBuscarEstudiante_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmBusquedaDeAlumnos pBusqueda = new frmBusquedaDeAlumnos();
+                pBusqueda.ShowDialog();
+                if (pBusqueda.EstudianteSeleccionado != null)
+                {
+                    txtMatricula.Text = pBusqueda.EstudianteSeleccionado.ID.ToString();
+                    populateStudent();
+                }
+                else
+                {
+                    MessageBox.Show("No se ha seleccionado un estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch(Exception ex)

@@ -307,5 +307,43 @@ namespace Cely_Sistema
             }
             return r;
         }
+        // metodo para buscar facturas incluyendo las del grupo
+        public static List<Facturacion> BuscarFacturasWithGrupo(int pMatricula, int idGrupo)
+        {
+            List<Facturacion> Factura = new List<Facturacion>();
+
+            using (SqlConnection conexion = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comando = new SqlCommand(string.Format("Select * from Facturacion where IDCliente = {0} or IDCliente = {1} order by CodigoFacturacion desc", pMatricula, idGrupo), conexion);
+
+                SqlDataReader reader = comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Facturacion pFactura = new Facturacion();
+
+                    pFactura.Matricula_Estudiante = reader.GetInt32(0);
+                    pFactura.Nombre_Estudiante = reader.GetString(1);
+                    pFactura.Precio = Convert.ToDouble(reader.GetValue(2));
+                    pFactura.Fecha_Factura = reader.GetDateTime(3).ToLongDateString();
+                    pFactura.Razon_Pago = reader.GetString(4);
+                    pFactura.Cancelacion_Pago = reader.GetString(5);
+                    pFactura.Codigo_Factura = reader.GetInt32(6);
+
+                    if (reader["FechaProximoPago"].ToString() == null || reader["FechaProximoPago"].ToString() == string.Empty)
+                    {
+                        pFactura.FechaProximoPago = "none";
+                    }
+                    else
+                    {
+                        pFactura.FechaProximoPago = Convert.ToDateTime(reader["FechaProximoPago"]).ToString("dd-MM-yyyy");
+                    }
+
+                    Factura.Add(pFactura);
+                }
+                conexion.Close();
+            }
+            return Factura;
+        }
     }
 }

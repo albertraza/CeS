@@ -56,5 +56,75 @@ namespace Cely_Sistema
                 }
             }
         }
+
+        private void btnImprimirFactura_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(dgvTabla.SelectedRows.Count == 1)
+                {
+                    int id = Convert.ToInt32(dgvTabla.CurrentRow.Cells[0].Value);
+                    int codigoFactura = Convert.ToInt32(dgvTabla.CurrentRow.Cells[6].Value);
+
+                    if(EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(id)).Modo_Pago != null)
+                    {
+                        EstudianteBase pEstudiante = EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(id));
+                        if (pEstudiante.Modo_Pago == "Mensual")
+                        {
+                            frmFacturaMensual pFactura = new frmFacturaMensual();
+                            pFactura.matricula = codigoFactura;
+                            pFactura.ShowDialog();
+                        }
+                        else if (pEstudiante.Modo_Pago == "Semanal")
+                        {
+                            frmFacturaSemanal pFactura = new frmFacturaSemanal();
+                            pFactura.matricula = codigoFactura;
+                            pFactura.ShowDialog();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo identificar el modo de pago estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        if (pagoGrupal.getPagoGrupal(id).ModoPago == null)
+                        {
+                            MessageBox.Show("No existe el grupo y el Estudiante", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            pagoGrupal pinfoGrupo = pagoGrupal.getPagoGrupal(id);
+
+                            if (pinfoGrupo.ModoPago == "Mensual")
+                            {
+                                frmFacturaMensual pFactura = new frmFacturaMensual();
+                                pFactura.matricula = codigoFactura;
+                                pFactura.ShowDialog();
+                            }
+                            else if (pinfoGrupo.ModoPago == "Semanal")
+                            {
+                                frmFacturaSemanal pFactura = new frmFacturaSemanal();
+                                pFactura.matricula = codigoFactura;
+                                pFactura.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo identificar el modo de pago grupo" + pinfoGrupo.ModoPago, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se ha seleccionado una factura para imprimir", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

@@ -270,7 +270,7 @@
                             <TextRun>
                               <Value>=Fields!CantSemanasMesesPagos.Value</Value>
                               <Style>
-                                <Format>'$'0.00;('$'0.00)</Format>
+                                <Format>0;(0)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -287,7 +287,6 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
-                        <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -408,7 +407,7 @@
                             <TextRun>
                               <Value>=Fields!cantMora.Value</Value>
                               <Style>
-                                <Format>'$'0.00;('$'0.00)</Format>
+                                <Format>0;(0)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -425,9 +424,9 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
-                        <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -493,7 +492,7 @@
         <Top>3.07167in</Top>
         <Left>0.39458in</Left>
         <Height>0.75in</Height>
-        <Width>5.5in</Width>
+        <Width>5.49999in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>

@@ -237,7 +237,7 @@ namespace Cely_Sistema
                     pIngoGrupos.Nombre = reader["nom"].ToString();
                     pIngoGrupos.pago = Convert.ToDouble(reader["p"].ToString());
                     pIngoGrupos.mora = Convert.ToDouble(reader["m"].ToString());
-                    pIngoGrupos.ModoPago = reader["mp"].ToString();
+                    pIngoGrupos.ModoPago = reader.GetString(6);
                     pIngoGrupos.FechaProximoPago = reader["fpp"].ToString();
                     pIngoGrupos.FechaUltimoPago = reader["fup"].ToString();
 

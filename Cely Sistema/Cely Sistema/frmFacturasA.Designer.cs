@@ -38,6 +38,7 @@
             this.facturacionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.facturacionTableAdapter = new Cely_Sistema.CelyDBDataSetTableAdapters.FacturacionTableAdapter();
             this.lblTotalRecaudado = new System.Windows.Forms.Label();
+            this.btnImprimirFactura = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.celyDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.facturacionBindingSource)).BeginInit();
@@ -105,11 +106,22 @@
             this.lblTotalRecaudado.TabIndex = 2;
             this.lblTotalRecaudado.Text = "Total Ganancias: ";
             // 
+            // btnImprimirFactura
+            // 
+            this.btnImprimirFactura.Location = new System.Drawing.Point(563, 44);
+            this.btnImprimirFactura.Name = "btnImprimirFactura";
+            this.btnImprimirFactura.Size = new System.Drawing.Size(155, 23);
+            this.btnImprimirFactura.TabIndex = 3;
+            this.btnImprimirFactura.Text = "Imprimir Factura";
+            this.btnImprimirFactura.UseVisualStyleBackColor = true;
+            this.btnImprimirFactura.Click += new System.EventHandler(this.btnImprimirFactura_Click);
+            // 
             // frmFacturasA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 386);
+            this.Controls.Add(this.btnImprimirFactura);
             this.Controls.Add(this.lblTotalRecaudado);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.dtpFecha);
@@ -139,5 +151,6 @@
         private System.Windows.Forms.BindingSource facturacionBindingSource;
         private CelyDBDataSetTableAdapters.FacturacionTableAdapter facturacionTableAdapter;
         private System.Windows.Forms.Label lblTotalRecaudado;
+        private System.Windows.Forms.Button btnImprimirFactura;
     }
 }
