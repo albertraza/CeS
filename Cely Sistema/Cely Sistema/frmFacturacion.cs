@@ -493,7 +493,18 @@ namespace Cely_Sistema
                 {
                     txtNombre.Text = nombre;
                     txtApellido.Text = apellido;
-                    dgvtabla.DataSource = FacturacionDB.BuscarFacturas(Int32.Parse(txtMatricula.Text));
+                    if (EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(txtMatricula.Text)).pagoGrupal == 0)
+                    {
+                        dgvtabla.DataSource = FacturacionDB.BuscarFacturas(Int32.Parse(txtMatricula.Text));
+                    }
+                    else
+                    {
+                        pagoGrupal pInfoGrupo = pagoGrupal.getPagoGrupal(EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(txtMatricula.Text)).codigoGrupal);
+                        gbListaGrupal.Visible = true;
+                        lblNombreGrupo.Text = pInfoGrupo.Nombre;
+                        dgvListaGrupo.DataSource = EstudianteDB.listEstudiantesPorPagoGrupal(pInfoGrupo.Id_grupo);
+                        dgvtabla.DataSource = FacturacionDB.BuscarFacturasWithGrupo(int.Parse(txtMatricula.Text), EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(txtMatricula.Text)).codigoGrupal);
+                    }
                 }
                 else
                 {
@@ -826,7 +837,7 @@ namespace Cely_Sistema
                                 {
                                     if (MessageBox.Show("Error, No se pudo mostrar el Codigo", "Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                                     {
-                                        //codigo = FacturacionDB.ObtenerCodigo(pFactura);
+                                        codigo = FacturacionDB.ObtenerCodigo(pFactura);
                                         if (codigo != null)
                                         {
                                             MessageBox.Show("Codigo Factura: " + codigo, "Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
