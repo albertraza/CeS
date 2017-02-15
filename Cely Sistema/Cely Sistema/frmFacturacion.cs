@@ -1200,37 +1200,55 @@ namespace Cely_Sistema
                         string Modopago = EstudianteDB.ObtenerModoPago(int.Parse(txtMatricula.Text));
                         if (Modopago != null)
                         {
-                            // Getting Mora chargue waived for VIP students
-
-                            if (EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == "NO" ||
-                                EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == "No" ||
-                                EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)) == null)
+                            if (EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(txtMatricula.Text)).pagoGrupal == 0)
                             {
-                                if (Modopago == "M" || Modopago == "Mensual")
+                                // Getting Mora chargue waived for VIP students
+
+                                if (EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == "NO" ||
+                                    EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)).VIP == "No" ||
+                                    EstudianteDB.SeleccionarEstudiante(int.Parse(txtMatricula.Text)) == null)
                                 {
-                                    descM = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
-                                    nCantPagar.Value = 0;
-                                    nCantPagar.Value = Convert.ToInt32(MesesP + 1);
+                                    if (Modopago == "M" || Modopago == "Mensual")
+                                    {
+                                        descM = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
+                                        nCantPagar.Value = 0;
+                                        nCantPagar.Value = Convert.ToInt32(MesesP + 1);
+                                    }
+                                    else
+                                    {
+                                        descM = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
+                                        nCantPagar.Value = 0;
+                                        nCantPagar.Value = Convert.ToInt32(semanasP + 1);
+                                    }
                                 }
                                 else
                                 {
-                                    descM = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
-                                    nCantPagar.Value = 0;
-                                    nCantPagar.Value = Convert.ToInt32(semanasP + 1);
+                                    if (Modopago == "M" || Modopago == "Mensual")
+                                    {
+                                        descM = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
+                                        nCantPagar.Value = 0;
+                                        nCantPagar.Value = Convert.ToInt32(MesesP + 1);
+                                    }
+                                    else
+                                    {
+                                        descM = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
+                                        nCantPagar.Value = 0;
+                                        nCantPagar.Value = Convert.ToInt32(semanasP + 1);
+                                    }
                                 }
                             }
                             else
                             {
-                                if (Modopago == "M" || Modopago == "Mensual")
+                                EstudianteBase pEstudiante = EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(txtMatricula.Text));
+                                descM = pagoGrupal.getPagoGrupal(pEstudiante.codigoGrupal).mora;
+                                nCantPagar.Value = 0;
+
+                                if(pagoGrupal.getPagoGrupal(pEstudiante.codigoGrupal).ModoPago == "Mensual")
                                 {
-                                    descM = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
-                                    nCantPagar.Value = 0;
                                     nCantPagar.Value = Convert.ToInt32(MesesP + 1);
                                 }
-                                else
+                                else if(pagoGrupal.getPagoGrupal(pEstudiante.codigoGrupal).ModoPago == "Semanal")
                                 {
-                                    descM = PagosDB.getPrecio(int.Parse(txtMatricula.Text)).mora;
-                                    nCantPagar.Value = 0;
                                     nCantPagar.Value = Convert.ToInt32(semanasP + 1);
                                 }
                             }
