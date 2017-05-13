@@ -137,7 +137,7 @@ namespace Cely_Sistema
 
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("select * from Estudiantes where Codigo_Grupo = {0}", CodigoG), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("select * from Estudiantes where Codigo_Grupo = {0} and Retirado = 0", CodigoG), conexion);
 
                 SqlDataReader reader = comando.ExecuteReader();
 

@@ -112,3 +112,5 @@ C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\
 C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmReporteEstudiantePorNivel.resources
 C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmFamilyConf.resources
 C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmBuscarGrupo.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmFacturaMensualAtrasados.resources
+C:\FactoriadeProyectos\Factoria de proyectos\Cely\Cely Sistema\Cely Sistema\obj\Debug\Cely_Sistema.frmFacturaSemanalAtradados.resources

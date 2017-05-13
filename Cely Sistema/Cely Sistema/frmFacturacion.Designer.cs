@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFacturacion));
             this.txtMatricula = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -160,9 +160,10 @@
             // 
             // txtMotivodePago
             // 
-            this.txtMotivodePago.Location = new System.Drawing.Point(135, 161);
+            this.txtMotivodePago.Location = new System.Drawing.Point(133, 167);
+            this.txtMotivodePago.Multiline = true;
             this.txtMotivodePago.Name = "txtMotivodePago";
-            this.txtMotivodePago.Size = new System.Drawing.Size(100, 22);
+            this.txtMotivodePago.Size = new System.Drawing.Size(202, 51);
             this.txtMotivodePago.TabIndex = 1;
             // 
             // btnVerFacturas
@@ -364,14 +365,14 @@
             // dgvListaGrupo
             // 
             this.dgvListaGrupo.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaGrupo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaGrupo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListaGrupo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaGrupo.Location = new System.Drawing.Point(6, 56);
             this.dgvListaGrupo.Name = "dgvListaGrupo";
@@ -473,7 +474,7 @@
             // 
             this.lblCantidadaPagar.AutoSize = true;
             this.lblCantidadaPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadaPagar.Location = new System.Drawing.Point(8, 192);
+            this.lblCantidadaPagar.Location = new System.Drawing.Point(8, 228);
             this.lblCantidadaPagar.Name = "lblCantidadaPagar";
             this.lblCantidadaPagar.Size = new System.Drawing.Size(133, 16);
             this.lblCantidadaPagar.TabIndex = 29;
@@ -481,7 +482,7 @@
             // 
             // txtCantPagar
             // 
-            this.txtCantPagar.Location = new System.Drawing.Point(147, 189);
+            this.txtCantPagar.Location = new System.Drawing.Point(147, 225);
             this.txtCantPagar.Name = "txtCantPagar";
             this.txtCantPagar.Size = new System.Drawing.Size(100, 22);
             this.txtCantPagar.TabIndex = 28;

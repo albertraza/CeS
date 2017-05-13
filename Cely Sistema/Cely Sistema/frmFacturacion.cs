@@ -784,15 +784,33 @@ namespace Cely_Sistema
                                         {
                                             if (MP == "Mensual")
                                             {
-                                                frmFacturaMensual pFacturaEst = new frmFacturaMensual();
-                                                pFacturaEst.matricula = int.Parse(codigoFactura);
-                                                pFacturaEst.ShowDialog();
+                                                if (MesesSemanasRestan == 0)
+                                                {
+                                                    frmFacturaMensual pFacturaEst = new frmFacturaMensual();
+                                                    pFacturaEst.matricula = int.Parse(codigoFactura);
+                                                    pFacturaEst.ShowDialog();
+                                                }
+                                                else if(MesesSemanasRestan >= 1)
+                                                {
+                                                    frmFacturaMensualAtrasados pFacturaImpr = new frmFacturaMensualAtrasados();
+                                                    pFacturaImpr.pMatricula = int.Parse(codigoFactura);
+                                                    pFacturaImpr.ShowDialog();
+                                                }
                                             }
                                             else if (MP == "Semanal")
                                             {
-                                                frmFacturaSemanal pFacturaSem = new frmFacturaSemanal();
-                                                pFacturaSem.matricula = int.Parse(codigoFactura);
-                                                pFacturaSem.ShowDialog();
+                                                if (MesesSemanasRestan == 0)
+                                                {
+                                                    frmFacturaSemanal pFacturaSem = new frmFacturaSemanal();
+                                                    pFacturaSem.matricula = int.Parse(codigoFactura);
+                                                    pFacturaSem.ShowDialog();
+                                                }
+                                                else if(MesesSemanasRestan >= 1)
+                                                {
+                                                    frmFacturaSemanalAtradados pFacturaImpr = new frmFacturaSemanalAtradados();
+                                                    pFacturaImpr.pMatricula = int.Parse(codigoFactura);
+                                                    pFacturaImpr.ShowDialog();
+                                                }
                                             }
                                             else
                                             {
@@ -811,15 +829,33 @@ namespace Cely_Sistema
                                             EstudianteBase pInfoEstudiante = EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(txtMatricula.Text));
                                             if(pagoGrupal.getPagoGrupal(pInfoEstudiante.codigoGrupal).ModoPago == "Mensual")
                                             {
-                                                frmFacturaMensual pFacturaEst = new frmFacturaMensual();
-                                                pFacturaEst.matricula = int.Parse(codigoFactura);
-                                                pFacturaEst.ShowDialog();
+                                                if (MesesSemanasRestan == 0)
+                                                {
+                                                    frmFacturaMensual pFacturaEst = new frmFacturaMensual();
+                                                    pFacturaEst.matricula = int.Parse(codigoFactura);
+                                                    pFacturaEst.ShowDialog();
+                                                }
+                                                else if(MesesSemanasRestan >= 1)
+                                                {
+                                                    frmFacturaMensualAtrasados pFacturaImpr = new frmFacturaMensualAtrasados();
+                                                    pFacturaImpr.pMatricula = int.Parse(codigoFactura);
+                                                    pFacturaImpr.ShowDialog();
+                                                }
                                             }
                                             else if(pagoGrupal.getPagoGrupal(pInfoEstudiante.codigoGrupal).ModoPago == "Semanal")
                                             {
-                                                frmFacturaSemanal pFacturaSem = new frmFacturaSemanal();
-                                                pFacturaSem.matricula = int.Parse(codigoFactura);
-                                                pFacturaSem.ShowDialog();
+                                                if (MesesSemanasRestan == 0)
+                                                {
+                                                    frmFacturaSemanal pFacturaSem = new frmFacturaSemanal();
+                                                    pFacturaSem.matricula = int.Parse(codigoFactura);
+                                                    pFacturaSem.ShowDialog();
+                                                }
+                                                else if(MesesSemanasRestan >= 1)
+                                                {
+                                                    frmFacturaSemanalAtradados pFacturaImpr = new frmFacturaSemanalAtradados();
+                                                    pFacturaImpr.pMatricula = int.Parse(codigoFactura);
+                                                    pFacturaImpr.ShowDialog();
+                                                }
                                             }
                                             else
                                             {
@@ -1114,15 +1150,33 @@ namespace Cely_Sistema
                         {
                             if (MP == "Mensual")
                             {
-                                frmFacturaMensual pFactura = new frmFacturaMensual();
-                                pFactura.matricula = int.Parse(CodigoFactura);
-                                pFactura.ShowDialog();
+                                if (FacturacionDB.getMesesSemanasPendientes(int.Parse(CodigoFactura)) == 0)
+                                {
+                                    frmFacturaMensual pFactura = new frmFacturaMensual();
+                                    pFactura.matricula = int.Parse(CodigoFactura);
+                                    pFactura.ShowDialog();
+                                }
+                                else
+                                {
+                                    frmFacturaMensualAtrasados pFacturaImpr = new frmFacturaMensualAtrasados();
+                                    pFacturaImpr.pMatricula = int.Parse(CodigoFactura);
+                                    pFacturaImpr.ShowDialog();
+                                }
                             }
                             else if (MP == "Semanal")
                             {
-                                frmFacturaSemanal pFactura = new frmFacturaSemanal();
-                                pFactura.matricula = int.Parse(CodigoFactura);
-                                pFactura.ShowDialog();
+                                if (FacturacionDB.getMesesSemanasPendientes(int.Parse(CodigoFactura)) == 0)
+                                {
+                                    frmFacturaSemanal pFactura = new frmFacturaSemanal();
+                                    pFactura.matricula = int.Parse(CodigoFactura);
+                                    pFactura.ShowDialog();
+                                }
+                                else
+                                {
+                                    frmFacturaSemanalAtradados pFacturaImpr = new frmFacturaSemanalAtradados();
+                                    pFacturaImpr.pMatricula = int.Parse(CodigoFactura);
+                                    pFacturaImpr.ShowDialog();
+                                }
                             }
                             else
                             {
@@ -1142,15 +1196,33 @@ namespace Cely_Sistema
                             EstudianteBase pInfoEstudiante = EstudianteDB.SeleccionarEstudiante(Convert.ToInt64(Matricula));
                             if (pagoGrupal.getPagoGrupal(pInfoEstudiante.codigoGrupal).ModoPago == "Mensual")
                             {
-                                frmFacturaMensual pFactura = new frmFacturaMensual();
-                                pFactura.matricula = int.Parse(CodigoFactura);
-                                pFactura.ShowDialog();
+                                if (FacturacionDB.getMesesSemanasPendientes(int.Parse(CodigoFactura)) == 0)
+                                {
+                                    frmFacturaMensual pFactura = new frmFacturaMensual();
+                                    pFactura.matricula = int.Parse(CodigoFactura);
+                                    pFactura.ShowDialog();
+                                }
+                                else
+                                {
+                                    frmFacturaMensualAtrasados pFacturaImpr = new frmFacturaMensualAtrasados();
+                                    pFacturaImpr.pMatricula = int.Parse(CodigoFactura);
+                                    pFacturaImpr.ShowDialog();
+                                }
                             }
                             else if (pagoGrupal.getPagoGrupal(pInfoEstudiante.codigoGrupal).ModoPago == "Semanal")
                             {
-                                frmFacturaSemanal pFactura = new frmFacturaSemanal();
-                                pFactura.matricula = int.Parse(CodigoFactura);
-                                pFactura.ShowDialog();
+                                if (FacturacionDB.getMesesSemanasPendientes(int.Parse(CodigoFactura)) == 0)
+                                {
+                                    frmFacturaSemanal pFactura = new frmFacturaSemanal();
+                                    pFactura.matricula = int.Parse(CodigoFactura);
+                                    pFactura.ShowDialog();
+                                }
+                                else
+                                {
+                                    frmFacturaSemanalAtradados pFacturaImpr = new frmFacturaSemanalAtradados();
+                                    pFacturaImpr.pMatricula = int.Parse(CodigoFactura);
+                                    pFacturaImpr.ShowDialog();
+                                }
                             }
                             else
                             {
@@ -1162,15 +1234,33 @@ namespace Cely_Sistema
                     {
                         if (pagoGrupal.getPagoGrupal(int.Parse(Matricula)).ModoPago == "Mensual")
                         {
-                            frmFacturaMensual pFactura = new frmFacturaMensual();
-                            pFactura.matricula = int.Parse(CodigoFactura);
-                            pFactura.ShowDialog();
+                            if (FacturacionDB.getMesesSemanasPendientes(int.Parse(CodigoFactura)) == 0)
+                            {
+                                frmFacturaMensual pFactura = new frmFacturaMensual();
+                                pFactura.matricula = int.Parse(CodigoFactura);
+                                pFactura.ShowDialog();
+                            }
+                            else
+                            {
+                                frmFacturaMensualAtrasados pFacturaImpr = new frmFacturaMensualAtrasados();
+                                pFacturaImpr.pMatricula = int.Parse(CodigoFactura);
+                                pFacturaImpr.ShowDialog();
+                            }
                         }
                         else if (pagoGrupal.getPagoGrupal(int.Parse(Matricula)).ModoPago == "Semanal")
                         {
-                            frmFacturaSemanal pFactura = new frmFacturaSemanal();
-                            pFactura.matricula = int.Parse(CodigoFactura);
-                            pFactura.ShowDialog();
+                            if (FacturacionDB.getMesesSemanasPendientes(int.Parse(CodigoFactura)) == 0)
+                            {
+                                frmFacturaSemanal pFactura = new frmFacturaSemanal();
+                                pFactura.matricula = int.Parse(CodigoFactura);
+                                pFactura.ShowDialog();
+                            }
+                            else
+                            {
+                                frmFacturaSemanalAtradados pFacturaImpr = new frmFacturaSemanalAtradados();
+                                pFacturaImpr.pMatricula = int.Parse(CodigoFactura);
+                                pFacturaImpr.ShowDialog();
+                            }
                         }
                         else
                         {

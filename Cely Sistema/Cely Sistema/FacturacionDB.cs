@@ -307,6 +307,17 @@ namespace Cely_Sistema
             }
             return r;
         }
+        public static int getMesesSemanasPendientes(int codigoFactura)
+        {
+            int ret = -1;
+            using(SqlConnection con = DBcomun.ObetenerConexion())
+            {
+                SqlCommand comand = new SqlCommand(string.Format("select MesesSemnasRestantes from Facturacion where CodigoFacturacion = '{0}'", codigoFactura), con);
+                ret = Convert.ToInt32(comand.ExecuteScalar());
+                con.Close();
+            }
+            return ret;
+        }
         // metodo para buscar facturas incluyendo las del grupo
         public static List<Facturacion> BuscarFacturasWithGrupo(int pMatricula, int idGrupo)
         {

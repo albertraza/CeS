@@ -212,7 +212,7 @@ namespace Cely_Sistema
 
             using (SqlConnection conexion = DBcomun.ObetenerConexion())
             {
-                SqlCommand comando = new SqlCommand(string.Format("select * from Estudiantes order by ID desc"), conexion);
+                SqlCommand comando = new SqlCommand(string.Format("select * from Estudiantes where Retirado = 0 order by ID desc"), conexion);
 
                 SqlDataReader reader = comando.ExecuteReader();
 

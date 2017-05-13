@@ -45,6 +45,7 @@ namespace Cely_Sistema
                 frmRegistro pRegistro = new frmRegistro();
                 pRegistro.GetIDestudiante = EstudianteDB.SeleccionarEstudiante(Convert.ToInt32(dgvTabla.CurrentRow.Cells[12].Value));
                 pRegistro.ShowDialog();
+                dgvTabla.DataSource = GruposDB.EstudiantePorGrupo(ID);
             }
             else
             {

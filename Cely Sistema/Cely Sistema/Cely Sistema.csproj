@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Albert\Desktop\Installer Cely\</PublishUrl>
+    <PublishUrl>E:\InstallerCeli\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>es-DO</TargetCulture>
-    <ApplicationRevision>10</ApplicationRevision>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>2.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -223,6 +223,12 @@
     <Compile Include="frmFacturaMensual.Designer.cs">
       <DependentUpon>frmFacturaMensual.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFacturaMensualAtrasados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFacturaMensualAtrasados.Designer.cs">
+      <DependentUpon>frmFacturaMensualAtrasados.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFacturasA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,12 @@
     </Compile>
     <Compile Include="frmFacturaSemanal.Designer.cs">
       <DependentUpon>frmFacturaSemanal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFacturaSemanalAtradados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFacturaSemanalAtradados.Designer.cs">
+      <DependentUpon>frmFacturaSemanalAtradados.cs</DependentUpon>
     </Compile>
     <Compile Include="frmFamilyConf.cs">
       <SubType>Form</SubType>
@@ -405,6 +417,8 @@
     <Compile Include="UsuariosDB.cs" />
     <Compile Include="UsuariosS.cs" />
     <EmbeddedResource Include="bin\Debug\rpFacturaMensual.rdlc" />
+    <EmbeddedResource Include="bin\Debug\rpFacturaMensualAtrados.rdlc" />
+    <EmbeddedResource Include="bin\Debug\rpFacturaSemanalAtrasados.rdlc" />
     <EmbeddedResource Include="bin\Debug\rpFacturaSemanalNew.rdlc" />
     <EmbeddedResource Include="bin\Debug\rpFacturaSemanal.rdlc" />
     <EmbeddedResource Include="frmBuscarCalificacion.resx">
@@ -467,11 +481,17 @@
     <EmbeddedResource Include="frmFacturaMensual.resx">
       <DependentUpon>frmFacturaMensual.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFacturaMensualAtrasados.resx">
+      <DependentUpon>frmFacturaMensualAtrasados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFacturasA.resx">
       <DependentUpon>frmFacturasA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFacturaSemanal.resx">
       <DependentUpon>frmFacturaSemanal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFacturaSemanalAtradados.resx">
+      <DependentUpon>frmFacturaSemanalAtradados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFamilyConf.resx">
       <DependentUpon>frmFamilyConf.cs</DependentUpon>
@@ -628,52 +648,52 @@
   <ItemGroup>
     <PublishFile Include="Microsoft.ReportViewer.Common">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.DataVisualization">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.WinForms">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.SqlServer.Types">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
