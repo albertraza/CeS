@@ -686,8 +686,8 @@ namespace Cely_Sistema
                             else
                             {
                                 MessageBox.Show("La cantidad con la que se pagara es menol que el total a pagar, digite una cantidad valida", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                txtTotalaPagar.Clear();
-                                txtTotalaPagar.Focus();
+                                txtCantPagar.Clear();
+                                txtCantPagar.Focus();
                             }
 
                             if (Factura > 0)
