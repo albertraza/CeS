@@ -47,6 +47,7 @@ namespace Cely_Sistema
             }
             else
             {
+                cbVIP.Checked = false;
                 if (rbMensual.Checked)
                 {
                     if (cbVIP.Checked)

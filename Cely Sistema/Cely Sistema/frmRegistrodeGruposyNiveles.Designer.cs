@@ -42,6 +42,11 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.dgvNiveles = new System.Windows.Forms.DataGridView();
             this.gbRegistrodeNiveles = new System.Windows.Forms.GroupBox();
+            this.btnLimpiarFiltro = new System.Windows.Forms.Button();
+            this.txtBusqueda = new System.Windows.Forms.ComboBox();
+            this.lblDigiteSuBusqueda = new System.Windows.Forms.Label();
+            this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.lblFiltrarPor = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnVerEstudiantesR = new System.Windows.Forms.Button();
             this.btnSeleccionarGrupos = new System.Windows.Forms.Button();
@@ -50,11 +55,6 @@
             this.lblBuscarProfesor = new System.Windows.Forms.LinkLabel();
             this.txtProfesor = new System.Windows.Forms.TextBox();
             this.lblProfesor = new System.Windows.Forms.Label();
-            this.lblFiltrarPor = new System.Windows.Forms.Label();
-            this.cbFiltro = new System.Windows.Forms.ComboBox();
-            this.txtBusqueda = new System.Windows.Forms.ComboBox();
-            this.lblDigiteSuBusqueda = new System.Windows.Forms.Label();
-            this.btnLimpiarFiltro = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNiveles)).BeginInit();
             this.gbRegistrodeNiveles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -109,7 +109,8 @@
             this.cbAula.Items.AddRange(new object[] {
             "A",
             "B",
-            "C"});
+            "C",
+            "D"});
             this.cbAula.Location = new System.Drawing.Point(71, 90);
             this.cbAula.Name = "cbAula";
             this.cbAula.Size = new System.Drawing.Size(83, 21);
@@ -216,6 +217,62 @@
             this.gbRegistrodeNiveles.TabStop = false;
             this.gbRegistrodeNiveles.Text = "Registro de Niveles";
             // 
+            // btnLimpiarFiltro
+            // 
+            this.btnLimpiarFiltro.Location = new System.Drawing.Point(791, 40);
+            this.btnLimpiarFiltro.Name = "btnLimpiarFiltro";
+            this.btnLimpiarFiltro.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiarFiltro.TabIndex = 21;
+            this.btnLimpiarFiltro.Text = "Limpiar";
+            this.btnLimpiarFiltro.UseVisualStyleBackColor = true;
+            this.btnLimpiarFiltro.Click += new System.EventHandler(this.btnLimpiarFiltro_Click);
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.txtBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusqueda.FormattingEnabled = true;
+            this.txtBusqueda.Location = new System.Drawing.Point(505, 42);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(269, 21);
+            this.txtBusqueda.TabIndex = 20;
+            this.txtBusqueda.SelectedIndexChanged += new System.EventHandler(this.txtBusqueda_SelectedIndexChanged);
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            // 
+            // lblDigiteSuBusqueda
+            // 
+            this.lblDigiteSuBusqueda.AutoSize = true;
+            this.lblDigiteSuBusqueda.Location = new System.Drawing.Point(502, 22);
+            this.lblDigiteSuBusqueda.Name = "lblDigiteSuBusqueda";
+            this.lblDigiteSuBusqueda.Size = new System.Drawing.Size(121, 13);
+            this.lblDigiteSuBusqueda.TabIndex = 19;
+            this.lblDigiteSuBusqueda.Text = "Digite su Busqueda:";
+            // 
+            // cbFiltro
+            // 
+            this.cbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFiltro.FormattingEnabled = true;
+            this.cbFiltro.Items.AddRange(new object[] {
+            "Nivel",
+            "Horario",
+            "Profesor",
+            "Aula"});
+            this.cbFiltro.Location = new System.Drawing.Point(276, 42);
+            this.cbFiltro.Name = "cbFiltro";
+            this.cbFiltro.Size = new System.Drawing.Size(200, 21);
+            this.cbFiltro.TabIndex = 18;
+            this.cbFiltro.SelectedIndexChanged += new System.EventHandler(this.cbFiltro_SelectedIndexChanged);
+            // 
+            // lblFiltrarPor
+            // 
+            this.lblFiltrarPor.AutoSize = true;
+            this.lblFiltrarPor.Location = new System.Drawing.Point(273, 22);
+            this.lblFiltrarPor.Name = "lblFiltrarPor";
+            this.lblFiltrarPor.Size = new System.Drawing.Size(65, 13);
+            this.lblFiltrarPor.TabIndex = 17;
+            this.lblFiltrarPor.Text = "Filtrar por:";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -296,62 +353,6 @@
             this.lblProfesor.Size = new System.Drawing.Size(49, 13);
             this.lblProfesor.TabIndex = 13;
             this.lblProfesor.Text = "Profesor:";
-            // 
-            // lblFiltrarPor
-            // 
-            this.lblFiltrarPor.AutoSize = true;
-            this.lblFiltrarPor.Location = new System.Drawing.Point(273, 22);
-            this.lblFiltrarPor.Name = "lblFiltrarPor";
-            this.lblFiltrarPor.Size = new System.Drawing.Size(65, 13);
-            this.lblFiltrarPor.TabIndex = 17;
-            this.lblFiltrarPor.Text = "Filtrar por:";
-            // 
-            // cbFiltro
-            // 
-            this.cbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbFiltro.FormattingEnabled = true;
-            this.cbFiltro.Items.AddRange(new object[] {
-            "Nivel",
-            "Horario",
-            "Profesor",
-            "Aula"});
-            this.cbFiltro.Location = new System.Drawing.Point(276, 42);
-            this.cbFiltro.Name = "cbFiltro";
-            this.cbFiltro.Size = new System.Drawing.Size(200, 21);
-            this.cbFiltro.TabIndex = 18;
-            this.cbFiltro.SelectedIndexChanged += new System.EventHandler(this.cbFiltro_SelectedIndexChanged);
-            // 
-            // txtBusqueda
-            // 
-            this.txtBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.txtBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBusqueda.FormattingEnabled = true;
-            this.txtBusqueda.Location = new System.Drawing.Point(505, 42);
-            this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(269, 21);
-            this.txtBusqueda.TabIndex = 20;
-            this.txtBusqueda.SelectedIndexChanged += new System.EventHandler(this.txtBusqueda_SelectedIndexChanged);
-            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
-            // 
-            // lblDigiteSuBusqueda
-            // 
-            this.lblDigiteSuBusqueda.AutoSize = true;
-            this.lblDigiteSuBusqueda.Location = new System.Drawing.Point(502, 22);
-            this.lblDigiteSuBusqueda.Name = "lblDigiteSuBusqueda";
-            this.lblDigiteSuBusqueda.Size = new System.Drawing.Size(121, 13);
-            this.lblDigiteSuBusqueda.TabIndex = 19;
-            this.lblDigiteSuBusqueda.Text = "Digite su Busqueda:";
-            // 
-            // btnLimpiarFiltro
-            // 
-            this.btnLimpiarFiltro.Location = new System.Drawing.Point(791, 40);
-            this.btnLimpiarFiltro.Name = "btnLimpiarFiltro";
-            this.btnLimpiarFiltro.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiarFiltro.TabIndex = 21;
-            this.btnLimpiarFiltro.Text = "Limpiar";
-            this.btnLimpiarFiltro.UseVisualStyleBackColor = true;
-            this.btnLimpiarFiltro.Click += new System.EventHandler(this.btnLimpiarFiltro_Click);
             // 
             // frmRegistrodeGruposyNiveles
             // 
